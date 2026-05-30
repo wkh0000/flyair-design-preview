@@ -5,6 +5,7 @@ import {
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 /**
@@ -33,15 +34,22 @@ export class DemoApiInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!(environment as any).demoMode) return next.handle(req);
 
-    // Non-GET writes: silent failure
+    const u = req.url.split('?')[0];
+    const path = this.normalize(u);                                 // e.g. "Pages/terms"
+
+    // ------- Legacy/admin endpoints we don't snapshot: silence them (GET *and* POST) -------
+    // Done BEFORE the method check so admin/auth writes don't bubble up as
+    // demo-mode errors. The frontend simply gets an empty success.
+    if (/^(Auth|CMS|AdminUtility|admin)(\/|$)/i.test(path)) {
+      return of(new HttpResponse({ status: 200, body: {} as any }));
+    }
+
+    // ------- Non-GET writes (contact, subscribe, support, etc.): silent failure -------
     if (req.method !== 'GET') {
       return throwError(() => new HttpErrorResponse({
         status: 0, statusText: 'demo-mode (write suppressed)', url: req.url,
       }));
     }
-
-    const u = req.url.split('?')[0];
-    const path = this.normalize(u);                                 // e.g. "Pages/terms"
 
     // ------- Snapshotted endpoints -------
     const target = this.rewriteApi(path);
@@ -49,6 +57,13 @@ export class DemoApiInterceptor implements HttpInterceptor {
     if (target === '__empty_object__') return of(new HttpResponse({ status: 200, body: {} as any }));
     if (target) {
       const abs = this.absUrl(target);
+      // Pages/* that aren't snapshotted: fall through to empty object so
+      // the frontend uses its baked-in defaults instead of showing 404 noise.
+      if (target.includes('/Pages/')) {
+        return next.handle(req.clone({ url: abs })).pipe(
+          catchError(() => of(new HttpResponse({ status: 200, body: {} as any })))
+        );
+      }
       return next.handle(req.clone({ url: abs }));
     }
 
@@ -58,11 +73,6 @@ export class DemoApiInterceptor implements HttpInterceptor {
     if (dataMatch) {
       const abs = this.absUrl('assets/DATA/' + dataMatch[0].split('/').pop());
       return next.handle(req.clone({ url: abs }));
-    }
-
-    // ------- Legacy/admin endpoints we don't snapshot: silence them -------
-    if (/(?:^|\/)(Home|Auth|CMS|AdminUtility|admin)(\/|\?|$)/i.test(path)) {
-      return of(new HttpResponse({ status: 200, body: {} as any }));
     }
 
     return next.handle(req);
@@ -84,7 +94,8 @@ export class DemoApiInterceptor implements HttpInterceptor {
     const cleaned = rest.replace(/^flyair-design-preview\//i, '');
     const parts = cleaned.split('/');
 
-    if (/^HomeContent$/i.test(parts[0])) return 'assets/static-api/HomeContent.json';
+    if (/^Home$/i.test(parts[0]) && !parts[1]) return 'assets/static-api/Home.json';
+    if (/^HomeContent$/i.test(parts[0])) return 'assets/static-api/Home.json';
 
     if (/^Pages$/i.test(parts[0]) && parts[1]) {
       return `assets/static-api/Pages/${parts[1]}.json`;
