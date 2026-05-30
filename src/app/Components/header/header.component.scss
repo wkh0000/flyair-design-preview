@@ -19,6 +19,11 @@
      points at the domain root, not the GitHub Pages base-href, and 404s in production. */
   -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
   mask-image: url('../../../assets/icons/flights-nav.png');
+  /* The icon inherits the surrounding text colour via background-color: currentColor,
+     so it is white when the nav text is white. On the hero's bright cloud patches that
+     would disappear — the drop-shadow gives the silhouette a soft dark outline that
+     keeps it readable on both light and dark backgrounds. */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.5));
 }
 
 .site-nav {
