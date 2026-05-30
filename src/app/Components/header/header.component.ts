@@ -24,7 +24,10 @@ export class HeaderComponent implements OnInit {
   }
 
   private isHome(url: string): boolean {
-    return url === '/' || url === '' || url.startsWith('/#');
+    // Strip query (?cb=3) and fragment (#offers) so the dark-hero header is
+    // applied on the home route regardless of how the URL was opened.
+    const path = (url || '').split('?')[0].split('#')[0];
+    return path === '/' || path === '' || path === '/index.html';
   }
 
   @HostListener('window:scroll')
