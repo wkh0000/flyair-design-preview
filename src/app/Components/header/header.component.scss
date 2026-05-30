@@ -15,8 +15,10 @@
 }
 .fly-nav-ic-flights {
   width: 26px; height: 22px;
-  -webkit-mask-image: url('/assets/icons/flights-nav.png');
-  mask-image: url('/assets/icons/flights-nav.png');
+  /* Relative path so the Angular build resolves and bundles it. A leading "/assets/…"
+     points at the domain root, not the GitHub Pages base-href, and 404s in production. */
+  -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
+  mask-image: url('../../../assets/icons/flights-nav.png');
 }
 
 .site-nav {
