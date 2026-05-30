@@ -1,0 +1,31 @@
+{
+  "id": 293,
+  "title": "SAF in Asia: How Sustainable Fuel Scales From Pledge to Practice",
+  "slug": "saf-in-asia-scaling-sustainable-fuel-2026",
+  "dek": "Sustainable aviation fuel remains aviation's nearest-term lever to cut emissions. We explain how SAF works and where Asian carriers and hubs fit in.",
+  "body": "<p>Sustainable aviation fuel, or SAF, is widely regarded as the single most important near-term tool for reducing aviation's carbon footprint, because it can be blended into existing aircraft and infrastructure without new engines or airframes. As airlines across Asia and the Gulf restate decarbonisation commitments, the practical question is no longer whether SAF helps, but how quickly supply can scale and at what cost.</p><h2>What SAF is and why it matters</h2><p>SAF is produced from feedstocks such as used cooking oil, agricultural and forestry residues, municipal waste, and, in emerging pathways, captured carbon combined with green hydrogen. On a lifecycle basis it can substantially lower carbon emissions compared with conventional jet fuel, though the exact reduction depends heavily on the feedstock and production route.</p><p>Crucially, today's certified SAF is a drop-in fuel, typically blended with fossil kerosene up to approved limits. That compatibility is what makes it deployable now, ahead of longer-horizon technologies like hydrogen or battery-electric flight.</p><h2>The Asian supply challenge</h2><p>The central constraint remains availability. SAF still represents a very small share of total jet fuel consumption globally, and it generally costs more than conventional fuel, which slows uptake. For Asia, with its vast feedstock potential and fast-growing air travel, the opportunity is significant but uneven.</p><p>Key factors shaping the regional picture include:</p><ul><li>Feedstock access and competition with other industries</li><li>Refining and blending capacity near major hubs such as Singapore</li><li>Policy signals, including blending targets and incentives</li><li>Airline offtake agreements that give producers confidence to invest</li></ul><p>The realistic near-term path is incremental: rising blend mandates, more production capacity, and gradual cost declines as volumes grow. SAF will not decarbonise aviation alone, but it remains the foundation on which Asian carriers are building their nearer-term emissions strategies.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A fuel bowser servicing an airliner on the apron, symbolising sustainable aviation fuel uplift",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 6,
+  "category": {
+    "id": 6,
+    "name": "Sustainability",
+    "slug": "sustainability",
+    "accent": "#80c342"
+  },
+  "tags": "sustainable aviation fuel,SAF,aviation decarbonisation,drop-in fuel,Asian airlines,Singapore hub",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-01-13T10:00:51",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.2185438",
+  "readingMinutes": 3,
+  "metaTitle": "SAF in Asia: Scaling Sustainable Aviation Fuel",
+  "metaDescription": "Sustainable aviation fuel is aviation's nearest-term emissions lever. How SAF works, its feedstocks and the supply challenges facing Asian carriers and hubs.",
+  "metaKeywords": "sustainable aviation fuel,SAF,aviation decarbonisation,drop-in fuel,SAF feedstocks,Asian airlines,Singapore SAF,green hydrogen",
+  "ogImageUrl": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

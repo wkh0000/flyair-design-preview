@@ -1,0 +1,31 @@
+{
+  "id": 297,
+  "title": "How DigiYatra Is Turning Indian Airports Into Face-First Hubs",
+  "slug": "digiyatra-biometric-boarding-indian-airports-guide-2026",
+  "dek": "From Delhi and Mumbai to Bengaluru, India's DigiYatra programme lets enrolled flyers move through entry and security on facial recognition alone. Here is how the paperless system works, where it runs and what travellers should weigh before opting in.",
+  "body": "<p>India's busiest airports increasingly greet passengers with a camera rather than a queue. The DigiYatra programme, which uses facial recognition to verify travellers at airport checkpoints, has expanded across major Indian hubs including Delhi (DEL), Mumbai (BOM) and Bengaluru (BLR), letting enrolled domestic flyers pass entry gates and pre-security checks without repeatedly presenting an ID and boarding pass. Heading into 2026, operators and authorities have been working to widen the system and pilot biometric processing for international journeys.</p><h2>How the paperless journey works</h2><p>DigiYatra is built around a smartphone app and a one-time enrolment. Passengers link a government identity credential to a verified selfie, then attach a boarding pass for each trip. At the airport, cameras at the entry gate and security match the traveller's face to the stored record, replacing manual document checks at those touchpoints.</p><p>The programme is designed as a decentralised, opt-in system. Its operators have stated that facial data is stored on the passenger's own device and shared only briefly with the departure airport for the duration of the trip, after which it is purged. For frequent flyers, the practical payoff is faster, lower-friction movement through the parts of the airport that historically cause bottlenecks.</p><h2>Where it runs and what comes next</h2><p>Bengaluru's Kempegowda International Airport has been among the most active adopters, layering biometrics into both terminals and trialling self bag-drop, while Delhi and Mumbai anchor the network's largest passenger volumes. India has also moved to introduce biometric immigration at leading international gateways, aiming to shorten processing times for arriving travellers.</p><p>Travellers weighing enrolment should keep a few practicalities in mind.</p><ul><li>DigiYatra is voluntary; conventional ID and boarding-pass checks remain available.</li><li>It currently streamlines specific checkpoints, not every step of the airport journey.</li><li>Coverage and features vary by airport, so confirm availability before relying on it.</li><li>International biometric processing is being trialled and expanded, but rollout is uneven.</li></ul><p>Biometrics are not unique to India. Hubs such as Singapore Changi, Dubai and Doha have invested heavily in face-based clearance, part of a broader push across Asia and the Gulf to cut friction without adding staff. For Indian travellers, DigiYatra represents the clearest sign yet that the boarding pass is slowly giving way to the face as the key that moves passengers through the terminal.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A traveller looking into a facial-recognition camera at a biometric entry gate in an Indian airport terminal",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 7,
+  "category": {
+    "id": 7,
+    "name": "Travel Technology",
+    "slug": "travel-technology",
+    "accent": "#0073bd"
+  },
+  "tags": "DigiYatra,Biometric boarding,Delhi Airport,Bengaluru Airport,Facial recognition,Indian aviation",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-02-07T10:00:55",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.2441377",
+  "readingMinutes": 4,
+  "metaTitle": "DigiYatra Biometrics Explained: Face-First Indian Airports | FlyAir",
+  "metaDescription": "DigiYatra lets enrolled flyers clear Indian airport checkpoints by face alone. How the paperless biometric system works at Delhi, Mumbai and Bengaluru in 2026.",
+  "metaKeywords": "DigiYatra,biometric boarding India,facial recognition airport,Delhi airport DigiYatra,Bengaluru biometrics,paperless travel,Indian airports 2026",
+  "ogImageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

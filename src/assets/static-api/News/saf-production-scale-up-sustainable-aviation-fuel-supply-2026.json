@@ -1,0 +1,31 @@
+{
+  "id": 60,
+  "title": "SAF Production Scales Up but Stays a Sliver of Jet Fuel",
+  "slug": "saf-production-scale-up-sustainable-aviation-fuel-supply-2026",
+  "dek": "Heading into 2026, SAF production scaled with new refineries and offtake deals, yet a persistent SAF shortage kept sustainable aviation fuel supply tiny, prices high and net zero targets hard to reach.",
+  "body": "<p>The aviation industry's cleanest near-term tool is finally being made in greater volume, but nowhere near enough. As 2026 opened, SAF production scale advanced on the back of new refineries, expanded capacity and a thickening pipeline of offtake deals between fuel makers and airlines. Yet IATA and other observers cautioned that sustainable aviation fuel supply still covered only a sliver of total jet fuel demand, leaving a stubborn SAF shortage that keeps prices elevated and blending mandates difficult to meet.</p><p>The tension defines aviation's decarbonization challenge. Sustainable aviation fuel is widely seen as the single most important lever for cutting emissions from flying in the coming decades, because it can be used in existing aircraft and engines with little or no modification. The obstacle is not the chemistry but the volume and the cost: producing SAF at the scale a global industry requires demands enormous investment, feedstock and time.</p><h2>Capacity is rising, from a low base</h2><p>The momentum is real. Through recent years, producers commissioned new plants and expanded existing facilities, while airlines signed multi-year purchase agreements to lock in future supply and signal demand to investors. Those offtake deals matter because they help underwrite the financing of capital-intensive refineries, giving producers the confidence to build.</p><p>Even so, the starting point is tiny. SAF accounts for a very small share of the fuel airlines burn, and scaling toward meaningful percentages of global consumption implies building out an entirely new fuel industry over the long term. The gap between current sustainable aviation fuel supply and the volumes implied by net zero commitments remains vast, which is precisely why the warnings persist even as production grows.</p><h2>Why the SAF shortage persists</h2><p>Several structural factors keep supply tight and aviation fuel cost high.</p><ul><li><strong>Feedstock limits:</strong> the most established SAF pathways depend on constrained inputs such as waste oils and fats, which face competing demand from other sectors.</li><li><strong>High production cost:</strong> SAF typically costs substantially more than conventional jet fuel, a premium airlines struggle to absorb in a thin-margin business.</li><li><strong>Capital and lead times:</strong> new refineries require large investment and years to plan, permit and build.</li><li><strong>Policy uncertainty:</strong> the pace of mandates, incentives and subsidies varies by region, complicating investment decisions.</li></ul><p>Newer production routes, including fuels synthesized from captured carbon and clean hydrogen, could eventually ease the feedstock ceiling, but these remain earlier in development and even more expensive today.</p><h2>Mandates meet hard arithmetic</h2><p>Regulators in several markets have introduced or planned blending mandates requiring rising shares of SAF over time. Those targets are meant to create guaranteed demand and pull investment forward, but they collide with the reality of limited supply. If mandated volumes outstrip what producers can deliver, the result risks being higher compliance costs rather than more fuel, a dynamic that ultimately feeds into ticket prices.</p><blockquote>The central paradox of sustainable aviation fuel is that demand signals and policy ambition have arrived faster than physical supply, and no mandate can conjure refineries that have not yet been built.</blockquote><p>Bridging that gap is less a technological breakthrough than a sustained industrial build-out, requiring coordinated policy, capital and feedstock strategy over many years.</p><h2>What it means</h2><p>The state of play heading into 2026 is one of genuine progress shadowed by a sobering scale problem. Rising SAF production scale and a growing book of offtake deals show the market maturing, but the persistent SAF shortage means sustainable aviation fuel remains a premium product covering only a fraction of demand. For airlines, that translates into continued exposure to high aviation fuel cost and the difficulty of meeting climate commitments on schedule. The decisive factors ahead will be how quickly new capacity, especially next-generation pathways, can be financed and built, and whether policy can align mandates with achievable supply rather than outrunning it.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A fuel truck labeled sustainable aviation fuel refuels a jet on the apron beside a refinery skyline at dawn",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 6,
+  "category": {
+    "id": 6,
+    "name": "Sustainability",
+    "slug": "sustainability",
+    "accent": "#80c342"
+  },
+  "tags": "Sustainable Aviation Fuel,SAF Production,IATA,Net Zero Aviation,Jet Fuel,Aviation Emissions",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-02-25T09:00:59",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T11:00:41.3548849",
+  "readingMinutes": 6,
+  "metaTitle": "SAF Production Scales Up but Stays a Sliver of Jet Fuel",
+  "metaDescription": "Heading into 2026 SAF production scale grew via new refineries and offtake deals, but a SAF shortage keeps sustainable aviation fuel supply small and prices high.",
+  "metaKeywords": "SAF production scale,sustainable aviation fuel supply,SAF shortage,aviation fuel cost,net zero challenge,IATA,jet fuel",
+  "ogImageUrl": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

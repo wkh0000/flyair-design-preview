@@ -1,20 +1,45 @@
-/* Design-preview banner — sticky bar at the very top during the GitHub Pages build */
+/* Design-preview banner — fixed at the very top during the GitHub Pages build.
+   When visible, body.with-demo-banner pushes the rest of the page (header + hero)
+   down by --fly-demo-h so nothing is cut off. */
+:root { --fly-demo-h: 44px; }
 .fly-demo-banner {
-  position: sticky; top: 0; z-index: 11500;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 11500;
+  min-height: var(--fly-demo-h);
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 8px 16px; text-align: center;
+  padding: 8px 44px 8px 16px; text-align: center;
   background: linear-gradient(90deg, #ed174c, #ff5274);
   color: #fff; font-size: 0.84rem; font-family: 'Inter', system-ui, sans-serif;
   letter-spacing: 0.01em; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
 }
 .fly-demo-banner b { font-weight: 700; letter-spacing: 0.03em; }
+.fly-demo-text { max-width: 1100px; }
 .fly-demo-dot {
+  flex: 0 0 auto;
   display: inline-block; width: 8px; height: 8px; border-radius: 50%;
   background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
   animation: fly-demo-pulse 1.6s ease-in-out infinite;
 }
+.fly-demo-close {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  width: 28px; height: 28px; border-radius: 50%;
+  border: none; background: rgba(255,255,255,0.18); color: #fff;
+  font-size: 1.4rem; line-height: 1; cursor: pointer; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background 0.18s ease;
+}
+.fly-demo-close:hover { background: rgba(255,255,255,0.32); }
+.fly-demo-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 @keyframes fly-demo-pulse {
   50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+}
+
+/* Mobile banner is taller (text wraps), so we bump the variable.
+   The body-conditioned offsets for .fly-header / main / .fly-hero live in
+   src/styles.scss (they must be GLOBAL — component encapsulation would scope
+   them out otherwise). */
+@media (max-width: 700px) {
+  :root { --fly-demo-h: 64px; }
+  .fly-demo-banner { font-size: 0.78rem; padding-left: 12px; padding-right: 42px; }
 }
 
 /* ========== Accessibility: skip link + keyboard-only focus indicator ==========

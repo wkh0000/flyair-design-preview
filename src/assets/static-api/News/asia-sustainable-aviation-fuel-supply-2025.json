@@ -1,0 +1,31 @@
+{
+  "id": 271,
+  "title": "How Asia’s Hubs Are Building a Sustainable Aviation Fuel Supply",
+  "slug": "asia-sustainable-aviation-fuel-supply-2025",
+  "dek": "Sustainable aviation fuel is central to airline decarbonisation, and in 2025 the push to build supply has spread to Asian and Gulf hubs such as Singapore, Tokyo, Doha and Dubai.",
+  "body": "<p>Sustainable aviation fuel has become the centrepiece of the airline industry’s plan to cut carbon emissions by mid-century, and the conversation has steadily shifted east. Across 2025, carriers and hubs in Asia and the Gulf — from Singapore Changi to Tokyo, Doha and Dubai — have moved from one-off demonstration flights toward the harder task of building durable, locally fed supply chains for a fuel that still accounts for only a tiny fraction of what jets burn.</p><h2>Why SAF matters and where it comes from</h2><p>SAF is a drop-in fuel: it is chemically similar enough to conventional jet kerosene that aircraft and engines can use approved blends without modification. Most SAF in service today is produced from waste fats, used cooking oil and other residues using the HEFA process, the only pathway certified at commercial scale. Because it can be blended directly into existing fuelling infrastructure, SAF is widely seen as the most practical near-term lever for reducing emissions from long-haul flying, where battery and hydrogen propulsion remain distant.</p><p>The catch is volume and price. Global SAF output remains well under one percent of total jet fuel demand, and it typically costs several times more than fossil kerosene. Scaling additional pathways, such as fuels synthesised from captured carbon and green hydrogen, is widely viewed as essential if production is to grow without straining feedstock supplies.</p><h2>The Asian and Gulf push</h2><p>Singapore has positioned itself as a regional leader, setting a target for departing flights to use SAF and signalling that the cost will be funded through a levy on tickets. Japanese carriers including ANA and Japan Airlines have run recurring SAF-blended services and backed domestic production, while refiners across the region have announced plants intended to convert waste oils into jet fuel.</p><ul><li>Drop-in blends are typically capped near 50 percent under current fuel specifications.</li><li>Lifecycle carbon savings depend heavily on feedstock and production method.</li><li>Offtake agreements between airlines and producers aim to make new plants bankable.</li></ul><p>For now, progress is measured in modest blends and long-term contracts rather than wholesale change at the wingtip. Yet the centre of gravity for SAF investment is clearly broadening beyond Europe and North America, with Asian and Gulf hubs treating fuel supply as a competitive question as much as an environmental one.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A fuel bowser refuelling a widebody airliner at an Asian airport gate under clear skies",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 6,
+  "category": {
+    "id": 6,
+    "name": "Sustainability",
+    "slug": "sustainability",
+    "accent": "#80c342"
+  },
+  "tags": "Sustainable Aviation Fuel,Singapore Changi,ANA,Japan Airlines,Decarbonisation",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2025-07-07T10:00:29",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.0517399",
+  "readingMinutes": 3,
+  "metaTitle": "How Asia’s Hubs Are Building a Sustainable Aviation Fuel Supply",
+  "metaDescription": "An explainer on sustainable aviation fuel: what SAF is, why it cuts emissions, and how Asian and Gulf hubs like Singapore and Tokyo are scaling supply in 2025.",
+  "metaKeywords": "sustainable aviation fuel,SAF,airline decarbonisation,HEFA,Singapore Changi,ANA,Japan Airlines,aviation emissions",
+  "ogImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

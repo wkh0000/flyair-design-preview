@@ -1,0 +1,31 @@
+{
+  "id": 283,
+  "title": "ETOPS Explained: How Twinjets Cross the Indian Ocean",
+  "slug": "etops-explained-how-twinjets-cross-indian-ocean-2025",
+  "dek": "As Asian and Gulf carriers push ultra-long routes with the A350 and 787, the certification rules known as ETOPS quietly make those single-aisle and twin-engine crossings possible.",
+  "body": "<p>When a Singapore Airlines A350 tracks across the empty middle of the Indian Ocean, or an Air India Boeing 787 routes over remote stretches of ocean toward Europe, it is doing something that twin-engine aircraft were once forbidden to attempt. The reason they can is a framework called ETOPS, or Extended-range Twin-engine Operations Performance Standards, a set of certification and operational rules that govern how far a twinjet may fly from the nearest suitable diversion airport.</p><h2>What the numbers mean</h2><p>An ETOPS rating is expressed in minutes: the maximum single-engine flying time an aircraft may ever be from a usable alternate airport. ETOPS-180 keeps a jet within 180 minutes; higher approvals such as ETOPS-330 or beyond push that boundary much further, opening up routings over oceans and sparsely served regions. The logic is straightforward — should one engine fail, the aircraft must still be able to reach a diversion field and land safely on the remaining engine.</p><p>Modern widebody twins are certified to demanding standards. The A350 and the 787 family carry some of the highest approvals in service, which is precisely why they have displaced four-engine jets on long, remote corridors that once belonged to aircraft like the 747 and A340.</p><h2>More than a rating</h2><p>ETOPS is not just a sticker on the airframe. It is a system spanning the manufacturer, the airline and the regulator, covering:</p><ul><li>Engine reliability and demonstrated in-service performance</li><li>Redundancy in systems such as electrical power, hydraulics and fire suppression</li><li>Airline maintenance procedures, crew training and dispatch planning</li><li>Availability of suitable diversion airports along the planned route</li></ul><p>For Asian and Gulf hubs chasing point-to-point growth — including narrowbody long-haul flying with the A321XLR — these rules shape which routes are even feasible. Far from limiting airlines, mature ETOPS approvals have become an enabler, letting efficient twinjets fly almost anywhere on Earth while preserving the safety margins regulators demand.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1559125148-869baf508c95?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A twin-engine widebody airliner cruising high over open ocean on a long-haul route",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 5,
+  "category": {
+    "id": 5,
+    "name": "Safety & Regulation",
+    "slug": "safety-regulation",
+    "accent": "#ed174c"
+  },
+  "tags": "ETOPS,Airbus A350,Boeing 787,twin-engine aircraft,aviation safety,long-haul routes",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2025-10-15T10:00:41",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.1493001",
+  "readingMinutes": 3,
+  "metaTitle": "ETOPS Explained: How Twinjets Fly Long Oceanic Routes",
+  "metaDescription": "ETOPS rules let twin-engine jets like the A350 and 787 cross oceans safely. Here is how the certification works and why it matters for Asian long-haul flying.",
+  "metaKeywords": "ETOPS,ETOPS explained,twin-engine operations,A350 ETOPS,787 ETOPS,aviation safety,long-haul certification,single-engine diversion",
+  "ogImageUrl": "https://images.unsplash.com/photo-1559125148-869baf508c95?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

@@ -1,0 +1,31 @@
+{
+  "id": 306,
+  "title": "Why Free Starlink Wi-Fi Is Rewiring the Long-Haul Cabin",
+  "slug": "starlink-leo-wifi-long-haul-cabin-shift-2026",
+  "dek": "Low-earth-orbit satellites are turning in-flight Wi-Fi from a slow, paywalled extra into a fast, free perk. Qatar Airways leads the Gulf shift; here is the tech behind it.",
+  "body": "<p>In-flight connectivity has long been the weakest link in an otherwise premium long-haul experience: slow, expensive and unreliable enough that many travellers simply switched off. Low-earth-orbit satellite networks, led by SpaceX's Starlink, are upending that compromise, and Gulf carriers have moved early. Qatar Airways has been among the most aggressive adopters, fitting its widebodies and offering the service free to passengers who sign in with a loyalty account.</p><h2>Why low orbit changes the maths</h2><p>Traditional in-flight Wi-Fi leans on geostationary satellites parked roughly 35,000 kilometres above the equator. The distance introduces noticeable latency and caps practical speeds, which is why streaming or video calls so often stuttered. LEO constellations fly far closer to Earth and hand connections between many satellites, cutting latency dramatically and lifting usable bandwidth to levels that feel like home broadband.</p><p>For airlines, that unlocks a different value proposition. When the pipe is fast enough for everyone aboard to stream at once, connectivity stops being a scarce commodity to meter and starts being a brand differentiator to give away.</p><h2>The shift to free, and what it signals</h2><p>Qatar Airways has progressively equipped its Boeing 777 and Airbus A350 fleets, with the 787 following, and the carrier is not alone: a growing list of operators across regions has adopted the same LEO-plus-free formula. The common thread is a \"free for members\" model, where signing into a frequent-flyer account, itself free to join, unlocks full access.</p><p>The competitive logic is straightforward. Once a flagship rival offers fast, complimentary Wi-Fi gate to gate, charging for a slower service becomes hard to defend. Expect the question for premium Asian and Gulf carriers to move quickly from whether to offer free connectivity to how fast they can retrofit their fleets to deliver it.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "Passenger using a laptop with a connectivity signal icon in a wide-body aircraft cabin during a long-haul flight",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 7,
+  "category": {
+    "id": 7,
+    "name": "Travel Technology",
+    "slug": "travel-technology",
+    "accent": "#0073bd"
+  },
+  "tags": "Starlink,Qatar Airways,in-flight Wi-Fi,LEO satellites,connectivity,frequent flyer",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-05-26T10:00:04",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.3022659",
+  "readingMinutes": 3,
+  "metaTitle": "Free Starlink Wi-Fi and the New Long-Haul Cabin",
+  "metaDescription": "Low-earth-orbit satellites turn in-flight Wi-Fi fast and free. How Starlink works, why Qatar Airways leads the Gulf shift, and what the 'free for members' model means.",
+  "metaKeywords": "Starlink in-flight wifi,LEO satellite connectivity,Qatar Airways wifi,free aircraft wifi,low earth orbit aviation,frequent flyer wifi",
+  "ogImageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

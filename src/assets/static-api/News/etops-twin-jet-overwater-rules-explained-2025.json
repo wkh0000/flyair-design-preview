@@ -1,0 +1,31 @@
+{
+  "id": 272,
+  "title": "ETOPS Explained: How Twin-Jets Are Cleared to Fly Over Water",
+  "slug": "etops-twin-jet-overwater-rules-explained-2025",
+  "dek": "ETOPS rules decide how far twin-engine jets like the 787 and A350 may fly from a diversion airport — the framework behind much long-haul flying over the Indian Ocean.",
+  "body": "<p>When a twin-engine jet such as a Boeing 787 or Airbus A350 tracks across the Indian Ocean between Colombo, the Gulf and Southeast Asia, it is operating under a safety framework known as ETOPS. The rules govern how far a two-engine airliner may fly from the nearest suitable diversion airport, and they underpin much of the long-haul flying that connects Asian and Indian-Ocean hubs today.</p><h2>What ETOPS actually means</h2><p>ETOPS stands for Extended-range Twin-engine Operational Performance Standards. The core idea is straightforward: a twin must always remain within a defined flying time of an airport where it could land safely if one engine were to fail. That limit, expressed in minutes at single-engine cruise speed, is what an ETOPS rating describes — common approvals include 120, 180 and 240 minutes, with some types cleared beyond.</p><p>The framework exists because modern twins are both efficient and highly reliable, yet regulators still plan for the loss of an engine far from land. A higher ETOPS number widens the corridor an aircraft may use, allowing more direct routings over oceans and remote terrain instead of long detours hugging coastlines.</p><h2>Earning and keeping the rating</h2><p>ETOPS approval is granted by regulators such as the FAA and EASA and applies to a specific combination of airframe, engine and operator. It rests on demonstrated engine reliability, redundant systems, and strict maintenance and dispatch procedures rather than on the airframe alone.</p><ul><li>The aircraft and engine type must be certified to the relevant ETOPS standard.</li><li>The operator must hold matching operational approval and crew training.</li><li>Suitable en-route alternates, with adequate weather and facilities, must lie along the planned track.</li></ul><p>For passengers, ETOPS is invisible but consequential. It is the reason a single widebody twin can link distant city pairs nonstop, and the reason such flights are planned around a chain of diversion airports the aircraft will, in almost every case, never need to use.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1559521783-1d1599583485?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A twin-engine widebody airliner cruising above a vast ocean with scattered clouds below",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 5,
+  "category": {
+    "id": 5,
+    "name": "Safety & Regulation",
+    "slug": "safety-regulation",
+    "accent": "#ed174c"
+  },
+  "tags": "ETOPS,Boeing 787,Airbus A350,FAA,EASA,Flight Safety",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2025-07-12T10:00:30",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.058848",
+  "readingMinutes": 3,
+  "metaTitle": "ETOPS Explained: How Twin-Jets Fly Long Routes Over Water",
+  "metaDescription": "An explainer on ETOPS: what the twin-engine overwater rules mean, how 120/180/240-minute ratings work, and why they enable nonstop long-haul flights in Asia.",
+  "metaKeywords": "ETOPS,twin-engine,extended range operations,Boeing 787,Airbus A350,overwater flight,FAA,EASA,long-haul safety",
+  "ogImageUrl": "https://images.unsplash.com/photo-1559521783-1d1599583485?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

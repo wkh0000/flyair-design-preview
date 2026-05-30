@@ -1,0 +1,31 @@
+{
+  "id": 274,
+  "title": "NDC Explained: How Modern Airline Retailing Is Reshaping Asian Fares",
+  "slug": "ndc-modern-airline-retailing-asia-explained-2025",
+  "dek": "NDC, the New Distribution Capability championed by IATA, is changing how Emirates, Qatar Airways, Singapore Airlines and a wave of Asian carriers sell tickets. Here is what the standard means for travellers and corporate buyers.",
+  "body": "<p>For decades, most airline tickets were sold through the same plumbing: a handful of global distribution systems that fed identical fares to travel agents and online portals. NDC, short for New Distribution Capability, is steadily rewiring that model. Developed by IATA as a modern, XML-based messaging standard, NDC lets carriers describe and sell their products in far richer detail than the legacy systems allowed. For passengers booking across Asia and the Gulf, it increasingly shapes which fares, bundles and seat options appear at the moment of purchase.</p><h2>What NDC actually changes</h2><p>Traditional distribution treated a flight as a fare and little else. NDC allows an airline to present a flight alongside the extras that surround it, including specific seat types, baggage allowances, meal upgrades, lounge passes and fare families, all merchandised in one connected offer. In principle that means a shopper can compare a basic economy ticket against a flexible bundle without leaving a single screen.</p><p>Several large carriers in the region have leaned into this approach, encouraging agents and corporate platforms to connect through NDC channels or directly via their own programmes. Emirates, Qatar Airways and Singapore Airlines are among the airlines that have publicly promoted modern retailing, while Indian carriers expanding internationally have strong incentives to follow as they scale up direct digital sales.</p><h2>What it means for travellers and buyers</h2><p>The promised upside is more relevant choice and clearer pricing of add-ons, rather than surprise fees discovered late in a booking. The trade-off is fragmentation: when content sits across direct sites, NDC feeds and older systems, comparing options can become harder, and corporate travel managers worry about consistent data for expense and duty-of-care reporting.</p><ul><li>Expect richer fare families and clearer bundles when booking directly with NDC-enabled airlines.</li><li>Some carriers reserve their best content, or avoid surcharges, for NDC and direct channels.</li><li>Coverage remains uneven, so a single agent may not see every airline offer in one place.</li></ul><p>For now, NDC is less a finished revolution than a transition. As more Asian and Gulf carriers adopt the standard, the practical advice for travellers is simple: check the airline's own channel alongside any agent, because the cheapest headline fare and the best-value bundle are not always found in the same place.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A traveller comparing airline fare bundles and seat options on a smartphone booking screen",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 7,
+  "category": {
+    "id": 7,
+    "name": "Travel Technology",
+    "slug": "travel-technology",
+    "accent": "#0073bd"
+  },
+  "tags": "NDC,IATA,Emirates,Qatar Airways,Singapore Airlines,airline distribution",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2025-08-22T10:00:32",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.0727678",
+  "readingMinutes": 3,
+  "metaTitle": "NDC Explained: Modern Airline Retailing in Asia",
+  "metaDescription": "How NDC, IATA's New Distribution Capability, is reshaping how Emirates, Qatar Airways and Asian carriers sell fares, bundles and extras to travellers and corporate buyers.",
+  "metaKeywords": "NDC,New Distribution Capability,IATA,airline retailing,Emirates NDC,Qatar Airways,Singapore Airlines,airline distribution,GDS,fare bundles",
+  "ogImageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

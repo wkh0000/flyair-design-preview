@@ -1,7 +1,8 @@
 <!-- Public preview banner — only renders in the static GitHub Pages build (environment.demo.ts) -->
-<div class="fly-demo-banner" *ngIf="demoMode" role="note" aria-label="Design preview notice">
+<div class="fly-demo-banner" *ngIf="bannerVisible" role="note" aria-label="Design preview notice">
   <span class="fly-demo-dot" aria-hidden="true"></span>
-  <span><b>Design preview</b> — live booking, payments and admin actions are disabled in this preview. Full functionality is available in the production build.</span>
+  <span class="fly-demo-text"><b>Design preview</b> — live booking, payments and admin actions are disabled in this preview. Full functionality is available in the production build.</span>
+  <button type="button" class="fly-demo-close" (click)="closeBanner()" aria-label="Dismiss design preview banner">&times;</button>
 </div>
 
 <!-- Skip-to-content link — first focusable element, visible only on focus (WCAG 2.4.1 Bypass Blocks) -->

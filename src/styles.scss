@@ -397,3 +397,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 div.mat-mdc-autocomplete-panel {
   background: white !important;
 }
+
+/* GitHub Pages design-preview banner offsets — pushed here because component
+   styles are encapsulated and cannot reach body from app.component.scss. */
+body.with-demo-banner .fly-header { top: var(--fly-demo-h, 44px); }
+body.with-demo-banner main#main-content { padding-top: var(--fly-demo-h, 44px); }
+body.with-demo-banner .fly-hero { top: var(--fly-demo-h, 44px); }

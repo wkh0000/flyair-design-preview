@@ -1,0 +1,43 @@
+{
+  "title": "Flight Status",
+  "eyebrow": "Book & Manage",
+  "updated": "2026-05-30",
+  "heroImage": "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1600&q=70",
+  "heroImageAlt": "Airport departure board showing flight times",
+  "author": {
+    "name": "Dilshan Perera",
+    "role": "Aviation Operations Writer"
+  },
+  "editor": {
+    "name": "Nadeesha Karunaratne",
+    "role": "Editor-in-Chief, FlyAir"
+  },
+  "reviewedAt": "2026-05-30",
+  "intro": "Check whether your flight is on time before you head to the airport — and know what to do if it is delayed or cancelled.",
+  "sections": [
+    {
+      "h": "How to check live status",
+      "p": "Search by AIRLINE + FLIGHT NUMBER (the two-letter code plus the digits, e.g. UL 504) and date, or by ROUTE (origin/destination) and date. We surface the latest scheduled, estimated and actual times sourced directly from the airline.\n\nFor Colombo (CMB), you can also check the airport’s public displays at airport.lk. For most other airports the operator publishes live status on its website."
+    },
+    {
+      "h": "Stay notified by email and SMS",
+      "p": "Add your mobile number and email at booking and we will alert you about gate changes, delays of more than 30 minutes, and cancellations for your flight. We recommend installing the operating airline’s app as well — push notifications are typically faster than email."
+    },
+    {
+      "h": "If your flight is delayed",
+      "p": "SHORT DELAY (under 2 hours): wait at the gate; updates are posted on the screens and announced.\nLONGER DELAY (2 hours or more): the airline typically provides refreshments and, for delays of 4 hours or more, a meal voucher. For delays of more than 5 hours on most airlines, you are entitled to a free rebooking on the next available service or a refund.\n\nKeep your boarding pass and receipts for any extra expenses — many airlines reimburse reasonable costs under their conditions of carriage."
+    },
+    {
+      "h": "If your flight is cancelled",
+      "p": "The operating airline manages re-accommodation. You are typically entitled to ONE of:\n• Rebooking on the next available service at no extra cost.\n• Rerouting via another airport or with another airline.\n• A FULL REFUND of the unused portion of the ticket.\n\nUnder some passenger-rights rules (notably EU 261, UK 261 and similar), additional cash compensation may also be due. We will help you understand which rules apply and start the claim."
+    },
+    {
+      "h": "Missed connections",
+      "p": "If you booked a SINGLE TICKET that includes both flights, the airline is responsible for getting you to your final destination — it will rebook you on the next available service at no extra cost.\n\nIf you booked SEPARATE TICKETS, the second airline is not contractually obligated to help, even if the first flight ran late. We strongly recommend single tickets for connections, and at least 3 hours of connection time on international transits."
+    },
+    {
+      "h": "Plan your airport arrival",
+      "p": "INTERNATIONAL departures from Sri Lanka: arrive 3 HOURS before scheduled departure. Check-in usually closes 60 to 90 minutes before departure, boarding starts 30 to 45 minutes before, and gates close 15 minutes before.\n\nDOMESTIC departures: 90 minutes before departure is usually enough.\n\nFactor in extra time on peak days (school holidays, festival periods) when CMB processes more than 30,000 passengers a day."
+    }
+  ]
+}

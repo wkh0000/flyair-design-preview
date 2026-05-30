@@ -1,0 +1,31 @@
+{
+  "id": 303,
+  "title": "ETOPS Explained: How Twin-Jets Cross Oceans Safely",
+  "slug": "etops-explained-twinjet-long-haul-rules-2026",
+  "dek": "From Colombo to Singapore and across the Pacific, Asian carriers rely on ETOPS rules that govern how far a twin-engine jet may fly from a diversion airport. Here is how the certification works and why it underpins modern long-haul.",
+  "body": "<p>Nearly every long-haul flight an Asian traveller boards today is operated by a twin-engine jet, from Cathay Pacific A350s on trans-Pacific runs to SriLankan A330s linking Colombo with the Gulf. That these twins routinely cross vast stretches of ocean rests on a framework most passengers never see: ETOPS, the rules governing Extended-range Twin-engine Operational Performance Standards. Understanding ETOPS explains how aviation safety regulation made two engines enough for routes once reserved for three- and four-engine aircraft.</p><h2>What the ETOPS number means</h2><p>An ETOPS rating, expressed in minutes, defines the maximum diversion time a twin may be from a suitable airport, calculated at single-engine cruise speed. A 180-minute rating, long the workhorse standard, allows routings up to three hours' flying from a diversion field. Higher approvals such as ETOPS-330 or beyond opened up the most remote oceanic and polar tracks, including parts of the Pacific and southern Indian Ocean.</p><p>The rating is not a single test but a package. It covers the airframe and engine combination, the operator's maintenance programme, crew training, dispatch procedures and the availability of en-route alternates. An aircraft type may be certified for a capability, but an individual airline must separately earn approval to use it.</p><h2>Why two engines became enough</h2><p>The shift was driven by engine reliability. Modern high-bypass turbofans fail in flight far less often than the piston and early jet engines that prompted conservative rules decades ago. As demonstrated in-service reliability improved, regulators including the FAA and EASA progressively extended permissible diversion times, allowing efficient twins to displace thirstier quad-jets on long routes.</p><ul><li>Engine in-flight shutdown rates are tracked continuously to support a rating.</li><li>Operators carry strict fuel and equipment reserves for the worst-case diversion.</li><li>Suitable en-route alternates must have adequate weather, runways and services.</li></ul><p>For Indian-Ocean and Asia-Pacific networks, where origin and destination can be separated by hours of open water, ETOPS is what makes nonstop service on aircraft like the 787 and A350 both legal and economic. Far from a loophole, it is one of the more rigorously monitored corners of safety oversight, blending engineering data, disciplined maintenance and detailed flight planning into a single permission to fly the long way around.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1559067096-49ebca3406aa?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "A twin-engine widebody airliner cruising high above open ocean on a long-haul route",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 5,
+  "category": {
+    "id": 5,
+    "name": "Safety & Regulation",
+    "slug": "safety-regulation",
+    "accent": "#ed174c"
+  },
+  "tags": "ETOPS,Twin-Engine Aircraft,SriLankan Airlines,Cathay Pacific,Airbus A350,Flight Safety",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-04-11T10:00:01",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.2830215",
+  "readingMinutes": 4,
+  "metaTitle": "ETOPS Explained: How Twin-Engine Jets Cross Oceans Safely",
+  "metaDescription": "ETOPS rules let twin-engine jets like the A350 and 787 fly remote oceanic routes. Learn how the certification, diversion minutes and operator approvals work.",
+  "metaKeywords": "ETOPS explained,extended twin operations,twin-engine long haul,ETOPS certification,diversion time,A350 787 oceanic routes",
+  "ogImageUrl": "https://images.unsplash.com/photo-1559067096-49ebca3406aa?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Privacy Policy",
+  "eyebrow": "Legal",
+  "updated": "2026-05-30",
+  "legalLinks": true,
+  "intro": "This policy explains what personal information FlyAir collects when you use flyair.lk, why we collect it, how we look after it and the rights you have over it. By using the Site you accept the practices described here.",
+  "sections": [
+    {
+      "h": "Who we are",
+      "p": "flyair.lk is the flights-focused brand of Travellers Marketplace (Pvt) Ltd (BR No PV 00214561), a Sri Lankan company licensed by the Civil Aviation Authority (CAA licence A-1710) and IATA accredited. We sit in a family of brands alongside travellers.lk and Travellers Holidays. For privacy matters please contact us at info@flyair.lk or on 0788 788 788."
+    },
+    {
+      "h": "Information we collect",
+      "p": "When you search, book or contact us we collect information you give us directly: your name, date of birth, gender, contact details, passport or other travel-document details, payment details, and any preferences or accessibility requests you share with us.\n\nWe also collect information automatically about how you use the Site, such as the device and browser you use, your approximate location, the pages you view and the time you spend on them. This is collected through cookies and similar technologies.\n\nWhere you have made a booking, we receive booking confirmations, ticket numbers, schedule changes and refund updates from the airlines and travel suppliers we work with."
+    },
+    {
+      "h": "How we use your information",
+      "p": "We use the information you give us to issue and manage your bookings, to contact you about your travel, to take payment, to provide customer support, and to comply with our legal obligations such as anti-fraud and tax reporting.\n\nWe use information about how you use the Site to keep it secure, to debug problems, to measure how features perform, and to improve search results and product recommendations.\n\nWith your consent, we use your contact details to send you offers and travel inspiration. You can withdraw that consent at any time without it affecting any service you have already booked."
+    },
+    {
+      "h": "Cookies and similar technologies",
+      "p": "Cookies are small text files placed on your device when you visit a website. We use strictly-necessary cookies that the Site cannot function without, and optional cookies for analytics and marketing that we only set with your permission.\n\nYou can manage your cookie choices from the banner that appears on your first visit, or at any time from the Cookies page linked in the footer. Most browsers also let you block or delete cookies in their settings."
+    },
+    {
+      "h": "Sharing your information",
+      "p": "We share your information only with parties that need it to deliver your travel or to run our business. These include the operating airline and any connecting carriers for your trip, the global distribution system that ticket your booking, our payment provider, our fraud-screening provider, and our customer-support tools.\n\nWhere we use independent suppliers for hosting, analytics, email delivery or similar back-office services, we put written data-protection agreements in place and only share what is necessary.\n\nWe do not sell your personal information to anyone. We may disclose information where we are legally required to do so or to protect the rights, property or safety of FlyAir, our customers or others."
+    },
+    {
+      "h": "International transfers",
+      "p": "Airlines, global distribution systems and many of our suppliers operate internationally, which means your information will sometimes be processed in a country other than the one you live in.\n\nWhere we transfer personal information outside Sri Lanka we use safeguards such as standard contractual clauses or equivalent protections to make sure your information stays protected to a comparable standard."
+    },
+    {
+      "h": "How long we keep your information",
+      "p": "We keep booking information for as long as your booking is active and then for the periods we are required to under tax, accounting and anti-fraud laws — generally up to seven years after the date of travel.\n\nMarketing preferences are kept while you have an active account or until you ask us to remove them. Site analytics data is kept in aggregated form."
+    },
+    {
+      "h": "How we protect your information",
+      "p": "flyair.lk is served over HTTPS with up-to-date TLS encryption. Payment is processed by a regulated payment provider on a PCI-DSS compliant platform; we do not store full card numbers on our own servers.\n\nWe restrict access to personal information to staff who need it to do their job, and we monitor our systems for unusual activity. No online transmission can be guaranteed 100% secure, but we take the protection of your data seriously."
+    },
+    {
+      "h": "Your rights",
+      "p": "You have the right to ask for a copy of the personal information we hold about you, to ask us to correct anything that is wrong, to ask us to delete it where we no longer need it for a legitimate purpose, and to object to or restrict certain types of processing.\n\nYou also have the right to withdraw consent at any time where we are relying on consent (for example for marketing messages) and the right to complain to the data-protection regulator in Sri Lanka."
+    },
+    {
+      "h": "Marketing messages",
+      "p": "Operational messages about a booking you have made — confirmations, schedule changes, check-in reminders, refund updates — are sent as part of delivering your travel and cannot be opted out of while a booking is active.\n\nPromotional messages (fare drops, newsletters, partner offers) are only sent if you have asked for them. Every promotional email contains a one-click unsubscribe link, and you can update your preferences at any time from your account."
+    },
+    {
+      "h": "Children",
+      "p": "FlyAir is intended for adults. We do not knowingly collect personal information directly from children under the age of 16; their details are collected from a parent or guardian when an adult books on their behalf."
+    },
+    {
+      "h": "Changes to this policy",
+      "p": "We may update this policy from time to time to reflect changes in our service, in technology or in applicable law. The current version is always available on this page with the date of the last update at the top.\n\nMaterial changes will be flagged on the Site for a reasonable period before they take effect."
+    },
+    {
+      "h": "Contact us",
+      "p": "If you have a question about this policy or want to exercise any of your rights, please write to us at info@flyair.lk, call 0788 788 788, or post to Travellers Marketplace (Pvt) Ltd, Colombo, Sri Lanka. We will respond to verified requests within 30 days."
+    }
+  ]
+}

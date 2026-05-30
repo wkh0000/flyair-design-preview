@@ -1,0 +1,31 @@
+{
+  "id": 42,
+  "title": "AAIB Report on Air India 171 Details Fuel-Cutoff Sequence Seconds After Liftoff",
+  "slug": "aaib-report-air-india-171-fuel-cutoff-sequence-2025",
+  "dek": "India's AAIB preliminary report into Air India Flight 171 found both engines lost thrust after their fuel-control switches moved from RUN to CUTOFF moments after takeoff, sharpening global scrutiny of the 787 crash probe.",
+  "body": "<p>India's Aircraft Accident Investigation Bureau released a preliminary report in July 2025 that placed the loss of engine power at the heart of the Air India Flight 171 disaster, finding that both engines lost thrust after their fuel-control switches moved from the run position to cutoff in the seconds following liftoff from Ahmedabad. The disclosure intensified worldwide scrutiny of an accident that killed almost everyone aboard the London-bound Boeing 787 and a number of people on the ground.</p><p>The AAIB report, issued within the customary 30-day window after the June 12 crash, set out an initial factual picture rather than a final determination of cause. Yet its core finding, that fuel to both engines was interrupted almost simultaneously during the most vulnerable phase of flight, reframed the central question of the inquiry: how two independent fuel-control switches came to be in the cutoff position so soon after a normal departure.</p><h2>What the preliminary report described</h2><p>According to the AAIB's account, the aircraft lifted off and then suffered a near-simultaneous loss of thrust as the fuel-control switches transitioned from run to cutoff. The report's narrative of the cockpit sequence, drawn from the flight recorders, became the focal point of analysis across the global safety community, with attention on the precise timing of the switch movement relative to other events in the cockpit.</p><p>Independent commentary on the data has noted that emergency systems associated with a loss of engine power appeared to activate in the same compressed window, a detail that fed debate over whether a systems or mechanical event might have preceded the switch movement rather than a deliberate cockpit input. The AAIB did not assign blame, and the full reconstruction of cause was left to the continuing investigation.</p><blockquote>A preliminary report is a snapshot, not a verdict; its value lies in narrowing the questions that the final inquiry must answer.</blockquote><h2>A measured regulatory response</h2><p>Notably, neither the investigators nor the relevant airworthiness authorities moved to issue emergency directives to the global 787 fleet on the basis of the preliminary findings, reportedly concluding that a design flaw in the fuel switch itself was not a likely driver of the accident. That restraint signaled confidence that the broader Dreamliner fleet did not face an immediate, identified hazard, even as the specific chain of events in Ahmedabad remained unresolved.</p><h3>Open questions after the preliminary report</h3><ul><li>Why both fuel-control switches reportedly reached the cutoff position seconds after takeoff.</li><li>Whether any fault preceded or triggered that movement.</li><li>How the timing of cockpit actions and aircraft systems aligned on the recorders.</li><li>What additional analysis of components and maintenance history would reveal.</li></ul><p>For Air India and Boeing alike, the report kept the accident firmly in public and regulatory view. The carrier continued cooperating with investigators while managing the aftermath of a disaster that struck during a high-profile fleet and brand overhaul, and Boeing faced renewed questions about the most prominent loss yet involving its flagship widebody.</p><h2>What it means</h2><p>The AAIB's preliminary report did not close the Air India Flight 171 case, but it defined the terrain on which the rest of the investigation will be fought. By isolating the fuel-cutoff sequence as the pivotal event, it ensured that the eventual final report, and any safety recommendations flowing from it, will turn on understanding why those switches moved and whether anything could or should be changed to prevent a recurrence. Until then, operators, regulators and the traveling public face a difficult interval of partial answers, with the full lessons of one of 2025's defining aviation tragedies still to be drawn.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1559521783-1d1599583485?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "Investigators examining recovered black box recorders from the Air India Boeing 787 accident",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 5,
+  "category": {
+    "id": 5,
+    "name": "Safety & Regulation",
+    "slug": "safety-regulation",
+    "accent": "#ed174c"
+  },
+  "tags": "AAIB,Air India Flight 171,Boeing 787 Dreamliner,Aviation Safety,Flight Recorders,Accident Investigation",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2025-07-03T09:00:41",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T11:00:41.246011",
+  "readingMinutes": 4,
+  "metaTitle": "AAIB Report: Air India 171 Fuel-Cutoff Sequence Detailed",
+  "metaDescription": "India's AAIB preliminary report found both engines on Air India Flight 171 lost thrust after fuel-control switches moved from RUN to CUTOFF seconds after takeoff.",
+  "metaKeywords": "AAIB report Air India,Flight 171 investigation,fuel control switches,787 crash probe,aviation accident report,Air India preliminary report",
+  "ogImageUrl": "https://images.unsplash.com/photo-1559521783-1d1599583485?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

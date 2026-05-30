@@ -1,0 +1,31 @@
+{
+  "id": 304,
+  "title": "Inside Asia's Push to Modernise Crowded Airspace",
+  "slug": "asia-airspace-atc-modernisation-explainer-2026",
+  "dek": "Surging traffic over India, Singapore and Southeast Asia is straining decades-old air traffic control. A look at how performance-based navigation, datalink and digital tools aim to squeeze more capacity from the same sky.",
+  "body": "<p>Few regions are adding flights as fast as Asia, and few are feeling the strain on air traffic control as acutely. With Indian carriers IndiGo, Air India and Akasa expanding rapidly and Southeast Asian hubs from Singapore to Bangkok handling dense overlapping flows, the systems that separate aircraft are under pressure to do more. Air traffic management modernisation has become a quiet but central theme in keeping the region's growth safe and on schedule.</p><h2>From radar and radio to digital airspace</h2><p>Traditional control leans on ground radar and voice radio, a model that works but limits how closely and efficiently aircraft can be handled. Newer approaches change the inputs. Automatic Dependent Surveillance-Broadcast, or ADS-B, has aircraft transmit their satellite-derived position, improving tracking including over oceanic and remote areas where radar cannot reach. Controller-pilot datalink communications reduce reliance on congested radio frequencies by sending routine instructions as text.</p><p>Layered on top is performance-based navigation, which lets suitably equipped aircraft fly precise, predictable paths rather than zig-zagging between ground beacons. Used together, these tools can tighten spacing, smooth arrivals and recover capacity without pouring concrete for new runways.</p><h2>Why Asian skies are the test case</h2><p>The region's challenge is partly geography and partly governance. Busy corridors cross many national boundaries, so the benefits of modernisation depend on neighbouring providers coordinating procedures and equipment. India has pursued upgrades to its navigation and surveillance infrastructure as domestic traffic climbs, while established hubs continue to refine arrival management and airspace design.</p><ul><li>Satellite-based surveillance extends coverage over water and sparse terrain.</li><li>Datalink trims frequency congestion in dense terminal areas.</li><li>Trajectory-based operations aim to make flight paths more predictable.</li></ul><p>Progress is uneven and rarely dramatic, advancing through incremental procedure changes, equipment mandates and cross-border agreements rather than single milestones. But the direction is clear. As Asian demand keeps rising, modernised air traffic management is increasingly the lever that lets the same airspace absorb more aircraft while holding the line on safety and delays.</p>",
+  "heroImageUrl": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=70",
+  "heroImageAlt": "An air traffic control tower silhouetted against a busy Asian airport at dusk with aircraft on approach",
+  "heroImageCredit": "Photo: Unsplash",
+  "categoryId": 7,
+  "category": {
+    "id": 7,
+    "name": "Travel Technology",
+    "slug": "travel-technology",
+    "accent": "#0073bd"
+  },
+  "tags": "Air Traffic Control,ADS-B,IndiGo,Singapore,Performance-Based Navigation,Airspace Management",
+  "authorName": "FlyAir Newsroom",
+  "authorTitle": "Aviation Desk",
+  "status": "Published",
+  "featured": false,
+  "publishedAt": "2026-04-16T10:00:02",
+  "updatedAt": null,
+  "createdAt": "2026-05-29T13:18:41.2897908",
+  "readingMinutes": 4,
+  "metaTitle": "Inside Asia's Push to Modernise Crowded Airspace",
+  "metaDescription": "Rising traffic over India and Southeast Asia is straining air traffic control. How ADS-B, datalink and performance-based navigation add capacity to crowded skies.",
+  "metaKeywords": "ATC modernisation,Asia airspace,ADS-B,performance-based navigation,India air traffic control,datalink CPDLC",
+  "ogImageUrl": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=70",
+  "canonicalUrl": ""
+}

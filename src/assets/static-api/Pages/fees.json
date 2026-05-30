@@ -1,0 +1,43 @@
+{
+  "title": "Fees & Charges",
+  "eyebrow": "Payments",
+  "updated": "2026-05-30",
+  "heroImage": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=70",
+  "heroImageAlt": "Receipt and calculator on a wooden desk",
+  "author": {
+    "name": "Anjali Wijesinghe",
+    "role": "Customer Experience Writer"
+  },
+  "editor": {
+    "name": "Nadeesha Karunaratne",
+    "role": "Editor-in-Chief, FlyAir"
+  },
+  "reviewedAt": "2026-05-30",
+  "intro": "Transparent pricing with no surprises. Here is a clear breakdown of every fee that may apply to your booking, when it applies, and how to avoid it where possible.",
+  "sections": [
+    {
+      "h": "What is in the fare you see",
+      "p": "The price shown on every fare result already includes the BASE FARE plus all applicable TAXES and mandatory carrier surcharges (fuel, security, airport charges). There are no hidden booking fees layered on top.\n\nOptional extras (baggage beyond the included allowance, advance seat selection, in-flight meals, lounge passes) are priced separately and only charged if you choose them."
+    },
+    {
+      "h": "Card convenience fee",
+      "p": "A small CONVENIENCE FEE applies on card payments to cover the gateway and merchant cost: 2.0% on Visa/Mastercard and 2.6% on American Express. The fee is shown clearly on the payment page before you confirm.\n\nTo avoid the card fee entirely, pay by BANK TRANSFER — instructions are emailed to you when you choose the Bank Deposit option at checkout. Bank transfer is fee-free."
+    },
+    {
+      "h": "Change and cancellation fees",
+      "p": "These are set by the operating airline and depend on the fare rules of your ticket:\n• ECONOMY DISCOUNTED: typically USD 75–250 change fee plus any fare difference; often non-refundable.\n• ECONOMY FLEXIBLE: typically USD 30–100 change fee or no fee; refund with smaller penalty.\n• PREMIUM ECONOMY: usually USD 100–200 change fee.\n• BUSINESS CLASS: often free changes; refundable with a small fee.\n\nWe do not add a markup. Where we charge a small service fee for handling the change (typically LKR 1,500 per ticket), it is disclosed clearly before you confirm."
+    },
+    {
+      "h": "Service fees",
+      "p": "CHANGE/REBOOK SERVICE FEE: LKR 1,500 per ticket for changes handled by our team.\nREFUND SERVICE FEE: LKR 1,500 per ticket for refunds processed by our team.\nDUPLICATE TICKET ISSUE: free.\nGROUP BOOKING ADMIN FEE: from LKR 2,500 per booking (10+ passengers), discussed up front.\n\nWe never charge a markup on refunds — eligible amounts are returned per the airline’s policy to your original payment method."
+    },
+    {
+      "h": "No-show and unused tickets",
+      "p": "If you do not travel on a confirmed flight and do not cancel beforehand (a NO-SHOW), most fares are forfeited entirely. Some airlines refund taxes only.\n\nIf you cancel before departure, even at the last minute, the fare rules of your ticket apply — usually a better outcome than a no-show."
+    },
+    {
+      "h": "How to avoid avoidable fees",
+      "p": "Add baggage and select seats during the original booking (cheaper than at the airport). Check in online (some carriers charge for airport check-in). Pay by bank transfer if you do not need the instant confirmation a card gives. Buy a more flexible fare if your dates are uncertain — the slightly higher upfront price often saves a much larger change fee later."
+    }
+  ]
+}
