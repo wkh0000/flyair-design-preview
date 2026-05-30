@@ -440,7 +440,7 @@ export class PreBookingComponent implements OnInit {
   }
 
   sendToWhatsApp() {
-    const phone = '94767566677';
+    const phone = '94788788788';
     const o = this.priceResponse?.OfferID?.[0];
     const f = o?.Product?.[0]?.FlightSegment?.[0]?.Flight;
     const p = o?.Price;

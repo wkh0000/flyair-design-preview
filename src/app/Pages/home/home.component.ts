@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendCmsInquiryToWhatsApp() {
-    const phone = '94775527914';
+    const phone = '94788788788';
     const message =
       `New Package Inquiry*\n\n` +
       `Name:* ${this.inquiryName}\n` +
