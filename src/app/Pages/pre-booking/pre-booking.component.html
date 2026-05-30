@@ -1,0 +1,352 @@
+<div *ngIf="loading" class="loading-overlay">
+  <app-loader></app-loader>
+</div>
+<div class="prebooking-container">
+  <div *ngIf="errorMessage" class="error-banner">
+    <mat-icon>error_outline</mat-icon>
+    <div class="error-content">
+      <pre>{{ errorMessage }}</pre>
+    </div>
+    <button mat-icon-button (click)="errorMessage = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="summary-container">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" style="width: 90%"
+      [(selectedIndex)]="selectedTabIndex" animationDuration="500ms" (selectedTabChange)="onTabChange($event)">
+      <mat-tab label="Summary" [disabled]="currentActiveTab < 0">
+
+        <div class="summary-fare-container mb-2 mt-2">
+          <div class="header">
+            <div class="location">
+              {{
+              priceResponse.OfferID[0].Product[0].FlightSegment[0].Flight
+              .Departure.location
+              }}
+              >
+              {{
+              priceResponse.OfferID[0].Product[0].FlightSegment[0].Flight
+              .Arrival.location
+              }}
+            </div>
+            <div class="date">
+              {{
+              priceResponse.OfferID[0].Product[0].FlightSegment[0].Flight
+              .Departure.date
+              }}
+            </div>
+            <div class="duration">
+              Total Duration:
+              {{ getFormattedDuration(priceResponse?.OfferID?.[0]?.Product?.[0]?.FlightSegment?.[0]?.Flight?.duration)
+              }}
+            </div>
+            <div class="brand">
+              {{
+              priceResponse.OfferID[0].Product[0].PassengerFlight[0]
+              .FlightProduct[0].cabin
+              }}
+            </div>
+          </div>
+          <div class="farebody">
+            <div style="display: flex; flex-direction: column">
+              <div class="segment-left" *ngFor="let product of priceResponse.OfferID[0].Product; let i = index">
+                <div class="segment" *ngFor="let segment of product.FlightSegment">
+                  <div class="left" style="width: 100%;">
+                    <div class="small">
+                      {{ segment.Flight?.Departure?.date }} {{ segment.Flight.Departure.time }}
+                    </div>
+                    <div class="small" style="font-size: 14px;">
+                      {{ getAirportInfo(segment?.Flight?.Departure?.location) }}
+                    </div>
+                    <div class="small">
+                      {{ segment.Flight.operatingCarrierName || segment.Flight.operatingCarrier }}
+                    </div>
+                    <div class="small">
+                      {{ segment.Flight.carrier }} {{ segment.Flight.number }}, {{ getAircraftInfo(segment.equipment) }}
+                    </div>
+                  </div>
+
+                  <div class="center">
+                    <div class="top">
+                      {{ getFormattedDuration(segment.Flight.duration) }}
+                    </div>
+                    <div class="airline-logo-container bottom" style="margin-right: 20px">
+                      <img [src]="getAirlineLogoUrl(segment.Flight.carrier, segment.Flight.operatingCarrierName)"
+                        alt="Airline Logo" class="airline-logo" />
+                    </div>
+                  </div>
+
+                  <div class="right" style="width: 100%;">
+                    <div class="small">{{ segment.Flight.Arrival.date }} {{ segment.Flight.Arrival.time }}</div>
+                    <div class="small" style="font-size: 14px;">
+                      {{ getAirportInfo(segment?.Flight?.Arrival?.location) }}
+                    </div>
+                    <div class="small">
+                      {{ segment.Flight.operatingCarrierName || segment.Flight.operatingCarrier }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider" *ngIf="product.FlightSegment.Flight?.boundFlightsInd == 'true'">
+                  <mat-divider></mat-divider>
+                  <span style="font-size: 10px">
+                    Connection Time {{ getFormattedDuration(product.FlightSegment.Flight?.connectionDuration) }}
+                  </span>
+                  <mat-divider></mat-divider>
+                </div>
+              </div>
+            </div>
+
+            <div class="segment-right">
+              <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+                <mat-tab label="Brand Info">
+                  <div class="brand-card">
+                    <div class="brand-header">
+                      <div style="text-align: center">
+                        <h4 class="mb-0">
+                          {{ priceResponse.ReferenceList[0].Brand[0].name }}
+                        </h4>
+                      </div>
+                    </div>
+                    <p>
+                      <strong>Code:</strong>
+                      {{ priceResponse.ReferenceList[0].Brand[0].code }}
+                    </p>
+                    <p>
+                      Tier {{ priceResponse.ReferenceList[0].Brand[0].tier }}
+                    </p>
+
+                    <div class="outer" style="
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                      ">
+                      <div class="left">
+                        <h5 style="font-size: 12px">Included Services</h5>
+                        <ul class="list-unstyled">
+                          <ng-container *ngFor="
+                              let item of priceResponse.ReferenceList[0]
+                                .Brand[0].BrandAttribute
+                            ">
+                            <li *ngIf="item.inclusion === 'Included'">
+                              <i class="fas fa-check-circle icon-included"></i>
+                              {{ item.classification }}
+                            </li>
+                          </ng-container>
+                        </ul>
+                      </div>
+
+                      <div class="right">
+                        <h5 style="font-size: 12px">Chargeable Services</h5>
+                        <ul class="list-unstyled">
+                          <ng-container *ngFor="
+                              let item of priceResponse.ReferenceList[0]
+                                .Brand[0].BrandAttribute
+                            ">
+                            <li *ngIf="item.inclusion === 'Chargeable'">
+                              <i class="fas fa-dollar-sign icon-chargeable"></i>
+                              {{ item.classification }}
+                            </li>
+                          </ng-container>
+                        </ul>
+
+                        <h5 *ngIf="hasNotOfferedItems" style="font-size: 15px">Not Offered</h5>
+                        <ul class="list-unstyled">
+                          <ng-container *ngFor="
+                              let item of priceResponse.ReferenceList[0]
+                                .Brand[0].AdditionalBrandAttribute
+                            ">
+                            <li *ngIf="item.inclusion === 'Not Offered'">
+                              <i class="fas fa-times-circle icon-not-offered"></i>
+                              {{ item.classification }}
+                            </li>
+                          </ng-container>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </mat-tab>
+                <mat-tab label="Fare Details">
+                  <div class="fare-card">
+                    <p>
+                      <strong>Total:</strong>
+                      {{ priceResponse.OfferID[0].Price.TotalPrice }}
+                      {{priceResponse.OfferID[0].Price.CurrencyCode.value}}
+                    </p>
+                    <p>
+                      <strong>Base Fare:</strong>
+                      {{ priceResponse.OfferID[0].Price.Base }} {{priceResponse.OfferID[0].Price.CurrencyCode.value}}
+                    </p>
+                    <p>
+                      <strong>Taxes & Fees:</strong>
+                      {{
+                      priceResponse.OfferID[0].Price.TotalTaxes
+                      }}
+                      {{priceResponse.OfferID[0].Price.CurrencyCode.value}}
+                    </p>
+
+                    <h5 class="section-title">Price Breakdown</h5>
+                    <table class="table table-bordered">
+                      <thead class="thead-light" style="font-size: 8px">
+                        <tr>
+                          <th>#</th>
+                          <th>Passenger Type</th>
+                          <th>Quantity</th>
+                          <th>Currency</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size: 11px">
+                        <tr *ngFor="let item of priceResponse.OfferID[0].Price.PriceBreakdown; let i = index">
+                          <td>{{ i + 1 }}</td>
+                          <td>{{ item.requestedPassengerType}}</td>
+                          <td>{{ item.quantity }}</td>
+                          <td>{{priceResponse.OfferID[0].Price.CurrencyCode.value}}</td>
+                          <td>{{ item?.Amount?.Total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+                    <h5 class="section-title">🛄 Baggage Allowance</h5>
+                    <ul class="list-group">
+                      <ng-container
+                        *ngFor="let baggage of priceResponse.OfferID[0].TermsAndConditionsFull[0].BaggageAllowance">
+                        <ng-container *ngFor="let item of baggage.BaggageItem">
+                          <li class="list-group-item">
+                            <i *ngIf="baggage.baggageType === 'CarryOn'" class="fas fa-suitcase icon text-primary"></i>
+                            <i *ngIf="baggage.baggageType !== 'CarryOn'"
+                              class="fas fa-suitcase-rolling icon text-primary"></i>
+                            {{ baggage.baggageType }}: {{ item.quantity }} Pieces
+                            <span *ngIf="item.Measurement && item.Measurement.length > 0">
+                              {{ item.Measurement[0].value }} {{ item.Measurement[0].unit }}
+                            </span>
+                          </li>
+                        </ng-container>
+                      </ng-container>
+                    </ul>
+
+                    <h5 class="section-title">Cabin</h5>
+                    <ul class="list-group">
+                      <ng-container *ngFor="
+                      let faredetail of priceResponse.OfferID[0].Product[0]
+                        .PassengerFlight
+                    ">
+
+                        <ng-container *ngFor="let fare of faredetail.FlightProduct">
+                          <ng-container *ngFor="let segemntdetail of fare.segmentSequence; let i = index">
+                            <ul class="list-group">
+                              <li class="list-group-item">
+                                <i class="fas fa-couch icon text-success"></i>
+                                Cabin:
+                                <strong>{{ fare.cabin }}</strong> - <span>{{
+                                  faredetail.passengerTypeCode
+                                  }}</span>
+                              </li>
+                            </ul>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </ul>
+
+                    <h5 class="section-title">📜 Fare Rules & Restrictions</h5>
+                    <ul class="list-group" *ngFor="
+                        let rule of priceResponse.OfferID[0]
+                          .TermsAndConditionsFull[0].Restriction
+                      ">
+                      <li class="list-group-item">
+                        <i class="fas fa-plane-departure icon text-danger"></i>
+                        {{ rule.value }}
+                      </li>
+                    </ul>
+                  </div>
+                </mat-tab>
+
+              </mat-tab-group>
+            </div>
+          </div>
+
+          <div class="example-button-row mt-4">
+            <button style="background-color: rgba(26, 55, 77, 0.7); border-radius: 25px;" mat-flat-button
+              (click)="onConfirmClick()">Confirm</button>
+            <button style="background-color: rgb(0, 171, 71); border-radius: 25px; margin-left: 50px;" mat-flat-button
+              (click)="onSendInquiryClick()">Send Inquiry</button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Passenger" [disabled]="currentActiveTab < 1">
+        <app-traveler-form (travelersSubmitted)="onTravelersSubmitted($event)"></app-traveler-form>
+      </mat-tab>
+      <mat-tab label="Booking" [disabled]="currentActiveTab < 2">
+        <app-booking-confirm *ngIf="submittedResults" [travelerResults]="submittedResults" [iata]="iata"
+          (paymentdialog)="onPaymentMake($event)"></app-booking-confirm>
+      </mat-tab>
+      <mat-tab label="Ticket" *ngIf="iata" [disabled]="currentActiveTab < 3">
+        <app-issue-ticket *ngIf="ticketResults" [results]="ticketResults"></app-issue-ticket>
+      </mat-tab>
+    </mat-tab-group>
+    <!-- Inquiry dialog (2-step: contact → fare/payment summary → send) -->
+    <div class="inquiry-overlay" *ngIf="showInquiryDialog" (click)="showInquiryDialog = false">
+      <div class="inquiry-modal" (click)="$event.stopPropagation()">
+        <button class="iq-close" (click)="showInquiryDialog = false" aria-label="Close">&#x2715;</button>
+
+        <div class="iq-head">
+          <span class="iq-eyebrow">FlyAir · Flight inquiry</span>
+          <h3>{{ inquiryStep === 1 ? 'Your details' : 'Confirm &amp; send' }}</h3>
+          <div class="iq-steps" aria-hidden="true">
+            <span class="dot" [class.active]="inquiryStep >= 1">1</span>
+            <span class="bar" [class.active]="inquiryStep >= 2"></span>
+            <span class="dot" [class.active]="inquiryStep >= 2">2</span>
+          </div>
+        </div>
+
+        <!-- Step 1: contact basics -->
+        <div class="iq-body" *ngIf="inquiryStep === 1">
+          <p class="iq-sub">Leave your contact details and our team will get back with availability and the best fare.</p>
+          <label class="iq-field"><span>Full name</span>
+            <input type="text" [(ngModel)]="inquiryName" placeholder="e.g. Kasun Perera" /></label>
+          <label class="iq-field"><span>Email</span>
+            <input type="email" [(ngModel)]="inquiryEmail" placeholder="you@example.com" /></label>
+          <label class="iq-field"><span>Phone / WhatsApp</span>
+            <input type="tel" [(ngModel)]="inquiryContact" placeholder="+94 7X XXX XXXX" /></label>
+          <div class="iq-actions">
+            <button class="iq-btn ghost" (click)="showInquiryDialog = false">Cancel</button>
+            <button class="iq-btn primary" (click)="inquiryToSummary()" [disabled]="!inquiryContactValid">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: fare / payment details + send -->
+        <div class="iq-body" *ngIf="inquiryStep === 2">
+          <div class="iq-summary">
+            <div class="iq-route">
+              <strong>{{ priceResponse?.OfferID?.[0]?.Product?.[0]?.FlightSegment?.[0]?.Flight?.Departure?.location }}</strong>
+              <span class="iq-arrow">→</span>
+              <strong>{{ priceResponse?.OfferID?.[0]?.Product?.[0]?.FlightSegment?.[0]?.Flight?.Arrival?.location }}</strong>
+            </div>
+            <div class="iq-meta">
+              <span>{{ priceResponse?.OfferID?.[0]?.Product?.[0]?.FlightSegment?.[0]?.Flight?.Departure?.date }}</span>
+              <span class="sep">·</span>
+              <span>{{ getAirlineName(priceResponse?.ReferenceList?.[0]?.Brand?.[0]?.ImageURL?.[0]) }}</span>
+            </div>
+            <div class="iq-fare">
+              <div class="row"><span>Base fare</span><span>{{ priceResponse?.OfferID?.[0]?.Price?.Base }} {{ priceResponse?.OfferID?.[0]?.Price?.CurrencyCode?.value }}</span></div>
+              <div class="row"><span>Taxes &amp; fees</span><span>{{ priceResponse?.OfferID?.[0]?.Price?.TotalTaxes }} {{ priceResponse?.OfferID?.[0]?.Price?.CurrencyCode?.value }}</span></div>
+              <div class="row total"><span>Total</span><span>{{ priceResponse?.OfferID?.[0]?.Price?.TotalPrice }} {{ priceResponse?.OfferID?.[0]?.Price?.CurrencyCode?.value }}</span></div>
+            </div>
+          </div>
+          <div class="iq-contact-recap">
+            <span>{{ inquiryName }}</span><span class="sep">·</span><span>{{ inquiryEmail }}</span><span class="sep">·</span><span>{{ inquiryContact }}</span>
+          </div>
+          <p class="iq-note">No payment is taken now — we’ll confirm availability and send a secure payment link on WhatsApp.</p>
+          <div class="iq-actions">
+            <button class="iq-btn ghost" (click)="inquiryStep = 1">← Back</button>
+            <button class="iq-btn whatsapp" (click)="sendToWhatsApp()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.33 5.5 0 12.06 0a11.82 11.82 0 0 1 8.42 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.7-1.45L.06 24z"/></svg>
+              Send inquiry
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

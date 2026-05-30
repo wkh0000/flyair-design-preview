@@ -1,0 +1,126 @@
+.result-container{
+  padding: 0;
+  width: 80%;
+}
+
+.more-results{
+  width: 100%;
+  border-radius: 4px;
+  color: orangered;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.offer-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.brand-option {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.offering {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.flight-result-stepper{
+  background: none;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb($color: #ffffff, $alpha: 0.9);
+  z-index: 9999;
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+.options-panel {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: auto; /* Enable horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.options-panel::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+  .active{
+    background-color: #f2f2f2;
+  }
+
+  .option{
+    padding: 8px;
+    flex: 0 0 auto;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .option-footer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .option-img-container img{
+        width: 90px;
+        height: auto;
+      }
+    }
+  }
+
+/* ===== FlyAir results tabs + options panel ===== */
+.options-panel {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(12, 35, 75, 0.08) !important;
+  border: 1px solid #e8eef5;
+}
+.options-panel .option { font-weight: 700; color: #5a6b80; transition: 0.2s; }
+.options-panel .option.active { background: #eef5fb !important; color: #0b2f63 !important; }
+::ng-deep .flight-results .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label { color: #ed174c !important; font-weight: 700; }
+::ng-deep .flight-results .mdc-tab-indicator__content--underline { border-color: #ed174c !important; border-top-width: 3px !important; }
+

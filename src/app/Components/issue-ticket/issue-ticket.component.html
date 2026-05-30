@@ -1,0 +1,136 @@
+<div class="prebooking-container">
+  <div class="summary-container">
+    <div class="example-button-row">
+      <button style="background-color: rgba(26, 55, 77, 0.7); border-radius: 8px;" mat-flat-button (click)="goHome()">Home</button>
+    </div>
+    <div class="summary-fare-container mb-2">
+    <div class="header"  *ngIf="results?.reservation?.ReservationResponse?.Reservation?.Receipt?.length > 0">
+      <div class="date">
+        Airline Ref:
+        {{ results?.reservation?.ReservationResponse?.Reservation?.Receipt[0]?.Confirmation?.Locator?.value }}
+      </div>
+      <div class="duration">
+        Status:
+        {{ results?.reservation?.ReservationResponse?.Reservation?.Receipt[0]?.Confirmation?.OfferStatus?.StatusAir[0]?.value }}
+      </div>
+      <div class="brand">
+        PNR:
+        {{ results?.reservation?.ReservationResponse?.Reservation?.Receipt?.[2]?.Confirmation?.Locator?.value
+          || results?.reservation?.ReservationResponse?.Reservation?.Receipt?.[0]?.Confirmation?.Locator?.value }}
+      </div>
+    </div>
+    <div class="farebody">
+      <div class="segment-right">
+        <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+          <mat-tab label="Flight Details">
+            <div class="fare-card" *ngFor="let offer of results?.reservation?.ReservationResponse?.Reservation?.Offer">
+              <div class="product-card" style="margin-bottom:20px;" *ngFor="let productOffer of offer?.Product">
+
+                <h4>Flight Segment</h4>
+                <table class="table table-bordered">
+                 <thead class="thead-light" style="font-size: 11px">
+                   <tr>
+                     <th>Departure</th>
+                     <th>Time</th>
+                     <th>Arrival</th>
+                     <th>Time</th>
+                     <th>Duration</th>
+                     <th>Carrier</th>
+                     <th>Number</th>
+                     <th>Operating Carrier</th>
+                     <th>Equipment</th>
+                   </tr>
+                 </thead>
+                 <tbody style="font-size: 11px">
+                   <tr
+                   *ngFor="let flight of productOffer?.FlightSegment
+                       let o = index
+                     "
+                   >
+                     <td>
+                       {{getAirportInfo(
+                         flight?.Flight?.Departure?.location
+                       )}}
+                     </td>
+                     <td>{{ flight?.Flight?.Departure?.date}} | {{ flight?.Flight?.Departure?.time}}</td>
+                     <td>
+                       {{getAirportInfo(
+                         flight?.Flight?.Arrival?.location
+                       )}}
+                     </td>
+                       <td>{{ flight?.Flight?.Arrival?.date}} | {{ flight?.Flight?.Arrival?.time}}</td>
+                     <td>
+                       {{ getFormattedDuration(flight?.Flight?.duration || "N/A") }}</td>
+                     <td>
+                       {{ flight?.Flight?.carrier}}
+                     </td>
+                     <td>
+                       {{ flight?.Flight?.number}}
+                     </td>
+                     <td>
+                       {{ flight?.Flight?.operatingCarrierName || 'N/A'}}
+                     </td>
+                     <td>
+                       {{ flight?.Flight?.equipment}}
+                     </td>
+                   </tr>
+                 </tbody>
+               </table>
+         </div>
+
+            </div>
+          </mat-tab>
+          <mat-tab label="Passenger Details">
+            <div class="traveller-container mt-3">
+              <table class="table table-bordered">
+                <thead class="thead-light" style="font-size: 11px">
+                  <tr>
+                    <th>Passenger Type</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Document Type</th>
+                    <th>Document No</th>
+                  </tr>
+                </thead>
+                <tbody style="font-size: 11px">
+                  <tr
+                  *ngFor="let person of results?.reservation?.ReservationResponse?.Reservation?.Traveler
+                      let o = index
+                    "
+                  >
+                    <td>
+                      {{ person?.passengerTypeCode }}
+                    </td>
+                    <td>
+                      {{ person?.gender}}
+                    </td>
+                    <td>{{ person?.birthDate}}</td>
+                    <td>
+                      {{ person?.PersonName?.Given }} {{person?.PersonName?.Surname }}
+                    </td>
+                    <td>
+                      {{ person?.Telephone?.length > 0 ? person?.Telephone[0]?.countryAccessCode + ' ' + person?.Telephone[0]?.phoneNumber : 'N/A' }}
+                    </td>
+                    <td>
+                      {{ person?.Email?.length > 0 ? person?.Email[0]?.value : 'N/A' }}
+                    </td>
+                    <td>
+                      {{ person?.TravelDocument?.length > 0 ? person?.TravelDocument[0]?.docType : 'N/A' }}
+                    </td>
+                    <td>
+                      {{ person?.TravelDocument?.length > 0 ? person?.TravelDocument[0]?.docNumber : 'N/A' }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

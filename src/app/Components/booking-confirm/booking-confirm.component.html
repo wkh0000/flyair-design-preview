@@ -1,0 +1,244 @@
+<!-- Modal Container -->
+<div *ngIf="showPayment" class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md mx-auto"
+  style="margin-top: 50px; margin-bottom:50px;">
+
+  <!-- Step 1: Select Payment Method -->
+  <div *ngIf="currentStep === 1">
+    <h2 class="text-xl font-semibold mb-1">Select payment method</h2>
+    <p class="text-gray-500 text-sm mb-5">Preferred method with secure transactions.</p>
+
+    <!-- Options -->
+    <div class="space-y-3">
+      <label class="flex items-center justify-between border rounded-md p-3 hover:border-blue-500 cursor-pointer">
+        <div class="flex items-center space-x-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Visa_Inc._logo_%282005%E2%80%932014%29.svg"
+            class="w-8" />
+          <span>Pay with Visa</span>
+        </div>
+        <input type="radio" name="payment" value="visa" class="form-radio accent-blue-500" />
+      </label>
+      <label class="flex items-center justify-between border rounded-md p-3 hover:border-blue-500 cursor-pointer">
+        <div class="flex items-center space-x-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="w-8" />
+          <span>Pay with Mastercard</span>
+        </div>
+        <input type="radio" name="payment" value="mastercard" class="form-radio accent-blue-500" />
+      </label>
+      <label class="flex items-center justify-between border rounded-md p-3 hover:border-blue-500 cursor-pointer">
+        <div class="flex items-center space-x-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="w-8" />
+          <span>Pay with PayPal</span>
+        </div>
+        <input type="radio" name="payment" value="paypal" class="form-radio accent-blue-500" />
+      </label>
+      <label class="flex items-center justify-between border rounded-md p-3 hover:border-blue-500 cursor-pointer">
+        <div class="flex items-center space-x-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="w-6" />
+          <span>Pay with Apple Pay</span>
+        </div>
+        <input type="radio" name="payment" value="apple" class="form-radio accent-blue-500" />
+      </label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-6">
+      <button (click)="goToStep(2)" class="bg-indigo-500 text-white px-4 py-2 rounded-md w-full">Continue</button>
+      <button class="mt-3 w-full text-center border border-gray-300 rounded-md py-2">Go Back</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Payment Details -->
+  <div *ngIf="currentStep === 2">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold">Payment details</h2>
+      <button (click)="goToStep(1)">✕</button>
+    </div>
+
+    <form>
+      <div class="mb-3">
+        <label class="block text-sm mb-1">Name on card</label>
+        <input type="text" value="Abigail Lorincz" class="w-full border rounded-md p-2" />
+      </div>
+      <div class="grid grid-cols-2 gap-4 mb-3">
+        <div>
+          <label class="block text-sm mb-1">Expiry</label>
+          <input type="text" value="08 / 2024" class="w-full border rounded-md p-2" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">CVV</label>
+          <input type="password" value="•••" class="w-full border rounded-md p-2" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="block text-sm mb-1">Card number</label>
+        <div class="flex items-center border rounded-md p-2 space-x-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="w-6" />
+          <input type="text" value="1234 5678 9012 3456" class="w-full outline-none" />
+        </div>
+      </div>
+
+      <label class="flex items-center mb-4">
+        <input type="checkbox" class="mr-2" />
+        <span class="text-sm">Enter a promo code</span>
+      </label>
+
+      <div class="text-sm text-gray-700 mb-4">
+        <div class="flex justify-between"><span>Subtotal</span><span>{{ (paymentData?.amount)/309.01 | number : '1.2-2'
+            }}$</span></div>
+        <div class="flex justify-between"><span>Sales tax</span><span>{{ (paymentData?.tax)/309.01 | number : '1.2-2'
+            }}$</span></div>
+        <div class="flex justify-between font-bold"><span>Total</span><span>{{ (paymentData?.amount +
+            paymentData?.tax)/309.01 | number : '1.2-2' }}$</span></div>
+      </div>
+
+      <button class="bg-blue-600 text-white w-full py-2 rounded-md" type="button" (click)="handlePayment()">Place your
+        order</button>
+      <p class="text-xs text-center mt-3 text-gray-500">
+        Review the <a href="#" class="underline">terms and conditions</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+<div *ngIf="!showPayment" class="prebooking-container">
+  <div class="summary-container">
+    <div class="example-button-row">
+      <button style="background-color: rgba(26, 55, 77, 0.7); border-radius: 8px;" mat-flat-button
+        (click)="goHome()">Home</button>
+      <button
+        style="background-color: rgba(26, 55, 77, 0.7); border-radius: 8px;padding-left: 15px;padding-right: 15px;"
+        mat-flat-button (click)="issueTicket(travelerResults?.ReservationResponse?.Reservation?.Receipt?.[2]?.Confirmation?.Locator?.value
+          || travelerResults?.ReservationResponse?.Reservation?.Receipt?.[0]?.Confirmation?.Locator?.value)">Issue
+        Ticket</button>
+    </div>
+    <div class="summary-fare-container mb-2">
+      <div class="header" *ngIf="travelerResults?.ReservationResponse?.Reservation?.Receipt?.length > 0">
+        <div class="date">
+          Airline Ref:
+          {{ travelerResults?.ReservationResponse?.Reservation?.Receipt[0]?.Confirmation?.Locator?.value }}
+        </div>
+        <div class="duration">
+          Status:
+          {{
+          travelerResults?.ReservationResponse?.Reservation?.Receipt[0]?.Confirmation?.OfferStatus?.StatusAir[0]?.value
+          }}
+        </div>
+        <div class="brand">
+          PNR:
+          {{ travelerResults?.ReservationResponse?.Reservation?.Receipt?.[2]?.Confirmation?.Locator?.value
+          || travelerResults?.ReservationResponse?.Reservation?.Receipt?.[0]?.Confirmation?.Locator?.value }}
+        </div>
+      </div>
+      <div class="farebody">
+        <div class="segment-right">
+          <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+            <mat-tab label="Fare Details">
+              <div class="fare-card" *ngFor="let offer of travelerResults?.ReservationResponse?.Reservation?.Offer">
+                <div class="product-card" style="margin-bottom:20px;" *ngFor="let productOffer of offer?.Product">
+
+                  <h4>Flight Segment</h4>
+                  <table class="table table-bordered">
+                    <thead class="thead-light" style="font-size: 11px">
+                      <tr>
+                        <th>Departure</th>
+                        <th>Time</th>
+                        <th>Arrival</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>Carrier</th>
+                        <th>Number</th>
+                        <th>Operating Carrier</th>
+                        <th>Equipment</th>
+                      </tr>
+                    </thead>
+                    <tbody style="font-size: 11px">
+                      <tr *ngFor="let flight of productOffer?.FlightSegment
+                       let o = index
+                     ">
+                        <td>
+                          {{getAirportInfo(
+                          flight?.Flight?.Departure?.location
+                          )}}
+                        </td>
+                        <td>{{ flight?.Flight?.Departure?.date}} | {{ flight?.Flight?.Departure?.time}}</td>
+                        <td>
+                          {{getAirportInfo(
+                          flight?.Flight?.Arrival?.location
+                          )}}
+                        </td>
+                        <td>{{ flight?.Flight?.Arrival?.date}} | {{ flight?.Flight?.Arrival?.time}}</td>
+                        <td>
+                          {{ getFormattedDuration(flight?.Flight?.duration || "N/A") }}</td>
+                        <td>
+                          {{ flight?.Flight?.carrier}}
+                        </td>
+                        <td>
+                          {{ flight?.Flight?.number}}
+                        </td>
+                        <td>
+                          {{ flight?.Flight?.operatingCarrierName || 'N/A'}}
+                        </td>
+                        <td>
+                          {{ flight?.Flight?.equipment}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </mat-tab>
+            <mat-tab label="Traveller">
+              <div class="traveller-container mt-3">
+                <table class="table table-bordered">
+                  <thead class="thead-light" style="font-size: 11px">
+                    <tr>
+                      <th>Passenger Type</th>
+                      <th>Gender</th>
+                      <th>DOB</th>
+                      <th>Name</th>
+                      <th>Contact</th>
+                      <th>Email</th>
+                      <th>Document Type</th>
+                      <th>Document No</th>
+                    </tr>
+                  </thead>
+                  <tbody style="font-size: 11px">
+                    <tr *ngFor="let person of travelerResults?.ReservationResponse?.Reservation?.Traveler
+                      let o = index
+                    ">
+                      <td>
+                        {{ person?.passengerTypeCode }}
+                      </td>
+                      <td>
+                        {{ person?.gender}}
+                      </td>
+                      <td>{{ person?.birthDate}}</td>
+                      <td>
+                        {{ person?.PersonName?.Given }} {{person?.PersonName?.Surname }}
+                      </td>
+                      <td>
+                        {{ person?.Telephone?.length > 0 ? person?.Telephone[0]?.countryAccessCode + ' ' +
+                        person?.Telephone[0]?.phoneNumber : 'N/A' }}
+                      </td>
+                      <td>
+                        {{ person?.Email?.length > 0 ? person?.Email[0]?.value : 'N/A' }}
+                      </td>
+                      <td>
+                        {{ person?.TravelDocument?.length > 0 ? person?.TravelDocument[0]?.docType : 'N/A' }}
+                      </td>
+                      <td>
+                        {{ person?.TravelDocument?.length > 0 ? person?.TravelDocument[0]?.docNumber : 'N/A' }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="dialog-container">
+  <h4 mat-dialog-title>Specify To Show Immediate Bookings After</h4>
+  <p>Current - {{ option?.[0]?.hx || 'N/A' }} <br> Enter 0 to Ignore</p>
+
+  <mat-dialog-content>
+    <mat-form-field
+    appearance="outline"
+    floatLabel="always"
+    style="width: 100%"
+  >
+    <mat-label
+      style="display: flex; flex-direction: row; align-items: center"
+    >
+      Show Immediate Bookings After in Days
+    </mat-label>
+    <input
+    type="number"
+    matInput
+    style="font-size: 14px"
+    [(ngModel)]="selectedOption"
+  />
+  </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="selectedOption" [disabled]="selectedOption === null || selectedOption === undefined" (click)="onConfirm()">Confirm</button>
+  </mat-dialog-actions>
+</div>

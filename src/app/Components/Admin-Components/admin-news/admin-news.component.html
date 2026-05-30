@@ -1,0 +1,237 @@
+<div class="news-admin">
+  <header class="na-head">
+    <div>
+      <h1>Newsroom</h1>
+      <p>Create and manage aviation news articles and categories.</p>
+    </div>
+    <div class="na-tabs" role="tablist">
+      <button role="tab" [class.active]="tab==='articles'" [attr.aria-selected]="tab==='articles'" (click)="tab='articles'">Articles</button>
+      <button role="tab" [class.active]="tab==='categories'" [attr.aria-selected]="tab==='categories'" (click)="tab='categories'">Categories</button>
+    </div>
+  </header>
+
+  <p class="na-msg ok" *ngIf="message">{{ message }}</p>
+  <p class="na-msg err" *ngIf="error">{{ error }}</p>
+
+  <!-- ============ ARTICLES ============ -->
+  <section *ngIf="tab==='articles'">
+    <!-- Editor -->
+    <div class="na-card na-editor" *ngIf="editing">
+      <h2>{{ editingId ? 'Edit article' : 'New article' }}</h2>
+      <div class="na-grid">
+        <label class="na-field na-col-2">
+          <span>Headline / title *</span>
+          <input type="text" [(ngModel)]="form.title" name="title" placeholder="Original, SEO-friendly headline" />
+        </label>
+        <label class="na-field">
+          <span>Category *</span>
+          <select [(ngModel)]="form.categoryId" name="categoryId">
+            <option [ngValue]="0" disabled>Choose…</option>
+            <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+          </select>
+        </label>
+        <label class="na-field">
+          <span>Status</span>
+          <select [(ngModel)]="form.status" name="status">
+            <option value="Published">Published</option>
+            <option value="Draft">Draft</option>
+          </select>
+        </label>
+
+        <label class="na-field na-col-2">
+          <span>Slug <em>(optional — auto from title)</em></span>
+          <input type="text" [(ngModel)]="form.slug" name="slug" placeholder="leave blank to auto-generate" />
+        </label>
+        <label class="na-field">
+          <span>Publish date</span>
+          <input type="date" [(ngModel)]="form.publishedAt" name="publishedAt" />
+        </label>
+        <label class="na-field na-check">
+          <input type="checkbox" [(ngModel)]="form.featured" name="featured" />
+          <span>Featured (lead story)</span>
+        </label>
+
+        <label class="na-field na-col-4">
+          <span>Dek / standfirst</span>
+          <textarea rows="2" [(ngModel)]="form.dek" name="dek" placeholder="1–2 sentence summary shown under the headline and in cards"></textarea>
+        </label>
+
+        <label class="na-field na-col-4">
+          <span>Body (HTML)</span>
+          <textarea rows="12" class="mono" [(ngModel)]="form.body" name="body"
+            placeholder="<p>Lede…</p> <h2>Section…</h2> <p>…</p>"></textarea>
+        </label>
+
+        <div class="na-field na-col-4 na-media">
+          <span>Hero image</span>
+          <div class="na-media-row">
+            <div class="na-media-preview">
+              <img *ngIf="form.heroImageUrl" [src]="form.heroImageUrl" alt="Current hero image preview" />
+              <div *ngIf="!form.heroImageUrl" class="na-media-empty">No image yet</div>
+            </div>
+            <div class="na-media-controls">
+              <div class="na-media-buttons">
+                <label class="na-btn primary na-upload">
+                  <span *ngIf="!uploadingHero">{{ form.heroImageUrl ? 'Change image…' : 'Upload image…' }}</span>
+                  <span *ngIf="uploadingHero">Uploading…</span>
+                  <input type="file" accept="image/*" (change)="onHeroFileSelected($event)" [disabled]="uploadingHero" hidden />
+                </label>
+                <button type="button" class="na-btn ghost" *ngIf="form.heroImageUrl" (click)="clearHeroImage()">Remove</button>
+              </div>
+              <input type="text" [(ngModel)]="form.heroImageUrl" name="heroImageUrl"
+                     placeholder="…or paste an image URL (assets/news/…png or https://…)" />
+              <small class="na-hint">Upload a JPG/PNG/WEBP (max 8 MB), or paste a URL. Used as the hero and social-share image.</small>
+            </div>
+          </div>
+        </div>
+        <label class="na-field na-col-4">
+          <span>Hero image alt (accessibility) <em>— describe the image for screen readers</em></span>
+          <input type="text" [(ngModel)]="form.heroImageAlt" name="heroImageAlt" placeholder="e.g. An Airbus A321XLR climbing after takeoff in airline livery" />
+        </label>
+        <label class="na-field na-col-2">
+          <span>Image credit</span>
+          <input type="text" [(ngModel)]="form.heroImageCredit" name="heroImageCredit" placeholder="e.g. Illustration: FlyAir Newsroom" />
+        </label>
+        <label class="na-field na-col-2">
+          <span>Tags (comma-separated)</span>
+          <input type="text" [(ngModel)]="form.tags" name="tags" placeholder="Airbus, A321XLR, Iberia" />
+        </label>
+
+        <label class="na-field">
+          <span>Author name</span>
+          <input type="text" [(ngModel)]="form.authorName" name="authorName" />
+        </label>
+        <label class="na-field">
+          <span>Author title</span>
+          <input type="text" [(ngModel)]="form.authorTitle" name="authorTitle" placeholder="Senior Reporter" />
+        </label>
+        <label class="na-field">
+          <span>Reading minutes <em>(0 = auto)</em></span>
+          <input type="number" min="0" [(ngModel)]="form.readingMinutes" name="readingMinutes" />
+        </label>
+
+        <div class="na-col-4 na-seo-head">SEO &amp; social</div>
+        <label class="na-field na-col-2">
+          <span>Meta title</span>
+          <input type="text" [(ngModel)]="form.metaTitle" name="metaTitle" placeholder="auto = headline" />
+        </label>
+        <label class="na-field na-col-2">
+          <span>Meta keywords (CSV)</span>
+          <input type="text" [(ngModel)]="form.metaKeywords" name="metaKeywords" />
+        </label>
+        <label class="na-field na-col-4">
+          <span>Meta description</span>
+          <textarea rows="2" [(ngModel)]="form.metaDescription" name="metaDescription" placeholder="140–160 chars; auto = dek"></textarea>
+        </label>
+        <label class="na-field na-col-2">
+          <span>OG / social image URL</span>
+          <input type="text" [(ngModel)]="form.ogImageUrl" name="ogImageUrl" placeholder="auto = hero image" />
+        </label>
+        <label class="na-field na-col-2">
+          <span>Canonical URL</span>
+          <input type="text" [(ngModel)]="form.canonicalUrl" name="canonicalUrl" placeholder="optional" />
+        </label>
+      </div>
+
+      <div class="na-actions">
+        <button class="na-btn primary" (click)="saveArticle()">{{ editingId ? 'Update article' : 'Publish article' }}</button>
+        <button class="na-btn ghost" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="na-toolbar" *ngIf="!editing">
+      <button class="na-btn primary" (click)="newArticle()">+ New article</button>
+      <div class="na-filters">
+        <select [(ngModel)]="filterStatus" (change)="loadArticles()" name="fstatus" aria-label="Filter by status">
+          <option value="">All statuses</option>
+          <option value="Published">Published</option>
+          <option value="Draft">Draft</option>
+        </select>
+        <input type="search" [(ngModel)]="filterSearch" (keyup.enter)="loadArticles()" placeholder="Search title…" aria-label="Search articles" />
+        <button class="na-btn ghost" (click)="loadArticles()">Search</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="na-card" *ngIf="!editing">
+      <div *ngIf="loading" class="na-empty">Loading…</div>
+      <table class="na-table" *ngIf="!loading && articles.length">
+        <thead>
+          <tr><th>Title</th><th>Category</th><th>Status</th><th>Featured</th><th>Published</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of articles">
+            <td class="t-title">{{ a.title }}</td>
+            <td>{{ a.category || catName(a.categoryId) }}</td>
+            <td><span class="badge" [class.pub]="a.status==='Published'" [class.draft]="a.status!=='Published'">{{ a.status }}</span></td>
+            <td>{{ a.featured ? '★' : '' }}</td>
+            <td>{{ a.publishedAt | date:'mediumDate' }}</td>
+            <td class="t-actions">
+              <button class="na-link" (click)="editArticle(a.id)">Edit</button>
+              <button class="na-link" (click)="togglePublish(a)">{{ a.status==='Published' ? 'Unpublish' : 'Publish' }}</button>
+              <button class="na-link danger" (click)="deleteArticle(a.id, a.title)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!loading && !articles.length" class="na-empty">No articles yet. Click “New article” to write one.</div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section *ngIf="tab==='categories'">
+    <div class="na-card na-editor" *ngIf="catEditing">
+      <h2>{{ catEditingId ? 'Edit category' : 'New category' }}</h2>
+      <div class="na-grid">
+        <label class="na-field na-col-2">
+          <span>Name *</span>
+          <input type="text" [(ngModel)]="catForm.name" name="cname" />
+        </label>
+        <label class="na-field">
+          <span>Slug <em>(optional)</em></span>
+          <input type="text" [(ngModel)]="catForm.slug" name="cslug" />
+        </label>
+        <label class="na-field">
+          <span>Sort order</span>
+          <input type="number" [(ngModel)]="catForm.sortOrder" name="csort" />
+        </label>
+        <label class="na-field na-col-3">
+          <span>Blurb</span>
+          <input type="text" [(ngModel)]="catForm.blurb" name="cblurb" placeholder="Short description shown on the category page" />
+        </label>
+        <label class="na-field">
+          <span>Accent colour</span>
+          <input type="color" [(ngModel)]="catForm.accent" name="caccent" />
+        </label>
+      </div>
+      <div class="na-actions">
+        <button class="na-btn primary" (click)="saveCategory()">{{ catEditingId ? 'Update' : 'Create' }}</button>
+        <button class="na-btn ghost" (click)="cancelCat()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="na-toolbar" *ngIf="!catEditing">
+      <button class="na-btn primary" (click)="newCategory()">+ New category</button>
+    </div>
+
+    <div class="na-card" *ngIf="!catEditing">
+      <table class="na-table" *ngIf="categories.length">
+        <thead><tr><th>Order</th><th>Name</th><th>Slug</th><th>Accent</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let c of categories">
+            <td>{{ c.sortOrder }}</td>
+            <td class="t-title">{{ c.name }}</td>
+            <td>{{ c.slug }}</td>
+            <td><span class="swatch" [style.background]="c.accent"></span>{{ c.accent }}</td>
+            <td class="t-actions">
+              <button class="na-link" (click)="editCategory(c)">Edit</button>
+              <button class="na-link danger" (click)="deleteCategory(c)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!categories.length" class="na-empty">No categories yet.</div>
+    </div>
+  </section>
+</div>

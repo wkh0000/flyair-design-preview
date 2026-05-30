@@ -1,0 +1,231 @@
+.cash-component {
+  min-height: 100vh;
+  padding: 40px;
+  background: radial-gradient(circle at top left, #fbfbfd, #f5f5f7); // Official Apple Background
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+
+  .cash-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* SEARCH FIELD: macOS Spotlight Style */
+  .search-field {
+    width: 100%;
+    ::ng-deep .mdc-text-field--outline {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-radius: 12px !important;
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border: none !important; // Hide the border lines
+      }
+    }
+    ::ng-deep .mat-mdc-form-field-infix {
+      padding-top: 12px !important;
+    }
+  }
+
+  /* ACCORDION / FORM: Frosted Glass Panel */
+  mat-accordion {
+    mat-expansion-panel {
+      background: rgba(255, 255, 255, 0.7) !important;
+      backdrop-filter: blur(25px) saturate(180%);
+      border-radius: 20px !important;
+      border: 1px solid rgba(255, 255, 255, 0.4) !important;
+      box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.04) !important;
+      
+      mat-expansion-panel-header {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #1d1d1f;
+      }
+    }
+  }
+
+  /* TABLE: The "Card List" Look */
+  .mat-elevation-z8 {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03) !important;
+    overflow: hidden;
+
+    table {
+      width: 100%;
+      background: transparent !important;
+
+      th {
+        color: #86868b;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 20px;
+      }
+
+      td {
+        padding: 16px 20px;
+        color: #1d1d1f;
+        font-weight: 500;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+      }
+
+      tr:hover {
+        background: rgba(0, 113, 227, 0.04) !important; // Subtle Apple Blue tint
+      }
+    }
+
+    img {
+      border-radius: 10px; // Image "Squircles"
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+  }
+
+  /* BUTTONS: Apple Action Blue */
+  button[mat-raised-button] {
+    background-color: #0071e3 !important; // Official Apple Blue
+    border-radius: 10px !important;
+    padding: 0 24px !important;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #0077ed !important;
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.96); // Physical "click" depth
+    }
+  }
+}
+.add-form {
+  margin-bottom: 24px;
+
+  mat-expansion-panel {
+    /* The Panel Container */
+    border-radius: 24px !important;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+
+    mat-expansion-panel-header {
+      height: 64px !important;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      
+      mat-panel-title {
+        color: #1d1d1f;
+      }
+    }
+
+    /* THE FORM ITSELF */
+    form {
+      padding: 10px 0 20px 0;
+
+      // Layout the fields in a modern grid
+      .fields-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        width: 100%;
+      }
+
+      /* OVERRIDING MATERIAL INPUTS TO LOOK LIKE APPLE BARS */
+      mat-form-field {
+        width: 100%;
+        
+        ::ng-deep {
+          .mdc-text-field--outline {
+            background-color: rgba(0, 0, 0, 0.03) !important; // Subtle Apple inset tint
+            border-radius: 12px !important;
+            transition: background-color 0.2s ease;
+            
+            // Remove the default Material borders
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+              border-color: rgba(0, 0, 0, 0.08) !important;
+              border-width: 1px !important;
+            }
+          }
+
+          // Active/Focus State: Apple Blue Border
+          .mdc-text-field--focused .mdc-notched-outline > * {
+            border-color: #0071e3 !important; 
+            border-width: 2px !important;
+          }
+
+          .mat-mdc-form-field-label {
+            color: #86868b !important; // Apple Muted Gray
+            font-weight: 500;
+          }
+        }
+      }
+
+      /* FILE INPUT STYLING */
+      .file-section {
+        grid-column: 1 / -1; // Make file input full width
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.02);
+        border-radius: 12px;
+        border: 1px dashed rgba(0, 0, 0, 0.1);
+
+        input[type="file"] {
+          font-size: 0.85rem;
+          color: #1d1d1f;
+          cursor: pointer;
+          
+          &::file-selector-button {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+
+            &:hover {
+              background: #f5f5f7;
+            }
+          }
+        }
+      }
+
+      /* SUBMIT BUTTON SECTION */
+      .action-row {
+        margin-top: 24px;
+        display: flex;
+        justify-content: flex-end;
+
+        button[mat-raised-button] {
+          background-color: #0071e3 !important;
+          color: white !important;
+          border-radius: 10px !important;
+          padding: 12px 32px !important;
+          font-weight: 600;
+          height: 44px;
+          box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3) !important;
+          
+          &:disabled {
+            background-color: #aeaeae !important;
+            box-shadow: none !important;
+          }
+        }
+      }
+    }
+  }
+}

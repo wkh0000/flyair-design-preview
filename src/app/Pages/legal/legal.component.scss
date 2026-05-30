@@ -1,0 +1,31 @@
+.subhero{
+  background: var(--fly-navy-grad); color:#fff; position:relative; overflow:hidden;
+  padding: calc(var(--fly-header-h) + 54px) 0 56px;
+}
+.subhero .orb{ position:absolute; right:-80px; top:-60px; width:340px; height:340px; border-radius:50%;
+  background: radial-gradient(circle, rgba(0,115,189,.55), transparent 70%); filter: blur(20px); }
+.subhero h1{ color:#fff; margin-top:12px; }
+.subhero .fly-lead{ color: rgba(255,255,255,.82); max-width:620px; margin-top:14px; }
+.subhero .upd{ color: rgba(255,255,255,.55); font-size:.85rem; margin-top:16px; }
+
+/* Hero banner image (optional) */
+.hero-image{ margin: 0; max-width: 1200px; margin-left:auto; margin-right:auto; padding: 0 16px; }
+.hero-image img{ width:100%; height:auto; max-height:360px; object-fit:cover; border-radius: 16px; box-shadow: 0 18px 40px rgba(12,35,75,.12); margin-top: -42px; position: relative; z-index: 1; }
+
+.body{ max-width:820px; }
+.sec{ margin-bottom:28px; }
+.sec h3{ font-size:1.2rem; margin-bottom:8px; font-family: var(--fly-display); }
+.sec p{ color: var(--fly-ink2); white-space: pre-line; }
+
+/* Byline block — author + editor attribution */
+.byline{ margin: 0 0 36px; padding: 18px 22px; background: var(--fly-soft, #f4f8fc); border-radius: 12px; border-left: 3px solid var(--fly-blue, #0073bd); }
+.byline-row{ display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font-size: .9rem; color: var(--fly-ink2); }
+.byline-row + .byline-row{ margin-top: 4px; }
+.byline-label{ color: var(--fly-ink-soft, #6b7686); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-right: 4px; }
+.byline-name{ font-weight: 700; color: var(--fly-ink, #0a1730); font-family: var(--fly-display); }
+.byline-role{ color: var(--fly-ink-soft, #6b7686); }
+
+.links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:36px; padding-top:24px; border-top:1px solid var(--fly-line); }
+.links a{ padding:.55rem 1.2rem; border:1px solid var(--fly-line); border-radius: var(--fly-pill);
+  color: var(--fly-ink2); font-weight:600; font-size:.9rem; text-decoration:none; transition:.2s; }
+.links a.active, .links a:hover{ background: var(--fly-blue50); color: var(--fly-blue); border-color: var(--fly-blue); }

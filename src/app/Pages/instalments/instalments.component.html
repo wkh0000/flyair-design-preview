@@ -1,0 +1,66 @@
+<div class="fly">
+  <section class="subhero">
+    <div class="orb"></div>
+    <div class="fly-container">
+      <div class="fly-eyebrow" style="color:#9fd0ff">PAYMENTS INFORMATION</div>
+      <h1>Instalment Plans</h1>
+      <p class="fly-lead">For your flight, hotel &amp; holiday, FlyAir lets you decide how to pay. Pay in and out from anywhere with fixed monthly instalments from your favourite banks.</p>
+    </div>
+  </section>
+
+  <section class="fly-section">
+    <div class="fly-container">
+      <p class="matrix-note">(Click on a bank name for terms and conditions)</p>
+
+      <div class="matrix-wrap">
+        <div class="matrix-scroll">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th class="th-bank">Bank Name</th>
+                <th class="th-mode">Payment Mode</th>
+                <th>3 months</th>
+                <th>6 months</th>
+                <th>12 months</th>
+                <th>18 months</th>
+                <th>24 months</th>
+                <th>36 months</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of rows">
+                <td class="bank">
+                  <a class="bank-link" routerLink="/terms">{{ r.bank }}</a>
+                </td>
+                <td class="mode">
+                  <span class="pill"
+                        [class.pill-online]="r.mode === 'Online Payment'"
+                        [class.pill-call]="r.mode === 'Call to Convert'">{{ r.mode }}</span>
+                </td>
+                <td class="num" [class.muted]="r.m3 === '–'">{{ r.m3 }}</td>
+                <td class="num" [class.muted]="r.m6 === '–'">{{ r.m6 }}</td>
+                <td class="num" [class.muted]="r.m12 === '–'">{{ r.m12 }}</td>
+                <td class="num" [class.muted]="r.m18 === '–'">{{ r.m18 }}</td>
+                <td class="num" [class.muted]="r.m24 === '–'">{{ r.m24 }}</td>
+                <td class="num" [class.muted]="r.m36 === '–'">{{ r.m36 }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <ul class="legend">
+        <li>
+          <span class="pill pill-online">Online Payment</span>
+          <span class="legend-text">convert to instalments instantly during online card payment.</span>
+        </li>
+        <li>
+          <span class="pill pill-call">Call to Convert</span>
+          <span class="legend-text">call the relevant bank to convert your payment into an instalment plan after booking.</span>
+        </li>
+      </ul>
+
+      <p class="closing-note">Rates and tenures are set by each bank and are subject to their terms and conditions.</p>
+    </div>
+  </section>
+</div>

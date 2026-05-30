@@ -1,0 +1,51 @@
+<div class="baggage-conditions">
+    <div class="baggage-header">
+      <h2>Allowed baggage, parameters and prices (per passenger)</h2>
+        <span class="material-symbols-outlined" (click)="closeDialog()">
+          close
+          </span>
+    </div>
+
+    <h2>Baggage Conditions</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Passenger Type</th>
+        <th>Baggage Type</th>
+        <th>Validating Airline</th>
+        <th>Weight (kg)</th>
+        <th>Notes</th>
+        <th>Segment Sequences</th>
+        <th>Details Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of baggageInfo; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.passengerTypeCodes.join(', ') }}</td>
+        <td>{{ item.baggageType }}</td>
+        <td>{{ item.validatingAirlineCode }}</td>
+        <td>
+          <!-- Display Weight if available, otherwise show N/A -->
+          <ng-container *ngIf="item.baggageItem && item.baggageItem[0]?.measurement; else noMeasurement">
+            {{ item.baggageItem[0].measurement[0]?.value || 'N/A' }}
+          </ng-container>
+          <ng-template #noMeasurement>
+            -
+          </ng-template>
+        </td>
+        <td>{{ item.baggageItem[0]?.text || 'No additional info' }}</td>
+        <td>{{ item.segmentSequenceList.join(', ') }}</td>
+        <td>
+          <a *ngIf="item.url" [href]="item.url" target="_blank">Details</a>
+          <span *ngIf="!item.url">N/A</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+

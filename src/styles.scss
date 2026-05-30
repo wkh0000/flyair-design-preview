@@ -1,0 +1,399 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@use "./fly-theme"; // FlyAir design system (prefixed .fly-*)
+@use "./fly-booking"; // FlyAir booking-flow forms uplift
+@use "./fly-news"; // FlyAir Newsroom (aviation news blog)
+
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$WhiteLabelITQ-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+
+:root {
+  @include mat.all-component-themes($WhiteLabelITQ-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.untree_co-section {
+  padding: 70px 0;
+}
+
+
+
+.section-title {
+  position: relative;
+  padding-bottom: 20px;
+  display: inline-block;
+}
+.section-title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background: #1a374d;
+}
+.section-title.text-center:before {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.two-col li {
+  display: inline-block;
+  width: 48%;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  vertical-align: text-top;
+  float: left;
+}
+.two-col li:before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #1a374d;
+  left: 0;
+  top: 7px;
+  border-radius: 50%;
+}
+
+.btn {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+.btn:active,
+.btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn.btn-primary {
+  background: #1a374d;
+  border-color: #1a374d;
+}
+.btn.btn-primary:hover {
+  border-color: #1f425c;
+  background: #1f425c;
+}
+.btn.btn-outline-white {
+  border: 2px solid #ffffff;
+}
+.btn.btn-outline-white:hover {
+  background: #ffffff;
+  color: #1a374d !important;
+}
+
+.rounded-20 {
+  border-radius: 20px;
+}
+
+.media-1 {
+  text-align: left;
+}
+.media-1 img {
+  border-radius: 20px;
+}
+.media-1 .loc .icon-room {
+  position: relative;
+}
+.media-1 .loc .icon-room:after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: rgba(26, 55, 77, 0.1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.media-1 .deal {
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: block;
+}
+.media-1 h3 {
+  font-size: 20px;
+}
+.media-1 h3 a {
+  color: #000000;
+}
+.media-1 .price {
+  font-size: 15px;
+  color: #1a374d;
+  font-weight: 700;
+  position: relative;
+  top: -2px;
+}
+.media-1 .price sup {
+  font-weight: 400;
+  font-size: 16px;
+  top: -7px;
+}
+
+.feature-img-bg {
+  border-radius: 20px;
+  background-size: cover;
+}
+@media (max-width: 991.98px) {
+  .feature-img-bg {
+    height: 300px !important;
+    margin-bottom: 30px;
+  }
+}
+
+.feature-1-wrap {
+  position: relative;
+}
+
+.feature-1 {
+  padding: 30px;
+  background: rgba(26, 55, 77, 0.05);
+  border-radius: 20px;
+  min-height: calc(50% - 15px);
+  top: 0;
+  margin-bottom: 30px !important;
+}
+@media (max-width: 991.98px) {
+  .feature-1 {
+    display: block !important;
+  }
+}
+.feature-1 h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.form-control,
+.custom-select {
+  border: 2px solid #e9ecef;
+  font-size: 16px;
+  height: 45px;
+}
+.form-control:active,
+.form-control:focus,
+.custom-select:active,
+.custom-select:focus {
+  border-color: #1a374d;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.control .caption {
+  position: relative;
+  top: -3px;
+  font-size: 16px;
+}
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
+  border-radius: 4px;
+}
+
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: #ccc;
+}
+
+.control input:checked ~ .control__indicator {
+  background: #1a374d;
+}
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #204560;
+}
+
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.control__indicator:after {
+  font-family: "icomoon";
+  content: "\e5ca";
+  position: absolute;
+  display: none;
+  font-size: 14px;
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+.control input:checked ~ .control__indicator:after {
+  display: block;
+  color: #fff;
+}
+
+.control--checkbox .control__indicator:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: #1a374d;
+  opacity: 0.2;
+}
+
+.form-control,
+.custom-select {
+  border: 2px solid #e9ecef;
+  font-size: 16px;
+  height: 45px;
+}
+.form-control:active,
+.form-control:focus,
+.custom-select:active,
+.custom-select:focus {
+  border-color: #1a374d;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.form {
+  position: relative;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 0px 10px 10px 10px;
+  z-index: 9;
+  padding: 30px;
+  background: #ffffff;
+}
+
+.text-black {
+  color: #000000 !important;
+}
+
+
+.quick-contact-item [class*="flaticon-"] {
+  font-size: 2rem;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
+  margin-right: 30px;
+  border-radius: 50%;
+  border: 2px solid #f8f9fa;
+  text-align: center;
+  position: relative; }
+  .quick-contact-item [class*="flaticon-"]:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.quick-contact-item .text {
+  font-size: 20px; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+  max-width: 80vw !important
+}
+
+
+//////////this is the below for the admin page remove the unwanted
+///
+:root{
+    --color-primary: #1a374d;
+    --color-danger: #FF0060;
+    --color-success: #8f0005;
+    // --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #1a374d;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+
+.mat-mdc-option.mdc-list-item {
+  background: white !important;
+}
+
+div.mat-mdc-autocomplete-panel {
+  background: white !important;
+}

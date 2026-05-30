@@ -1,0 +1,244 @@
+{
+  "ReservationResponse": {
+      "@type": "ReservationResponse",
+      "Reservation": {
+          "@type": "Reservation",
+          "Offer": [
+              {
+                  "@type": "Offer",
+                  "id": "offer_1",
+                  "Identifier": {
+                      "authority": "Travelport",
+                      "value": "e5d02bdd-3e54-4657-ba35-51b8a617b776"
+                  },
+                  "ContentSource": "GDS",
+                  "Product": [
+                      {
+                          "@type": "ProductAir",
+                          "id": "product_1",
+                          "FlightSegment": [
+                              {
+                                  "@type": "FlightSegment",
+                                  "id": "FlightSegment_01",
+                                  "sequence": 1,
+                                  "Flight": {
+                                      "@type": "Flight",
+                                      "duration": "PT4H45M",
+                                      "carrier": "UL",
+                                      "number": "225",
+                                      "equipment": "332",
+                                      "id": "Flight_01",
+                                      "Departure": {
+                                          "@type": "Departure",
+                                          "location": "CMB",
+                                          "date": "2026-02-14",
+                                          "time": "18:25:00"
+                                      },
+                                      "Arrival": {
+                                          "@type": "Arrival",
+                                          "location": "DXB",
+                                          "date": "2026-02-14",
+                                          "time": "21:40:00"
+                                      }
+                                  }
+                              }
+                          ],
+                          "PassengerFlight": [
+                              {
+                                  "@type": "PassengerFlight",
+                                  "passengerQuantity": 1,
+                                  "passengerTypeCode": "ADT",
+                                  "FlightProduct": [
+                                      {
+                                          "@type": "FlightProduct",
+                                          "segmentSequence": [
+                                              1
+                                          ],
+                                          "classOfService": "Q",
+                                          "cabin": "Economy"
+                                      }
+                                  ]
+                              }
+                          ]
+                      }
+                  ],
+                  "Price": {
+                      "@type": "PriceDetail",
+                      "id": "PriceDetail_1",
+                      "CurrencyCode": {
+                          "value": "INR"
+                      },
+                      "Base": 10435,
+                      "TotalTaxes": 14657,
+                      "TotalFees": 0,
+                      "TotalPrice": 25092,
+                      "PriceBreakdown": [
+                          {
+                              "@type": "PriceBreakdownAir",
+                              "quantity": 1,
+                              "requestedPassengerType": "ADT",
+                              "Amount": {
+                                  "@type": "Amount",
+                                  "currencySource": "Charged",
+                                  "approximateInd": true,
+                                  "CurrencyCode": {
+                                      "decimalPlace": 0,
+                                      "value": "INR"
+                                  },
+                                  "Base": 10435,
+                                  "Taxes": {
+                                      "@type": "TaxesDetail",
+                                      "TotalTaxes": 14657,
+                                      "Tax": [
+                                          {
+                                              "currencyCode": "INR",
+                                              "taxCode": "EJ",
+                                              "value": 5132
+                                          },
+                                          {
+                                              "currencyCode": "INR",
+                                              "taxCode": "LK",
+                                              "value": 5132
+                                          },
+                                          {
+                                              "currencyCode": "INR",
+                                              "taxCode": "ZR",
+                                              "value": 117
+                                          },
+                                          {
+                                              "currencyCode": "INR",
+                                              "taxCode": "YQ",
+                                              "value": 4276
+                                          }
+                                      ]
+                                  },
+                                  "Total": 25092
+                              },
+                              "FiledAmount": {
+                                  "currencyCode": "USD",
+                                  "decimalPlace": 2,
+                                  "value": 122
+                              }
+                          }
+                      ]
+                  },
+                  "TermsAndConditionsFull": [
+                      {
+                          "@type": "TermsAndConditionsFullAir",
+                          "Identifier": {
+                              "authority": "Travelport",
+                              "value": "ffad11f0-75df-4701-a0ca-df37cf20c432"
+                          }
+                      },
+                      {
+                          "@type": "TermsAndConditionsFullAir",
+                          "ExpiryDate": "2025-05-22T23:59:00Z",
+                          "PaymentTimeLimit": "2025-05-22T23:59:00Z"
+                      }
+                  ]
+              }
+          ],
+          "Traveler": [
+              {
+                  "@type": "Traveler",
+                  "birthDate": "2013-04-16",
+                  "gender": "Male",
+                  "passengerTypeCode": "ADT",
+                  "id": "travelerRefId_1",
+                  "Identifier": {
+                      "authority": "Travelport",
+                      "value": "8e5ff740-7326-4786-b786-2633aee76c3e"
+                  },
+                  "PersonName": {
+                      "@type": "PersonName",
+                      "Given": "AMM",
+                      "Surname": "SHAFWAN"
+                  },
+                  "Telephone": [
+                      {
+                          "@type": "TelephoneDetail",
+                          "countryAccessCode": "94",
+                          "phoneNumber": "0774452475",
+                          "id": "telephone_1",
+                          "cityCode": "DEL",
+                          "role": "Mobile"
+                      }
+                  ],
+                  "Email": [
+                      {
+                          "emailType": "TO",
+                          "value": "shafwan.anwer@gmail.com"
+                      }
+                  ],
+                  "TravelDocument": [
+                      {
+                          "@type": "TravelDocumentDetail",
+                          "birthDate": "2013-04-16",
+                          "Gender": "Male",
+                          "PersonName": {
+                              "@type": "PersonName",
+                              "Given": "AMM",
+                              "Surname": "SHAFWAN"
+                          }
+                      },
+                      {
+                          "@type": "TravelDocumentDetail",
+                          "docNumber": "N324434",
+                          "docType": "Passport",
+                          "expireDate": "2025-11-18",
+                          "issueCountry": "LK",
+                          "birthDate": "2013-04-16",
+                          "Gender": "Male",
+                          "PersonName": {
+                              "@type": "PersonName",
+                              "Given": "AMM",
+                              "Surname": "SHAFWAN"
+                          }
+                      }
+                  ]
+              }
+          ],
+          "Receipt": [
+              {
+                  "@type": "ReceiptConfirmation",
+                  "Identifier": {
+                      "authority": "Travelport",
+                      "value": "7fb14ad6-ea87-40d8-ab09-edfb64cc6819"
+                  },
+                  "Confirmation": {
+                      "@type": "ConfirmationHold",
+                      "Locator": {
+                          "source": "1G",
+                          "creationDate": "2025-04-30",
+                          "value": "BXJ671"
+                      },
+                      "OfferStatus": {
+                          "@type": "OfferStatusAir",
+                          "StatusAir": [
+                              {
+                                  "flightRefs": [
+                                      "Flight_01"
+                                  ],
+                                  "code": "HK",
+                                  "value": "Confirmed"
+                              }
+                          ]
+                      }
+                  }
+              }
+          ],
+          "ReservationDisplaySequence": {
+              "@type": "ReservationDisplaySequence",
+              "DisplaySequence": [
+                  {
+                      "@type": "DisplaySequence",
+                      "displaySequence": 1,
+                      "OfferRef": "offer_1",
+                      "ProductRef": "product_1",
+                      "Sequence": 1
+                  }
+              ]
+          }
+      }
+  }
+}

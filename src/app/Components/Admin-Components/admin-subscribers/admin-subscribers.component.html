@@ -1,0 +1,57 @@
+<div class="asub-wrap">
+  <header class="asub-head">
+    <div>
+      <h2>Subscribers</h2>
+      <p class="muted">Newsletter signups from the footer form. <b>{{ totalActive }} active</b></p>
+    </div>
+    <div class="actions">
+      <input type="search" class="search" placeholder="Search email or source…" [(ngModel)]="search" />
+      <label class="chk"><input type="checkbox" [(ngModel)]="includeInactive" (change)="load()" /> Include unsubscribed</label>
+      <a class="btn primary" [href]="csvUrl()" download>
+        <span class="material-symbols-outlined">download</span> Export CSV
+      </a>
+      <button class="btn ghost" type="button" (click)="load()" [disabled]="loading">
+        <span class="material-symbols-outlined">refresh</span> Refresh
+      </button>
+    </div>
+  </header>
+
+  <div class="asub-body">
+    <table *ngIf="filteredRows().length > 0">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Source</th>
+          <th>Subscribed</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of filteredRows()" [class.inactive]="!r.isActive">
+          <td><a [href]="'mailto:' + r.email">{{ r.email }}</a></td>
+          <td>{{ r.source || '—' }}</td>
+          <td>{{ r.subscribedAt | date:'MMM d, y · h:mm a' }}</td>
+          <td>
+            <span class="pill" [class.active]="r.isActive" [class.inactive]="!r.isActive">
+              {{ r.isActive ? 'Active' : 'Unsubscribed' }}
+            </span>
+          </td>
+          <td class="row-actions">
+            <button class="icon" *ngIf="r.isActive" type="button" (click)="unsubscribe(r)" title="Mark unsubscribed">
+              <span class="material-symbols-outlined">person_remove</span>
+            </button>
+            <button class="icon danger" type="button" (click)="remove(r)" title="Delete permanently">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="empty" *ngIf="!loading && filteredRows().length === 0">
+      <span class="material-symbols-outlined">mark_email_read</span>
+      <p *ngIf="!search">No subscribers yet.</p>
+      <p *ngIf="search">No subscribers match "{{ search }}".</p>
+    </div>
+  </div>
+</div>

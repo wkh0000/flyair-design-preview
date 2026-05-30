@@ -1,0 +1,358 @@
+{
+  "CatalogProductOfferingsResponse": {
+    "@type": "CatalogProductOfferingsResponse",
+    "transactionId": "6080a8fa-22c1-46f4-8f8e-64206fd49eba:ppnd1001",
+    "CatalogProductOfferings": {
+      "@type": "CatalogProductOfferings",
+      "CatalogProductOffering": [
+        {
+          "@type": "CatalogProductOffering",
+          "sequence": 1,
+          "id": "o1",
+          "Departure": "CCU",
+          "Arrival": "PBH",
+          "ProductBrandOptions": [
+            {
+              "@type": "ProductBrandOptions",
+              "flightRefs": [
+                "s1"
+              ],
+              "ProductBrandOffering": [
+                {
+                  "@type": "ProductBrandOffering",
+                  "Price": {
+                    "@type": "PriceDetail",
+                    "CurrencyCode": {
+                      "decimalPlace": 0,
+                      "value": "LKR"
+                    },
+                    "Base": 49100,
+                    "TotalTaxes": 32870,
+                    "TotalFees": 0,
+                    "TotalPrice": 81970,
+                    "PriceBreakdown": [
+                      {
+                        "@type": "PriceBreakdownAir",
+                        "quantity": 1,
+                        "requestedPassengerType": "ADT",
+                        "Amount": {
+                          "@type": "Amount",
+                          "CurrencyCode": {
+                            "decimalPlace": 0,
+                            "value": "LKR"
+                          },
+                          "Base": 49100,
+                          "Taxes": {
+                            "@type": "TaxesDetail",
+                            "TotalTaxes": 32870,
+                            "Tax": [
+                              {
+                                "taxCode": "IN",
+                                "value": 6484
+                              },
+                              {
+                                "taxCode": "K3",
+                                "value": 3389
+                              },
+                              {
+                                "taxCode": "P2",
+                                "value": 4320
+                              },
+                              {
+                                "taxCode": "YQ",
+                                "value": 11966
+                              },
+                              {
+                                "taxCode": "YR",
+                                "value": 6711
+                              }
+                            ]
+                          },
+                          "Fees": {
+                            "@type": "FeesDetail",
+                            "TotalFees": 0
+                          },
+                          "Total": 81970
+                        }
+                      }
+                    ]
+                  },
+                  "Product": [
+                    {
+                      "@type": "ProductID",
+                      "productRef": "p0"
+                    }
+                  ],
+                  "TermsAndConditions": {
+                    "@type": "TermsAndConditionsID",
+                    "termsAndConditionsRef": "T0"
+                  },
+                  "CombinabilityCode": [
+                    "j1"
+                  ],
+                  "BestCombinablePrice": {
+                    "@type": "BestCombinablePriceDetail",
+                    "CurrencyCode": {
+                      "decimalPlace": 0,
+                      "value": "LKR"
+                    },
+                    "Base": 49100,
+                    "TotalTaxes": 32870,
+                    "TotalFees": 0,
+                    "TotalPrice": 81970,
+                    "PriceBreakdown": [
+                      {
+                        "@type": "PriceBreakdownAir",
+                        "quantity": 1,
+                        "requestedPassengerType": "ADT",
+                        "Amount": {
+                          "@type": "Amount",
+                          "CurrencyCode": {
+                            "decimalPlace": 0,
+                            "value": "LKR"
+                          },
+                          "Base": 49100,
+                          "Taxes": {
+                            "@type": "TaxesDetail",
+                            "TotalTaxes": 32870,
+                            "Tax": [
+                              {
+                                "taxCode": "IN",
+                                "value": 6484
+                              },
+                              {
+                                "taxCode": "K3",
+                                "value": 3389
+                              },
+                              {
+                                "taxCode": "P2",
+                                "value": 4320
+                              },
+                              {
+                                "taxCode": "YQ",
+                                "value": 11966
+                              },
+                              {
+                                "taxCode": "YR",
+                                "value": 6711
+                              }
+                            ]
+                          },
+                          "Fees": {
+                            "@type": "FeesDetail",
+                            "TotalFees": 0
+                          },
+                          "Total": 81970
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Result": {
+      "@type": "Result"
+    },
+    "ReferenceList": [
+      {
+        "@type": "ReferenceListFlight",
+        "Flight": [
+          {
+            "@type": "FlightDetail",
+            "distance": 335,
+            "duration": "PT1H10M",
+            "carrier": "W2",
+            "number": "521",
+            "operatingCarrierName": "BHUTAN AIRLINES",
+            "equipment": "319",
+            "id": "s1",
+            "Departure": {
+              "@type": "DepartureDetail",
+              "location": "CCU",
+              "date": "2024-09-29",
+              "time": "08:15:00"
+            },
+            "Arrival": {
+              "@type": "ArrivalDetail",
+              "location": "PBH",
+              "date": "2024-09-29",
+              "time": "09:55:00"
+            },
+            "AvailabilitySourceCode": "A"
+          }
+        ]
+      },
+      {
+        "@type": "ReferenceListProduct",
+        "Product": [
+          {
+            "@type": "ProductAir",
+            "totalDuration": "PT1H10M",
+            "id": "p0",
+            "Quantity": 4,
+            "FlightSegment": [
+              {
+                "@type": "FlightSegment",
+                "sequence": 1,
+                "Flight": {
+                  "@type": "FlightID",
+                  "FlightRef": "s1"
+                }
+              }
+            ],
+            "PassengerFlight": [
+              {
+                "@type": "PassengerFlight",
+                "passengerQuantity": 1,
+                "passengerTypeCode": "ADT",
+                "FlightProduct": [
+                  {
+                    "@type": "FlightProduct",
+                    "segmentSequence": [
+                      1
+                    ],
+                    "classOfService": "Y",
+                    "cabin": "Economy",
+                    "fareBasisCode": "YW2OW",
+                    "fareType": "PublicFare",
+                    "fareTypeCode": "ER"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "ReferenceListTermsAndConditions",
+        "TermsAndConditions": [
+          {
+            "@type": "TermsAndConditionsAir",
+            "id": "T0",
+            "BaggageAllowance": [
+              {
+                "@type": "BaggageAllowanceDetail",
+                "url": "http://VIEWTRIP.TRAVELPORT.COM/BAGGAGEPOLICY/W2",
+                "passengerTypeCodes": [
+                  "ADT"
+                ],
+                "baggageType": "FirstCheckedBag",
+                "validatingAirlineCode": "W2",
+                "ProductRef": [
+                  "p0"
+                ],
+                "BaggageItem": [
+                  {
+                    "@type": "BaggageItem",
+                    "quantity": 2,
+                    "Measurement": [
+                      {
+                        "measurementType": "Weight",
+                        "unit": "Kilograms",
+                        "value": 30
+                      }
+                    ],
+                    "Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+                  }
+                ],
+                "SegmentSequenceList": [
+                  1
+                ]
+              },
+              {
+                "@type": "BaggageAllowanceDetail",
+                "passengerTypeCodes": [
+                  "ADT"
+                ],
+                "baggageType": "CarryOn",
+                "validatingAirlineCode": "W2",
+                "ProductRef": [
+                  "p0"
+                ],
+                "BaggageItem": [
+                  {
+                    "@type": "BaggageItem",
+                    "quantity": 2,
+                    "Measurement": [
+                      {
+                        "measurementType": "Weight",
+                        "unit": "Kilograms",
+                        "value": 7
+                      }
+                    ],
+                    "Text": "CHGS MAY APPLY IF BAGS EXCEED TTL WT ALLOWANCE"
+                  }
+                ],
+                "SegmentSequenceList": [
+                  1
+                ]
+              }
+            ],
+            "ValidatingAirline": [
+              {
+                "@type": "ValidatingAirline",
+                "ValidatingAirline": "W2"
+              }
+            ],
+            "TicketingAgency": [
+              {
+                "@type": "TicketingAgency",
+                "Code": "790T",
+                "ProductRef": [
+                  "p0"
+                ]
+              }
+            ],
+            "PaymentTimeLimit": "2024-09-29T23:59:00Z",
+            "Penalties": [
+              {
+                "@type": "Penalties",
+                "Change": [
+                  {
+                    "@type": "ChangePermitted",
+                    "penaltyTypes": [
+                      "BeforeDeparture"
+                    ],
+                    "PenaltyAppliesTo": "PerTicket",
+                    "Penalty": [
+                      {
+                        "@type": "PenaltyAmount",
+                        "Amount": {
+                          "code": "LKR",
+                          "minorUnit": 1,
+                          "value": 6100
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "Cancel": [
+                  {
+                    "@type": "CancelPermitted",
+                    "penaltyTypes": [
+                      "AfterDeparture"
+                    ],
+                    "PenaltyAppliesTo": "PerTicket",
+                    "Penalty": [
+                      {
+                        "@type": "PenaltyPercent",
+                        "Percent": 100
+                      }
+                    ]
+                  }
+                ],
+                "PassengerTypeCodes": [
+                  "ADT"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+.dialog-container {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px) saturate(210%);
+  -webkit-backdrop-filter: blur(30px) saturate(210%);
+  border-radius: 24px; // The Squircle Prompt
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  color: #1d1d1f;
+
+  /* TITLE: Bold & Tight */
+  h4[mat-dialog-title] {
+    margin: 0;
+    padding: 0 0 8px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-align: center; // Apple Alerts are centered
+  }
+
+  /* SUBTEXT: Muted & Informative */
+  p {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #86868b;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    
+    // Styling the "Current" value as a small highlight
+    b, .current-val {
+      color: #1d1d1f;
+      font-weight: 600;
+    }
+  }
+
+  /* INPUT: iOS-style Inset Field */
+  mat-dialog-content {
+    padding: 0 !important;
+    overflow: visible;
+
+    mat-form-field {
+      ::ng-deep {
+        .mdc-text-field--outline {
+          background-color: rgba(0, 0, 0, 0.04) !important; // Inset look
+          border-radius: 12px !important;
+          border: none !important;
+          .mdc-notched-outline > * { border: none !important; }
+        }
+        
+        .mat-mdc-form-field-label {
+          color: #86868b !important;
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+
+        input {
+          text-align: center; // Numbers look better centered in small prompts
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  /* ACTIONS: Apple Action Pillars */
+  mat-dialog-actions {
+    margin-top: 24px;
+    padding: 0 !important;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+
+    button {
+      flex: 1; // Equal width buttons
+      height: 44px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      transition: all 0.2s ease;
+
+      // The "Cancel" Button
+      &[mat-dialog-close]:not([color="primary"]) {
+        background: rgba(0, 0, 0, 0.05);
+        color: #1d1d1f;
+        
+        &:hover { background: rgba(0, 0, 0, 0.08); }
+      }
+
+      // The "Confirm" Button
+      &[color="primary"], &:last-child {
+        background: #0071e3 !important; // Apple Action Blue
+        color: white !important;
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+
+        &:disabled {
+          background: #aeaeae !important;
+          box-shadow: none;
+        }
+
+        &:active:not(:disabled) {
+          transform: scale(0.96);
+        }
+      }
+    }
+  }
+}

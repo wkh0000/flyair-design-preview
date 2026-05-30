@@ -1,0 +1,45 @@
+.options-panel {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: auto; /* Enable horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.options-panel::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+  .active{
+    background-color: #f2f2f2;
+  }
+
+  .option{
+    padding: 20px;
+    flex: 0 0 auto;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .option-footer{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .option-img-container img{
+        width: 90px;
+        height: auto;
+      }
+    }
+  }
+

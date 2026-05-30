@@ -1,0 +1,291 @@
+.prebooking-container {
+  min-height: 90vh;
+  // height: 100%;
+
+  .prebooking-header {
+    background: transparent;
+    margin-bottom: 30px;
+  }
+
+  .summary-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+
+    .summary-fare-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+
+      .header {
+        display: flex;
+        background-color: rgba(26, 55, 77, 0.7);
+        padding: 12px 20px;
+        color: white;
+        justify-content: space-between;
+        border-radius: 12px 12px 0px 0px;
+
+        div {
+          font-size: 12px;
+        }
+      }
+      .farebody {
+        display: flex;
+        flex-direction: row;
+        padding: 30px;
+        justify-content: center;
+        box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.1),
+          5px 5px 10px rgba(0, 0, 0, 0.1), 0px 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0px 0px 12px 12px;
+        width: 100%;
+
+        .segment-right{
+          width: 100%;
+        }
+        .segment-left {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+
+          .segment {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 30px;
+
+            div {
+              text-align: left;
+            }
+            .center {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+
+              .top {
+                font-size: 12px;
+                font-weight: 500;
+              }
+              .bottom {
+                height: 80%;
+              }
+
+              .airline-logo-container {
+                width: 150px;
+
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+            }
+          }
+          .divider {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    strong {
+      color: #555;
+    }
+
+    .stepper-container {
+      width: 90%;
+      padding: 20px;
+
+      .example-stepper {
+        padding: 20px;
+      }
+    }
+
+    .traveller-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      padding: 20px;
+      gap: 30px;
+      justify-self: center; /* Center the button */
+    }
+
+    .traveller-form button {
+      grid-column: span 2; /* Make the button span across both columns */
+      justify-self: center; /* Center the button */
+    }
+
+    @media screen and (max-width: 768px) {
+      .traveller-form {
+        grid-template-columns: 1fr; /* Switch to a single column */
+        width: 100%; /* Adjust width for smaller screens */
+      }
+
+      .traveller-form button {
+        grid-column: span 1; /* Center the button in the single column layout */
+      }
+    }
+  }
+}
+
+.stepper-container.disabled {
+  pointer-events: none; /* Disable interactions */
+  opacity: 0.5; /* Visual indication of disabled state */
+}
+
+.brand-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: left;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+.brand-header img {
+  width: 80px;
+  border-radius: 8px;
+}
+.badge-tier {
+  background-color: #670b10;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.icon-included {
+  color: #28a745;
+}
+.icon-chargeable {
+  color: #f39c12;
+}
+.icon-not-offered {
+  color: #dc3545;
+}
+li {
+  font-size: 12px;
+}
+
+.fare-card {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  text-align: left;
+}
+.fare-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+.price-tag {
+  font-size: 22px;
+  font-weight: bold;
+  color: #27ae60;
+}
+.icon {
+  margin-right: 8px;
+}
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.badge-custom {
+  background-color: #670b10;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+}
+.list-group-item {
+  border: none;
+  background-color: transparent;
+  padding: 4px 4px !important;
+}
+.list-group {
+  text-align: left;
+  background-color: transparent;
+}
+
+.section-title:before {
+  content: "";
+  width: 100%;
+}
+
+.flight-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+.flight-header {
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+
+  h4 {
+    font-size: 15px;
+  }
+}
+
+
+
+.mat-expansion-panel-header {
+  background: white !important;
+}
+
+.mat-expansion-panel-content {
+  background: white !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 24px 16px;
+  background: white !important;
+}
+
+::ng-deep .mat-expansion-panel-content{
+  background: white !important;
+}
+
+.example-button-row{
+      display: flex;
+      justify-content: right;
+      width: 100%;
+      padding: 20px;
+      gap:20px;
+}
+

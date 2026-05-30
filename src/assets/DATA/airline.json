@@ -1,0 +1,678 @@
+[
+  {
+      "name": "American Airlines",
+      "code": "AA"
+  },
+  {
+      "name": "Delta Air Lines",
+      "code": "DL"
+  },
+  {
+      "name": "United Airlines",
+      "code": "UA"
+  },
+  {
+      "name": "Lufthansa",
+      "code": "LH"
+  },
+  {
+      "name": "Emirates",
+      "code": "EK"
+  },
+  {
+      "name": "British Airways",
+      "code": "BA"
+  },
+  {
+      "name": "Air France",
+      "code": "AF"
+  },
+  {
+      "name": "Qatar Airways",
+      "code": "QR"
+  },
+  {
+      "name": "Singapore Airlines",
+      "code": "SQ"
+  },
+  {
+      "name": "Cathay Pacific",
+      "code": "CX"
+  },
+  {
+      "name": "Japan Airlines",
+      "code": "JL"
+  },
+  {
+      "name": "Air Canada",
+      "code": "AC"
+  },
+  {
+      "name": "Qantas",
+      "code": "QF"
+  },
+  {
+      "name": "Turkish Airlines",
+      "code": "TK"
+  },
+  {
+      "name": "Southwest Airlines",
+      "code": "WN"
+  },
+  {
+      "name": "Ryanair",
+      "code": "FR"
+  },
+  {
+      "name": "Air China",
+      "code": "CA"
+  },
+  {
+      "name": "KLM Royal Dutch Airlines",
+      "code": "KL"
+  },
+  {
+      "name": "Etihad Airways",
+      "code": "EY"
+  },
+  {
+      "name": "Alaska Airlines",
+      "code": "AS"
+  },
+  {
+      "name": "Air India",
+      "code": "AI"
+  },
+  {
+      "name": "Korean Air",
+      "code": "KE"
+  },
+  {
+      "name": "Thai Airways",
+      "code": "TG"
+  },
+  {
+      "name": "Virgin Atlantic",
+      "code": "VS"
+  },
+  {
+      "name": "Swiss International Air Lines",
+      "code": "LX"
+  },
+  {
+      "name": "Finnair",
+      "code": "AY"
+  },
+  {
+      "name": "Iberia",
+      "code": "IB"
+  },
+  {
+      "name": "EgyptAir",
+      "code": "MS"
+  },
+  {
+      "name": "South African Airways",
+      "code": "SA"
+  },
+  {
+      "name": "Austrian Airlines",
+      "code": "OS"
+  },
+  {
+      "name": "SAS Scandinavian Airlines",
+      "code": "SK"
+  },
+  {
+      "name": "Aeroflot",
+      "code": "SU"
+  },
+  {
+      "name": "Malaysia Airlines",
+      "code": "MH"
+  },
+  {
+      "name": "Philippine Airlines",
+      "code": "PR"
+  },
+  {
+      "name": "Garuda Indonesia",
+      "code": "GA"
+  },
+  {
+      "name": "Vietnam Airlines",
+      "code": "VN"
+  },
+  {
+      "name": "EVA Air",
+      "code": "BR"
+  },
+  {
+      "name": "Asiana Airlines",
+      "code": "OZ"
+  },
+  {
+      "name": "Air New Zealand",
+      "code": "NZ"
+  },
+  {
+      "name": "Virgin Australia",
+      "code": "VA"
+  },
+  {
+      "name": "JetBlue Airways",
+      "code": "B6"
+  },
+  {
+      "name": "Alitalia",
+      "code": "AZ"
+  },
+  {
+      "name": "TAP Air Portugal",
+      "code": "TP"
+  },
+  {
+      "name": "LATAM Airlines",
+      "code": "LA"
+  },
+  {
+      "name": "Avianca",
+      "code": "AV"
+  },
+  {
+      "name": "Copa Airlines",
+      "code": "CM"
+  },
+  {
+      "name": "Aeromexico",
+      "code": "AM"
+  },
+  {
+      "name": "Ethiopian Airlines",
+      "code": "ET"
+  },
+  {
+      "name": "Kenya Airways",
+      "code": "KQ"
+  },
+  {
+      "name": "Royal Air Maroc",
+      "code": "AT"
+  },
+  {
+      "name": "AirAsia",
+      "code": "AK"
+  },
+  {
+      "name": "IndiGo",
+      "code": "6E"
+  },
+  {
+      "name": "SpiceJet",
+      "code": "SG"
+  },
+  {
+      "name": "Vistara",
+      "code": "UK"
+  },
+  {
+      "name": "Norwegian Air Shuttle",
+      "code": "DY"
+  },
+  {
+      "name": "Wizz Air",
+      "code": "W6"
+  },
+  {
+      "name": "EasyJet",
+      "code": "U2"
+  },
+  {
+      "name": "Pegasus Airlines",
+      "code": "PC"
+  },
+  {
+      "name": "Air Arabia",
+      "code": "G9"
+  },
+  {
+      "name": "Flynas",
+      "code": "XY"
+  },
+  {
+      "name": "S7 Airlines",
+      "code": "S7"
+  },
+  {
+      "name": "Air Astana",
+      "code": "KC"
+  },
+  {
+      "name": "SriLankan Airlines",
+      "code": "UL"
+  },
+  {
+      "name": "Pakistan International Airlines",
+      "code": "PK"
+  },
+  {
+      "name": "Biman Bangladesh Airlines",
+      "code": "BG"
+  },
+  {
+      "name": "Nepal Airlines",
+      "code": "RA"
+  },
+  {
+      "name": "Royal Brunei Airlines",
+      "code": "BI"
+  },
+  {
+      "name": "Fiji Airways",
+      "code": "FJ"
+  },
+  {
+      "name": "Hawaiian Airlines",
+      "code": "HA"
+  },
+  {
+      "name": "Icelandair",
+      "code": "FI"
+  },
+  {
+      "name": "Air Malta",
+      "code": "KM"
+  },
+  {
+      "name": "LOT Polish Airlines",
+      "code": "LO"
+  },
+  {
+      "name": "TAROM",
+      "code": "RO"
+  },
+  {
+      "name": "Bulgaria Air",
+      "code": "FB"
+  },
+  {
+      "name": "Croatia Airlines",
+      "code": "OU"
+  },
+  {
+      "name": "El Al Israel Airlines",
+      "code": "LY"
+  },
+  {
+      "name": "Oman Air",
+      "code": "WY"
+  },
+  {
+      "name": "Gulf Air",
+      "code": "GF"
+  },
+  {
+      "name": "Royal Jordanian",
+      "code": "RJ"
+  },
+  {
+      "name": "Syrian Air",
+      "code": "RB"
+  },
+  {
+      "name": "Mahan Air",
+      "code": "W5"
+  },
+  {
+      "name": "Ukraine International Airlines",
+      "code": "PS"
+  },
+  {
+      "name": "Belavia",
+      "code": "B2"
+  },
+  {
+      "name": "Azerbaijan Airlines",
+      "code": "J2"
+  },
+  {
+      "name": "Air Seychelles",
+      "code": "HM"
+  },
+  {
+      "name": "Air Mauritius",
+      "code": "MK"
+  },
+  {
+      "name": "RwandAir",
+      "code": "WB"
+  },
+  {
+      "name": "Air Namibia",
+      "code": "SW"
+  },
+  {
+      "name": "Cameroon Airlines",
+      "code": "UY"
+  },
+  {
+      "name": "Air Burkina",
+      "code": "2J"
+  },
+  {
+      "name": "Air Côte d'Ivoire",
+      "code": "HF"
+  },
+  {
+      "name": "Air Senegal",
+      "code": "HC"
+  },
+  {
+      "name": "Air Tanzania",
+      "code": "TC"
+  },
+  {
+      "name": "Air Zimbabwe",
+      "code": "UM"
+  },
+  {
+      "name": "Air Algerie",
+      "code": "AH"
+  },
+  {
+      "name": "Tunisair",
+      "code": "TU"
+  },
+  {
+      "name": "Libyan Airlines",
+      "code": "LN"
+  },
+  {
+      "name": "Sudan Airways",
+      "code": "SD"
+  },
+  {
+      "name": "Air Madagascar",
+      "code": "MD"
+  },
+  {
+      "name": "Air Malawi",
+      "code": "QM"
+  },
+  {
+      "name": "Air Botswana",
+      "code": "BP"
+  },
+  {
+      "name": "Air Mozambique",
+      "code": "TM"
+  },
+  {
+      "name": "Air Niugini",
+      "code": "PX"
+  },
+  {
+      "name": "Air Vanuatu",
+      "code": "NF"
+  },
+  {
+      "name": "Solomon Airlines",
+      "code": "IE"
+  },
+  {
+      "name": "Fiji Airways",
+      "code": "FJ"
+  },
+  {
+      "name": "Air Calédonie",
+      "code": "TY"
+  },
+  {
+      "name": "Air Tahiti Nui",
+      "code": "TN"
+  },
+  {
+      "name": "Hawaiian Airlines",
+      "code": "HA"
+  },
+  {
+      "name": "Aloha Air Cargo",
+      "code": "KH"
+  },
+  {
+      "name": "Island Air",
+      "code": "WP"
+  },
+  {
+      "name": "Air Greenland",
+      "code": "GL"
+  },
+  {
+      "name": "Icelandair",
+      "code": "FI"
+  },
+  {
+      "name": "Air Baltic",
+      "code": "BT"
+  },
+  {
+      "name": "Belavia",
+      "code": "B2"
+  },
+  {
+      "name": "Air Serbia",
+      "code": "JU"
+  },
+  {
+      "name": "Montenegro Airlines",
+      "code": "YM"
+  },
+  {
+      "name": "Adria Airways",
+      "code": "JP"
+  },
+  {
+      "name": "Air Moldova",
+      "code": "9U"
+  },
+  {
+      "name": "Armenia Aircompany",
+      "code": "RM"
+  },
+  {
+      "name": "Georgian Airways",
+      "code": "A9"
+  },
+  {
+      "name": "Air Kyrgyzstan",
+      "code": "QH"
+  },
+  {
+      "name": "Uzbekistan Airways",
+      "code": "HY"
+  },
+  {
+      "name": "Turkmenistan Airlines",
+      "code": "T5"
+  },
+  {
+      "name": "Tajik Air",
+      "code": "7J"
+  },
+  {
+      "name": "Afghanistan Kam Air",
+      "code": "RQ"
+  },
+  {
+      "name": "Ariana Afghan Airlines",
+      "code": "FG"
+  },
+  {
+      "name": "Iraqi Airways",
+      "code": "IA"
+  },
+  {
+      "name": "Middle East Airlines",
+      "code": "ME"
+  },
+  {
+      "name": "Kuwait Airways",
+      "code": "KU"
+  },
+  {
+      "name": "Saudia",
+      "code": "SV"
+  },
+  {
+      "name": "Yemenia",
+      "code": "IY"
+  },
+  {
+      "name": "Syrian Air",
+      "code": "RB"
+  },
+  {
+      "name": "Jordan Aviation",
+      "code": "R5"
+  },
+  {
+      "name": "Flydubai",
+      "code": "FZ"
+  },
+  {
+      "name": "Air Arabia Egypt",
+      "code": "E5"
+  },
+  {
+      "name": "Nile Air",
+      "code": "NP"
+  },
+  {
+      "name": "Alexandria Airlines",
+      "code": "XH"
+  },
+  {
+      "name": "Air Cairo",
+      "code": "SM"
+  },
+  {
+      "name": "Zagros Air",
+      "code": "Z4"
+  },
+  {
+      "name": "Mahan Air",
+      "code": "W5"
+  },
+  {
+      "name": "Qeshm Air",
+      "code": "QB"
+  },
+  {
+      "name": "Kish Air",
+      "code": "Y9"
+  },
+  {
+      "name": "Caspian Airlines",
+      "code": "RV"
+  },
+  {
+      "name": "Taban Air",
+      "code": "HH"
+  },
+  {
+      "name": "Ata Airlines",
+      "code": "I3"
+  },
+  {
+      "name": "Karun Airlines",
+      "code": "NV"
+  },
+  {
+      "name": "Sepehran Airlines",
+      "code": "IS"
+  },
+  {
+      "name": "Meraj Airlines",
+      "code": "JI"
+  },
+  {
+      "name": "Iran Air",
+      "code": "IR"
+  },
+  {
+      "name": "Iran Aseman Airlines",
+      "code": "EP"
+  },
+  {
+      "name": "Kish Air",
+      "code": "Y9"
+  },
+  {
+      "name": "Zagros Air",
+      "code": "Z4"
+  },
+  {
+      "name": "Qeshm Air",
+      "code": "QB"
+  },
+  {
+      "name": "Taban Air",
+      "code": "HH"
+  },
+  {
+      "name": "Ata Airlines",
+      "code": "I3"
+  },
+  {
+      "name": "Karun Airlines",
+      "code": "NV"
+  },
+  {
+      "name": "Sepehran Airlines",
+      "code": "IS"
+  },
+  {
+      "name": "Meraj Airlines",
+      "code": "JI"
+  },
+  {
+      "name": "Iran Air Tours",
+      "code": "B9"
+  },
+  {
+      "name": "Kish Air",
+      "code": "Y9"
+  },
+  {
+      "name": "Zagros Air",
+      "code": "Z4"
+  },
+  {
+      "name": "Qeshm Air",
+      "code": "QB"
+  },
+  {
+      "name": "Taban Air",
+      "code": "HH"
+  },
+  {
+      "name": "Ata Airlines",
+      "code": "I3"
+  },
+  {
+      "name": "Karun Airlines",
+      "code": "NV"
+  },
+  {
+      "name": "Sepehran Airlines",
+      "code": "IS"
+  },
+  {
+      "name": "Meraj Airlines",
+      "code": "JI"
+  },
+  {
+      "name": "Iran Air Tours",
+      "code": "B9"
+  }
+]

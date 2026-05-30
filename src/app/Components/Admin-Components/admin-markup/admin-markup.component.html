@@ -1,0 +1,199 @@
+<div class="cash-component" fxLayout="column">
+  <div class="cash-content">
+
+
+    <div class="add-form mb-3">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Add New Markup
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="markup_Name">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="markup_Type">
+                  <mat-option *ngFor="let type of markupTypes" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Value</mat-label>
+                <input matInput type="number" formControlName="value">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  Apply To Destination
+                </mat-label>
+                <input type="text" matInput [matAutocomplete]="departureAuto"
+                  (input)="filterOptions($event, 'departure')" style="font-size: 14px"
+                  [formControlName]="'applies_To_Destination'" />
+                <mat-autocomplete #departureAuto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredDepartureOptions"
+                    [value]="option.name + ' - ' + option.code"
+                    (onSelectionChange)="selectOption(option.code, 'departure')" style="font-size: 14px;">
+                    {{ option.name }} - {{ option.code }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  Apply To Airline
+                </mat-label>
+                <input type="text" matInput [matAutocomplete]="airlineAuto" (input)="filterOptions($event, 'airline')"
+                  style="font-size: 14px" [formControlName]="'applies_To_Airline'" />
+                <mat-autocomplete #airlineAuto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredAirlineOptions" [value]="option.name + ' - ' + option.code"
+                    (onSelectionChange)="selectOption(option.code, 'airline')" style="font-size: 14px;">
+                    {{ option.name }} - {{ option.code }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apply From(optional)</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="effective_From">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apply To(optional)</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="effective_To">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Price Range From(optional)</mat-label>
+                <input matInput type="number" formControlName="price_Range_From">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Price Range To(optional)</mat-label>
+                <input matInput type="number" formControlName="price_Range_To">
+              </mat-form-field>
+
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">Submit</button>
+              </div>
+            </div>
+          </form>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+    <div class="search">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
+      </mat-form-field>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="markup_Name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Markup Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.markup_Name }}</td>
+        </ng-container>
+
+        <!-- Type Column (Tax, Total, Base) -->
+        <ng-container matColumnDef="markup_Type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let row">{{ row.markup_Type }}</td>
+        </ng-container>
+
+        <!-- Value Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Value</th>
+          <td mat-cell *matCellDef="let row">{{ row.value | currency }}</td>
+        </ng-container>
+
+        <!-- Apply To Column -->
+        <ng-container matColumnDef="applies_To_Destination">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Destination</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.applies_To_Destination}}<br>
+          </td>
+        </ng-container>
+
+        <!-- Apply To Column -->
+        <ng-container matColumnDef="applies_To_Airline">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Airline</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.applies_To_Airline }}<br>
+          </td>
+        </ng-container>
+
+
+        <!-- Apply To Column -->
+        <ng-container matColumnDef="effective_From">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Effect From</th>
+          <td mat-cell *matCellDef="let row">{{ row.effective_From }}</td>
+        </ng-container>
+
+        <!-- Apply To Column -->
+        <ng-container matColumnDef="effective_To">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Effect To</th>
+          <td mat-cell *matCellDef="let row">{{ row.effective_To }}</td>
+        </ng-container>
+
+        <!-- Value Column -->
+        <ng-container matColumnDef="price_Range_From">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price From</th>
+          <td mat-cell *matCellDef="let row">{{ row.price_Range_From | currency }}</td>
+        </ng-container>
+
+        <!-- Value Column -->
+        <ng-container matColumnDef="price_Range_To">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Price To</th>
+          <td mat-cell *matCellDef="let row">{{ row.price_Range_To | currency }}</td>
+        </ng-container>
+
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" aria-label="Delete" (click)="DeleteLimit(row.id)">
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8">
+            No data matching the filter.
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of cash records"></mat-paginator>
+    </div>
+  </div>
+</div>

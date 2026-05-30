@@ -1,0 +1,107 @@
+<footer class="fly-footer fly">
+  <div class="fly-container">
+    <!-- Main grid: brand + 4 link columns -->
+    <div class="fly-foot-grid">
+      <!-- Brand block -->
+      <div class="fly-foot-about">
+        <a class="fly-logo" routerLink="/" aria-label="FlyAir — Fly your way">
+          <img class="fly-logo-img" src="assets/flyair-logo-dark.png" alt="FlyAir" width="320" height="116" />
+        </a>
+        <p>{{ cms.brandText }}</p>
+
+        <!-- Newsletter -->
+        <form class="fly-foot-news" (ngSubmit)="subscribe()">
+          <span class="news-label">{{ cms.newsletterLabel }}</span>
+          <div class="news-row">
+            <input type="email" name="newsletterEmail" [(ngModel)]="email" [placeholder]="cms.newsletterPlaceholder" aria-label="Email for newsletter" [disabled]="subState==='sending'" required />
+            <button type="submit" aria-label="Subscribe" [disabled]="subState==='sending'">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <p class="news-msg ok" *ngIf="subState==='ok'" role="status">{{ subMessage }}</p>
+          <p class="news-msg err" *ngIf="subState==='error'" role="alert">{{ subMessage }}</p>
+        </form>
+
+        <div class="socials">
+          <a [href]="cms.socials.facebook || '#'" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3.2V11H9v3h2v7h3v-7h2.4l.6-3H14V9.4c0-.3.2-.4.5-.4z"/></svg></a>
+          <a [href]="cms.socials.instagram || '#'" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a [href]="cms.socials.x || '#'" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6 6-6z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Book & Manage -->
+      <div class="fly-foot-col">
+        <h4>Book &amp; Manage</h4>
+        <ul>
+          <li><a routerLink="/">Search flights</a></li>
+          <li><a routerLink="/prebooking">Manage booking</a></li>
+          <li><a routerLink="/web-checkin">Online check-in</a></li>
+          <li><a routerLink="/baggage">Baggage allowance</a></li>
+          <li><a routerLink="/flight-status">Flight status</a></li>
+        </ul>
+      </div>
+
+      <!-- Ways to Pay -->
+      <div class="fly-foot-col">
+        <h4>Ways to Pay</h4>
+        <ul>
+          <li><a routerLink="/payment-options">Pay by card</a></li>
+          <li><a routerLink="/bank-transfer">Bank transfer</a></li>
+          <li><a routerLink="/instalments">Easy instalments</a></li>
+          <li><a routerLink="/fees">Fees &amp; charges</a></li>
+        </ul>
+      </div>
+
+      <!-- Help & Support -->
+      <div class="fly-foot-col">
+        <h4>Help &amp; Support</h4>
+        <ul>
+          <li><a routerLink="/support">Help center</a></li>
+          <li><a routerLink="/faq">FAQs</a></li>
+          <li><a routerLink="/refunds">Refunds &amp; changes</a></li>
+          <li><a routerLink="/advisories">Travel advisories</a></li>
+          <li><a routerLink="/contact">Contact us</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="fly-foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a routerLink="/about">About FlyAir</a></li>
+          <li><a routerLink="/news">Newsroom</a></li>
+          <li><a routerLink="/airlines">Our airlines</a></li>
+          <li><a routerLink="/offers-promotions">Deals &amp; offers</a></li>
+          <li><a routerLink="/careers">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accreditation + payment partners -->
+    <div class="fly-foot-accred">
+      <div class="acc-group">
+        <span class="acc-label">Member of</span>
+        <span class="acc-seal acc-iata-logo">
+          <img src="assets/partners/iata.png" alt="IATA Accredited Agent" loading="lazy" />
+        </span>
+        <span class="acc-seal">
+          <span class="seal-ic secure"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span class="seal-txt"><b>Secure SSL</b><i>256-bit encryption</i></span>
+        </span>
+      </div>
+      <div class="acc-group">
+        <span class="acc-label">We accept</span>
+        <span class="pay-chip"><img src="assets/partners/visa.svg" alt="Visa" loading="lazy"></span>
+        <span class="pay-chip"><img src="assets/partners/mastercard.svg" alt="Mastercard" loading="lazy"></span>
+        <span class="pay-chip"><img src="assets/partners/amex.svg" alt="American Express" loading="lazy"></span>
+        <span class="pay-chip"><img src="assets/partners/commercial-bank.svg" alt="Commercial Bank" loading="lazy"></span>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom">
+      <span>{{ cms.bottomCopy }} · Powered by <a [href]="cms.poweredByLink" target="_blank" rel="noopener" class="powered-by-link">{{ cms.poweredByLabel }}</a></span>
+      <span class="legal"><a routerLink="/privacy">Privacy</a> · <a routerLink="/terms">Terms</a> · <a routerLink="/cookies">Cookies</a></span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,137 @@
+<div class="asp-wrap">
+  <div class="asp-head">
+    <div>
+      <h2>Support Inbox</h2>
+      <p class="muted">
+        <b>{{ counts.new }}</b> new ·
+        <span>{{ counts.inProgress }} in progress</span> ·
+        <span>{{ counts.resolved }} resolved</span> ·
+        <span>{{ counts.total }} total</span>
+      </p>
+    </div>
+    <div class="filters">
+      <select class="select" [(ngModel)]="statusFilter" (change)="load()" aria-label="Status filter">
+        <option value="">All statuses</option>
+        <option value="new">New</option>
+        <option value="in-progress">In progress</option>
+        <option value="resolved">Resolved</option>
+        <option value="closed">Closed</option>
+      </select>
+      <select class="select" [(ngModel)]="categoryFilter" (change)="load()" aria-label="Category filter">
+        <option value="">All categories</option>
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
+      <button type="button" class="ghost" (click)="load()" [disabled]="loading">
+        <span class="material-symbols-outlined">refresh</span>
+        Refresh
+      </button>
+    </div>
+  </div>
+
+  <div class="asp-body">
+    <!-- List -->
+    <div class="list">
+      <div class="empty" *ngIf="!loading && rows.length === 0">
+        <span class="material-symbols-outlined" style="font-size:36px; opacity:.3">inbox</span>
+        <p>No requests match the current filters.</p>
+      </div>
+
+      <div
+        *ngFor="let r of rows"
+        class="row"
+        [class.active]="selected?.id === r.id"
+        (click)="open(r)"
+      >
+        <span class="dot" [style.background]="statusDot(r.status)" [attr.title]="r.status"></span>
+        <div class="meta">
+          <div class="top">
+            <b>{{ r.name }}</b>
+            <span class="when">{{ r.createdAt | date:'MMM d · HH:mm' }}</span>
+          </div>
+          <div class="sub">{{ r.category }} · {{ r.bookingId }}</div>
+          <div class="snippet">{{ r.details }}</div>
+        </div>
+        <div class="actions">
+          <button class="icon" type="button" *ngIf="r.status === 'new'"
+            title="Mark in-progress"
+            (click)="setStatus(r, 'in-progress', $event)">
+            <span class="material-symbols-outlined">pending</span>
+          </button>
+          <button class="icon" type="button" *ngIf="r.status !== 'resolved'"
+            title="Mark resolved"
+            (click)="setStatus(r, 'resolved', $event)">
+            <span class="material-symbols-outlined">check_circle</span>
+          </button>
+          <button class="icon danger" type="button" title="Delete" (click)="remove(r, $event)">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail -->
+    <div class="detail empty-pane" *ngIf="!selected">
+      <span class="material-symbols-outlined">support_agent</span>
+      <p>Pick a request from the left to open it.</p>
+    </div>
+
+    <div class="detail" *ngIf="selected">
+      <button class="close" type="button" (click)="close()" title="Close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <h3>{{ selected.category }} <span class="ref">#{{ selected.id }}</span></h3>
+
+      <div class="from">
+        <div><b>{{ selected.name }}</b> · {{ selected.email }}<span *ngIf="selected.phone"> · {{ selected.phone }}</span></div>
+        <div class="muted">
+          Booking <b>{{ selected.bookingId }}</b> ·
+          submitted {{ selected.createdAt | date:'medium' }}
+          <span *ngIf="selected.source"> · via {{ selected.source }}</span>
+        </div>
+      </div>
+
+      <label class="lab">What the customer asked for</label>
+      <p class="msg">{{ selected.details }}</p>
+
+      <!-- Workflow controls -->
+      <div class="workflow">
+        <div class="wf-col">
+          <label class="lab" for="sup-status">Status</label>
+          <select id="sup-status" class="select" [(ngModel)]="selected.status">
+            <option *ngFor="let s of statuses" [value]="s.key">{{ s.label }}</option>
+          </select>
+        </div>
+        <div class="wf-col">
+          <label class="lab" for="sup-assignee">Assigned to</label>
+          <input id="sup-assignee" type="text" class="input" placeholder="e.g. Anjali W."
+            [(ngModel)]="selected.assignedTo" />
+        </div>
+      </div>
+
+      <label class="lab" for="sup-notes">Internal notes <span class="muted">(team only — never shown to customer)</span></label>
+      <textarea id="sup-notes" class="textarea" rows="4"
+        placeholder="Refund eligibility, airline conversation log, escalation reasons…"
+        [(ngModel)]="selected.internalNotes"></textarea>
+
+      <div class="d-actions">
+        <button type="button" class="btn primary" (click)="save()" [disabled]="saving">
+          <span class="material-symbols-outlined">save</span>
+          {{ saving ? 'Saving…' : 'Save changes' }}
+        </button>
+        <a class="btn ghost" [href]="mailto(selected)" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined">mail</span>
+          Reply by email
+        </a>
+        <a class="btn ghost" [href]="'tel:' + selected.phone" *ngIf="selected.phone">
+          <span class="material-symbols-outlined">call</span>
+          Call {{ selected.phone }}
+        </a>
+        <button type="button" class="btn danger" (click)="remove(selected, $event)">
+          <span class="material-symbols-outlined">delete</span>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

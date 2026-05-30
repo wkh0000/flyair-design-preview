@@ -1,0 +1,52 @@
+.aiq-wrap { padding: 24px 32px; max-width: 1400px; }
+.aiq-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.aiq-head h2 { margin: 0; font-family: 'Exo', system-ui, sans-serif; font-weight: 800; font-size: 1.6rem; color: #0a1730; }
+.aiq-head .muted { margin: 4px 0 0; color: #6b7686; font-size: .9rem; }
+.aiq-head .muted b { color: #b3193c; }
+.aiq-head .filters { display: flex; gap: 12px; align-items: center; }
+.aiq-head .chk { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: #0a1730; cursor: pointer; }
+.aiq-head .ghost { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #e0e6ee; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: .9rem; }
+.aiq-head .ghost:hover { background: #f5f8fc; }
+.aiq-head .ghost .material-symbols-outlined { font-size: 18px; }
+
+.aiq-body { display: grid; grid-template-columns: 1.1fr 1.4fr; gap: 16px; align-items: start; }
+@media (max-width: 980px) { .aiq-body { grid-template-columns: 1fr; } }
+
+.list { background: #fff; border: 1px solid #e0e6ee; border-radius: 12px; overflow: hidden; max-height: 70vh; overflow-y: auto; }
+.list .empty { padding: 40px 24px; text-align: center; color: #6b7686; }
+.list .row { display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: start; padding: 14px 16px; border-bottom: 1px solid #f0f3f8; cursor: pointer; transition: background .15s; }
+.list .row:last-child { border-bottom: none; }
+.list .row:hover { background: #f8fafd; }
+.list .row.active { background: #eaf2fb; }
+.list .row .dot { width: 8px; height: 8px; border-radius: 50%; background: transparent; margin-top: 7px; }
+.list .row .dot.on { background: #0073bd; }
+.list .row.unread b { color: #0a1730; font-weight: 800; }
+.list .row .meta .top { display: flex; justify-content: space-between; gap: 8px; }
+.list .row .meta .when { font-size: .75rem; color: #6b7686; white-space: nowrap; }
+.list .row .meta .sub { font-size: .9rem; color: #1f2b44; margin: 2px 0; font-weight: 600; }
+.list .row .meta .snippet { font-size: .85rem; color: #6b7686; line-height: 1.4; }
+.list .row .actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+.list .row:hover .actions, .list .row.active .actions { opacity: 1; }
+.list .row .actions .icon { background: transparent; border: none; padding: 6px; cursor: pointer; border-radius: 6px; color: #6b7686; }
+.list .row .actions .icon:hover { background: #fff; color: #0a1730; }
+.list .row .actions .icon.danger:hover { color: #b3193c; }
+.list .row .actions .material-symbols-outlined { font-size: 18px; }
+
+.detail { background: #fff; border: 1px solid #e0e6ee; border-radius: 12px; padding: 24px; position: relative; }
+.detail.empty-pane { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6b7686; padding: 60px 24px; }
+.detail.empty-pane .material-symbols-outlined { font-size: 48px; opacity: .35; margin-bottom: 8px; }
+.detail .close { position: absolute; top: 14px; right: 14px; background: transparent; border: none; cursor: pointer; padding: 6px; border-radius: 6px; color: #6b7686; }
+.detail .close:hover { background: #f5f8fc; color: #0a1730; }
+.detail h3 { margin: 0 40px 12px 0; font-family: 'Exo', system-ui, sans-serif; font-weight: 800; color: #0a1730; font-size: 1.3rem; }
+.detail .from { background: #f8fafd; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; font-size: .9rem; }
+.detail .from .muted { color: #6b7686; font-size: .82rem; }
+.detail .msg { background: #fff; border: 1px solid #f0f3f8; border-radius: 8px; padding: 14px 16px; font-family: inherit; white-space: pre-wrap; word-break: break-word; line-height: 1.55; color: #1f2b44; font-size: .95rem; margin: 0 0 18px; }
+.detail .d-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.detail .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; font-weight: 600; font-size: .9rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; }
+.detail .btn.primary { background: #0073bd; color: #fff; }
+.detail .btn.primary:hover { background: #005d99; }
+.detail .btn.ghost { background: #fff; color: #1f2b44; border-color: #e0e6ee; }
+.detail .btn.ghost:hover { background: #f5f8fc; }
+.detail .btn.danger { background: transparent; color: #b3193c; border-color: #f5c6d2; }
+.detail .btn.danger:hover { background: #fef0f3; }
+.detail .btn .material-symbols-outlined { font-size: 18px; }

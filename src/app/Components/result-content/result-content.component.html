@@ -1,0 +1,74 @@
+<div *ngIf="loading" class="loading-overlay">
+  <app-loader></app-loader>
+</div>
+<div class="row">
+  <div class="col-3">
+    <app-result-sidebar
+      [carriers]="carriers"
+    ></app-result-sidebar>
+  </div>
+  <div class="col-9">
+
+    <div class="options-panel" *ngIf="sequenceTwoOfferings && sequenceTwoOfferings.length > 0">
+      <!-- Departure Option -->
+      <div class="option" [ngClass]="{ 'active': currentActiveTab === 1 }">
+        <div class="option-header">
+          <span style="font-size: 14px; font-weight: 500;">Departure</span>
+        </div>
+        <div class="option-detail-container">
+          <span style="font-size: 12px; font-weight: 500;">
+            {{ IsDepartureSelected ? 'Selected' : 'Not Selected' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Return Option -->
+      <div class="option" [ngClass]="{ 'active': currentActiveTab !== 1 }">
+        <div class="option-header">
+          <span style="font-size: 14px; font-weight: 500;">Return</span>
+        </div>
+        <div class="option-detail-container">
+          <span style="font-size: 12px; font-weight: 500;">.......</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flight-results">
+      <mat-tab-group [(selectedIndex)]="selectedTabIndex" animationDuration="1000ms">
+         <mat-tab
+          label="Departure"
+          *ngIf="
+            sequenceOneOfferings && sequenceOneOfferings.length > 0
+          "
+          >
+          <app-result-items
+          [flight]="sequenceOneOfferings && sequenceOneOfferings.length > 0 ? sequenceOneOfferings.slice() : []"
+          [Identity]="identifier"
+          [sequence]="1"
+          (flightSelected)="onFlightSelected($event, 1)"
+        ></app-result-items>
+
+
+      </mat-tab>
+         <mat-tab
+          label="Return"
+          *ngIf="
+            sequenceTwoOfferings && sequenceTwoOfferings.length > 0"
+        >
+        <app-result-items
+        [flight]="sequenceTwoOfferings && sequenceTwoOfferings.length > 0 ? sequenceTwoOfferings.slice() : []"
+        [Identity]="identifier"
+        [sequence]="2"
+        [selectedCode]="selectedDepartureCode"
+        (flightSelected)="onFlightSelected($event, 2)"
+      ></app-result-items>
+
+        </mat-tab>
+      </mat-tab-group>
+      <div *ngIf="!hasResults()" class="more-results my-5">
+        No Results Available
+      </div>
+    </div>
+  </div>
+</div>

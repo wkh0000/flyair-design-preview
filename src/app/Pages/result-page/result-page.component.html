@@ -1,0 +1,115 @@
+<div class="result-container" style="margin-top: 100px;">
+  <!-- <div class="herofares"></div> -->
+
+  <div class="container">
+    <mat-accordion class="edit" style="margin-bottom: 50px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+      <mat-expansion-panel #panel style="margin-bottom: 50px; width: 100%; background: white !important;">
+        <mat-expansion-panel-header style="padding: 30px">
+          <div class="result-edit-container">
+            <div class="airport single-row">
+              <div class="single-column">
+                <div class="header">Dept</div>
+                <div class="departure">
+                  {{ (payload?.onewaydeparture || payload?.returndeparture) | uppercase }}
+                </div>
+              </div>
+              <span class="material-symbols-outlined"> arrow_right_alt </span>
+              <div class="single-column">
+                <div class="header">Arr</div>
+                <div class="destination">
+                  {{ (payload?.onewaydestination || payload?.returndestination) | uppercase }}
+                </div>
+              </div>
+            </div>
+            <div class="date-container single-row">
+              <div class="single-column">
+                <div class="header">Dept Date</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <span class="material-symbols-outlined">
+                    flight_takeoff
+                  </span>
+                  <span style="margin-left: 10px">{{
+                    payload?.departureDate
+                  }}</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="date-container single-row"
+              *ngIf="payload?.returnreturnDate"
+            >
+              <div class="single-column">
+                <div class="header">Return Date</div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <span class="material-symbols-outlined"> flight_land </span>
+                  <span style="margin-left: 10px">{{
+                    payload?.returnDate
+                  }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="passenger-container single-row">
+              <div class="single-column">
+                <div class="header">Passengers</div>
+                <div style="display: flex; flex-direction: row">
+                  <div class="adult">
+                    <i class="fas fa-male"></i> {{ payload?.passengers?.adult }}
+                  </div>
+                  <div class="child">
+                    <i class="fas fa-child" style="padding-left: 8px"></i>
+                    {{ payload?.passengers?.child }}
+                  </div>
+                  <div class="infant">
+                    <i class="fas fa-baby" style="padding-left: 8px"></i>
+                    {{ payload?.passengers?.infant }}
+                  </div>
+                  <div class="student">
+                    <i
+                      class="fas fa-user-graduate"
+                      style="padding-left: 8px"
+                    ></i>
+                    {{ payload?.passengers?.student }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cabin-container single-row">
+              <div class="single-column">
+                <div class="header">Cabin</div>
+                <span>{{ payload?.selectedClass }}</span>
+              </div>
+            </div>
+            <div class="edit-container single-row">
+              <button type="button" class="modify-search-btn" (click)="togglePanel()" aria-label="Modify search">
+                <span class="material-symbols-outlined">edit_note</span>
+                <span class="modify-label">Modify search</span>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+
+        <app-post-flightsearch [payload]="payload" customClass="result-style" (closeAccordion)="panel.close()"
+        ></app-post-flightsearch>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+    <app-option-panel></app-option-panel>
+
+    <app-result-content
+      [searchResults]="searchResults"
+      *ngIf="showResultPage"
+    ></app-result-content>
+  </div>
+</div>

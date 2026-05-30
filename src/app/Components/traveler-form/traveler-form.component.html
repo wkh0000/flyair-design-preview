@@ -1,0 +1,216 @@
+<div class="mt-1">
+  <form [formGroup]="travelerFormGroup">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" animationDuration="500ms" #tabGroup>
+      <mat-tab formArrayName="travelers" *ngFor="let traveler of travelers.controls; let i = index"
+        label="{{ 'Passenger ' + (i + 1) }}">
+        <div [formGroupName]="i" class="traveler-form">
+          <div style="display: flex; flex-direction: row; width: 100%; gap: 20px">
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 250px">
+              <label>Type *</label>
+              <mat-select class="form-control form-control-lg" formControlName="passengerTypeCode"
+                (selectionChange)="onTypeChange($event.value, i)" required>
+                <mat-option value="ADT">Adult (12+)</mat-option>
+                <mat-option value="CNN">Child (2-12)</mat-option>
+                <mat-option value="INF">Infant (Under 2)</mat-option>
+              </mat-select>
+
+            </div>
+
+            <div class="form-group" style="width: 300px">
+              <label>Prefix *</label>
+              <mat-select class="form-control form-control-lg" formControlName="prefix" required>
+                <mat-option *ngFor="let p of getFilteredPrefixes(i)" [value]="p">{{p}}</mat-option>
+              </mat-select>
+              <small class="text-danger" *ngIf="traveler.get('prefix')?.invalid && traveler.get('prefix')?.touched">
+                Prefix is required.
+              </small>
+            </div>
+
+            <div class="form-group" style="width: 90%">
+              <label>Given Name *</label>
+              <input class="form-control form-control-lg" formControlName="given" (input)="syncDocName('given', i)"
+                required />
+              <small class="text-danger" *ngIf="traveler.get('given')?.invalid && traveler.get('given')?.touched">
+                Given Name cannot be empty.
+              </small>
+            </div>
+
+            <div class="form-group" style="width: 90%">
+              <label>Surname *</label>
+              <input class="form-control form-control-lg" formControlName="surname" (input)="syncDocName('surname', i)"
+                required />
+              <small class="text-danger" *ngIf="traveler.get('surname')?.invalid && traveler.get('surname')?.touched">
+                Surname cannot be empty.
+              </small>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: row; width: 100%; gap: 20px">
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 20%">
+              <label>Gender *</label>
+              <mat-select class="form-control form-control-lg" formControlName="gender" required>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+              <small class="text-danger" *ngIf="traveler.get('gender')?.invalid && traveler.get('gender')?.touched">
+                Please select gender.
+              </small>
+            </div>
+
+            <div class="form-group" appearance="outline" class="w-100" hideRequiredMarker="true"
+              style="text-align: left; position: relative">
+              <label>Birth Date *</label>
+              <input class="form-control form-control-lg" [matDatepicker]="birthDatePicker" placeholder="Choose a date"
+                formControlName="birthDate" [min]="traveler.get('minDate')?.value"
+                [max]="traveler.get('maxDate')?.value" />
+              <mat-datepicker-toggle matSuffix [for]="birthDatePicker"
+                style="position:absolute; top:25px; right:0px;"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #birthDatePicker></mat-datepicker>
+            </div>
+
+          </div>
+          <h2>Contact *</h2>
+          <mat-divider></mat-divider>
+
+          <div style="display: flex; flex-direction: row; gap: 20px; width: 100%">
+            <div class="form-group" appearance="outline" floatLabel="always" style="width: 30%"
+              hideRequiredMarker="true">
+              <label style="display: flex; flex-direction: row; align-items: center">
+                Telephone Code *
+              </label>
+              <input type="text" class="form-control form-control-lg" [matAutocomplete]="codeAuto"
+                (input)="filterOptions($event, 'code')" style="font-size: 14px" placeholder="+94" value="+94"
+                [formControlName]="'countryAccessCode'" />
+              <mat-autocomplete #codeAuto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredCode" [value]="option.countryAccessCode" (onSelectionChange)="
+                    selectOption(option.countryAccessCode, 'code')
+                  " style="font-size: 14px">
+                  {{ option.countryAccessCode }} - {{ option.issueCountry }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 50%">
+              <label>Phone Number *</label>
+              <input class="form-control form-control-lg" formControlName="phoneNumber" placeholder="Enter phone number"
+                required [pattern]="'[0-9]{9}'" />
+              <small  class="text-danger" *ngIf="traveler.get('phoneNumber')?.hasError('required')">
+                Phone number is required.
+              </small>
+              <small class="text-danger" *ngIf="traveler.get('phoneNumber')?.hasError('pattern')">
+                Please enter a valid 9-digit phone number.
+              </small>
+            </div>
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 20%">
+              <label>Type *</label>
+              <mat-select class="form-control form-control-lg" formControlName="role" required>
+                <mat-option value="Mobile">Mobile</mat-option>
+                <mat-option value="Home">Home</mat-option>
+                <mat-option value="Work">Work</mat-option>
+                <mat-option value="Office">Office</mat-option>
+                <mat-option value="Fax">Fax</mat-option>
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+            </div>
+            <div appearance="outline" class="form-group" hideRequiredMarker="true" style="width: 50%">
+              <label>Email *</label>
+              <input class="form-control form-control-lg" formControlName="email" placeholder="Enter email address" />
+              <small *ngIf="traveler.get('email')?.hasError('email')">
+                Please enter a valid email address.
+              </small>
+            </div>
+          </div>
+
+          <h2>Travel Document *</h2>
+          <mat-divider></mat-divider>
+          <div style="display: flex; flex-direction: row; gap: 20px; width: 100%">
+            <div class="form-group" appearance="outline" hideRequiredMarker="true">
+              <label>Document Type*</label>
+              <mat-select class="form-control form-control-lg" formControlName="docType" required>
+                <mat-option value="Passport">Passport</mat-option>
+              </mat-select>
+            </div>
+
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="text-align: left;">
+              <label>Document Number *</label>
+              <input class="form-control form-control-lg" formControlName="docNumber" placeholder="Document No"
+                required />
+            </div>
+
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 100%">
+              <label>Given Name *</label>
+              <input class="form-control form-control-lg" formControlName="docGiven" placeholder="Enter first name"
+                required />
+              <small *ngIf="traveler.get('given')?.hasError('maxlength')">
+                Maximum length of 20 characters exceeded.
+              </small>
+            </div>
+            <div class="form-group" appearance="outline" hideRequiredMarker="true" style="width: 100%">
+              <label>Surname *</label>
+              <input class="form-control form-control-lg" formControlName="docSurname" placeholder="Enter last name"
+                required />
+              <small *ngIf="traveler.get('surname')?.hasError('maxlength')">
+                Maximum length of 20 characters exceeded.
+              </small>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: row; gap: 20px; width: 100%">
+            <div class="form-group" appearance="outline" class="w-100" hideRequiredMarker="true"
+              style="text-align: left; position: relative">
+              <label>Expiration Date *</label>
+              <input class="form-control form-control-lg" [matDatepicker]="expDatePicker" formControlName="expireDate"
+                [min]="expiryDate" />
+              <mat-datepicker-toggle matSuffix [for]="expDatePicker"
+                style="position:absolute; top:25px; right:0px;"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #expDatePicker></mat-datepicker>
+            </div>
+
+            <div class="form-group" appearance="outline" floatLabel="always" hideRequiredMarker="true">
+              <label>
+                Passport Issued Country *
+              </label>
+              <input type="text" class="form-control form-control-lg" [matAutocomplete]="countryAuto"
+                (input)="filterOptions($event, 'country')" style="font-size: 14px" placeholder="Sri Lanka"
+                value="Sri Lanka" [formControlName]="'issueCountry'" />
+              <mat-autocomplete #countryAuto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredCountry" [value]="option.countryCode" (onSelectionChange)="
+                    selectOption(option.countryCode, 'country')
+                  " style="font-size: 14px">
+                  {{ option.issueCountry }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin:10px">
+          <button style="border-radius: 10px;" mat-stroked-button color="warn" type="button"
+            (click)="removeTraveler(i)">Remove Traveler</button>
+          <button style="border-radius: 10px;" mat-stroked-button type="button" [matMenuTriggerFor]="addTravelerMenu">
+            + Add Traveler
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <div style="text-align:center; margin-bottom:20px;">
+      <mat-menu #addTravelerMenu="matMenu" yPosition="above">
+        <button mat-menu-item type="button" (click)="addTraveler('ADT')">
+          <span>Adult (12+ yrs)</span>
+        </button>
+        <button mat-menu-item type="button" (click)="addTraveler('CNN')">
+          <span>Child (2-11 yrs)</span>
+        </button>
+        <button mat-menu-item type="button" (click)="addTraveler('INF')">
+          <span>Infant (Under 2 yrs)</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="button-group">
+      <button style="background-color: rgba(26, 55, 77, 0.7); border-radius: 25px;color: white;" mat-stroked-button
+        (click)="submitTravelers()">
+        {{
+        tabGroup?.selectedIndex === travelers.length - 1 ? "Submit" : "Next"
+        }}
+      </button>
+    </div>
+  </form>
+</div>

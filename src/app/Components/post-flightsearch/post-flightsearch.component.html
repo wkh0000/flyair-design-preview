@@ -1,0 +1,604 @@
+<div *ngIf="loading" class="loading-overlay">
+  <app-loader></app-loader>
+</div>
+<div class="container" [ngClass]="{ 'dropdown-margin': isDropdownOpen }">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="one-way-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#one-way"
+        type="button"
+        role="tab"
+        aria-controls="one-way"
+        aria-selected="false"
+      >
+        <img src="../../../assets/ico-plane-oneway.svg" />
+        One Way
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="return-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#return"
+        type="button"
+        role="tab"
+        aria-controls="return"
+        aria-selected="true"
+      >
+        <img src="../../../assets/ico-plane-back.svg" />
+        Return
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <!-- One Way Form -->
+    <div
+      class="tab-pane fade show active"
+      id="one-way"
+      role="tabpanel"
+      aria-labelledby="one-way-tab"
+    >
+      <form
+        [ngClass]="customClass"
+        [formGroup]="oneWayForm"
+        (ngSubmit)="onSubmitOneWay()"
+        style="padding: 30px"
+      >
+        <div class="row mb-2">
+          <div class="col-12 col-md-6 col-lg-4">
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              style="width: 100%"
+              hideRequiredMarker="true"
+            >
+              <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+                <span class="material-symbols-outlined mr-2"
+                  >flight_takeoff</span
+                >
+                Origin
+              </mat-label>
+              <input
+                type="text"
+                matInput
+                [matAutocomplete]="departureAuto"
+                (input)="filterOptions($event, 'departure')"
+                style="font-size: 14px"
+                [formControlName]="'onewaydeparture'"
+              />
+              <mat-autocomplete #departureAuto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredDepartureOptions"
+                  [value]="option.name + ' - ' + option.code"
+                  (onSelectionChange)="selectOption(option.code, 'departure')"
+                  style="font-size: 14px;"
+                >
+                  {{ option.name }} - {{ option.code }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              style="width: 100%"
+              hideRequiredMarker="true"
+            >
+              <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+                <span class="material-symbols-outlined mr-2">flight_land</span>
+                Destination
+              </mat-label>
+              <input
+                type="text"
+                matInput
+                [matAutocomplete]="destinationAuto"
+                (input)="filterOptions($event, 'destination')"
+                style="font-size: 14px"
+                [formControlName]="'onewaydestination'"
+              />
+              <mat-autocomplete #destinationAuto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredDestinationOptions"
+                  [value]="option.name + ' - ' + option.code"
+                  (onSelectionChange)="selectOption(option.code, 'destination')"
+                  style="font-size: 14px"
+                >
+                  {{ option.name }} - {{ option.code }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <!---->
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <mat-form-field
+              appearance="outline"
+              class="w-100"
+              floatLabel="always"
+              hideRequiredMarker="true"
+              #tooltip="matTooltip"
+              matTooltip="Higlighted Dates Requires Immediate Booking"
+              matTooltipHideDelay="100"
+            >
+                <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+              <span class="material-symbols-outlined mr-2">
+                calendar_month
+                </span>
+                Departure
+              </mat-label>
+              <input
+                matInput
+                [matDatepicker]="pickerOneWay"
+                formControlName="onewaydepartureDate"
+                [min]="minDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="pickerOneWay"
+              ></mat-datepicker-toggle>
+              <mat-datepicker touchUi [dateClass]="dateClass" #pickerOneWay></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div style="display: flex; flex-direction: row; gap: 50px">
+            <div class="warning" *ngIf="departureMatchesDestination">
+              <mat-error style="font-size: 12px; margin-bottom: 12px"
+                >Departure and Destination cannot be the same!</mat-error
+              >
+            </div>
+            <div *ngIf="warningMessage" class="warning">
+              <mat-error style="font-size: 12px; margin-bottom: 12px">{{
+                warningMessage
+              }}</mat-error>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <!-- Traveller Container -->
+            <div class="traveller-container">
+              <div class="traveller-header">
+                <button
+                  class="traveller-button w-100 text-start"
+                  (click)="toggleDropdown()"
+                  type="button"
+                >
+                  {{ totalTravellers }} Traveller(s), {{ selectedClass }}
+                </button>
+              </div>
+              <div class="traveller-dropdown" *ngIf="isDropdownOpen">
+                <div
+                  class="traveller-options"
+                  style="display: flex; flex-direction: row"
+                >
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Adults</span>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('adult', oneWayForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        oneWayForm.get(["passengers", "adult"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('adult', oneWayForm)"
+                        [disabled]="oneWayForm.get(['passengers', 'adult'])?.value >= maxAdults"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column">
+                      <span>Child</span>
+                      <span style="font-size: 10px"> (2 > and <12)</span>
+                    </div>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('child', oneWayForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        oneWayForm.get(["passengers", "child"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('child', oneWayForm)"
+                        [disabled]="oneWayForm.get(['passengers', 'child'])?.value >= maxChildren"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column">
+                      <span>Infant</span>
+                      <span style="font-size: 10px"> (Below 2 YRS)</span>
+                    </div>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('infant', oneWayForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        oneWayForm.get(["passengers", "infant"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('infant', oneWayForm)"
+                        [disabled]="oneWayForm.get(['passengers', 'infant'])?.value >= maxInfants"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Student</span>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('student', oneWayForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        oneWayForm.get(["passengers", "student"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('student', oneWayForm)"
+                        [disabled]="oneWayForm.get(['passengers', 'student'])?.value >= maxStudents"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="class-options">
+                  <button
+                    class="class-button btn btn-outline-primary btn-sm"
+                    *ngFor="let cabinClass of cabinClasses"
+                    [class.active]="
+                      oneWayForm.get('selectedClass')?.value === cabinClass
+                    "
+                    (click)="selectClass(cabinClass, oneWayForm)"
+                    type="button"
+                  >
+                    {{ cabinClass }}
+                  </button>
+                </div>
+                <div class="done-button-container mt-2">
+                  <button
+                    class="btn btn-primary w-100"
+                    (click)="toggleDropdown()"
+                    type="button"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
+            <mat-checkbox formControlName="onewaydirectFlights">
+            Direct Flights
+            </mat-checkbox>
+          </div>
+          <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
+            <button
+            color="primary"
+            type="submit"
+            class="btn btn-primary btn-block w-100"
+            style="border-radius: 8px !important"
+          >
+            Search
+          </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Return Form -->
+    <div
+      class="tab-pane fade"
+      id="return"
+      role="tabpanel"
+      aria-labelledby="return-tab"
+    >
+      <form
+        [ngClass]="customClass"
+        [formGroup]="returnForm"
+        (ngSubmit)="onSubmitReturn()"
+        style="padding: 30px"
+      >
+        <div class="row mb-2">
+          <div class="col-12 col-md-6 col-lg-4">
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              style="width: 100%"
+              hideRequiredMarker="true"
+            >
+              <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+                <span class="material-symbols-outlined mr-2"
+                  >flight_takeoff</span
+                >
+                Origin
+              </mat-label>
+              <input
+                type="text"
+                matInput
+                [matAutocomplete]="departureAuto"
+                (input)="filterOptions($event, 'departure')"
+                style="font-size: 14px"
+                [formControlName]="'returndeparture'"
+              />
+              <mat-autocomplete #departureAuto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredDepartureOptions"
+                  [value]="option.name + ' - ' + option.code"
+                  (onSelectionChange)="selectOption(option.code, 'departure')"
+                  style="font-size: 14px"
+                >
+                  {{ option.name }} - {{ option.code }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              style="width: 100%"
+              hideRequiredMarker="true"
+            >
+              <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+                <span class="material-symbols-outlined mr-2">flight_land</span>
+                Destination
+              </mat-label>
+              <input
+                type="text"
+                matInput
+                [matAutocomplete]="destinationAuto"
+                (input)="filterOptions($event, 'destination')"
+                style="font-size: 14px"
+                [formControlName]="'returndestination'"
+              />
+              <mat-autocomplete #destinationAuto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredDestinationOptions"
+                  [value]="option.name + ' - ' + option.code"
+                  (onSelectionChange)="selectOption(option.code, 'destination')"
+                  style="font-size: 14px"
+                >
+                  {{ option.name }} - {{ option.code }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <mat-form-field appearance="outline" class="w-100" floatLabel="always" hideRequiredMarker="true"
+            #tooltip="matTooltip"
+            matTooltip="Higlighted Dates Requires Immediate Booking"
+            matTooltipHideDelay="100">
+              <mat-label
+                style="display: flex; flex-direction: row; align-items: center"
+              >
+              <span class="material-symbols-outlined mr-2">
+                calendar_month
+                </span>
+                From - To
+              </mat-label>
+              <mat-date-range-input [rangePicker]="pickerReturn" [min]="minDate">
+                <input matStartDate formControlName="returndepartureDate">
+                <input matEndDate formControlName="returnreturnDate"
+                >
+              </mat-date-range-input>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+              <mat-date-range-picker touchUi [dateClass]="dateClass" #pickerReturn ></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+          <div style="display: flex; flex-direction: row; gap: 50px">
+            <div class="warning" *ngIf="departureMatchesReturnDestination">
+              <mat-error style="font-size: 12px; margin-bottom: 12px"
+                >Departure and Destination cannot be the same!</mat-error
+              >
+            </div>
+            <div *ngIf="warningMessage" class="warning">
+              <mat-error style="font-size: 12px; margin-bottom: 12px">{{
+                warningMessage
+              }}</mat-error>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="traveller-container">
+              <div class="traveller-header">
+                <button
+                  class="traveller-button w-100 text-start"
+                  (click)="toggleDropdown()"
+                  type="button"
+                >
+                  {{ totalTravellers }} Traveller(s), {{ selectedClass }}
+                </button>
+              </div>
+              <div class="traveller-dropdown" *ngIf="isDropdownOpen">
+                <div
+                  class="traveller-options"
+                  style="display: flex; flex-direction: row"
+                >
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Adults</span>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('adult', returnForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        returnForm.get(["passengers", "adult"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('adult', returnForm)"
+                        [disabled]="returnForm.get(['passengers', 'adult'])?.value >= maxAdults"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column">
+                      <span>Child</span>
+                      <span style="font-size: 10px"> (2 > and <12)</span>
+                    </div>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('child', returnForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        returnForm.get(["passengers", "child"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('child', returnForm)"
+                        [disabled]="returnForm.get(['passengers', 'child'])?.value >= maxChildren"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column">
+                      <span>Infant</span>
+                      <span style="font-size: 10px"> (Below 2 YRS)</span>
+                    </div>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('infant', returnForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        returnForm.get(["passengers", "infant"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('infant', returnForm)"
+                        [disabled]="returnForm.get(['passengers', 'infant'])?.value >= maxInfants"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Student</span>
+                    <div class="traveller-count">
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="decrement('student', returnForm)"
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{{
+                        returnForm.get(["passengers", "student"])?.value
+                      }}</span>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="increment('student', returnForm)"
+                        [disabled]="returnForm.get(['passengers', 'student'])?.value >= maxStudents"
+                        type="button"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="class-options">
+                  <button
+                    class="class-button btn btn-outline-primary btn-sm"
+                    *ngFor="let cabinClass of cabinClasses"
+                    [class.active]="
+                      returnForm.get('selectedClass')?.value === cabinClass
+                    "
+                    (click)="selectClass(cabinClass, returnForm)"
+                    type="button"
+                  >
+                    {{ cabinClass }}
+                  </button>
+                </div>
+                <div class="done-button-container mt-2">
+                  <button
+                    class="btn btn-primary w-100"
+                    (click)="toggleDropdown()"
+                    type="button"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
+            <mat-checkbox formControlName="returndirectFlights">
+              Direct Flights
+            </mat-checkbox>
+          </div>
+          <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
+            <button
+            color="primary"
+            type="submit"
+            class="btn btn-primary btn-block w-100"
+            style="border-radius: 8px !important"
+          >
+            Search
+          </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

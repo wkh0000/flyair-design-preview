@@ -1,0 +1,122 @@
+$primary-color: #3f51b5; // Modern Indigo
+$text-main: #2d3436;
+$text-muted: #636e72;
+$border-color: #dfe6e9;
+$bg-light: #f8fafc;
+
+.profile-component {
+  background-color: $bg-light;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+
+  .profile-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    padding: 3rem;
+
+    .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 4rem;
+      row-gap: 2rem;
+
+      @media (max-width: 960px) {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-item {
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $text-main;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.025em;
+        }
+
+        mat-label {
+          display: block;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: $text-muted;
+          margin-bottom: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+      }
+
+      // Left column: Image & Key Fields
+      .image-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .image-box {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%; // Circular profile/logo looks more modern
+          border: 2px solid $bg-light;
+          background: #fff;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          img {
+            max-width: 80%;
+            height: auto;
+          }
+        }
+
+        .form-box {
+          width: 100%;
+        }
+      }
+
+      // Inputs Styling
+      mat-form-field {
+        width: 100%;
+        margin-bottom: 0.5rem;
+
+        // Custom focus color
+        &.mat-focused {
+          .mat-form-field-outline {
+            color: $primary-color !important;
+          }
+        }
+      }
+
+      .sub-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        .sub-column {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+// Clean up Material's default padding to keep it tight
+::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 0.75rem !important;
+    background-color: #fcfcfc;
+  }
+  .mat-form-field-infix {
+    padding: 0.8em 0 !important;
+  }
+}

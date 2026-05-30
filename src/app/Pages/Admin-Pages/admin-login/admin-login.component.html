@@ -1,0 +1,59 @@
+<div class="Container">
+  <div class="form-component" fxLayout="row">
+    <div class="login-container" fxLayoutAlign="center center">
+      <div class="login-form" fxLayoutAlign="center center">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h1 class="title">Login to Admin Panel</h1>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="email" formControlName="email" />
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+            />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Password must be at least 8 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <div class="checkBox mb-1 pl-2">
+            <mat-checkbox
+              color="primary"
+              class="example-margin"
+              color="primary"
+              (change)="showPassword = !showPassword"
+            >
+              Show Password
+            </mat-checkbox>
+          </div>
+          <button
+            mat-raised-button
+            type="submit"
+            class="mb-1 pt-3 pb-3"
+            [disabled]="loginForm.invalid"
+          >
+            SIGN IN
+          </button>
+          <div>
+            <p>Don't have an account?</p><a class="login-link" href="/admin-signup">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

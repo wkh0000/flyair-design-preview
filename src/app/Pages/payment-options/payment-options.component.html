@@ -1,0 +1,34 @@
+<div class="fly">
+  <section class="subhero">
+    <div class="orb"></div>
+    <div class="fly-container">
+      <div class="fly-eyebrow" style="color:#9fd0ff">PAYMENTS INFORMATION</div>
+      <h1>Payment Options</h1>
+      <p class="fly-lead">
+        Flexible, fee-friendly ways to pay for your travel — settle your fare by card,
+        by bank deposit, or in easy monthly instalments.
+      </p>
+    </div>
+  </section>
+
+  <section class="fly-section">
+    <div class="fly-container">
+      <p class="intro">Choose the payment method that suits you best.</p>
+
+      <div class="opt-grid">
+        <article class="opt-card" *ngFor="let o of options">
+          <div class="opt-icon">
+            <span class="material-symbols-outlined">{{ o.icon }}</span>
+          </div>
+          <span class="opt-tag">{{ o.tag }}</span>
+          <h3>{{ o.title }}</h3>
+          <p class="opt-desc">{{ o.desc }}</p>
+          <a class="opt-link" [routerLink]="o.link">
+            More info
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>

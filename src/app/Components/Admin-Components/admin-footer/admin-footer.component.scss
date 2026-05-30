@@ -1,0 +1,31 @@
+.afoot-wrap { padding: 24px 32px; max-width: 980px; }
+.afoot-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.afoot-head h2 { margin: 0; font-family: 'Exo', system-ui, sans-serif; font-weight: 800; font-size: 1.6rem; color: #0a1730; }
+.afoot-head .muted { margin: 4px 0 0; color: #6b7686; font-size: .9rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.afoot-head .badge { font-size: .7rem; padding: 3px 10px; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: #e8f5ed; color: #2d7a4d; }
+.afoot-head .badge.default { background: #f0f3f8; color: #6b7686; }
+
+.afoot-head .actions { display: flex; gap: 10px; }
+.afoot-head .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; font-weight: 600; font-size: .9rem; cursor: pointer; border: 1px solid transparent; }
+.afoot-head .btn.primary { background: #0073bd; color: #fff; }
+.afoot-head .btn.primary:hover:not(:disabled) { background: #005d99; }
+.afoot-head .btn.primary:disabled { opacity: .6; cursor: not-allowed; }
+.afoot-head .btn.ghost { background: #fff; color: #1f2b44; border-color: #e0e6ee; }
+.afoot-head .btn.ghost:hover { background: #f5f8fc; }
+.afoot-head .btn .material-symbols-outlined { font-size: 18px; }
+
+.afoot-body { display: flex; flex-direction: column; gap: 16px; }
+.card { background: #fff; border: 1px solid #e0e6ee; border-radius: 12px; padding: 22px 24px; }
+.card h3 { margin: 0 0 14px; font-family: 'Exo', system-ui, sans-serif; font-weight: 800; color: #0a1730; font-size: 1.05rem; }
+.card .hint { color: #6b7686; font-size: .85rem; margin: -8px 0 12px; }
+.card .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .card .row2 { grid-template-columns: 1fr; } }
+.card .field { display: block; margin-bottom: 12px; }
+.card .field:last-child { margin-bottom: 0; }
+.card .field span { display: block; font-size: .78rem; font-weight: 700; color: #1f2b44; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; }
+.card .field input, .card .field textarea { width: 100%; padding: 10px 14px; border: 1px solid #e0e6ee; border-radius: 8px; font-size: .92rem; font-family: inherit; resize: vertical; }
+.card .field input:focus, .card .field textarea:focus { outline: none; border-color: #0073bd; box-shadow: 0 0 0 3px rgba(0,115,189,.12); }
+
+.msg { padding: 10px 14px; border-radius: 8px; font-size: .9rem; margin: 0; }
+.msg.ok { background: #e8f5ed; color: #2d7a4d; }
+.msg.err { background: #fef0f3; color: #b3193c; }

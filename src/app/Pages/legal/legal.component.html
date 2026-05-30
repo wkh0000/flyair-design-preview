@@ -1,0 +1,30 @@
+<div class="fly" *ngIf="doc">
+  <section class="subhero">
+    <div class="orb"></div>
+    <div class="fly-container">
+      <div class="fly-eyebrow" style="color:#9fd0ff">{{ doc.eyebrow }}</div>
+      <h1>{{ doc.title }}</h1>
+      <p class="fly-lead">{{ doc.intro }}</p>
+      <p class="upd" *ngIf="doc.updated">Last updated: {{ doc.updated }}</p>
+    </div>
+  </section>
+
+  <figure class="hero-image" *ngIf="doc.heroImage">
+    <img [src]="doc.heroImage" [alt]="doc.heroImageAlt || ''" loading="lazy" />
+  </figure>
+
+  <section class="fly-section">
+    <div class="fly-container body">
+      <div class="sec" *ngFor="let s of doc.sections; let i = index">
+        <h3>{{ i + 1 }}. {{ s.h }}</h3>
+        <p>{{ s.p }}</p>
+      </div>
+
+      <div class="links" *ngIf="doc.legalLinks">
+        <a routerLink="/privacy" [class.active]="page==='privacy'">Privacy</a>
+        <a routerLink="/terms" [class.active]="page==='terms'">Terms</a>
+        <a routerLink="/cookies" [class.active]="page==='cookies'">Cookies</a>
+      </div>
+    </div>
+  </section>
+</div>

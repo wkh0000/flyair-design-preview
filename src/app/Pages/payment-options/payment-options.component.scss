@@ -1,0 +1,65 @@
+/* ---- Sub-hero ---- */
+.subhero{
+  background: var(--fly-navy-grad); color:#fff; position:relative; overflow:hidden;
+  padding: calc(var(--fly-header-h) + 54px) 0 56px;
+}
+.subhero .orb{ position:absolute; right:-80px; top:-60px; width:340px; height:340px; border-radius:50%;
+  background: radial-gradient(circle, rgba(0,115,189,.55), transparent 70%); filter: blur(20px); }
+.subhero h1{ color:#fff; margin-top:12px; font-family:var(--fly-display); font-weight:800; }
+.subhero .fly-lead{ color: rgba(255,255,255,.82); max-width:620px; margin-top:14px; }
+
+/* ---- Intro line ---- */
+.intro{
+  text-align:center; color: var(--fly-ink2); font-size:1.12rem; font-weight:300;
+  max-width:640px; margin:0 auto 48px;
+}
+
+/* ---- Option cards ---- */
+.opt-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:28px;
+}
+
+.opt-card{
+  background:#fff; border:1px solid var(--fly-line); border-radius: var(--fly-radius-lg);
+  box-shadow: var(--fly-shadow-sm); padding:38px 32px 34px;
+  display:flex; flex-direction:column;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.opt-card:hover{
+  transform: translateY(-6px); box-shadow: var(--fly-shadow-lg); border-color: var(--fly-blue100);
+}
+
+.opt-icon{
+  width:68px; height:68px; border-radius:50%;
+  background: var(--fly-blue50); color: var(--fly-blue);
+  display:grid; place-items:center; margin-bottom:22px;
+  transition: background .3s ease;
+}
+.opt-card:hover .opt-icon{ background: var(--fly-blue100); }
+.opt-icon .material-symbols-outlined{ font-size:34px; }
+
+.opt-tag{
+  font-size:.74rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color: var(--fly-blue); margin-bottom:8px;
+}
+.opt-card h3{
+  font-family: var(--fly-display); font-weight:800; font-size:1.32rem;
+  color: var(--fly-ink); margin:0 0 12px;
+}
+.opt-desc{
+  color: var(--fly-ink2); font-size:.97rem; line-height:1.6; margin:0 0 24px; flex:1 1 auto;
+}
+
+.opt-link{
+  display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
+  color: var(--fly-blue); font-weight:700; font-size:.95rem; text-decoration:none;
+  transition: gap .2s ease, color .2s ease;
+}
+.opt-link .material-symbols-outlined{ font-size:20px; transition: transform .2s ease; }
+.opt-link:hover{ color: var(--fly-blue700); }
+.opt-link:hover .material-symbols-outlined{ transform: translateX(4px); }
+
+/* ---- Responsive ---- */
+@media (max-width: 960px){
+  .opt-grid{ grid-template-columns: 1fr; max-width:480px; margin-inline:auto; }
+}

@@ -1,0 +1,2922 @@
+[
+  {
+    "name": "Addis Ababa Bole Intl Arpt, Addis Ababa, Ethiopia",
+    "code": "ADD"
+  },
+  {
+    "name": "Algiers Houari Boumediene Arpt, Algiers, Algeria",
+    "code": "ALG"
+  },
+  {
+    "name": "Auckland Intl Arpt, Auckland, New Zealand",
+    "code": "AKL"
+  },
+  {
+    "name": "Baku Heydar Aliyev Intl Arpt, Baku, Azerbaijan",
+    "code": "GYD"
+  },
+  {
+    "name": "Barcelona El Prat Arpt, Barcelona, Spain",
+    "code": "BCN"
+  },
+  {
+    "name": "Beijing Daxing Intl Arpt, Beijing, China",
+    "code": "PKX"
+  },
+  {
+    "name": "Brussels Zaventem Arpt, Brussels, Belgium",
+    "code": "BRU"
+  },
+  {
+    "name": "Budapest Ferenc Liszt Intl Arpt, Budapest, Hungary",
+    "code": "BUD"
+  },
+  {
+    "name": "Cancún Intl Arpt, Cancún, Mexico",
+    "code": "CUN"
+  },
+  {
+    "name": "Casablanca Mohammed V Intl Arpt, Casablanca, Morocco",
+    "code": "CMN"
+  },
+  {
+    "name": "Chennai Intl Arpt, Chennai, India",
+    "code": "MAA"
+  },
+  {
+    "name": "Dallas/Fort Worth Intl Arpt, Dallas, USA",
+    "code": "DFW"
+  },
+  {
+    "name": "Denver Intl Arpt, Denver, USA",
+    "code": "DEN"
+  },
+  {
+    "name": "Dublin Intl Arpt, Dublin, Ireland",
+    "code": "DUB"
+  },
+  {
+    "name": "Edinburgh Arpt, Edinburgh, UK",
+    "code": "EDI"
+  },
+  {
+    "name": "Guangzhou Baiyun Intl Arpt, Guangzhou, China",
+    "code": "CAN"
+  },
+  {
+    "name": "Hanoi Noi Bai Intl Arpt, Hanoi, Vietnam",
+    "code": "HAN"
+  },
+  {
+    "name": "Ho Chi Minh City Tan Son Nhat Intl Arpt, Ho Chi Minh City, Vietnam",
+    "code": "SGN"
+  },
+  {
+    "name": "Houston George Bush Intercontinental Arpt, Houston, USA",
+    "code": "IAH"
+  },
+  {
+    "name": "Kolkata Netaji Subhash Chandra Bose Intl Arpt, Kolkata, India",
+    "code": "CCU"
+  },
+  {
+    "name": "Kuwait Intl Arpt, Kuwait City, Kuwait",
+    "code": "KWI"
+  },
+  {
+    "name": "Lahore Allama Iqbal Intl Arpt, Lahore, Pakistan",
+    "code": "LHE"
+  },
+  {
+    "name": "Lyon-Saint Exupéry Arpt, Lyon, France",
+    "code": "LYS"
+  },
+  {
+    "name": "Manchester Arpt, Manchester, UK",
+    "code": "MAN"
+  },
+  {
+    "name": "Miami Intl Arpt, Miami, USA",
+    "code": "MIA"
+  },
+  {
+    "name": "Milan Malpensa Arpt, Milan, Italy",
+    "code": "MXP"
+  },
+  {
+    "name": "Montréal-Pierre Elliott Trudeau Intl Arpt, Montreal, Canada",
+    "code": "YUL"
+  },
+  {
+    "name": "Moscow Domodedovo Intl Arpt, Moscow, Russia",
+    "code": "DME"
+  },
+  {
+    "name": "Oslo Gardermoen Arpt, Oslo, Norway",
+    "code": "OSL"
+  },
+  {
+    "name": "Phnom Penh Intl Arpt, Phnom Penh, Cambodia",
+    "code": "PNH"
+  },
+  {
+    "name": "Prague Václav Havel Arpt, Prague, Czech Republic",
+    "code": "PRG"
+  },
+  {
+    "name": "Reykjavik Keflavik Intl Arpt, Reykjavik, Iceland",
+    "code": "KEF"
+  },
+  {
+    "name": "Rio de Janeiro Galeão Intl Arpt, Rio de Janeiro, Brazil",
+    "code": "GIG"
+  },
+  {
+    "name": "Riyadh King Khalid Intl Arpt, Riyadh, Saudi Arabia",
+    "code": "RUH"
+  },
+  {
+    "name": "Seattle-Tacoma Intl Arpt, Seattle, USA",
+    "code": "SEA"
+  },
+  {
+    "name": "Shanghai Pudong Intl Arpt, Shanghai, China",
+    "code": "PVG"
+  },
+  {
+    "name": "Shenzhen Baoan Intl Arpt, Shenzhen, China",
+    "code": "SZX"
+  },
+  {
+    "name": "Stuttgart Arpt, Stuttgart, Germany",
+    "code": "STR"
+  },
+  {
+    "name": "Taiwan Taoyuan Intl Arpt, Taipei, Taiwan",
+    "code": "TPE"
+  },
+  {
+    "name": "Tashkent Intl Arpt, Tashkent, Uzbekistan",
+    "code": "TAS"
+  },
+  {
+    "name": "Tehran Imam Khomeini Intl Arpt, Tehran, Iran",
+    "code": "IKA"
+  },
+  {
+    "name": "Tel Aviv Ben Gurion Intl Arpt, Tel Aviv, Israel",
+    "code": "TLV"
+  },
+  {
+    "name": "Vancouver Intl Arpt, Vancouver, Canada",
+    "code": "YVR"
+  },
+  {
+    "name": "Venice Marco Polo Arpt, Venice, Italy",
+    "code": "VCE"
+  },
+  {
+    "name": "Warsaw Modlin Arpt, Warsaw, Poland",
+    "code": "WMI"
+  },
+  {
+    "name": "Wellington Intl Arpt, Wellington, New Zealand",
+    "code": "WLG"
+  },
+  {
+    "name": "Zurich Intl Arpt, Zurich, Switzerland",
+    "code": "ZRH"
+  },
+  {
+    "name": "Bandaranaike Intl Arpt, Colombo, Sri Lanka",
+    "code": "CMB"
+  },
+  {
+    "name": "Dubai Intl Arpt, Dubai, UAE",
+    "code": "DXB"
+  },
+  {
+    "name": "Heathrow Intl Arpt, London, UK",
+    "code": "LHR"
+  },
+  {
+    "name": "John F. Kennedy Intl Arpt, New York, USA",
+    "code": "JFK"
+  },
+  {
+    "name": "Chhatrapati Shivaji Intl Arpt, Mumbai, India",
+    "code": "BOM"
+  },
+  {
+    "name": "Haneda Intl Arpt, Tokyo, Japan",
+    "code": "HND"
+  },
+  {
+    "name": "Sydney Kingsford Smith Arpt, Sydney, Australia",
+    "code": "SYD"
+  },
+  {
+    "name": "Frankfurt Intl Arpt, Frankfurt, Germany",
+    "code": "FRA"
+  },
+  {
+    "name": "Melbourne Intl Arpt, Melbourne, Australia",
+    "code": "MEL"
+  },
+  {
+    "name": "Los Angeles Intl Arpt, Los Angeles, USA",
+    "code": "LAX"
+  },
+  {
+    "name": "O Hare Intl Arpt, Chicago, USA",
+    "code": "ORD"
+  },
+  {
+    "name": "Malé Intl Arpt, Malé, Maldives",
+    "code": "MLE"
+  },
+  {
+    "name": "Hong Kong Intl Arpt, Hong Kong",
+    "code": "HKG"
+  },
+  {
+    "name": "Singapore Changi Arpt, Singapore",
+    "code": "SIN"
+  },
+  {
+    "name": "Beijing Capital Intl Arpt, Beijing, China",
+    "code": "PEK"
+  },
+  {
+    "name": "Incheon Intl Arpt, Seoul, South Korea",
+    "code": "ICN"
+  },
+  {
+    "name": "Toronto Pearson Intl Arpt, Toronto, Canada",
+    "code": "YYZ"
+  },
+  {
+    "name": "Amsterdam Schiphol Arpt, Amsterdam, Netherlands",
+    "code": "AMS"
+  },
+  {
+    "name": "Paris Charles de Gaulle Arpt, Paris, France",
+    "code": "CDG"
+  },
+  {
+    "name": "Madrid Barajas Intl Arpt, Madrid, Spain",
+    "code": "MAD"
+  },
+  {
+    "name": "Soekarno-Hatta Intl Arpt, Jakarta, Indonesia",
+    "code": "CGK"
+  },
+  {
+    "name": "Doha Hamad Intl Arpt, Doha, Qatar",
+    "code": "DOH"
+  },
+  {
+    "name": "Zurich Intl Arpt, Zurich, Switzerland",
+    "code": "ZRH"
+  },
+  {
+    "name": "Kuala Lumpur Intl Arpt, Kuala Lumpur, Malaysia",
+    "code": "KUL"
+  },
+  {
+    "name": "Rome Fiumicino Intl Arpt, Rome, Italy",
+    "code": "FCO"
+  },
+  {
+    "name": "Cairo Intl Arpt, Cairo, Egypt",
+    "code": "CAI"
+  },
+  {
+    "name": "São Paulo-Guarulhos Intl Arpt, São Paulo, Brazil",
+    "code": "GRU"
+  },
+  {
+    "name": "Mexico City Intl Arpt, Mexico City, Mexico",
+    "code": "MEX"
+  },
+  {
+    "name": "Mumbai Chhatrapati Shivaji Intl Arpt, Mumbai, India",
+    "code": "BOM"
+  },
+  {
+    "name": "Bangkok Suvarnabhumi Arpt, Bangkok, Thailand",
+    "code": "BKK"
+  },
+  {
+    "name": "Istanbul Airport, Istanbul, Turkey",
+    "code": "IST"
+  },
+  {
+    "name": "Moscow Sheremetyevo Intl Arpt, Moscow, Russia",
+    "code": "SVO"
+  },
+  {
+    "name": "Dubai World Central, Dubai, UAE",
+    "code": "DWC"
+  },
+  {
+    "name": "San Francisco Intl Arpt, San Francisco, USA",
+    "code": "SFO"
+  },
+  {
+    "name": "Seoul Gimpo Intl Arpt, Seoul, South Korea",
+    "code": "GMP"
+  },
+  {
+    "name": "Jeddah King Abdulaziz Intl Arpt, Jeddah, Saudi Arabia",
+    "code": "JED"
+  },
+  {
+    "name": "Dubai Al Maktoum Intl Arpt, Dubai, UAE",
+    "code": "DWC"
+  },
+  {
+    "name": "Jakarta Halim Perdanakusuma Intl Arpt, Jakarta, Indonesia",
+    "code": "HLP"
+  },
+  {
+    "name": "Nairobi Jomo Kenyatta Intl Arpt, Nairobi, Kenya",
+    "code": "NBO"
+  },
+  {
+    "name": "Cape Town Intl Arpt, Cape Town, South Africa",
+    "code": "CPT"
+  },
+  {
+    "name": "Lagos Murtala Muhammed Intl Arpt, Lagos, Nigeria",
+    "code": "LOS"
+  },
+  {
+    "name": "Buenos Aires Ministro Pistarini Intl Arpt, Buenos Aires, Argentina",
+    "code": "EZE"
+  },
+  {
+    "name": "São Paulo Congonhas Arpt, São Paulo, Brazil",
+    "code": "CGH"
+  },
+  {
+    "name": "Kigali Intl Arpt, Kigali, Rwanda",
+    "code": "KGL"
+  },
+  {
+    "name": "Lima Jorge Chávez Intl Arpt, Lima, Peru",
+    "code": "LIM"
+  },
+  {
+    "name": "Cairo Intl Arpt, Cairo, Egypt",
+    "code": "CAI"
+  },
+  {
+    "name": "King Khalid Intl Arpt, Riyadh, Saudi Arabia",
+    "code": "RUH"
+  },
+  {
+    "name": "Sharjah Intl Arpt, Sharjah, UAE",
+    "code": "SHJ"
+  },
+  {
+    "name": "Munich Intl Arpt, Munich, Germany",
+    "code": "MUC"
+  },
+  {
+    "name": "Tegel Intl Arpt, Berlin, Germany",
+    "code": "TXL"
+  },
+  {
+    "name": "Los Angeles Long Beach Arpt, Los Angeles, USA",
+    "code": "LGB"
+  },
+  {
+    "name": "Chengdu Shuangliu Intl Arpt, Chengdu, China",
+    "code": "CTU"
+  },
+  {
+    "name": "Wuhan Tianhe Intl Arpt, Wuhan, China",
+    "code": "WUH"
+  },
+  {
+    "name": "Delhi Indira Gandhi Intl Arpt, Delhi, India",
+    "code": "DEL"
+  },
+  {
+    "name": "Dusseldorf Intl Arpt, Dusseldorf, Germany",
+    "code": "DUS"
+  },
+  {
+    "name": "Vienna Intl Arpt, Vienna, Austria",
+    "code": "VIE"
+  },
+  {
+    "name": "Copenhagen Kastrup Intl Arpt, Copenhagen, Denmark",
+    "code": "CPH"
+  },
+  {
+    "name": "Bangladesh Shahjalal Intl Arpt, Dhaka, Bangladesh",
+    "code": "DAC"
+  },
+  {
+    "name": "Porto Alegre Salgado Filho Intl Arpt, Porto Alegre, Brazil",
+    "code": "POA"
+  },
+  {
+    "name": "São Paulo Viracopos Intl Arpt, São Paulo, Brazil",
+    "code": "VCP"
+  },
+  {
+    "name": "Geneva Intl Arpt, Geneva, Switzerland",
+    "code": "GVA"
+  },
+  {
+    "name": "Lagos Murtala Muhammed Intl Arpt, Lagos, Nigeria",
+    "code": "LOS"
+  },
+  {
+    "name": "Athens Eleftherios Venizelos Intl Arpt, Athens, Greece",
+    "code": "ATH"
+  },
+  {
+    "name": "Bangkok Don Mueang Intl Arpt, Bangkok, Thailand",
+    "code": "DMK"
+  },
+  {
+    "name": "Gatwick Intl Arpt, London, UK",
+    "code": "LGW"
+  },
+  {
+    "name": "Bucharest Henri Coandă Intl Arpt, Bucharest, Romania",
+    "code": "OTP"
+  },
+  {
+    "name": "Warsaw Chopin Intl Arpt, Warsaw, Poland",
+    "code": "WAW"
+  },
+  {
+    "name": "Helsinki-Vantaa Intl Arpt, Helsinki, Finland",
+    "code": "HEL"
+  },
+  {
+    "name": "Lisbon Humberto Delgado Intl Arpt, Lisbon, Portugal",
+    "code": "LIS"
+  },
+  {
+    "name": "Abu Dhabi Intl Arpt, Abu Dhabi, UAE",
+    "code": "AUH"
+  },
+  {
+    "name": "Seoul Incheon Intl Arpt, Seoul, South Korea",
+    "code": "ICN"
+  },
+  {
+    "name": "Manila Ninoy Aquino Intl Arpt, Manila, Philippines",
+    "code": "MNL"
+  },
+  {
+    "name": "Santiago Arturo Merino Benitez Intl Arpt, Santiago, Chile",
+    "code": "SCL"
+  },
+  {
+    "name": "JFK International Arpt, New York, USA",
+    "code": "JFK"
+  },
+  {
+    "name": "Chicago Midway Intl Arpt, Chicago, USA",
+    "code": "MDW"
+  },
+  {
+    "name": "Newark Liberty Intl Arpt, Newark, USA",
+    "code": "EWR"
+  },
+  {
+    "name": "Madrid Adolfo Suárez Barajas Intl Arpt, Madrid, Spain",
+    "code": "MAD"
+  },
+  {
+    "name": "Vienna Schwechat Intl Arpt, Vienna, Austria",
+    "code": "VIE"
+  },
+  {
+    "name": "Kigali International Arpt, Kigali, Rwanda",
+    "code": "KGL"
+  },
+  {
+    "name": "Los Angeles Ontario Intl Arpt, Ontario, USA",
+    "code": "ONT"
+  },
+  {
+    "name": "Stockholm Arlanda Intl Arpt, Stockholm, Sweden",
+    "code": "ARN"
+  },
+  {
+    "name": "Tokyo Narita Intl Arpt, Tokyo, Japan",
+    "code": "NRT"
+  },
+  {
+    "name": "Singapore Changi Arpt, Singapore",
+    "code": "SIN"
+  },
+  {
+    "name": "San Salvador Intl Arpt, San Salvador, El Salvador",
+    "code": "SAL"
+  },
+  {
+    "name": "Medellín José María Córdova Intl Arpt, Medellín, Colombia",
+    "code": "MDE"
+  },
+  {
+    "name": "Johannesburg OR Tambo Intl Arpt, Johannesburg, South Africa",
+    "code": "JNB"
+  },
+  {
+    "name": "Kingston Norman Manley Intl Arpt, Kingston, Jamaica",
+    "code": "KIN"
+  },
+  {
+    "name": "Accra Kotoka Intl Arpt, Accra, Ghana",
+    "code": "ACC"
+  },
+  {
+    "name": "Caracas Simón Bolívar Intl Arpt, Caracas, Venezuela",
+    "code": "CCS"
+  },
+  {
+    "name": "Lagos Murtala Muhammed Intl Arpt, Lagos, Nigeria",
+    "code": "LOS"
+  },
+  {
+    "name": "New Delhi Indira Gandhi Intl Arpt, New Delhi, India",
+    "code": "DEL"
+  },
+  {
+    "name": "Athens Eleftherios Venizelos Intl Arpt, Athens, Greece",
+    "code": "ATH"
+  },
+  {
+    "name": "Berlin Brandenburg Arpt, Berlin, Germany",
+    "code": "BER"
+  },
+  {
+    "name": "Amman Queen Alia Intl Arpt, Amman, Jordan",
+    "code": "AMM"
+  },
+  {
+    "name": "Antalya Intl Arpt, Antalya, Turkey",
+    "code": "AYT"
+  },
+  {
+    "name": "Cape Town Intl Arpt, Cape Town, South Africa",
+    "code": "CPT"
+  },
+  {
+    "name": "Adelaide Airport, Adelaide, Australia",
+    "code": "ADL"
+  },
+  {
+    "name": "Almaty International Airport, Almaty, Kazakhstan",
+    "code": "ALA"
+  },
+  {
+    "name": "Asunción Silvio Pettirossi International Airport, Asunción, Paraguay",
+    "code": "ASU"
+  },
+  {
+    "name": "Birmingham Airport, Birmingham, UK",
+    "code": "BHX"
+  },
+  {
+    "name": "Brisbane Airport, Brisbane, Australia",
+    "code": "BNE"
+  },
+  {
+    "name": "Calgary International Airport, Calgary, Canada",
+    "code": "YYC"
+  },
+  {
+    "name": "Christchurch International Airport, Christchurch, New Zealand",
+    "code": "CHC"
+  },
+  {
+    "name": "Cologne Bonn Airport, Cologne, Germany",
+    "code": "CGN"
+  },
+  {
+    "name": "Dallas Love Field, Dallas, USA",
+    "code": "DAL"
+  },
+  {
+    "name": "Dar es Salaam Julius Nyerere International Airport, Dar es Salaam, Tanzania",
+    "code": "DAR"
+  },
+  {
+    "name": "Edmonton International Airport, Edmonton, Canada",
+    "code": "YEG"
+  },
+  {
+    "name": "Fukuoka Airport, Fukuoka, Japan",
+    "code": "FUK"
+  },
+  {
+    "name": "Guatemala City La Aurora International Airport, Guatemala City, Guatemala",
+    "code": "GUA"
+  },
+  {
+    "name": "Hamburg Airport, Hamburg, Germany",
+    "code": "HAM"
+  },
+  {
+    "name": "Hobart International Airport, Hobart, Australia",
+    "code": "HBA"
+  },
+  {
+    "name": "Honolulu Daniel K. Inouye International Airport, Honolulu, USA",
+    "code": "HNL"
+  },
+  {
+    "name": "Kathmandu Tribhuvan International Airport, Kathmandu, Nepal",
+    "code": "KTM"
+  },
+  {
+    "name": "Kraków John Paul II International Airport, Kraków, Poland",
+    "code": "KRK"
+  },
+  {
+    "name": "King Fahd International Airport, Dammam, Saudi Arabia",
+    "code": "DMM"
+  },
+  {
+    "name": "Luanda Quatro de Fevereiro Airport, Luanda, Angola",
+    "code": "LAD"
+  },
+  {
+    "name": "Luxembourg Airport, Luxembourg",
+    "code": "LUX"
+  },
+  {
+    "name": "Marrakech Menara Airport, Marrakech, Morocco",
+    "code": "RAK"
+  },
+  {
+    "name": "Marseille Provence Airport, Marseille, France",
+    "code": "MRS"
+  },
+  {
+    "name": "Medina Prince Mohammad bin Abdulaziz Airport, Medina, Saudi Arabia",
+    "code": "MED"
+  },
+  {
+    "name": "Montevideo Carrasco International Airport, Montevideo, Uruguay",
+    "code": "MVD"
+  },
+  {
+    "name": "Muscat International Airport, Muscat, Oman",
+    "code": "MCT"
+  },
+  {
+    "name": "Nadi International Airport, Nadi, Fiji",
+    "code": "NAN"
+  },
+  {
+    "name": "NassauLynden Pindling International Airport, Nassau, Bahamas",
+    "code": "NAS"
+  },
+  {
+    "name": "Nice Côte dAzur Airport, Nice, France",
+    "code": "NCE"
+  },
+  {
+    "name": "Osaka Kansai International Airport, Osaka, Japan",
+    "code": "KIX"
+  },
+  {
+    "name": "Ottawa Macdonald-Cartier International Airport, Ottawa, Canada",
+    "code": "YOW"
+  },
+  {
+    "name": "Palermo Falcone-Borsellino Airport, Palermo, Italy",
+    "code": "PMO"
+  },
+  {
+    "name": "Panama City Tocumen International Airport, Panama City, Panama",
+    "code": "PTY"
+  },
+  {
+    "name": "Perth Airport, Perth, Australia",
+    "code": "PER"
+  },
+  {
+    "name": "Port Louis Sir Seewoosagur Ramgoolam International Airport, Port Louis, Mauritius",
+    "code": "MRU"
+  },
+  {
+    "name": "Port Moresby Jacksons International Airport, Port Moresby, Papua New Guinea",
+    "code": "POM"
+  },
+  {
+    "name": "Quito Mariscal Sucre International Airport, Quito, Ecuador",
+    "code": "UIO"
+  },
+  {
+    "name": "Riga International Airport, Riga, Latvia",
+    "code": "RIX"
+  },
+  {
+    "name": "Salt Lake City International Airport, Salt Lake City, USA",
+    "code": "SLC"
+  },
+  {
+    "name": "San Diego International Airport, San Diego, USA",
+    "code": "SAN"
+  },
+  {
+    "name": "Santorini (Thira) International Airport, Santorini, Greece",
+    "code": "JTR"
+  },
+  {
+    "name": "Sapporo New Chitose Airport, Sapporo, Japan",
+    "code": "CTS"
+  },
+  {
+    "name": "Seville San Pablo Airport, Seville, Spain",
+    "code": "SVQ"
+  },
+  {
+    "name": "St. Louis Lambert International Airport, St. Louis, USA",
+    "code": "STL"
+  },
+  {
+    "name": "Tallinn Airport, Tallinn, Estonia",
+    "code": "TLL"
+  },
+  {
+    "name": "Tbilisi International Airport, Tbilisi, Georgia",
+    "code": "TBS"
+  },
+  {
+    "name": "Tirana International Airport, Tirana, Albania",
+    "code": "TIA"
+  },
+  {
+    "name": "Valencia Airport, Valencia, Spain",
+    "code": "VLC"
+  },
+  {
+    "name": "Vilnius International Airport, Vilnius, Lithuania",
+    "code": "VNO"
+  },
+  {
+    "name": "Hamid Karzai International Airport, Kabul, Afghanistan",
+    "code": "KBL"
+  },
+  {
+    "name": "Zvartnots International Airport, Yerevan, Armenia",
+    "code": "EVN"
+  },
+  {
+    "name": "Bahrain International Airport, Manama, Bahrain",
+    "code": "BAH"
+  },
+  {
+    "name": "Minsk National Airport, Minsk, Belarus",
+    "code": "MSQ"
+  },
+  {
+    "name": "Viru Viru International Airport, Santa Cruz, Bolivia",
+    "code": "VVI"
+  },
+  {
+    "name": "Sir Seretse Khama International Airport, Gaborone, Botswana",
+    "code": "GBE"
+  },
+  {
+    "name": "Ouagadougou Airport, Ouagadougou, Burkina Faso",
+    "code": "OUA"
+  },
+  {
+    "name": "Bujumbura International Airport, Bujumbura, Burundi",
+    "code": "BJM"
+  },
+  {
+    "name": "Bangui M\"Poko International Airport, Bangui, Central African Republic",
+    "code": "BGF"
+  },
+  {
+    "name": "N\"Djamena International Airport, N\"Djamena, Chad",
+    "code": "NDJ"
+  },
+  {
+    "name": "Maya-Maya Airport, Brazzaville, Republic of the Congo",
+    "code": "BZV"
+  },
+  {
+    "name": "Juan Santamaría International Airport, San José, Costa Rica",
+    "code": "SJO"
+  },
+  {
+    "name": "José Martí International Airport, Havana, Cuba",
+    "code": "HAV"
+  },
+  {
+    "name": "Larnaca International Airport, Larnaca, Cyprus",
+    "code": "LCA"
+  },
+  {
+    "name": "Djibouti–Ambouli International Airport, Djibouti",
+    "code": "JIB"
+  },
+  {
+    "name": "Las Américas International Airport, Santo Domingo, Dominican Republic",
+    "code": "SDQ"
+  },
+  {
+    "name": "Mariscal Sucre International Airport, Quito, Ecuador",
+    "code": "UIO"
+  },
+  {
+    "name": "Asmara International Airport, Asmara, Eritrea",
+    "code": "ASM"
+  },
+  {
+    "name": "King Mswati III International Airport, Manzini, Eswatini",
+    "code": "SHO"
+  },
+  {
+    "name": "Nadi International Airport, Nadi, Fiji",
+    "code": "NAN"
+  },
+  {
+    "name": "Léon-Mba International Airport, Libreville, Gabon",
+    "code": "LBV"
+  },
+  {
+    "name": "La Aurora International Airport, Guatemala City, Guatemala",
+    "code": "GUA"
+  },
+  {
+    "name": "Conakry International Airport, Conakry, Guinea",
+    "code": "CKY"
+  },
+  {
+    "name": "Ramón Villeda Morales International Airport, San Pedro Sula, Honduras",
+    "code": "SAP"
+  },
+  {
+    "name": "Baghdad International Airport, Baghdad, Iraq",
+    "code": "BGW"
+  },
+  {
+    "name": "Nursultan Nazarbayev International Airport, Nur-Sultan, Kazakhstan",
+    "code": "NQZ"
+  },
+  {
+    "name": "Manas International Airport, Bishkek, Kyrgyzstan",
+    "code": "FRU"
+  },
+  {
+    "name": "Wattay International Airport, Vientiane, Laos",
+    "code": "VTE"
+  },
+  {
+    "name": "Beirut–Rafic Hariri International Airport, Beirut, Lebanon",
+    "code": "BEY"
+  },
+  {
+    "name": "Roberts International Airport, Monrovia, Liberia",
+    "code": "ROB"
+  },
+  {
+    "name": "Tripoli International Airport, Tripoli, Libya",
+    "code": "TIP"
+  },
+  {
+    "name": "Vilnius International Airport, Vilnius, Lithuania",
+    "code": "VNO"
+  },
+  {
+    "name": "Luxembourg Airport, Luxembourg City, Luxembourg",
+    "code": "LUX"
+  },
+  {
+    "name": "Ivato International Airport, Antananarivo, Madagascar",
+    "code": "TNR"
+  },
+  {
+    "name": "Lilongwe International Airport, Lilongwe, Malawi",
+    "code": "LLW"
+  },
+  {
+    "name": "Modibo Keita International Airport, Bamako, Mali",
+    "code": "BKO"
+  },
+  {
+    "name": "Malta International Airport, Luqa, Malta",
+    "code": "MLA"
+  },
+  {
+    "name": "Nouakchott–Oumtounsy International Airport, Nouakchott, Mauritania",
+    "code": "NKC"
+  },
+  {
+    "name": "Sir Seewoosagur Ramgoolam International Airport, Port Louis, Mauritius",
+    "code": "MRU"
+  },
+  {
+    "name": "Chișinău International Airport, Chișinău, Moldova",
+    "code": "KIV"
+  },
+  {
+    "name": "Chinggis Khaan International Airport, Ulaanbaatar, Mongolia",
+    "code": "UBN"
+  },
+  {
+    "name": "Podgorica Airport, Podgorica, Montenegro",
+    "code": "TGD"
+  },
+  {
+    "name": "Maputo International Airport, Maputo, Mozambique",
+    "code": "MPM"
+  },
+  {
+    "name": "Yangon International Airport, Yangon, Myanmar",
+    "code": "RGN"
+  },
+  {
+    "name": "Hosea Kutako International Airport, Windhoek, Namibia",
+    "code": "WDH"
+  },
+  {
+    "name": "Tribhuvan International Airport, Kathmandu, Nepal",
+    "code": "KTM"
+  },
+  {
+    "name": "Augusto C. Sandino International Airport, Managua, Nicaragua",
+    "code": "MGA"
+  },
+  {
+    "name": "Diori Hamani International Airport, Niamey, Niger",
+    "code": "NIM"
+  },
+  {
+    "name": "Roman Tmetuchl International Airport, Koror, Palau",
+    "code": "ROR"
+  },
+  {
+    "name": "Tocumen International Airport, Panama City, Panama",
+    "code": "PTY"
+  },
+  {
+    "name": "Silvio Pettirossi International Airport, Asunción, Paraguay",
+    "code": "ASU"
+  },
+  {
+    "name": "Kigali International Airport, Kigali, Rwanda",
+    "code": "KGL"
+  },
+  {
+    "name": "Blaise Diagne International Airport, Dakar, Senegal",
+    "code": "DSS"
+  },
+  {
+    "name": "Belgrade Nikola Tesla Airport, Belgrade, Serbia",
+    "code": "BEG"
+  },
+  {
+    "name": "M. R. Štefánik Airport, Bratislava, Slovakia",
+    "code": "BTS"
+  },
+  {
+    "name": "Ljubljana Jože Pučnik Airport, Ljubljana, Slovenia",
+    "code": "LJU"
+  },
+  {
+    "name": "Khartoum International Airport, Khartoum, Sudan",
+    "code": "KRT"
+  },
+  {
+    "name": "Damascus International Airport, Damascus, Syria",
+    "code": "DAM"
+  },
+  {
+    "name": "Julius Nyerere International Airport, Dar es Salaam, Tanzania",
+    "code": "DAR"
+  },
+  {
+    "name": "Lomé–Tokoin International Airport, Lomé, Togo",
+    "code": "LFW"
+  },
+  {
+    "name": "Piarco International Airport, Port of Spain, Trinidad and Tobago",
+    "code": "POS"
+  },
+  {
+    "name": "Tunis–Carthage International Airport, Tunis, Tunisia",
+    "code": "TUN"
+  },
+  {
+    "name": "Ashgabat International Airport, Ashgabat, Turkmenistan",
+    "code": "ASB"
+  },
+  {
+    "name": "Entebbe International Airport, Entebbe, Uganda",
+    "code": "EBB"
+  },
+  {
+    "name": "Kunming Changshui International Airport, Kunming, China",
+    "code": "KMG"
+  },
+  {
+    "name": "Carrasco International Airport, Montevideo, Uruguay",
+    "code": "MVD"
+  },
+  {
+    "name": "Kenneth Kaunda International Airport, Lusaka, Zambia",
+    "code": "LUN"
+  },
+  {
+    "name": "Robert Gabriel Mugabe International Airport, Harare, Zimbabwe",
+    "code": "HRE"
+  },
+  {
+    "name": "Honiara International Airport, Honiara, Solomon Islands",
+    "code": "HIR"
+  },
+  {
+    "name": "Port Moresby Jacksons International Airport, Port Moresby, Papua New Guinea",
+    "code": "POM"
+  },
+  {
+    "name": "Keflavik International Airport, Reykjavik, Iceland",
+    "code": "KEF"
+  },
+  {
+    "name": "Edmonton International Airport, Edmonton, Canada",
+    "code": "YEG"
+  },
+  {
+    "name": "Halifax / Stanfield International Airport, Halifax, Canada",
+    "code": "YHZ"
+  },
+  {
+    "name": "Ottawa Macdonald-Cartier International Airport, Ottawa, Canada",
+    "code": "YOW"
+  },
+  {
+    "name": "Quebec Jean Lesage International Airport, Quebec, Canada",
+    "code": "YQB"
+  },
+  {
+    "name": "Montreal / Pierre Elliott Trudeau International Airport, Montreal, Canada",
+    "code": "YUL"
+  },
+  {
+    "name": "Vancouver International Airport, Vancouver, Canada",
+    "code": "YVR"
+  },
+  {
+    "name": "Winnipeg / James Armstrong Richardson International Airport, Winnipeg, Canada",
+    "code": "YWG"
+  },
+  {
+    "name": "Calgary International Airport, Calgary, Canada",
+    "code": "YYC"
+  },
+  {
+    "name": "St. John's International Airport, St. John's, Canada",
+    "code": "YYT"
+  },
+  {
+    "name": "Toronto Lester B. Pearson International Airport, Toronto, Canada",
+    "code": "YYZ"
+  },
+  {
+    "name": "Kotoka International Airport, Accra, Ghana",
+    "code": "ACC"
+  },
+  {
+    "name": "Nnamdi Azikiwe International Airport, Abuja, Nigeria",
+    "code": "ABV"
+  },
+  {
+    "name": "Murtala Muhammed International Airport, Lagos, Nigeria",
+    "code": "LOS"
+  },
+  {
+    "name": "Diori Hamani International Airport, Niamey, Niger",
+    "code": "NIM"
+  },
+  {
+    "name": "Tunis Carthage International Airport, Tunis, Tunisia",
+    "code": "TUN"
+  },
+  {
+    "name": "Frankfurt Airport, Frankfurt, Germany",
+    "code": "FRA"
+  },
+  {
+    "name": "Hamburg Helmut Schmidt Airport, Hamburg, Germany",
+    "code": "HAM"
+  },
+  {
+    "name": "Cologne Bonn Airport, Cologne, Germany",
+    "code": "CGN"
+  },
+  {
+    "name": "Düsseldorf Airport, Düsseldorf, Germany",
+    "code": "DUS"
+  },
+  {
+    "name": "Munich Airport, Munich, Germany",
+    "code": "MUC"
+  },
+  {
+    "name": "Nuremberg Airport, Nuremberg, Germany",
+    "code": "NUE"
+  },
+  {
+    "name": "Leipzig/Halle Airport, Leipzig, Germany",
+    "code": "LEJ"
+  },
+  {
+    "name": "Hannover Airport, Hannover, Germany",
+    "code": "HAJ"
+  },
+  {
+    "name": "Lennart Meri Tallinn Airport, Tallinn, Estonia",
+    "code": "TLL"
+  },
+  {
+    "name": "Helsinki Vantaa Airport, Helsinki, Finland",
+    "code": "HEL"
+  },
+  {
+    "name": "Belfast International Airport, Belfast, United Kingdom",
+    "code": "BFS"
+  },
+  {
+    "name": "Birmingham Airport, Birmingham, United Kingdom",
+    "code": "BHX"
+  },
+  {
+    "name": "Manchester Airport, Manchester, United Kingdom",
+    "code": "MAN"
+  },
+  {
+    "name": "London Luton Airport, London, United Kingdom",
+    "code": "LTN"
+  },
+  {
+    "name": "London Gatwick Airport, London, United Kingdom",
+    "code": "LGW"
+  },
+  {
+    "name": "London Heathrow Airport, London, United Kingdom",
+    "code": "LHR"
+  },
+  {
+    "name": "Glasgow International Airport, Glasgow, United Kingdom",
+    "code": "GLA"
+  },
+  {
+    "name": "Edinburgh Airport, Edinburgh, United Kingdom",
+    "code": "EDI"
+  },
+  {
+    "name": "London Stansted Airport, London, United Kingdom",
+    "code": "STN"
+  },
+  {
+    "name": "Amsterdam Airport Schiphol, Amsterdam, Netherlands",
+    "code": "AMS"
+  },
+  {
+    "name": "Eindhoven Airport, Eindhoven, Netherlands",
+    "code": "EIN"
+  },
+  {
+    "name": "Shannon Airport, Shannon, Ireland",
+    "code": "SNN"
+  },
+  {
+    "name": "Billund Airport, Billund, Denmark",
+    "code": "BLL"
+  },
+  {
+    "name": "Copenhagen Kastrup Airport, Copenhagen, Denmark",
+    "code": "CPH"
+  },
+  {
+    "name": "Luxembourg-Findel International Airport, Luxembourg, Luxembourg",
+    "code": "LUX"
+  },
+  {
+    "name": "Bergen Airport, Flesland, Bergen, Norway",
+    "code": "BGO"
+  },
+  {
+    "name": "Oslo Airport, Gardermoen, Oslo, Norway",
+    "code": "OSL"
+  },
+  {
+    "name": "Tromsø Airport, Langnes, Tromsø, Norway",
+    "code": "TOS"
+  },
+  {
+    "name": "Trondheim Airport, Værnes, Trondheim, Norway",
+    "code": "TRD"
+  },
+  {
+    "name": "Stavanger Airport, Sola, Stavanger, Norway",
+    "code": "SVG"
+  },
+  {
+    "name": "Gdańsk Lech Wałęsa Airport, Gdańsk, Poland",
+    "code": "GDN"
+  },
+  {
+    "name": "Kraków John Paul II International Airport, Kraków, Poland",
+    "code": "KRK"
+  },
+  {
+    "name": "Warsaw Chopin Airport, Warsaw, Poland",
+    "code": "WAW"
+  },
+  {
+    "name": "Göteborg Landvetter Airport, Gothenburg, Sweden",
+    "code": "GOT"
+  },
+  {
+    "name": "Stockholm-Arlanda Airport, Stockholm, Sweden",
+    "code": "ARN"
+  },
+  {
+    "name": "Riga International Airport, Riga, Latvia",
+    "code": "RIX"
+  },
+  {
+    "name": "Vilnius International Airport, Vilnius, Lithuania",
+    "code": "VNO"
+  },
+  {
+    "name": "Cape Town International Airport, Cape Town, South Africa",
+    "code": "CPT"
+  },
+  {
+    "name": "Sir Seretse Khama International Airport, Gaborone, Botswana",
+    "code": "GBE"
+  },
+  {
+    "name": "Sir Seewoosagur Ramgoolam International Airport, Port Louis, Mauritius",
+    "code": "MRU"
+  },
+  {
+    "name": "Kenneth Kaunda International Airport, Lusaka, Zambia",
+    "code": "LUN"
+  },
+  {
+    "name": "Roland Garros Airport, Saint-Denis, Réunion",
+    "code": "RUN"
+  },
+  {
+    "name": "Ivato Airport, Antananarivo, Madagascar",
+    "code": "TNR"
+  },
+  {
+    "name": "Quatro de Fevereiro International Airport, Luanda, Angola",
+    "code": "LAD"
+  },
+  {
+    "name": "São Tomé International Airport, São Tomé, São Tomé and Príncipe",
+    "code": "TMS"
+  },
+  {
+    "name": "Maputo Airport, Maputo, Mozambique",
+    "code": "MPM"
+  },
+  {
+    "name": "Seychelles International Airport, Victoria, Seychelles",
+    "code": "SEZ"
+  },
+  {
+    "name": "N'Djamena International Airport, N'Djamena, Chad",
+    "code": "NDJ"
+  },
+  {
+    "name": "Robert Gabriel Mugabe International Airport, Harare, Zimbabwe",
+    "code": "HRE"
+  },
+  {
+    "name": "Hosea Kutako International Airport, Windhoek, Namibia",
+    "code": "WDH"
+  },
+  {
+    "name": "Ndjili International Airport, Kinshasa, Democratic Republic of the Congo",
+    "code": "FIH"
+  },
+  {
+    "name": "Modibo Keita International Airport, Bamako, Mali",
+    "code": "BKO"
+  },
+  {
+    "name": "Banjul International Airport, Banjul, Gambia",
+    "code": "BJL"
+  },
+  {
+    "name": "Fuerteventura Airport, Fuerteventura, Spain",
+    "code": "FUE"
+  },
+  {
+    "name": "Gran Canaria Airport, Gran Canaria, Spain",
+    "code": "LPA"
+  },
+  {
+    "name": "César Manrique-Lanzarote Airport, Lanzarote, Spain",
+    "code": "ACE"
+  },
+  {
+    "name": "Tenerife Sur Airport, Tenerife, Spain",
+    "code": "TFS"
+  },
+  {
+    "name": "Lungi International Airport, Freetown, Sierra Leone",
+    "code": "FNA"
+  },
+  {
+    "name": "Roberts International Airport, Monrovia, Liberia",
+    "code": "ROB"
+  },
+  {
+    "name": "Al Massira Airport, Agadir, Morocco",
+    "code": "AGA"
+  },
+  {
+    "name": "Fes Saïss International Airport, Fes, Morocco",
+    "code": "FEZ"
+  },
+  {
+    "name": "Rabat-Salé Airport, Rabat, Morocco",
+    "code": "RBA"
+  },
+  {
+    "name": "Menara Airport, Marrakech, Morocco",
+    "code": "RAK"
+  },
+  {
+    "name": "Tangier Ibn Battuta Airport, Tangier, Morocco",
+    "code": "TNG"
+  },
+  {
+    "name": "Amílcar Cabral International Airport, Espargos, Cape Verde",
+    "code": "SID"
+  },
+  {
+    "name": "Nelson Mandela International Airport, Praia, Cape Verde",
+    "code": "RAI"
+  },
+  {
+    "name": "Djibouti-Ambouli Airport, Djibouti City, Djibouti",
+    "code": "JIB"
+  },
+  {
+    "name": "Cairo International Airport, Cairo, Egypt",
+    "code": "CAI"
+  },
+  {
+    "name": "Hurghada International Airport, Hurghada, Egypt",
+    "code": "HRG"
+  },
+  {
+    "name": "Sharm El Sheikh International Airport, Sharm El Sheikh, Egypt",
+    "code": "SSH"
+  },
+  {
+    "name": "Jomo Kenyatta International Airport, Nairobi, Kenya",
+    "code": "NBO"
+  },
+  {
+    "name": "Moi International Airport, Mombasa, Kenya",
+    "code": "MBA"
+  },
+  {
+    "name": "Mitiga International Airport, Tripoli, Libya",
+    "code": "MJI"
+  },
+  {
+    "name": "Kigali International Airport, Kigali, Rwanda",
+    "code": "KGL"
+  },
+  {
+    "name": "Juba International Airport, Juba, South Sudan",
+    "code": "JUB"
+  },
+  {
+    "name": "Khartoum International Airport, Khartoum, Sudan",
+    "code": "KRT"
+  },
+  {
+    "name": "Julius Nyerere International Airport, Dar es Salaam, Tanzania",
+    "code": "DAR"
+  },
+  {
+    "name": "Abeid Amani Karume International Airport, Zanzibar, Tanzania",
+    "code": "ZNZ"
+  },
+  {
+    "name": "Entebbe International Airport, Entebbe, Uganda",
+    "code": "EBB"
+  },
+  {
+    "name": "Joint Base Andrews, Camp Springs, United States",
+    "code": "ADW"
+  },
+  {
+    "name": "Hartsfield Jackson Atlanta International Airport, Atlanta, United States",
+    "code": "ATL"
+  },
+  {
+    "name": "Austin Bergstrom International Airport, Austin, United States",
+    "code": "AUS"
+  },
+  {
+    "name": "Bradley International Airport, Hartford, United States",
+    "code": "BDL"
+  },
+  {
+    "name": "Nashville International Airport, Nashville, United States",
+    "code": "BNA"
+  },
+  {
+    "name": "Logan International Airport, Boston, United States",
+    "code": "BOS"
+  },
+  {
+    "name": "Buffalo Niagara International Airport, Buffalo, United States",
+    "code": "BUF"
+  },
+  {
+    "name": "Baltimore/Washington International Thurgood Marshall Airport, Baltimore, United States",
+    "code": "BWI"
+  },
+  {
+    "name": "Cleveland Hopkins International Airport, Cleveland, United States",
+    "code": "CLE"
+  },
+  {
+    "name": "Charlotte Douglas International Airport, Charlotte, United States",
+    "code": "CLT"
+  },
+  {
+    "name": "John Glenn Columbus International Airport, Columbus, United States",
+    "code": "CMH"
+  },
+  {
+    "name": "Cincinnati Northern Kentucky International Airport, Cincinnati, United States",
+    "code": "CVG"
+  },
+  {
+    "name": "Ronald Reagan Washington National Airport, Washington, D.C., United States",
+    "code": "DCA"
+  },
+  {
+    "name": "Denver International Airport, Denver, United States",
+    "code": "DEN"
+  },
+  {
+    "name": "Dallas Fort Worth International Airport, Dallas, United States",
+    "code": "DFW"
+  },
+  {
+    "name": "Detroit Metropolitan Wayne County Airport, Detroit, United States",
+    "code": "DTW"
+  },
+  {
+    "name": "Newark Liberty International Airport, Newark, United States",
+    "code": "EWR"
+  },
+  {
+    "name": "Fort Lauderdale Hollywood International Airport, Fort Lauderdale, United States",
+    "code": "FLL"
+  },
+  {
+    "name": "Washington Dulles International Airport, Washington, D.C., United States",
+    "code": "IAD"
+  },
+  {
+    "name": "George Bush Intercontinental Houston Airport, Houston, United States",
+    "code": "IAH"
+  },
+  {
+    "name": "Indianapolis International Airport, Indianapolis, United States",
+    "code": "IND"
+  },
+  {
+    "name": "Jacksonville International Airport, Jacksonville, United States",
+    "code": "JAX"
+  },
+  {
+    "name": "John F Kennedy International Airport, New York, United States",
+    "code": "JFK"
+  },
+  {
+    "name": "Harry Reid International Airport, Las Vegas, United States",
+    "code": "LAS"
+  },
+  {
+    "name": "Los Angeles International Airport, Los Angeles, United States",
+    "code": "LAX"
+  },
+  {
+    "name": "LaGuardia Airport, New York, United States",
+    "code": "LGA"
+  },
+  {
+    "name": "Kansas City International Airport, Kansas City, United States",
+    "code": "MCI"
+  },
+  {
+    "name": "Orlando International Airport, Orlando, United States",
+    "code": "MCO"
+  },
+  {
+    "name": "Chicago Midway International Airport, Chicago, United States",
+    "code": "MDW"
+  },
+  {
+    "name": "Memphis International Airport, Memphis, United States",
+    "code": "MEM"
+  },
+  {
+    "name": "Miami International Airport, Miami, United States",
+    "code": "MIA"
+  },
+  {
+    "name": "General Mitchell International Airport, Milwaukee, United States",
+    "code": "MKE"
+  },
+  {
+    "name": "Minneapolis–Saint Paul International Airport / Wold–Chamberlain Field, Minneapolis, United States",
+    "code": "MSP"
+  },
+  {
+    "name": "Louis Armstrong New Orleans International Airport, New Orleans, United States",
+    "code": "MSY"
+  },
+  {
+    "name": "San Francisco Bay Oakland International Airport, Oakland, United States",
+    "code": "OAK"
+  },
+  {
+    "name": "Will Rogers World Airport, Oklahoma City, United States",
+    "code": "OKC"
+  },
+  {
+    "name": "Eppley Airfield, Omaha, United States",
+    "code": "OMA"
+  },
+  {
+    "name": "Ontario International Airport, Ontario, United States",
+    "code": "ONT"
+  },
+  {
+    "name": "Chicago O'Hare International Airport, Chicago, United States",
+    "code": "ORD"
+  },
+  {
+    "name": "Norfolk International Airport, Norfolk, United States",
+    "code": "ORF"
+  },
+  {
+    "name": "Palm Beach International Airport, West Palm Beach, United States",
+    "code": "PBI"
+  },
+  {
+    "name": "Portland International Airport, Portland, United States",
+    "code": "PDX"
+  },
+  {
+    "name": "Philadelphia International Airport, Philadelphia, United States",
+    "code": "PHL"
+  },
+  {
+    "name": "Phoenix Sky Harbor International Airport, Phoenix, United States",
+    "code": "PHX"
+  },
+  {
+    "name": "Pittsburgh International Airport, Pittsburgh, United States",
+    "code": "PIT"
+  },
+  {
+    "name": "Theodore Francis Green State Airport, Providence, United States",
+    "code": "PVD"
+  },
+  {
+    "name": "Portland International Jetport, Portland, United States",
+    "code": "PWM"
+  },
+  {
+    "name": "Raleigh Durham International Airport, Raleigh, United States",
+    "code": "RDU"
+  },
+  {
+    "name": "Richmond International Airport, Richmond, United States",
+    "code": "RIC"
+  },
+  {
+    "name": "Reno Tahoe International Airport, Reno, United States",
+    "code": "RNO"
+  },
+  {
+    "name": "Southwest Florida International Airport, Fort Myers, United States",
+    "code": "RSW"
+  },
+  {
+    "name": "San Diego International Airport, San Diego, United States",
+    "code": "SAN"
+  },
+  {
+    "name": "San Antonio International Airport, San Antonio, United States",
+    "code": "SAT"
+  },
+  {
+    "name": "Savannah Hilton Head International Airport, Savannah, United States",
+    "code": "SAV"
+  },
+  {
+    "name": "Louisville Muhammad Ali International Airport, Louisville, United States",
+    "code": "SDF"
+  },
+  {
+    "name": "Seattle–Tacoma International Airport, Seattle, United States",
+    "code": "SEA"
+  },
+  {
+    "name": "Orlando Sanford International Airport, Orlando, United States",
+    "code": "SFB"
+  },
+  {
+    "name": "San Francisco International Airport, San Francisco, United States",
+    "code": "SFO"
+  },
+  {
+    "name": "Norman Y. Mineta San Jose International Airport, San Jose, United States",
+    "code": "SJC"
+  },
+  {
+    "name": "Salt Lake City International Airport, Salt Lake City, United States",
+    "code": "SLC"
+  },
+  {
+    "name": "Sacramento International Airport, Sacramento, United States",
+    "code": "SMF"
+  },
+  {
+    "name": "John Wayne Orange County International Airport, Santa Ana, United States",
+    "code": "SNA"
+  },
+  {
+    "name": "Sarasota Bradenton International Airport, Sarasota, United States",
+    "code": "SRQ"
+  },
+  {
+    "name": "St. Louis Lambert International Airport, St. Louis, United States",
+    "code": "STL"
+  },
+  {
+    "name": "Syracuse Hancock International Airport, Syracuse, United States",
+    "code": "SYR"
+  },
+  {
+    "name": "Tampa International Airport, Tampa, United States",
+    "code": "TPA"
+  },
+  {
+    "name": "Tulsa International Airport, Tulsa, United States",
+    "code": "TUL"
+  },
+  {
+    "name": "Tirana International Airport Mother Teresa, Tirana, Albania",
+    "code": "TIA"
+  },
+  {
+    "name": "Burgas Airport, Burgas, Bulgaria",
+    "code": "BOJ"
+  },
+  {
+    "name": "Sofia Airport, Sofia, Bulgaria",
+    "code": "SOF"
+  },
+  {
+    "name": "Varna Airport, Varna, Bulgaria",
+    "code": "VAR"
+  },
+  {
+    "name": "Larnaca International Airport, Larnaca, Cyprus",
+    "code": "LCA"
+  },
+  {
+    "name": "Zagreb Franjo Tuđman International Airport, Zagreb, Croatia",
+    "code": "ZAG"
+  },
+  {
+    "name": "Alicante-Elche Miguel Hernández Airport, Alicante, Spain",
+    "code": "ALC"
+  },
+  {
+    "name": "Josep Tarradellas Barcelona-El Prat Airport, Barcelona, Spain",
+    "code": "BCN"
+  },
+  {
+    "name": "Ibiza Airport, Ibiza, Spain",
+    "code": "IBZ"
+  },
+  {
+    "name": "Adolfo Suárez Madrid–Barajas Airport, Madrid, Spain",
+    "code": "MAD"
+  },
+  {
+    "name": "Málaga-Costa del Sol Airport, Málaga, Spain",
+    "code": "AGP"
+  },
+  {
+    "name": "Palma de Mallorca Airport, Palma de Mallorca, Spain",
+    "code": "PMI"
+  },
+  {
+    "name": "Santiago-Rosalía de Castro Airport, Santiago de Compostela, Spain",
+    "code": "SCQ"
+  },
+  {
+    "name": "Bordeaux-Mérignac Airport, Bordeaux, France",
+    "code": "BOD"
+  },
+  {
+    "name": "Toulouse-Blagnac Airport, Toulouse, France",
+    "code": "TLS"
+  },
+  {
+    "name": "Lyon Saint-Exupéry Airport, Lyon, France",
+    "code": "LYS"
+  },
+  {
+    "name": "Marseille Provence Airport, Marseille, France",
+    "code": "MRS"
+  },
+  {
+    "name": "Nice-Côte d'Azur Airport, Nice, France",
+    "code": "NCE"
+  },
+  {
+    "name": "Charles de Gaulle International Airport, Paris, France",
+    "code": "CDG"
+  },
+  {
+    "name": "Paris-Orly Airport, Paris, France",
+    "code": "ORY"
+  },
+  {
+    "name": "EuroAirport Basel-Mulhouse-Freiburg, Basel, France",
+    "code": "BSL"
+  },
+  {
+    "name": "Athens Eleftherios Venizelos International Airport, Athens, Greece",
+    "code": "ATH"
+  },
+  {
+    "name": "Heraklion International Nikos Kazantzakis Airport, Heraklion, Greece",
+    "code": "HER"
+  },
+  {
+    "name": "Thessaloniki Macedonia International Airport, Thessaloniki, Greece",
+    "code": "SKG"
+  },
+  {
+    "name": "Budapest Liszt Ferenc International Airport, Budapest, Hungary",
+    "code": "BUD"
+  },
+  {
+    "name": "Bari Karol Wojtyła International Airport, Bari, Italy",
+    "code": "BRI"
+  },
+  {
+    "name": "Brindisi Airport, Brindisi, Italy",
+    "code": "BDS"
+  },
+  {
+    "name": "Catania-Fontanarossa Airport, Catania, Italy",
+    "code": "CTA"
+  },
+  {
+    "name": "Falcone–Borsellino Airport, Palermo, Italy",
+    "code": "PMO"
+  },
+  {
+    "name": "Cagliari Elmas Airport, Cagliari, Italy",
+    "code": "CAG"
+  },
+  {
+    "name": "Milan Malpensa International Airport, Milan, Italy",
+    "code": "MXP"
+  },
+  {
+    "name": "Milan Bergamo Airport / Antonio Locatelli Air Base, Bergamo, Italy",
+    "code": "BGY"
+  },
+  {
+    "name": "Turin Airport, Turin, Italy",
+    "code": "TRN"
+  },
+  {
+    "name": "Genoa Cristoforo Colombo Airport, Genoa, Italy",
+    "code": "GOA"
+  },
+  {
+    "name": "Bologna Guglielmo Marconi Airport, Bologna, Italy",
+    "code": "BLQ"
+  },
+  {
+    "name": "Verona Villafranca Valerio Catullo Airport, Verona, Italy",
+    "code": "VRN"
+  },
+  {
+    "name": "Venice Marco Polo Airport, Venice, Italy",
+    "code": "VCE"
+  },
+  {
+    "name": "Rome–Fiumicino Leonardo da Vinci International Airport, Rome, Italy",
+    "code": "FCO"
+  },
+  {
+    "name": "Naples International Airport, Naples, Italy",
+    "code": "NAP"
+  },
+  {
+    "name": "Pisa International Airport, Pisa, Italy",
+    "code": "PSA"
+  },
+  {
+    "name": "Florence Airport, Peretola, Florence, Italy",
+    "code": "FLR"
+  },
+  {
+    "name": "Ljubljana Jože Pučnik Airport, Ljubljana, Slovenia",
+    "code": "LJU"
+  },
+  {
+    "name": "Václav Havel Airport Prague, Prague, Czech Republic",
+    "code": "PRG"
+  },
+  {
+    "name": "Ben Gurion International Airport, Tel Aviv, Israel",
+    "code": "TLV"
+  },
+  {
+    "name": "Malta International Airport, Luqa, Malta",
+    "code": "MLA"
+  },
+  {
+    "name": "Vienna International Airport, Vienna, Austria",
+    "code": "VIE"
+  },
+  {
+    "name": "Faro Airport, Faro, Portugal",
+    "code": "FAO"
+  },
+  {
+    "name": "Madeira International Airport Cristiano Ronaldo, Funchal, Portugal",
+    "code": "FNC"
+  },
+  {
+    "name": "João Paulo II Airport, Ponta Delgada, Portugal",
+    "code": "PDL"
+  },
+  {
+    "name": "Francisco de Sá Carneiro Airport, Porto, Portugal",
+    "code": "OPO"
+  },
+  {
+    "name": "Humberto Delgado Airport (Lisbon Portela Airport), Lisbon, Portugal",
+    "code": "LIS"
+  },
+  {
+    "name": "Sarajevo International Airport, Sarajevo, Bosnia and Herzegovina",
+    "code": "SJJ"
+  },
+  {
+    "name": "Bucharest Henri Coandă International Airport, Bucharest, Romania",
+    "code": "OTP"
+  },
+  {
+    "name": "Geneva Cointrin International Airport, Geneva, Switzerland",
+    "code": "GVA"
+  },
+  {
+    "name": "Zürich Airport, Zurich, Switzerland",
+    "code": "ZRH"
+  },
+  {
+    "name": "Esenboğa International Airport, Ankara, Turkey",
+    "code": "ESB"
+  },
+  {
+    "name": "Antalya International Airport, Antalya, Turkey",
+    "code": "AYT"
+  },
+  {
+    "name": "Adnan Menderes International Airport, Izmir, Turkey",
+    "code": "ADB"
+  },
+  {
+    "name": "Dalaman International Airport, Dalaman, Turkey",
+    "code": "DLM"
+  },
+  {
+    "name": "Milas Bodrum International Airport, Bodrum, Turkey",
+    "code": "BJV"
+  },
+  {
+    "name": "Istanbul Sabiha Gökçen International Airport, Istanbul, Turkey",
+    "code": "SAW"
+  },
+  {
+    "name": "Skopje International Airport, Skopje, North Macedonia",
+    "code": "SKP"
+  },
+  {
+    "name": "Gibraltar Airport, Gibraltar, Gibraltar",
+    "code": "GIB"
+  },
+  {
+    "name": "Belgrade Nikola Tesla Airport, Belgrade, Serbia",
+    "code": "BEG"
+  },
+  {
+    "name": "Podgorica Airport / Podgorica Golubovci Airbase, Podgorica, Montenegro",
+    "code": "TGD"
+  },
+  {
+    "name": "M. R. Štefánik Airport, Bratislava, Slovakia",
+    "code": "BTS"
+  },
+  {
+    "name": "Providenciales International Airport, Providenciales, Turks and Caicos Islands",
+    "code": "PLS"
+  },
+  {
+    "name": "Casa De Campo International Airport, La Romana, Dominican Republic",
+    "code": "LRM"
+  },
+  {
+    "name": "Punta Cana International Airport, Punta Cana, Dominican Republic",
+    "code": "PUJ"
+  },
+  {
+    "name": "Las Américas International Airport, Santo Domingo, Dominican Republic",
+    "code": "SDQ"
+  },
+  {
+    "name": "La Aurora Airport, Guatemala City, Guatemala",
+    "code": "GUA"
+  },
+  {
+    "name": "Norman Manley International Airport, Kingston, Jamaica",
+    "code": "KIN"
+  },
+  {
+    "name": "Cozumel International Airport, Cozumel, Mexico",
+    "code": "CZM"
+  },
+  {
+    "name": "General Guadalupe Victoria International Airport, Durango, Mexico",
+    "code": "DGO"
+  },
+  {
+    "name": "Guadalajara International Airport, Guadalajara, Mexico",
+    "code": "GDL"
+  },
+  {
+    "name": "Manuel Crescencio Rejón International Airport, Mérida, Mexico",
+    "code": "MID"
+  },
+  {
+    "name": "Benito Juárez International Airport, Mexico City, Mexico",
+    "code": "MEX"
+  },
+  {
+    "name": "Monterrey International Airport, Monterrey, Mexico",
+    "code": "MTY"
+  },
+  {
+    "name": "General Rafael Buelna International Airport, Mazatlán, Mexico",
+    "code": "MZT"
+  },
+  {
+    "name": "Puerto Vallarta International Airport, Puerto Vallarta, Mexico",
+    "code": "PVR"
+  },
+  {
+    "name": "Los Cabos International Airport, San José del Cabo, Mexico",
+    "code": "SJD"
+  },
+  {
+    "name": "General Abelardo L. Rodriguez International Airport, Tijuana, Mexico",
+    "code": "TIJ"
+  },
+  {
+    "name": "Cancún International Airport, Cancún, Mexico",
+    "code": "CUN"
+  },
+  {
+    "name": "Tocumen International Airport, Panama City, Panama",
+    "code": "PTY"
+  },
+  {
+    "name": "Guanacaste Airport, Liberia, Costa Rica",
+    "code": "LIR"
+  },
+  {
+    "name": "Monseñor Óscar Arnulfo Romero International Airport, San Salvador, El Salvador",
+    "code": "SAL"
+  },
+  {
+    "name": "Toussaint Louverture International Airport, Port-au-Prince, Haiti",
+    "code": "PAP"
+  },
+  {
+    "name": "José Martí International Airport, Havana, Cuba",
+    "code": "HAV"
+  },
+  {
+    "name": "Juan Gualberto Gomez International Airport, Varadero, Cuba",
+    "code": "VRA"
+  },
+  {
+    "name": "Owen Roberts International Airport, George Town, Cayman Islands",
+    "code": "GCM"
+  },
+  {
+    "name": "Lynden Pindling International Airport, Nassau, Bahamas",
+    "code": "NAS"
+  },
+  {
+    "name": "Philip S. W. Goldson International Airport, Belize City, Belize",
+    "code": "BZE"
+  },
+  {
+    "name": "Faa'a International Airport, Papeete, French Polynesia",
+    "code": "PPT"
+  },
+  {
+    "name": "Bauerfield International Airport, Port Vila, Vanuatu",
+    "code": "VLI"
+  },
+  {
+    "name": "Auckland International Airport, Auckland, New Zealand",
+    "code": "AKL"
+  },
+  {
+    "name": "Christchurch International Airport, Christchurch, New Zealand",
+    "code": "CHC"
+  },
+  {
+    "name": "Wellington International Airport, Wellington, New Zealand",
+    "code": "WLG"
+  },
+  {
+    "name": "Bahrain International Airport, Manama, Bahrain",
+    "code": "BAH"
+  },
+  {
+    "name": "King Fahd International Airport, Dammam, Saudi Arabia",
+    "code": "DMM"
+  },
+  {
+    "name": "King Abdulaziz Air Base, Dhahran, Saudi Arabia",
+    "code": "DHA"
+  },
+  {
+    "name": "King Abdulaziz International Airport, Jeddah, Saudi Arabia",
+    "code": "JED"
+  },
+  {
+    "name": "Prince Mohammad Bin Abdulaziz Airport, Medina, Saudi Arabia",
+    "code": "MED"
+  },
+  {
+    "name": "King Khaled International Airport, Riyadh, Saudi Arabia",
+    "code": "RUH"
+  },
+  {
+    "name": "Imam Khomeini International Airport, Tehran, Iran",
+    "code": "IKA"
+  },
+  {
+    "name": "Mehrabad International Airport, Tehran, Iran",
+    "code": "THR"
+  },
+  {
+    "name": "Mashhad International Airport, Mashhad, Iran",
+    "code": "MHD"
+  },
+  {
+    "name": "Shiraz Shahid Dastghaib International Airport, Shiraz, Iran",
+    "code": "SYZ"
+  },
+  {
+    "name": "Queen Alia International Airport, Amman, Jordan",
+    "code": "AMM"
+  },
+  {
+    "name": "Kuwait International Airport, Kuwait City, Kuwait",
+    "code": "KWI"
+  },
+  {
+    "name": "Beirut Rafic Hariri International Airport, Beirut, Lebanon",
+    "code": "BEY"
+  },
+  {
+    "name": "Sharjah International Airport, Sharjah, United Arab Emirates",
+    "code": "SHJ"
+  },
+  {
+    "name": "Jinnah International Airport, Karachi, Pakistan",
+    "code": "KHI"
+  },
+  {
+    "name": "Allama Iqbal International Airport, Lahore, Pakistan",
+    "code": "LHE"
+  },
+  {
+    "name": "Baghdad International Airport / New Al Muthana Air Base, Baghdad, Iraq",
+    "code": "BGW"
+  },
+  {
+    "name": "Damascus International Airport, Damascus, Syria",
+    "code": "DAM"
+  },
+  {
+    "name": "Ted Stevens Anchorage International Airport, Anchorage, United States",
+    "code": "ANC"
+  },
+  {
+    "name": "Antonio B. Won Pat International Airport, Hagåtña, Guam",
+    "code": "GUM"
+  },
+  {
+    "name": "Daniel K Inouye International Airport, Honolulu, United States",
+    "code": "HNL"
+  },
+  {
+    "name": "Kahului International Airport, Kahului, United States",
+    "code": "OGG"
+  },
+  {
+    "name": "Kaohsiung International Airport, Kaohsiung, Taiwan",
+    "code": "KHH"
+  },
+  {
+    "name": "Taiwan Taoyuan International Airport, Taipei, Taiwan",
+    "code": "TPE"
+  },
+  {
+    "name": "Narita International Airport, Tokyo, Japan",
+    "code": "NRT"
+  },
+  {
+    "name": "Kansai International Airport, Osaka, Japan",
+    "code": "KIX"
+  },
+  {
+    "name": "New Chitose Airport, Sapporo, Japan",
+    "code": "CTS"
+  },
+  {
+    "name": "Fukuoka Airport, Fukuoka, Japan",
+    "code": "FUK"
+  },
+  {
+    "name": "Kagoshima Airport, Kagoshima, Japan",
+    "code": "KOJ"
+  },
+  {
+    "name": "Chubu Centrair International Airport, Nagoya, Japan",
+    "code": "NGO"
+  },
+  {
+    "name": "Osaka International Airport, Osaka, Japan",
+    "code": "ITM"
+  },
+  {
+    "name": "Sendai Airport, Sendai, Japan",
+    "code": "SDJ"
+  },
+  {
+    "name": "Tokyo Haneda International Airport, Tokyo, Japan",
+    "code": "HND"
+  },
+  {
+    "name": "Yokota Air Base, Tokyo, Japan",
+    "code": "OKO"
+  },
+  {
+    "name": "Jeju International Airport, Jeju, South Korea",
+    "code": "CJU"
+  },
+  {
+    "name": "Gimhae International Airport, Busan, South Korea",
+    "code": "PUS"
+  },
+  {
+    "name": "Incheon International Airport, Seoul, South Korea",
+    "code": "ICN"
+  },
+  {
+    "name": "Gimpo International Airport, Seoul, South Korea",
+    "code": "GMP"
+  },
+  {
+    "name": "Naha Airport / JASDF Naha Air Base, Naha, Japan",
+    "code": "OKA"
+  },
+  {
+    "name": "Kadena Air Base, Okinawa, Japan",
+    "code": "DNA"
+  },
+  {
+    "name": "Ninoy Aquino International Airport, Manila, Philippines",
+    "code": "MNL"
+  },
+  {
+    "name": "Francisco Bangoy International Airport, Davao, Philippines",
+    "code": "DVO"
+  },
+  {
+    "name": "Mactan Cebu International Airport, Cebu, Philippines",
+    "code": "CEB"
+  },
+  {
+    "name": "Jorge Newbery Airpark, Buenos Aires, Argentina",
+    "code": "AEP"
+  },
+  {
+    "name": "Minister Pistarini International Airport, Buenos Aires, Argentina",
+    "code": "EZE"
+  },
+  {
+    "name": "Val de Cans/Júlio Cezar Ribeiro International Airport, Belém, Brazil",
+    "code": "BEL"
+  },
+  {
+    "name": "Presidente Juscelino Kubitschek International Airport, Brasília, Brazil",
+    "code": "BSB"
+  },
+  {
+    "name": "Tancredo Neves International Airport, Belo Horizonte, Brazil",
+    "code": "CNF"
+  },
+  {
+    "name": "Eduardo Gomes International Airport, Manaus, Brazil",
+    "code": "MAO"
+  },
+  {
+    "name": "Hercílio Luz International Airport, Florianópolis, Brazil",
+    "code": "FLN"
+  },
+  {
+    "name": "Pinto Martins International Airport, Fortaleza, Brazil",
+    "code": "FOR"
+  },
+  {
+    "name": "Rio Galeão – Tom Jobim International Airport, Rio de Janeiro, Brazil",
+    "code": "GIG"
+  },
+  {
+    "name": "Guarulhos - Governador André Franco Montoro International Airport, São Paulo, Brazil",
+    "code": "GRU"
+  },
+  {
+    "name": "Porto Seguro Airport, Porto Seguro, Brazil",
+    "code": "BPS"
+  },
+  {
+    "name": "Deputado Luiz Eduardo Magalhães International Airport, Salvador, Brazil",
+    "code": "SSA"
+  },
+  {
+    "name": "Eurico de Aguiar Salles Airport, Vitória, Brazil",
+    "code": "VIX"
+  },
+  {
+    "name": "Comodoro Arturo Merino Benítez International Airport, Santiago, Chile",
+    "code": "SCL"
+  },
+  {
+    "name": "José Joaquín de Olmedo International Airport, Guayaquil, Ecuador",
+    "code": "GYE"
+  },
+  {
+    "name": "Silvio Pettirossi International Airport, Asunción, Paraguay",
+    "code": "ASU"
+  },
+  {
+    "name": "Guaraní International Airport, Ciudad del Este, Paraguay",
+    "code": "AGT"
+  },
+  {
+    "name": "Doctor Luis Maria Argaña International Airport, Encarnación, Paraguay",
+    "code": "ESG"
+  },
+  {
+    "name": "El Dorado International Airport, Bogotá, Colombia",
+    "code": "BOG"
+  },
+  {
+    "name": "Viru Viru International Airport, Santa Cruz, Bolivia",
+    "code": "VVI"
+  },
+  {
+    "name": "Johan Adolf Pengel International Airport, Paramaribo, Suriname",
+    "code": "PBM"
+  },
+  {
+    "name": "Cayenne – Félix Eboué Airport, Cayenne, French Guiana",
+    "code": "CAY"
+  },
+  {
+    "name": "Jorge Chávez International Airport, Lima, Peru",
+    "code": "LIM"
+  },
+  {
+    "name": "Alejandro Velasco Astete International Airport, Cusco, Peru",
+    "code": "CUZ"
+  },
+  {
+    "name": "Carrasco General Cesáreo L. Berisso International Airport, Montevideo, Uruguay",
+    "code": "MVD"
+  },
+  {
+    "name": "General José Antonio Anzoategui International Airport, Barcelona, Venezuela",
+    "code": "BLA"
+  },
+  {
+    "name": "Maiquetía Simón Bolívar International Airport, Caracas, Venezuela",
+    "code": "CCS"
+  },
+  {
+    "name": "Martinique Aimé Césaire International Airport, Fort-de-France, Martinique",
+    "code": "FDF"
+  },
+  {
+    "name": "Guadeloupe - Maryse Condé International Airport, Pointe-à-Pitre, Guadeloupe",
+    "code": "PTP"
+  },
+  {
+    "name": "Luis Munoz Marin International Airport, San Juan, Puerto Rico",
+    "code": "SJU"
+  },
+  {
+    "name": "Hewanorra International Airport, Vieux Fort, Saint Lucia",
+    "code": "UVF"
+  },
+  {
+    "name": "Queen Beatrix International Airport, Oranjestad, Aruba",
+    "code": "AUA"
+  },
+  {
+    "name": "Flamingo International Airport, Kralendijk, Bonaire",
+    "code": "BON"
+  },
+  {
+    "name": "Hato International Airport, Willemstad, Curaçao",
+    "code": "CUR"
+  },
+  {
+    "name": "Princess Juliana International Airport, Philipsburg, Sint Maarten",
+    "code": "SXM"
+  },
+  {
+    "name": "Almaty International Airport, Almaty, Kazakhstan",
+    "code": "ALA"
+  },
+  {
+    "name": "Nursultan Nazarbayev International Airport, Nur-Sultan, Kazakhstan",
+    "code": "NQZ"
+  },
+  {
+    "name": "Manas International Airport, Bishkek, Kyrgyzstan",
+    "code": "FRU"
+  },
+  {
+    "name": "Heydar Aliyev International Airport, Baku, Azerbaijan",
+    "code": "GYD"
+  },
+  {
+    "name": "Zvartnots International Airport, Yerevan, Armenia",
+    "code": "EVN"
+  },
+  {
+    "name": "Tbilisi International Airport, Tbilisi, Georgia",
+    "code": "TBS"
+  },
+  {
+    "name": "Vladivostok International Airport, Vladivostok, Russia",
+    "code": "VVO"
+  },
+  {
+    "name": "Boryspil International Airport, Kyiv, Ukraine",
+    "code": "KBP"
+  },
+  {
+    "name": "Lviv International Airport, Lviv, Ukraine",
+    "code": "LWO"
+  },
+  {
+    "name": "Pulkovo Airport, Saint Petersburg, Russia",
+    "code": "LED"
+  },
+  {
+    "name": "Minsk National Airport, Minsk, Belarus",
+    "code": "MSQ"
+  },
+  {
+    "name": "Krasnoyarsk International Airport, Krasnoyarsk, Russia",
+    "code": "KJA"
+  },
+  {
+    "name": "Novosibirsk Tolmachevo Airport, Novosibirsk, Russia",
+    "code": "OVB"
+  },
+  {
+    "name": "Sochi International Airport, Sochi, Russia",
+    "code": "AER"
+  },
+  {
+    "name": "Albuquerque International Sunport, Albuquerque, United States",
+    "code": "ABQ"
+  },
+  {
+    "name": "Koltsovo Airport, Yekaterinburg, Russia",
+    "code": "SVX"
+  },
+  {
+    "name": "Ashgabat International Airport, Ashgabat, Turkmenistan",
+    "code": "ASB"
+  },
+  {
+    "name": "Tashkent International Airport, Tashkent, Uzbekistan",
+    "code": "TAS"
+  },
+  {
+    "name": "Domodedovo International Airport, Moscow, Russia",
+    "code": "DME"
+  },
+  {
+    "name": "Sheremetyevo International Airport, Moscow, Russia",
+    "code": "SVO"
+  },
+  {
+    "name": "Vnukovo International Airport, Moscow, Russia",
+    "code": "VKO"
+  },
+  {
+    "name": "Kazan International Airport, Kazan, Russia",
+    "code": "KZN"
+  },
+  {
+    "name": "Ufa International Airport, Ufa, Russia",
+    "code": "UFA"
+  },
+  {
+    "name": "Kurumoch International Airport, Samara, Russia",
+    "code": "KUF"
+  },
+  {
+    "name": "Chhatrapati Shivaji International Airport, Mumbai, India",
+    "code": "BOM"
+  },
+  {
+    "name": "Dabolim Airport, Goa, India",
+    "code": "GOI"
+  },
+  {
+    "name": "Phnom Penh International Airport, Phnom Penh, Cambodia",
+    "code": "PNH"
+  },
+  {
+    "name": "Netaji Subhash Chandra Bose International Airport, Kolkata, India",
+    "code": "CCU"
+  },
+  {
+    "name": "Hazrat Shahjalal International Airport, Dhaka, Bangladesh",
+    "code": "DAC"
+  },
+  {
+    "name": "Hong Kong International Airport, Hong Kong",
+    "code": "HKG"
+  },
+  {
+    "name": "Indira Gandhi International Airport, Delhi, India",
+    "code": "DEL"
+  },
+  {
+    "name": "Macau International Airport, Macau",
+    "code": "MFM"
+  },
+  {
+    "name": "Tribhuvan International Airport, Kathmandu, Nepal",
+    "code": "KTM"
+  },
+  {
+    "name": "Cochin International Airport, Kochi, India",
+    "code": "COK"
+  },
+  {
+    "name": "Chennai International Airport, Chennai, India",
+    "code": "MAA"
+  },
+  {
+    "name": "Thiruvananthapuram International Airport, Thiruvananthapuram, India",
+    "code": "TRV"
+  },
+  {
+    "name": "Malé International Airport, Malé, Maldives",
+    "code": "MLE"
+  },
+  {
+    "name": "Don Mueang International Airport, Bangkok, Thailand",
+    "code": "DMK"
+  },
+  {
+    "name": "Chiang Mai International Airport, Chiang Mai, Thailand",
+    "code": "CNX"
+  },
+  {
+    "name": "Phuket International Airport, Phuket, Thailand",
+    "code": "HKT"
+  },
+  {
+    "name": "Noi Bai International Airport, Hanoi, Vietnam",
+    "code": "HAN"
+  },
+  {
+    "name": "Tan Son Nhat International Airport, Ho Chi Minh City, Vietnam",
+    "code": "SGN"
+  },
+  {
+    "name": "Mandalay International Airport, Mandalay, Myanmar",
+    "code": "MDL"
+  },
+  {
+    "name": "Yangon International Airport, Yangon, Myanmar",
+    "code": "RGN"
+  },
+  {
+    "name": "Hasanuddin International Airport, Makassar, Indonesia",
+    "code": "UPG"
+  },
+  {
+    "name": "Denpasar I Gusti Ngurah Rai International Airport, Denpasar, Indonesia",
+    "code": "DPS"
+  },
+  {
+    "name": "Dortheys Hiyo Eluay International Airport, Jayapura, Indonesia",
+    "code": "DJJ"
+  },
+  {
+    "name": "Sultan Aji Muhammad Sulaiman Sepinggan International Airport, Balikpapan, Indonesia",
+    "code": "BPN"
+  },
+  {
+    "name": "Juanda International Airport, Surabaya, Indonesia",
+    "code": "SUB"
+  },
+  {
+    "name": "Brunei International Airport, Bandar Seri Begawan, Brunei",
+    "code": "BWN"
+  },
+  {
+    "name": "Soekarno-Hatta International Airport, Jakarta, Indonesia",
+    "code": "CGK"
+  },
+  {
+    "name": "Kuala Lumpur International Airport, Kuala Lumpur, Malaysia",
+    "code": "KUL"
+  },
+  {
+    "name": "Singapore Changi Airport, Singapore",
+    "code": "SIN"
+  },
+  {
+    "name": "Brisbane International Airport, Brisbane, Australia",
+    "code": "BNE"
+  },
+  {
+    "name": "Melbourne Airport, Melbourne, Australia",
+    "code": "MEL"
+  },
+  {
+    "name": "Adelaide International Airport, Adelaide, Australia",
+    "code": "ADL"
+  },
+  {
+    "name": "Darwin International Airport / RAAF Darwin, Darwin, Australia",
+    "code": "DRW"
+  },
+  {
+    "name": "Perth International Airport, Perth, Australia",
+    "code": "PER"
+  },
+  {
+    "name": "Sydney Kingsford Smith International Airport, Sydney, Australia",
+    "code": "SYD"
+  },
+  {
+    "name": "Beijing Capital International Airport, Beijing, China",
+    "code": "PEK"
+  },
+  {
+    "name": "Hohhot Baita International Airport, Hohhot, China",
+    "code": "HET"
+  },
+  {
+    "name": "Tianjin Binhai International Airport, Tianjin, China",
+    "code": "TSN"
+  },
+  {
+    "name": "Taiyuan Wusu International Airport, Taiyuan, China",
+    "code": "TYN"
+  },
+  {
+    "name": "Guangzhou Baiyun International Airport, Guangzhou, China",
+    "code": "CAN"
+  },
+  {
+    "name": "Changsha Huanghua International Airport, Changsha, China",
+    "code": "CSX"
+  },
+  {
+    "name": "Guilin Liangjiang International Airport, Guilin, China",
+    "code": "KWL"
+  },
+  {
+    "name": "Nanning Wuxu Airport, Nanning, China",
+    "code": "NNG"
+  },
+  {
+    "name": "Shenzhen Bao'an International Airport, Shenzhen, China",
+    "code": "SZX"
+  },
+  {
+    "name": "Zhengzhou Xinzheng International Airport, Zhengzhou, China",
+    "code": "CGO"
+  },
+  {
+    "name": "Wuhan Tianhe International Airport, Wuhan, China",
+    "code": "WUH"
+  },
+  {
+    "name": "Haikou Meilan International Airport, Haikou, China",
+    "code": "HAK"
+  },
+  {
+    "name": "Sanya Phoenix International Airport, Sanya, China",
+    "code": "SYX"
+  },
+  {
+    "name": "Pyongyang Sunan International Airport, Pyongyang, North Korea",
+    "code": "FNJ"
+  },
+  {
+    "name": "Lanzhou Zhongchuan International Airport, Lanzhou, China",
+    "code": "LHW"
+  },
+  {
+    "name": "Xi'an Xianyang International Airport, Xi'an, China",
+    "code": "XIY"
+  },
+  {
+    "name": "Kunming Changshui International Airport, Kunming, China",
+    "code": "KMG"
+  },
+  {
+    "name": "Xiamen Gaoqi International Airport, Xiamen, China",
+    "code": "XMN"
+  },
+  {
+    "name": "Nanchang Changbei International Airport, Nanchang, China",
+    "code": "KHN"
+  },
+  {
+    "name": "Fuzhou Changle International Airport, Fuzhou, China",
+    "code": "FOC"
+  },
+  {
+    "name": "Hangzhou Xiaoshan International Airport, Hangzhou, China",
+    "code": "HGH"
+  },
+  {
+    "name": "Jinan Yaoqiang International Airport, Jinan, China",
+    "code": "TNA"
+  },
+  {
+    "name": "Ningbo Lishe International Airport, Ningbo, China",
+    "code": "NGB"
+  },
+  {
+    "name": "Nanjing Lukou International Airport, Nanjing, China",
+    "code": "NKG"
+  },
+  {
+    "name": "Shanghai Pudong International Airport, Shanghai, China",
+    "code": "PVG"
+  },
+  {
+    "name": "Shanghai Hongqiao International Airport, Shanghai, China",
+    "code": "SHA"
+  },
+  {
+    "name": "Chongqing Jiangbei International Airport, Chongqing, China",
+    "code": "CKG"
+  },
+  {
+    "name": "Guiyang Longdongbao International Airport, Guiyang, China",
+    "code": "KWE"
+  },
+  {
+    "name": "Chengdu Shuangliu International Airport, Chengdu, China",
+    "code": "CTU"
+  },
+  {
+    "name": "Ürümqi Diwopu International Airport, Ürümqi, China",
+    "code": "URC"
+  },
+  {
+    "name": "Changchun Longjia International Airport, Changchun, China",
+    "code": "CGQ"
+  },
+  {
+    "name": "Harbin Taiping International Airport, Harbin, China",
+    "code": "HRB"
+  },
+  {
+    "name": "Dalian Zhoushuizi International Airport, Dalian, China",
+    "code": "DLC"
+  },
+  {
+    "name": "Shenyang Taoxian International Airport, Shenyang, China",
+    "code": "SHE"
+  },
+  {
+    "name": "Suvarnabhumi Airport, Bangkok, Thailand",
+    "code": "BKK"
+  },
+  {
+    "name": "Lieutenant Amin Ayub González International Airport, Encarnación, Paraguay",
+    "code": "ENO"
+  },
+  {
+    "name": "O.R. Tambo International Airport, Johannesburg, South Africa",
+    "code": "JNB"
+  },
+  {
+    "name": "General Felipe Ángeles International Airport, Mexico City, Mexico",
+    "code": "NLU"
+  },
+  {
+    "name": "Wenzhou Longwan International Airport, Wenzhou, China",
+    "code": "WNZ"
+  },
+  {
+    "name": "Rajiv Gandhi International Airport, Hyderabad, India",
+    "code": "HYD"
+  },
+  {
+    "name": "Kempegowda International Airport, Bangalore, India",
+    "code": "BLR"
+  },
+  {
+    "name": "Lipetsk Air Base, Lipetsk, Russia",
+    "code": ""
+  },
+  {
+    "name": "Zhukovsky International Airport, Moscow, Russia",
+    "code": "ZIA"
+  },
+  {
+    "name": "Duqm International Airport, Duqm, Oman",
+    "code": "DQM"
+  },
+  {
+    "name": "Al Maktoum International Airport, Dubai, United Arab Emirates",
+    "code": "DWC"
+  },
+  {
+    "name": "King Shaka International Airport, Durban, South Africa",
+    "code": "DUR"
+  },
+  {
+    "name": "Suhaj Mubarak International Airport, Suhaj, Egypt",
+    "code": "HMB"
+  },
+  {
+    "name": "Berlin Brandenburg Airport, Berlin, Germany",
+    "code": "BER"
+  },
+  {
+    "name": "Muan International Airport, Muan, South Korea",
+    "code": "MWX"
+  },
+  {
+    "name": "King Mswati III International Airport, Manzini, Eswatini",
+    "code": "SHO"
+  },
+  {
+    "name": "Mariscal Sucre International Airport, Quito, Ecuador",
+    "code": "UIO"
+  },
+  {
+    "name": "Kualanamu International Airport, Medan, Indonesia",
+    "code": "KNO"
+  },
+  {
+    "name": "Mattala Rajapaksa International Airport, Mattala, Sri Lanka",
+    "code": "HRI"
+  },
+  {
+    "name": "İstanbul Airport, Istanbul, Turkey",
+    "code": "IST"
+  },
+  {
+    "name": "Nouakchott–Oumtounsy International Airport, Nouakchott, Mauritania",
+    "code": "NKC"
+  },
+  {
+    "name": "Çukurova International Airport, Adana, Turkey",
+    "code": "COV"
+  },
+  {
+    "name": "Blaise Diagne International Airport, Dakar, Senegal",
+    "code": "DSS"
+  },
+  {
+    "name": "Platov International Airport, Rostov-on-Don, Russia",
+    "code": "ROV"
+  },
+  {
+    "name": "Ramon International Airport, Eilat, Israel",
+    "code": "ETM"
+  },
+  {
+    "name": "Beijing Daxing International Airport, Beijing, China",
+    "code": "PKX"
+  },
+  {
+    "name": "Yantai Penglai International Airport, Yantai, China",
+    "code": "YNT"
+  },
+  {
+    "name": "Islamabad International Airport, Islamabad, Pakistan",
+    "code": "ISB"
+  },
+  {
+    "name": "Ulaanbaatar Chinggis Khaan International Airport, Ulaanbaatar, Mongolia",
+    "code": "UBN"
+  },
+  {
+    "name": "Gagarin International Airport, Saratov, Russia",
+    "code": "GSV"
+  },
+  {
+    "name": "Navi Mumbai International Airport, Navi Mumbai, India",
+    "code": "NMI"
+  },
+  {
+    "name": "Manohar International Airport, Goa, India",
+    "code": "GOX"
+  },
+  {
+    "name": "Chengdu Tianfu International Airport, Chengdu, China",
+    "code": "TFU"
+  },
+  {
+    "name": "Qingdao Jiaodong International Airport, Qingdao, China",
+    "code": "TAO"
+  },
+  {
+    "name": "Ezhou Huahu Airport, Ezhou, China",
+    "code": "EHU"
+  },
+  {
+    "name": "Dhoho International Airport, Kediri, Indonesia",
+    "code": "DHX"
+  },
+  {
+    "name": "Rajkot International Airport, Rajkot, India",
+    "code": "HSR"
+  },
+  {
+    "name": "Siem Reap-Angkor International Airport, Siem Reap, Cambodia",
+    "code": "SAI"
+  }
+]

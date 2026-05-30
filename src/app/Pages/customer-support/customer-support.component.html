@@ -1,0 +1,198 @@
+<div class="fly cs">
+  <!-- ===== Banner ===== -->
+  <section class="cs-banner">
+    <span class="cs-orb cs-orb-1" aria-hidden="true">?</span>
+    <span class="cs-orb cs-orb-2" aria-hidden="true">?</span>
+    <span class="cs-orb cs-orb-3" aria-hidden="true">?</span>
+    <div class="fly-container">
+      <span class="material-symbols-outlined cs-banner-ic" aria-hidden="true">support_agent</span>
+      <h1>Customer Support Center</h1>
+      <p class="cs-banner-sub">We're here to help with your booking, every step of the way.</p>
+    </div>
+  </section>
+
+  <!-- ===== Card ===== -->
+  <section class="cs-stage">
+    <div class="cs-card">
+      <!-- step indicator -->
+      <div class="cs-steps" aria-hidden="true">
+        <span class="cs-dot" [class.active]="step >= 1" [class.done]="step > 1"></span>
+        <span class="cs-bar" [class.fill]="step > 1"></span>
+        <span class="cs-dot" [class.active]="step >= 2" [class.done]="step > 2"></span>
+        <span class="cs-bar" [class.fill]="step > 2"></span>
+        <span class="cs-dot" [class.active]="step >= 3"></span>
+      </div>
+      <p class="cs-step-label">Step {{ step }} of 3</p>
+
+      <!-- ============ STEP 1 ============ -->
+      <div *ngIf="step === 1" class="cs-panel">
+        <h2 class="cs-title">Flight Booking</h2>
+
+        <div class="cs-notice cs-notice-warn" role="note">
+          <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+          <div class="cs-notice-body">
+            <h4>COVID-19 — Refund Policy</h4>
+            <p>
+              Please note that all refunds requested for travel affected due to the COVID-19
+              pandemic are subject to approval by the respective airline/supplier. The usual refund
+              policy and lead time in processing refunds back to the customer may be affected due to
+              unprecedented demand.
+            </p>
+            <p>
+              We shall notify you on the progress of your refund on a regular basis through calls or
+              emails on the contact information provided at the time of booking.
+            </p>
+          </div>
+        </div>
+
+        <p class="cs-field-label">Please make a selection from the options below</p>
+
+        <div class="cs-options">
+          <label
+            *ngFor="let c of categories"
+            class="cs-option"
+            [class.selected]="category === c"
+          >
+            <input type="radio" name="category" [value]="c" [(ngModel)]="category" />
+            <span class="cs-radio" aria-hidden="true"></span>
+            <span class="cs-option-text">{{ c }}</span>
+          </label>
+        </div>
+
+        <div class="cs-actions">
+          <button type="button" class="fly-btn fly-btn-outline" [disabled]="true">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            Back
+          </button>
+          <button
+            type="button"
+            class="fly-btn fly-btn-blue"
+            [disabled]="!category"
+            (click)="next()"
+          >
+            Next
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ============ STEP 2 ============ -->
+      <div *ngIf="step === 2" class="cs-panel">
+        <h2 class="cs-title">{{ category }}</h2>
+
+        <div class="cs-notice cs-notice-tip" role="note">
+          <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+          <div class="cs-notice-body">
+            <p>
+              Your Booking ID is in the confirmation email FlyAir sent you. Provide the booking
+              reference plus your contact details and tell us what you need changed.
+              Our team will reply within 4 working hours.
+            </p>
+          </div>
+        </div>
+
+        <label class="cs-field-label" for="cs-booking">Booking ID / MyTrip ID *</label>
+        <input
+          id="cs-booking"
+          type="text"
+          class="cs-input"
+          placeholder="e.g. FLY-8421709"
+          autocomplete="off"
+          [(ngModel)]="bookingId"
+        />
+
+        <div class="cs-row">
+          <div class="cs-col">
+            <label class="cs-field-label" for="cs-name">Your name *</label>
+            <input
+              id="cs-name"
+              type="text"
+              class="cs-input"
+              placeholder="As shown on the booking"
+              autocomplete="name"
+              [(ngModel)]="name"
+            />
+          </div>
+          <div class="cs-col">
+            <label class="cs-field-label" for="cs-email">Email *</label>
+            <input
+              id="cs-email"
+              type="email"
+              class="cs-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              [(ngModel)]="email"
+            />
+          </div>
+        </div>
+
+        <label class="cs-field-label" for="cs-phone">Phone (optional)</label>
+        <input
+          id="cs-phone"
+          type="tel"
+          class="cs-input"
+          placeholder="e.g. 0788 788 788"
+          autocomplete="tel"
+          [(ngModel)]="phone"
+        />
+
+        <label class="cs-field-label" for="cs-details">What do you need help with? *</label>
+        <textarea
+          id="cs-details"
+          class="cs-input cs-textarea"
+          rows="5"
+          placeholder="Tell us exactly what you want changed — new dates, name spelling, refund reason, etc. The more detail you share, the faster we can help."
+          [(ngModel)]="details"
+        ></textarea>
+
+        <div class="cs-notice cs-notice-warn" *ngIf="errorMessage" role="alert">
+          <span class="material-symbols-outlined" aria-hidden="true">error</span>
+          <div class="cs-notice-body"><p>{{ errorMessage }}</p></div>
+        </div>
+
+        <div class="cs-actions">
+          <button type="button" class="fly-btn fly-btn-outline" (click)="back()" [disabled]="submitting">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            Back
+          </button>
+          <button
+            type="button"
+            class="fly-btn fly-btn-blue"
+            [disabled]="!canSubmit || submitting"
+            (click)="next()"
+          >
+            <span *ngIf="!submitting">Submit request</span>
+            <span *ngIf="submitting">Submitting…</span>
+            <span class="material-symbols-outlined" aria-hidden="true" *ngIf="!submitting">send</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ============ STEP 3 ============ -->
+      <div *ngIf="step === 3" class="cs-panel cs-panel-success">
+        <span class="material-symbols-outlined cs-check" aria-hidden="true">check_circle</span>
+        <h2 class="cs-title cs-title-center">Thanks — we've got your request</h2>
+        <p class="cs-success-body">
+          Your <b>{{ category }}</b> request for booking <b>{{ bookingId }}</b> has been logged
+          <span *ngIf="ticketRef">(reference #{{ ticketRef }})</span>. Our support team will reply to
+          <b>{{ email }}</b> within 4 working hours.
+        </p>
+        <p class="cs-success-body" style="margin-top:8px">
+          If your request is urgent, please call <a href="tel:0788788788">0788 788 788</a> and quote
+          your booking ID.
+        </p>
+
+        <div class="cs-actions cs-actions-center">
+          <button type="button" class="fly-btn fly-btn-outline" (click)="reset()">
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            Start over
+          </button>
+          <a routerLink="/" class="fly-btn fly-btn-blue">
+            <span class="material-symbols-outlined" aria-hidden="true">home</span>
+            Back to home
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

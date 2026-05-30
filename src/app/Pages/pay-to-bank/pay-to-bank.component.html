@@ -1,0 +1,83 @@
+<div class="fly">
+  <section class="subhero">
+    <div class="orb"></div>
+    <div class="fly-container">
+      <div class="fly-eyebrow" style="color:#9fd0ff">PAYMENTS INFORMATION</div>
+      <h1>Pay to Bank</h1>
+      <p class="fly-lead">
+        Transfer the price of your flight ticket into our account using your local bank
+        ATM or internet banking.
+      </p>
+    </div>
+  </section>
+
+  <section class="fly-section">
+    <div class="fly-container body">
+      <ol class="stepper">
+
+        <!-- STEP 1 -->
+        <li class="step">
+          <div class="rail">
+            <span class="marker">
+              <span class="material-symbols-outlined">check</span>
+            </span>
+          </div>
+          <div class="step-body">
+            <span class="step-no">Step 1</span>
+            <h3>Book your flight online</h3>
+            <ol class="sub-list">
+              <li *ngFor="let s of bookingSteps">{{ s }}</li>
+            </ol>
+            <p class="step-note">
+              At checkout, choose the payment option <strong>Bank Deposit</strong>.
+              Click <strong>Confirm</strong> — we'll email you a reservation copy.
+            </p>
+          </div>
+        </li>
+
+        <!-- STEP 2 -->
+        <li class="step">
+          <div class="rail">
+            <span class="marker">
+              <span class="material-symbols-outlined">check</span>
+            </span>
+          </div>
+          <div class="step-body">
+            <span class="step-no">Step 2</span>
+            <h3>Select your bank</h3>
+            <p class="step-note">Deposit or transfer the fare into the FlyAir account below.</p>
+
+            <div class="bank-card">
+              <div class="bank-head">Sampath Bank</div>
+              <dl class="acct">
+                <div class="acct-row" *ngFor="let a of account">
+                  <dt>{{ a.label }}</dt>
+                  <dd>{{ a.value }}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </li>
+
+        <!-- STEP 3 -->
+        <li class="step">
+          <div class="rail">
+            <span class="marker">
+              <span class="material-symbols-outlined">check</span>
+            </span>
+          </div>
+          <div class="step-body">
+            <span class="step-no">Step 3</span>
+            <h3>Send us the slip</h3>
+            <p class="step-note">
+              Email your deposit slip / transfer reference to
+              <a href="mailto:support@flyair.com">support&#64;flyair.com</a> with your booking
+              <strong>PNR</strong>. Once verified we issue your ticket.
+            </p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+</div>

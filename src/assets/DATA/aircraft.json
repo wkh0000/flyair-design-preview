@@ -1,0 +1,194 @@
+[
+  {
+      "aircraft_code": "320",
+      "model": "A320",
+      "variant": "A320ceo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "320",
+      "model": "A320",
+      "variant": "A320neo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "321",
+      "model": "A321",
+      "variant": "A321ceo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "321",
+      "model": "A321",
+      "variant": "A321neo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "319",
+      "model": "A319",
+      "variant": "A319ceo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "319",
+      "model": "A319",
+      "variant": "A319neo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "330",
+      "model": "A330",
+      "variant": "A330-200",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "330",
+      "model": "A330",
+      "variant": "A330-300",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "330",
+      "model": "A330",
+      "variant": "A330neo",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "350",
+      "model": "A350",
+      "variant": "A350-900",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "350",
+      "model": "A350",
+      "variant": "A350-1000",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "380",
+      "model": "A380",
+      "variant": "A380-800",
+      "make": "Airbus"
+  },
+  {
+      "aircraft_code": "737",
+      "model": "737",
+      "variant": "737-800",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "737",
+      "model": "737",
+      "variant": "737 MAX 8",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "747",
+      "model": "747",
+      "variant": "747-400",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "747",
+      "model": "747",
+      "variant": "747-8",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "757",
+      "model": "757",
+      "variant": "757-200",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "757",
+      "model": "757",
+      "variant": "757-300",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "767",
+      "model": "767",
+      "variant": "767-300ER",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "777",
+      "model": "777",
+      "variant": "777-200",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "777",
+      "model": "777",
+      "variant": "777-300ER",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "787",
+      "model": "787",
+      "variant": "787-8 Dreamliner",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "787",
+      "model": "787",
+      "variant": "787-9 Dreamliner",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "787",
+      "model": "787",
+      "variant": "787-10 Dreamliner",
+      "make": "Boeing"
+  },
+  {
+      "aircraft_code": "E190",
+      "model": "E190",
+      "variant": "E190",
+      "make": "Embraer"
+  },
+  {
+      "aircraft_code": "E195",
+      "model": "E195",
+      "variant": "E195-E2",
+      "make": "Embraer"
+  },
+  {
+      "aircraft_code": "CRJ",
+      "model": "CRJ",
+      "variant": "CRJ-900",
+      "make": "Bombardier"
+  },
+  {
+      "aircraft_code": "Q400",
+      "model": "Q400",
+      "variant": "Q400",
+      "make": "De Havilland Canada"
+  },
+  {
+      "aircraft_code": "ATR72",
+      "model": "ATR72",
+      "variant": "ATR72-600",
+      "make": "ATR"
+  },
+  {
+      "aircraft_code": "C919",
+      "model": "C919",
+      "variant": "C919",
+      "make": "COMAC"
+  },
+  {
+      "aircraft_code": "ARJ21",
+      "model": "ARJ21",
+      "variant": "ARJ21-700",
+      "make": "COMAC"
+  },
+  {
+      "aircraft_code": "SSJ100",
+      "model": "SSJ100",
+      "variant": "SSJ100-95",
+      "make": "Sukhoi"
+  }
+]

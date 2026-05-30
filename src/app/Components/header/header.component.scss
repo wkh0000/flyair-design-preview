@@ -1,0 +1,107 @@
+/* nav links with leading icons */
+.fly-nav a { display: inline-flex; align-items: center; gap: 7px; }
+.fly-nav .fly-nav-ic { flex: 0 0 auto; opacity: 0.85; transition: opacity 0.2s ease; }
+.fly-nav a:hover .fly-nav-ic,
+.fly-nav a.active .fly-nav-ic { opacity: 1; }
+
+/* PNG-as-mask icons — the image is drawn as the alpha mask of a coloured div, so the
+   icon picks up the surrounding text colour (white on dark hero, dark on scrolled glass). */
+.fly-nav-ic-mask {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.fly-nav-ic-flights {
+  width: 26px; height: 22px;
+  -webkit-mask-image: url('/assets/icons/flights-nav.png');
+  mask-image: url('/assets/icons/flights-nav.png');
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, contacts right */
+  padding: 0 16px;
+  background: rgba(245, 245, 247, 0.7);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    .logo-image {
+      height: 34px;
+      width: auto;
+      filter: grayscale(1) brightness(0.2);
+      opacity: 0.9;
+      transition: all 0.2s ease;
+    }
+
+    &:hover .logo-image {
+      filter: grayscale(0) brightness(1);
+      transform: scale(1.02);
+    }
+  }
+
+  .contact-header {
+    display: flex;
+    flex-direction: row; /* side by side */
+    gap: 24px;           /* spacing between phone and email */
+
+    .contact-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: #86868b;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #0071e3; /* Apple blue */
+      }
+    }
+  }
+
+  /* Mobile menu hidden on desktop */
+  .site-mobile-menu {
+    display: none;
+  }
+}
+
+/* ---------------- Responsive for Mobile ---------------- */
+@media (max-width: 992px) {
+  .contact-header {
+    display: none; /* hide contacts on mobile */
+  }
+
+  .site-mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 10000;
+  }
+
+  .site-mobile-menu.open {
+    right: 0;
+  }
+
+  .site-mobile-menu-body {
+    padding: 20px;
+  }
+}

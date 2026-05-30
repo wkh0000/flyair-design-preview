@@ -1,0 +1,70 @@
+<div class="aiq-wrap">
+  <header class="aiq-head">
+    <div>
+      <h2>Messages</h2>
+      <p class="muted">Inbox for the public contact form. <b *ngIf="totalUnread">{{ totalUnread }} unread</b></p>
+    </div>
+    <div class="filters">
+      <label class="chk"><input type="checkbox" [(ngModel)]="unreadOnly" (change)="load()" /> Unread only</label>
+      <button class="ghost" type="button" (click)="load()" [disabled]="loading">
+        <span class="material-symbols-outlined">refresh</span> Refresh
+      </button>
+    </div>
+  </header>
+
+  <div class="aiq-body">
+    <!-- List -->
+    <div class="list">
+      <div class="empty" *ngIf="!loading && rows.length === 0">No messages yet.</div>
+      <div class="row" *ngFor="let r of rows"
+           [class.unread]="!r.isRead"
+           [class.active]="selected?.id === r.id"
+           (click)="open(r)">
+        <div class="dot" [class.on]="!r.isRead" [title]="r.isRead ? 'Read' : 'Unread'"></div>
+        <div class="meta">
+          <div class="top"><b>{{ r.name }}</b><span class="when">{{ r.createdAt | date:'MMM d, h:mm a' }}</span></div>
+          <div class="sub">{{ r.subject || '(no subject)' }}</div>
+          <div class="snippet">{{ r.message.length > 110 ? (r.message.slice(0, 110) + '…') : r.message }}</div>
+        </div>
+        <div class="actions">
+          <button class="icon" type="button" (click)="toggleRead(r, $event)" [title]="r.isRead ? 'Mark unread' : 'Mark read'">
+            <span class="material-symbols-outlined">{{ r.isRead ? 'mark_email_unread' : 'mark_email_read' }}</span>
+          </button>
+          <button class="icon danger" type="button" (click)="remove(r, $event)" title="Delete">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail -->
+    <div class="detail" *ngIf="selected">
+      <button class="close" type="button" (click)="close()" aria-label="Close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <h3>{{ selected.subject || '(no subject)' }}</h3>
+      <div class="from">
+        <div><b>{{ selected.name }}</b> &lt;{{ selected.email }}&gt;</div>
+        <div class="muted">{{ selected.createdAt | date:'EEEE, MMM d, y · h:mm a' }}</div>
+        <div class="muted" *ngIf="selected.phone">Phone: {{ selected.phone }}</div>
+        <div class="muted" *ngIf="selected.source">Source: {{ selected.source }}</div>
+      </div>
+      <pre class="msg">{{ selected.message }}</pre>
+      <div class="d-actions">
+        <a class="btn primary" [href]="mailto(selected)">
+          <span class="material-symbols-outlined">reply</span> Reply by email
+        </a>
+        <button class="btn ghost" type="button" (click)="toggleRead(selected, $event)">
+          Mark as {{ selected.isRead ? 'unread' : 'read' }}
+        </button>
+        <button class="btn danger" type="button" (click)="remove(selected, $event)">
+          <span class="material-symbols-outlined">delete</span> Delete
+        </button>
+      </div>
+    </div>
+    <div class="detail empty-pane" *ngIf="!selected && rows.length > 0">
+      <span class="material-symbols-outlined">forum</span>
+      <p>Select a message to read.</p>
+    </div>
+  </div>
+</div>

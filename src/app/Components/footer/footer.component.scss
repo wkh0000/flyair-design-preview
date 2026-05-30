@@ -1,0 +1,36 @@
+.site-footer {
+  width: 100%;
+  padding: 5px 0;
+  margin-top: auto; // Keeps footer at the bottom of the page
+  background: transparent; // Folds into the main background
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+
+  .inner {
+    border-top: 1px solid rgba(0, 0, 0, 0.05); // Thin, subtle separation
+    padding-top: 24px;
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+  }
+
+  p {
+    font-size: 11px;
+    font-weight: 500;
+    color: #86868b; // Apple's secondary text gray
+    letter-spacing: 0.01em;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase; // Makes the copyright look like official metadata
+
+    .company-name {
+      color: #1d1d1f; // Darker black for the brand name
+      font-weight: 600;
+      margin-left: 4px;
+      letter-spacing: -0.01em;
+      text-transform: none; // Keep brand name in its original casing
+    }
+  }
+}

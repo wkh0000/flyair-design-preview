@@ -1,0 +1,509 @@
+{
+  "reservation": {
+      "ReservationResponse": {
+          "@type": "ReservationResponse",
+          "Reservation": {
+              "@type": "Reservation",
+              "Offer": [
+                  {
+                      "@type": "Offer",
+                      "id": "offer_1",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "54ca19b3-1cee-48f1-984d-e81af9c5dab6"
+                      },
+                      "ContentSource": "GDS",
+                      "Product": [
+                          {
+                              "@type": "ProductAir",
+                              "id": "product_1",
+                              "FlightSegment": [
+                                  {
+                                      "@type": "FlightSegment",
+                                      "id": "FlightSegment_01",
+                                      "sequence": 1,
+                                      "Flight": {
+                                          "@type": "Flight",
+                                          "duration": "PT3H45M",
+                                          "carrier": "MH",
+                                          "number": "178",
+                                          "equipment": "7M8",
+                                          "id": "Flight_01",
+                                          "Departure": {
+                                              "@type": "Departure",
+                                              "location": "CMB",
+                                              "date": "2025-07-09",
+                                              "time": "00:05:00"
+                                          },
+                                          "Arrival": {
+                                              "@type": "Arrival",
+                                              "location": "KUL",
+                                              "date": "2025-07-09",
+                                              "time": "06:20:00"
+                                          }
+                                      }
+                                  }
+                              ],
+                              "PassengerFlight": [
+                                  {
+                                      "@type": "PassengerFlight",
+                                      "passengerQuantity": 2,
+                                      "passengerTypeCode": "ADT",
+                                      "FlightProduct": [
+                                          {
+                                              "@type": "FlightProduct",
+                                              "segmentSequence": [
+                                                  1
+                                              ],
+                                              "classOfService": "Q",
+                                              "cabin": "Economy"
+                                          }
+                                      ]
+                                  }
+                              ]
+                          },
+                          {
+                              "@type": "ProductAir",
+                              "id": "product_2",
+                              "FlightSegment": [
+                                  {
+                                      "@type": "FlightSegment",
+                                      "id": "FlightSegment_02",
+                                      "sequence": 2,
+                                      "Flight": {
+                                          "@type": "Flight",
+                                          "duration": "PT3H25M",
+                                          "carrier": "MH",
+                                          "number": "179",
+                                          "equipment": "7M8",
+                                          "id": "Flight_02",
+                                          "Departure": {
+                                              "@type": "Departure",
+                                              "location": "KUL",
+                                              "date": "2025-07-14",
+                                              "time": "22:00:00"
+                                          },
+                                          "Arrival": {
+                                              "@type": "Arrival",
+                                              "location": "CMB",
+                                              "date": "2025-07-14",
+                                              "time": "22:55:00"
+                                          }
+                                      }
+                                  }
+                              ],
+                              "PassengerFlight": [
+                                  {
+                                      "@type": "PassengerFlight",
+                                      "passengerQuantity": 2,
+                                      "passengerTypeCode": "ADT",
+                                      "FlightProduct": [
+                                          {
+                                              "@type": "FlightProduct",
+                                              "segmentSequence": [
+                                                  2
+                                              ],
+                                              "classOfService": "V",
+                                              "cabin": "Economy"
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ],
+                      "Price": {
+                          "@type": "PriceDetail",
+                          "id": "PriceDetail_1",
+                          "CurrencyCode": {
+                              "value": "INR"
+                          },
+                          "Base": 68590,
+                          "TotalTaxes": 27580,
+                          "TotalFees": 0,
+                          "TotalPrice": 96170,
+                          "PriceBreakdown": [
+                              {
+                                  "@type": "PriceBreakdownAir",
+                                  "quantity": 2,
+                                  "requestedPassengerType": "ADT",
+                                  "Amount": {
+                                      "@type": "Amount",
+                                      "CurrencyCode": {
+                                          "decimalPlace": 2,
+                                          "value": "USD"
+                                      },
+                                      "Base": 401
+                                  },
+                                  "TravelerRefs": [
+                                      "travelerRefId_1",
+                                      "travelerRefId_2"
+                                  ]
+                              },
+                              {
+                                  "@type": "PriceBreakdownAir",
+                                  "quantity": 2,
+                                  "requestedPassengerType": "ADT",
+                                  "Amount": {
+                                      "@type": "Amount",
+                                      "currencySource": "Charged",
+                                      "approximateInd": true,
+                                      "CurrencyCode": {
+                                          "decimalPlace": 0,
+                                          "value": "INR"
+                                      },
+                                      "Base": 34295,
+                                      "Taxes": {
+                                          "@type": "TaxesDetail",
+                                          "TotalTaxes": 13790,
+                                          "Tax": [
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "EJ",
+                                                  "value": 5132
+                                              },
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "LK",
+                                                  "value": 5132
+                                              },
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "G1",
+                                                  "value": 386
+                                              },
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "H8",
+                                                  "value": 20
+                                              },
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "MY",
+                                                  "value": 1408
+                                              },
+                                              {
+                                                  "currencyCode": "INR",
+                                                  "taxCode": "YQ",
+                                                  "value": 1712
+                                              }
+                                          ]
+                                      },
+                                      "Total": 48085
+                                  },
+                                  "FiledAmount": {
+                                      "currencyCode": "USD",
+                                      "decimalPlace": 2,
+                                      "value": 401
+                                  },
+                                  "TravelerRefs": [
+                                      "travelerRefId_1",
+                                      "travelerRefId_2"
+                                  ],
+                                  "FareCalculation": "CMB MH KUL Q30.00 128.00QBX1YLK MH CMB Q30.00 213.00VBX1YLK NUC401.00END ROE1.0"
+                              }
+                          ]
+                      },
+                      "TermsAndConditionsFull": [
+                          {
+                              "@type": "TermsAndConditionsFullAir",
+                              "Identifier": {
+                                  "authority": "Travelport",
+                                  "value": "0b7099c2-7826-49b8-b5c9-6abe99bfa2d8"
+                              },
+                              "ExpiryDate": "2025-05-08T23:59:00Z",
+                              "PaymentTimeLimit": "2025-05-08T23:59:00Z"
+                          }
+                      ]
+                  }
+              ],
+              "Traveler": [
+                  {
+                      "@type": "Traveler",
+                      "birthDate": "2013-05-01",
+                      "gender": "Male",
+                      "passengerTypeCode": "ADT",
+                      "id": "travelerRefId_1",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "2a63b005-eb2a-4155-8982-679a6eb583f2"
+                      },
+                      "PersonName": {
+                          "@type": "PersonName",
+                          "Given": "AMM",
+                          "Surname": "SHAFWAN"
+                      },
+                      "Telephone": [
+                          {
+                              "@type": "TelephoneDetail",
+                              "countryAccessCode": "94774452475",
+                              "phoneNumber": "0774452475",
+                              "id": "telephone_1",
+                              "cityCode": "DEL",
+                              "role": "Mobile"
+                          }
+                      ],
+                      "Email": [
+                          {
+                              "emailType": "TO",
+                              "value": "shafwan.anwer@gmail.com"
+                          },
+                          {
+                              "emailType": "TO",
+                              "value": "shafwan.anwer@gmail.com"
+                          }
+                      ],
+                      "TravelDocument": [
+                          {
+                              "@type": "TravelDocumentDetail",
+                              "birthDate": "2013-05-01",
+                              "Gender": "Male",
+                              "PersonName": {
+                                  "@type": "PersonName",
+                                  "Given": "AMM",
+                                  "Surname": "SHAFWAN"
+                              }
+                          },
+                          {
+                              "@type": "TravelDocumentDetail",
+                              "docNumber": "N3454443",
+                              "docType": "Passport",
+                              "expireDate": "2025-11-18",
+                              "issueCountry": "LK",
+                              "birthDate": "2013-05-01",
+                              "Gender": "Male",
+                              "PersonName": {
+                                  "@type": "PersonName",
+                                  "Given": "AMM",
+                                  "Surname": "SHAFWAN"
+                              }
+                          }
+                      ]
+                  },
+                  {
+                      "@type": "Traveler",
+                      "birthDate": "2013-05-06",
+                      "gender": "Male",
+                      "passengerTypeCode": "ADT",
+                      "id": "travelerRefId_2",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "ebf3750e-ee59-48c2-86fe-fabe55abbdeb"
+                      },
+                      "PersonName": {
+                          "@type": "PersonName",
+                          "Given": "AYESHA",
+                          "Surname": "FAZLY"
+                      },
+                      "Telephone": [
+                          {
+                              "@type": "TelephoneDetail",
+                              "countryAccessCode": "94",
+                              "phoneNumber": "0772250929",
+                              "id": "telephone_1",
+                              "cityCode": "DEL",
+                              "role": "Mobile"
+                          }
+                      ],
+                      "TravelDocument": [
+                          {
+                              "@type": "TravelDocumentDetail",
+                              "birthDate": "2013-05-06",
+                              "Gender": "Male",
+                              "PersonName": {
+                                  "@type": "PersonName",
+                                  "Given": "AYESHA",
+                                  "Surname": "FAZLY"
+                              }
+                          },
+                          {
+                              "@type": "TravelDocumentDetail",
+                              "docNumber": "N43544555",
+                              "docType": "Passport",
+                              "expireDate": "2025-11-25",
+                              "issueCountry": "LK",
+                              "birthDate": "2013-05-06",
+                              "Gender": "Male",
+                              "PersonName": {
+                                  "@type": "PersonName",
+                                  "Given": "AYESHA",
+                                  "Surname": "FAZLY"
+                              }
+                          }
+                      ]
+                  }
+              ],
+              "FormOfPayment": [
+                  {
+                      "@type": "FormOfPaymentCash",
+                      "id": "formOfPayment_1",
+                      "FormOfPaymentRef": "formOfPayment_1",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "d26f1cda-697a-4552-80d7-98d7238a2a2f"
+                      }
+                  }
+              ],
+              "Payment": [
+                  {
+                      "@type": "Payment",
+                      "id": "payment_1",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "7569720b-e0d3-41b0-9ab6-8707ccd09584"
+                      },
+                      "Amount": {
+                          "code": "INR",
+                          "minorUnit": 2,
+                          "currencySource": "Charged",
+                          "approximateInd": true,
+                          "value": 96170
+                      },
+                      "FormOfPaymentIdentifier": {
+                          "FormOfPaymentRef": "formOfPayment_1",
+                          "Identifier": {
+                              "authority": "Travelport",
+                              "value": "a283810e-2615-4022-8038-d7f541140d43"
+                          }
+                      },
+                      "OfferIdentifier": [
+                          {
+                              "id": "offer_1",
+                              "offerRef": "offer_1",
+                              "Identifier": {
+                                  "authority": "Travelport",
+                                  "value": "c732fa70-4102-4673-aebe-54b850df9859"
+                              }
+                          }
+                      ]
+                  }
+              ],
+              "Receipt": [
+                  {
+                      "@type": "ReceiptConfirmation",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "5ec4a65d-0688-47ed-8c96-ba417f68063a"
+                      },
+                      "Confirmation": {
+                          "@type": "ConfirmationHold",
+                          "Locator": {
+                              "source": "1G",
+                              "creationDate": "2025-05-08",
+                              "value": "BXKMJC"
+                          },
+                          "OfferStatus": {
+                              "@type": "OfferStatusAir",
+                              "StatusAir": [
+                                  {
+                                      "flightRefs": [
+                                          "Flight_01",
+                                          "Flight_02"
+                                      ],
+                                      "code": "HK",
+                                      "value": "Confirmed"
+                                  }
+                              ]
+                          }
+                      }
+                  },
+                  {
+                      "@type": "ReceiptConfirmation",
+                      "Identifier": {
+                          "authority": "Travelport",
+                          "value": "42af62e0-8600-4e0c-aab5-8241d23240bf"
+                      },
+                      "Confirmation": {
+                          "@type": "ConfirmationHold",
+                          "Locator": {
+                              "source": "1A",
+                              "value": "5KI6HT"
+                          }
+                      }
+                  },
+                  {
+                      "@type": "ReceiptPayment",
+                      "Document": [
+                          {
+                              "@type": "DocumentTicket",
+                              "Number": "2329905277213",
+                              "TravelerIdentifierRef": {
+                                  "id": "travelerRefId_1",
+                                  "value": "2a63b005-eb2a-4155-8982-679a6eb583f2"
+                              },
+                              "Amount": {
+                                  "@type": "Amount",
+                                  "Total": 48085
+                              }
+                          },
+                          {
+                              "@type": "DocumentTicket",
+                              "Number": "2329905277214",
+                              "TravelerIdentifierRef": {
+                                  "id": "travelerRefId_2",
+                                  "value": "ebf3750e-ee59-48c2-86fe-fabe55abbdeb"
+                              },
+                              "Amount": {
+                                  "@type": "Amount",
+                                  "Total": 48085
+                              }
+                          }
+                      ]
+                  }
+              ],
+              "ReservationComment": [
+                  {
+                      "@type": "ReservationComment",
+                      "commentSource": "Supplier",
+                      "shareWith": "Agency",
+                      "shareWithSupplier": [
+                          "1A"
+                      ],
+                      "id": "RSRVComment_1",
+                      "Comment": [
+                          {
+                              "id": "VeiComment_2",
+                              "name": "Vendor Remarks",
+                              "value": "ADTK1GTOMH BY 22MAY 0800 ZZZ TIME ZONE OTHERWISE WILL BE XLD"
+                          }
+                      ]
+                  },
+                  {
+                      "@type": "ReservationComment",
+                      "commentSource": "Supplier",
+                      "shareWith": "Agency",
+                      "shareWithSupplier": [
+                          "MH"
+                      ],
+                      "id": "RSRVComment_2",
+                      "Comment": [
+                          {
+                              "id": "VeiComment_1",
+                              "name": "Vendor Remarks",
+                              "value": "MISSING SSR CTCM MOBILE OR SSR CTCE EMAIL OR SSR CTCR NON-CONSENT FOR MH"
+                          }
+                      ]
+                  }
+              ],
+              "ReservationDisplaySequence": {
+                  "@type": "ReservationDisplaySequence",
+                  "DisplaySequence": [
+                      {
+                          "@type": "DisplaySequence",
+                          "displaySequence": 1,
+                          "OfferRef": "offer_1",
+                          "ProductRef": "product_1",
+                          "Sequence": 1
+                      },
+                      {
+                          "@type": "DisplaySequence",
+                          "displaySequence": 2,
+                          "OfferRef": "offer_1",
+                          "ProductRef": "product_2",
+                          "Sequence": 2
+                      }
+                  ]
+              }
+          }
+      }
+  }
+}

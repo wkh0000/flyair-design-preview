@@ -1,0 +1,74 @@
+<div class="pg">
+  <header class="pg-head">
+    <div>
+      <h1>Pages</h1>
+      <p>Edit the contact page and every content page (About, FAQ, legal, baggage, fees…). Pages you haven’t edited keep their built-in defaults.</p>
+    </div>
+  </header>
+
+  <p class="pg-msg ok" *ngIf="message">{{ message }}</p>
+  <p class="pg-msg err" *ngIf="error">{{ error }}</p>
+
+  <div class="pg-layout">
+    <!-- Page list -->
+    <nav class="pg-list">
+      <ng-container *ngFor="let g of groups">
+        <div class="pg-group">{{ g }}</div>
+        <button *ngFor="let p of pagesIn(g)" type="button" class="pg-item"
+                [class.active]="selected?.key === p.key" (click)="select(p)">
+          {{ p.label }}
+          <span class="pg-edited" *ngIf="overrides.has(p.key)" title="Customised">●</span>
+        </button>
+      </ng-container>
+    </nav>
+
+    <!-- Editor -->
+    <section class="pg-editor" *ngIf="selected">
+      <div class="pg-editor-head">
+        <h2>{{ selected.label }} <span class="pg-key">/{{ selected.key }}</span></h2>
+        <div class="pg-editor-actions">
+          <button class="pg-btn ghost" (click)="resetToDefault()" *ngIf="overrides.has(selected.key)">Reset to default</button>
+          <button class="pg-btn primary" (click)="save()" [disabled]="saving">{{ saving ? 'Saving…' : 'Save page' }}</button>
+        </div>
+      </div>
+
+      <!-- INFO page editor -->
+      <ng-container *ngIf="selected.type === 'info' && doc">
+        <div class="pg-grid">
+          <label class="pg-field"><span>Title</span><input [(ngModel)]="doc.title" name="title"></label>
+          <label class="pg-field"><span>Eyebrow (category)</span><input [(ngModel)]="doc.eyebrow" name="eyebrow"></label>
+          <label class="pg-field"><span>Last updated (optional)</span><input [(ngModel)]="doc.updated" name="updated" placeholder="e.g. 22 May 2026"></label>
+          <label class="pg-field col2"><span>Intro</span><textarea rows="2" [(ngModel)]="doc.intro" name="intro"></textarea></label>
+        </div>
+
+        <div class="pg-sub">Sections</div>
+        <div class="pg-section" *ngFor="let s of doc.sections; let i = index; trackBy: trackByIndex">
+          <div class="pg-section-row">
+            <input class="pg-grow" [(ngModel)]="s.h" [name]="'h'+i" placeholder="Section heading">
+            <button class="pg-btn ghost sm" (click)="removeSection(i)">Remove</button>
+          </div>
+          <textarea rows="3" [(ngModel)]="s.p" [name]="'p'+i" placeholder="Section text"></textarea>
+        </div>
+        <button class="pg-btn ghost sm" (click)="addSection()">+ Add section</button>
+      </ng-container>
+
+      <!-- CONTACT page editor -->
+      <ng-container *ngIf="selected.type === 'contact' && contact">
+        <div class="pg-grid">
+          <label class="pg-field"><span>Eyebrow</span><input [(ngModel)]="contact.eyebrow" name="ceyebrow"></label>
+          <label class="pg-field"><span>Heading</span><input [(ngModel)]="contact.heading" name="cheading"></label>
+          <label class="pg-field col2"><span>Intro</span><textarea rows="2" [(ngModel)]="contact.intro" name="cintro"></textarea></label>
+          <label class="pg-field"><span>Form heading</span><input [(ngModel)]="contact.formHeading" name="cform"></label>
+          <label class="pg-field"><span>Support hours</span><input [(ngModel)]="contact.hours" name="chours"></label>
+          <label class="pg-field"><span>Address (also pins the map)</span><input [(ngModel)]="contact.address" name="caddr"></label>
+          <label class="pg-field"><span>Phone</span><input [(ngModel)]="contact.phone" name="cphone"></label>
+          <label class="pg-field"><span>Email</span><input [(ngModel)]="contact.email" name="cemail"></label>
+        </div>
+      </ng-container>
+
+      <div class="pg-savebar">
+        <button class="pg-btn primary" (click)="save()" [disabled]="saving">{{ saving ? 'Saving…' : 'Save page' }}</button>
+      </div>
+    </section>
+  </div>
+</div>

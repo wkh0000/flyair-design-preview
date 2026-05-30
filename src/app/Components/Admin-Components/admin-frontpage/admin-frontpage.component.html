@@ -1,0 +1,172 @@
+<div class="fp">
+  <header class="fp-head">
+    <div>
+      <h1>Front Page <span class="fp-sync" *ngIf="syncing">· syncing…</span></h1>
+      <p>Edit every heading, paragraph, stat, feature, destination, offer, icon and image on the home page.</p>
+    </div>
+    <button class="fp-btn primary" (click)="save()" [disabled]="saving">{{ saving ? 'Saving…' : 'Save front page' }}</button>
+  </header>
+
+  <p class="fp-msg ok" *ngIf="message">{{ message }}</p>
+  <p class="fp-msg err" *ngIf="error">{{ error }}</p>
+
+  <!-- HERO -->
+  <section class="fp-card">
+    <h2>Hero</h2>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.hero.eyebrow" name="he"></label>
+      <label class="fp-field"><span>Title line</span><input [(ngModel)]="content.hero.titleLine1" name="ht1"></label>
+      <label class="fp-field"><span>Title accent (coloured)</span><input [(ngModel)]="content.hero.titleAccent" name="hta"></label>
+      <label class="fp-field fp-col2"><span>Lead paragraph</span><textarea rows="2" [(ngModel)]="content.hero.lead" name="hl"></textarea></label>
+    </div>
+    <div class="fp-sub">Trust badges</div>
+    <div class="fp-row" *ngFor="let b of content.hero.badges; let i = index; trackBy: trackByIndex">
+      <input [(ngModel)]="content.hero.badges[i]" [name]="'badge'+i" placeholder="e.g. Secure payments">
+      <button class="fp-btn ghost sm" (click)="removeBadge(i)">Remove</button>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addBadge()">+ Add badge</button>
+  </section>
+
+  <!-- STATS -->
+  <section class="fp-card">
+    <h2>Stats band</h2>
+    <div class="fp-item" *ngFor="let s of content.stats; let i = index; trackBy: trackByIndex">
+      <div class="fp-iconpick"><fly-icon [name]="s.icon || 'star'" [size]="22"></fly-icon>
+        <select [(ngModel)]="s.icon" [name]="'sic'+i"><option *ngFor="let k of iconKeys" [value]="k">{{k}}</option></select>
+      </div>
+      <input class="fp-grow" [(ngModel)]="s.value" [name]="'sv'+i" placeholder="Value e.g. 500+">
+      <input class="fp-grow" [(ngModel)]="s.label" [name]="'sl'+i" placeholder="Label e.g. Airline partners">
+      <button class="fp-btn ghost sm" (click)="removeStat(i)">Remove</button>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addStat()">+ Add stat</button>
+  </section>
+
+  <!-- WHY -->
+  <section class="fp-card">
+    <h2>“Why FlyAir” section</h2>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.why.eyebrow" name="wye"></label>
+      <label class="fp-field"><span>Title</span><input [(ngModel)]="content.why.title" name="wyt"></label>
+      <label class="fp-field fp-col2"><span>Lead</span><textarea rows="2" [(ngModel)]="content.why.lead" name="wyl"></textarea></label>
+    </div>
+    <div class="fp-sub">Feature cards</div>
+    <div class="fp-item col" *ngFor="let f of content.why.items; let i = index; trackBy: trackByIndex">
+      <div class="fp-item">
+        <div class="fp-iconpick"><fly-icon [name]="f.icon || 'sparkles'" [size]="22"></fly-icon>
+          <select [(ngModel)]="f.icon" [name]="'wfic'+i"><option *ngFor="let k of iconKeys" [value]="k">{{k}}</option></select>
+        </div>
+        <select [(ngModel)]="f.color" [name]="'wfc'+i"><option *ngFor="let c of colors" [value]="c">{{c}}</option></select>
+        <input class="fp-grow" [(ngModel)]="f.title" [name]="'wft'+i" placeholder="Title">
+        <button class="fp-btn ghost sm" (click)="removeWhy(i)">Remove</button>
+      </div>
+      <textarea rows="2" [(ngModel)]="f.text" [name]="'wftx'+i" placeholder="Description"></textarea>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addWhy()">+ Add feature</button>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="fp-card">
+    <h2>Popular destinations</h2>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.destinations.eyebrow" name="de"></label>
+      <label class="fp-field"><span>Title</span><input [(ngModel)]="content.destinations.title" name="dt"></label>
+      <label class="fp-field"><span>CTA label</span><input [(ngModel)]="content.destinations.ctaLabel" name="dcl"></label>
+      <label class="fp-field"><span>CTA link</span><input [(ngModel)]="content.destinations.ctaLink" name="dclk"></label>
+    </div>
+    <div class="fp-sub">Destination cards</div>
+    <div class="fp-dest" *ngFor="let d of content.destinations.items; let i = index; trackBy: trackByIndex">
+      <div class="fp-thumb">
+        <img *ngIf="d.image" [src]="d.image" alt="">
+        <div *ngIf="!d.image" class="fp-empty">No image</div>
+      </div>
+      <div class="fp-dest-fields">
+        <div class="fp-item">
+          <input class="fp-grow" [(ngModel)]="d.city" [name]="'dcity'+i" placeholder="City">
+          <input class="fp-grow" [(ngModel)]="d.country" [name]="'dctry'+i" placeholder="Country">
+          <button class="fp-btn ghost sm" (click)="removeDest(i)">Remove</button>
+        </div>
+        <div class="fp-item">
+          <input [(ngModel)]="d.badge" [name]="'dbadge'+i" placeholder="Badge e.g. Direct">
+          <select [(ngModel)]="d.badgeColor" [name]="'dbc'+i"><option *ngFor="let c of colors" [value]="c">{{c}}</option></select>
+          <input [(ngModel)]="d.price" [name]="'dprice'+i" placeholder="Price e.g. USD 320">
+          <input [(ngModel)]="d.link" [name]="'dlink'+i" placeholder="Link">
+        </div>
+        <div class="fp-item">
+          <label class="fp-btn primary sm fp-upload">
+            {{ uploadingKey === ('dest'+i) ? 'Uploading…' : (d.image ? 'Change image…' : 'Upload image…') }}
+            <input type="file" accept="image/*" hidden (change)="onImageSelected($event, d, 'image', 'dest'+i)">
+          </label>
+          <input class="fp-grow" [(ngModel)]="d.image" [name]="'dimg'+i" placeholder="…or paste image URL">
+        </div>
+      </div>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addDest()">+ Add destination</button>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="fp-card">
+    <h2>Featured destination banner</h2>
+    <div class="fp-dest">
+      <div class="fp-thumb wide">
+        <img *ngIf="content.featured.image" [src]="content.featured.image" alt="">
+        <div *ngIf="!content.featured.image" class="fp-empty">No image</div>
+      </div>
+      <div class="fp-dest-fields">
+        <div class="fp-grid">
+          <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.featured.eyebrow" name="fe"></label>
+          <label class="fp-field"><span>Title</span><input [(ngModel)]="content.featured.title" name="ft"></label>
+          <label class="fp-field"><span>CTA label</span><input [(ngModel)]="content.featured.ctaLabel" name="fcl"></label>
+          <label class="fp-field"><span>CTA link</span><input [(ngModel)]="content.featured.ctaLink" name="fclk"></label>
+          <label class="fp-field fp-col2"><span>Text</span><textarea rows="2" [(ngModel)]="content.featured.text" name="ftx"></textarea></label>
+        </div>
+        <div class="fp-item">
+          <label class="fp-btn primary sm fp-upload">
+            {{ uploadingKey === 'featured' ? 'Uploading…' : (content.featured.image ? 'Change image…' : 'Upload image…') }}
+            <input type="file" accept="image/*" hidden (change)="onImageSelected($event, content.featured, 'image', 'featured')">
+          </label>
+          <input class="fp-grow" [(ngModel)]="content.featured.image" name="fimg" placeholder="…or paste image URL">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="fp-card">
+    <h2>Special offers</h2>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.offers.eyebrow" name="oe"></label>
+      <label class="fp-field"><span>Title</span><input [(ngModel)]="content.offers.title" name="ot"></label>
+    </div>
+    <div class="fp-sub">Offer cards</div>
+    <div class="fp-item col" *ngFor="let o of content.offers.items; let i = index; trackBy: trackByIndex">
+      <div class="fp-item">
+        <div class="fp-iconpick"><fly-icon [name]="o.icon || 'percent-tag'" [size]="22"></fly-icon>
+          <select [(ngModel)]="o.icon" [name]="'oic'+i"><option *ngFor="let k of iconKeys" [value]="k">{{k}}</option></select>
+        </div>
+        <select [(ngModel)]="o.color" [name]="'oc'+i"><option *ngFor="let c of colors" [value]="c">{{c}}</option></select>
+        <input class="fp-grow" [(ngModel)]="o.title" [name]="'ot2'+i" placeholder="Title">
+        <button class="fp-btn ghost sm" (click)="removeOffer(i)">Remove</button>
+      </div>
+      <textarea rows="2" [(ngModel)]="o.text" [name]="'otx'+i" placeholder="Description"></textarea>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addOffer()">+ Add offer</button>
+  </section>
+
+  <!-- CTA -->
+  <section class="fp-card">
+    <h2>Closing call-to-action</h2>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.cta.eyebrow" name="ce"></label>
+      <label class="fp-field"><span>Title</span><input [(ngModel)]="content.cta.title" name="ct"></label>
+      <label class="fp-field fp-col2"><span>Lead</span><textarea rows="2" [(ngModel)]="content.cta.lead" name="cl"></textarea></label>
+      <label class="fp-field"><span>Primary button label</span><input [(ngModel)]="content.cta.primaryLabel" name="cpl"></label>
+      <label class="fp-field"><span>Primary button link</span><input [(ngModel)]="content.cta.primaryLink" name="cplk"></label>
+      <label class="fp-field"><span>Secondary button label</span><input [(ngModel)]="content.cta.secondaryLabel" name="csl"></label>
+      <label class="fp-field"><span>Secondary button link</span><input [(ngModel)]="content.cta.secondaryLink" name="cslk"></label>
+    </div>
+  </section>
+
+  <div class="fp-savebar">
+    <button class="fp-btn primary" (click)="save()" [disabled]="saving">{{ saving ? 'Saving…' : 'Save front page' }}</button>
+  </div>
+</div>

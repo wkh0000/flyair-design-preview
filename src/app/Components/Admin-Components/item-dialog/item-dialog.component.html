@@ -1,0 +1,17 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Select Content Type NDC/GDS</h2>
+  <p>Current - {{option[0]?.contentType}}</p>
+
+  <mat-dialog-content>
+    <mat-radio-group [(ngModel)]="selectedOption">
+      <mat-radio-button style="margin-right: 10px;" value="NDC">NDC</mat-radio-button>
+      <mat-radio-button style="margin-right: 10px;" value="GDS" class="ml-3">GDS</mat-radio-button>
+      <mat-radio-button value="COMBINED" class="ml-3">Combined</mat-radio-button>
+    </mat-radio-group>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="selectedOption" [disabled]="!selectedOption" (click)="onConfirm()">Confirm</button>
+  </mat-dialog-actions>
+</div>

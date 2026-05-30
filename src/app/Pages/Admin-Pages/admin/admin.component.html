@@ -1,0 +1,42 @@
+<header class="admin-topbar">
+  <a class="brand" routerLink="/">
+    <img src="assets/flyair-logo.png" alt="FlyAir" class="brand-logo" />
+    <span class="brand-divider"></span>
+    <span class="brand-label">Admin</span>
+  </a>
+
+  <div class="topbar-actions">
+    <span class="user-chip">
+      <span class="user-dot"></span>
+      Admin
+    </span>
+    <button type="button" class="logout-btn" (click)="logout()">
+      <span class="material-icons">logout</span>
+      Log out
+    </button>
+  </div>
+</header>
+
+<div class="main-container">
+  <div class="sidebar-container">
+    <app-admin-sidebar (itemSelected)="onSidebarItemSelected($event)"></app-admin-sidebar>
+  </div>
+  <div class="content-container">
+    <app-admin-home *ngIf="selectedItem === 0"></app-admin-home>
+    <app-admin-customers *ngIf="selectedItem === 1"></app-admin-customers>
+    <app-admin-booking *ngIf="selectedItem === 2"></app-admin-booking>
+    <app-admin-cashout *ngIf="selectedItem === 3"></app-admin-cashout>
+    <app-admin-profile *ngIf="selectedItem === 5"></app-admin-profile>
+    <app-admin-markup *ngIf="selectedItem === 6"></app-admin-markup>
+    <app-admin-promotions *ngIf="selectedItem === 7"></app-admin-promotions>
+    <app-admin-limitations *ngIf="selectedItem === 8"></app-admin-limitations>
+    <app-admin-cms *ngIf="selectedItem === 11"></app-admin-cms>
+    <app-admin-news *ngIf="selectedItem === 12"></app-admin-news>
+    <app-admin-frontpage *ngIf="selectedItem === 13"></app-admin-frontpage>
+    <app-admin-pages *ngIf="selectedItem === 14"></app-admin-pages>
+    <app-admin-inquiries *ngIf="selectedItem === 15"></app-admin-inquiries>
+    <app-admin-subscribers *ngIf="selectedItem === 16"></app-admin-subscribers>
+    <app-admin-footer *ngIf="selectedItem === 17"></app-admin-footer>
+    <app-admin-support *ngIf="selectedItem === 18"></app-admin-support>
+  </div>
+</div>

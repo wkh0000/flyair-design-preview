@@ -1,0 +1,194 @@
+@import "../../../variables";
+
+
+.nav-tabs {
+  border: none !important;
+}
+
+.nav-tabs .nav-link {
+  color: $text-dark;
+  background-color: rgba($color: $text, $alpha: 0.6);
+}
+
+/* Style for the first tab (One Way) */
+.nav-tabs .nav-item:first-child .nav-link {
+  border-radius: 4px 0 0 0; /* Round the left corners of the first tab */
+}
+
+/* Style for the second tab (Return) */
+.nav-tabs .nav-item:nth-child(2) .nav-link {
+  border-radius: 0 4px 0 0; /* Round the right corners of the second tab */
+}
+
+
+.nav-tabs .nav-link.active {
+  color: $text-dark;
+  background-color: rgba($color: $text, $alpha: 1);
+  border: rgba($color: $text, $alpha: 0.8);
+  border-bottom: 1px solid black;
+}
+
+.nav-tabs .nav-link:hover {
+  color: $button-light;
+}
+
+.traveller-container {
+  position: relative;
+  display: inline-block;
+  // max-width: 250px;
+  width: 100%;
+}
+
+.traveller-header {
+  margin-bottom: 5px;
+}
+
+.traveller-button {
+  border: 1px solid rgb(41, 41, 41);
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 55px;
+}
+
+.traveller-dropdown {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  background-color: $text;
+  min-width: 250px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 1;
+}
+
+.traveller-options .traveller-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.traveller-count {
+  display: flex;
+  align-items: center;
+}
+
+.traveller-count button {
+  border: none;
+  padding: 6px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.traveller-count button:hover {
+  background-color: $button-light;
+}
+
+.traveller-count span {
+  font-size: 16px;
+}
+
+.class-options {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 12px;
+}
+
+.class-button {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  color: $button-light;
+  cursor: pointer;
+  width: 120px;
+}
+
+.class-button.active {
+  background-color: $button-light;
+  color: $text;
+}
+
+.class-button:hover {
+  background-color: $button-light;
+  color: $text;
+}
+
+.done-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  margin-left: 20px;
+}
+
+.done-button {
+  height: 50px;
+  width: 80px;
+  background-color: $button-light;
+  color: $text;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .traveller-button {
+    font-size: 14px;
+  }
+  .traveller-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .done-button-container {
+    text-align: center;
+  }
+  .traveller-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb($color: #ffffff, $alpha: 0.9);
+  z-index: 9999;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.mat-date-range-input-separator {
+  display: none !important;
+}
+
+
+.align-style{
+  display: flex;
+  align-items: center;
+}
+
+.example-custom-date-class {
+  background: rgba(255, 165, 0, 0.5) !important;
+  border-radius: 100%!important;
+}
+
+.dropdown-margin {
+  margin-bottom: 100px;
+}
+

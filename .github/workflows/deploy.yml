@@ -1,0 +1,67 @@
+name: Deploy Angular demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build (demo configuration)
+        # The base-href matches the repo name so all assets resolve under
+        # https://<user>.github.io/<repo>/. If you switch to a custom domain,
+        # set base-href to "/".
+        run: |
+          npx ng build \
+            --configuration=demo \
+            --base-href "/flyair-design-preview/"
+
+      - name: Stage Pages artifact (SPA-safe)
+        run: |
+          mkdir -p _site
+          # The static SPA output lives under dist/<project>/browser
+          cp -r dist/white-label-itq/browser/* _site/
+          # SPA route fallback: GitHub Pages serves 404.html when a route
+          # doesn't match a file; we copy index.html into that slot so Angular's
+          # router can take over on deep links.
+          cp _site/index.html _site/404.html
+          # Suppress Jekyll processing on GitHub Pages.
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

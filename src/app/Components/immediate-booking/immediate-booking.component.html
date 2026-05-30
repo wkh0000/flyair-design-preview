@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Immediate Payment Required</h2>
+<mat-divider></mat-divider>
+
+<mat-dialog-content class="mat-typography">
+  <p>
+    The selected departure date is within <strong>{{data.hx}}</strong> day(s) from today.
+    Bookings for such close dates require <strong>immediate payment</strong>.
+  </p>
+  <p>
+    If you're ready to proceed, please click <strong>Confirm</strong>.
+    Otherwise, click <strong>Edit</strong> to select a different travel date.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onEdit()">Edit</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Confirm</button>
+</mat-dialog-actions>

@@ -1,0 +1,113 @@
+<div class="fly-news">
+  <a class="fly-skip" href="#news-main">Skip to news</a>
+
+  <!-- Masthead -->
+  <header class="news-hero">
+    <div class="wrap news-wrap">
+      <span class="eyebrow">{{ activeCategoryObj ? activeCategoryObj.name : (activeTag ? 'Tagged' : 'FlyAir Newsroom') }}</span>
+      <h1>{{ activeCategoryObj ? activeCategoryObj.name + ' News' : (activeTag ? '#' + activeTag : 'Aviation news, decoded.') }}</h1>
+      <p>
+        {{ activeCategoryObj?.blurb
+          || (activeTag ? 'Every FlyAir Newsroom story tagged ' + activeTag + '.'
+          : 'Airlines, airports, aircraft, safety, routes and the technology shaping how the world flies — reported by the FlyAir Newsroom.') }}
+      </p>
+      <div class="news-hero-stats" aria-label="Newsroom at a glance">
+        <span class="stat"><strong>{{ grandTotal }}</strong> articles</span>
+        <span class="stat"><strong>{{ categories.length }}</strong> sections</span>
+        <span class="stat" *ngIf="activeCategoryObj || activeTag"><strong>{{ total }}</strong> in this view</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category filter -->
+  <nav class="news-wrap" aria-label="News categories">
+    <div class="news-cats">
+      <a class="news-cat" routerLink="/news" [attr.aria-current]="!activeCategory ? 'page' : null"
+         [class.active]="!activeCategory">All news</a>
+      <a *ngFor="let c of categories" class="news-cat"
+         [routerLink]="['/news/category', c.slug]"
+         [attr.aria-current]="activeCategory === c.slug ? 'page' : null"
+         [class.active]="activeCategory === c.slug"
+         [style.--cat-accent]="c.accent">
+        <span class="dot" [style.background]="c.accent || '#0073bd'"></span>{{ c.name }}
+        <span *ngIf="c.count !== undefined" class="count" aria-hidden="true">({{ c.count }})</span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="news-main" class="news-wrap news-section" tabindex="-1">
+
+    <!-- Loading skeletons -->
+    <div *ngIf="loading" class="news-grid" aria-hidden="true">
+      <div class="news-skeleton" *ngFor="let s of [1,2,3,4,5,6]"></div>
+    </div>
+
+    <ng-container *ngIf="!loading">
+      <!-- Featured lead (index, page 1) -->
+      <section *ngIf="featured" class="news-lead" aria-label="Featured story">
+        <a class="news-lead__media" [routerLink]="['/news', featured.slug]" [attr.aria-label]="featured.title">
+          <img *ngIf="featured.heroImageUrl" [src]="featured.heroImageUrl"
+               [alt]="featured.heroImageAlt || featured.title" loading="eager" />
+        </a>
+        <div class="news-lead__body">
+          <span class="news-card__cat" *ngIf="featured.categoryName">{{ featured.categoryName }}</span>
+          <h2><a [routerLink]="['/news', featured.slug]">{{ featured.title }}</a></h2>
+          <p>{{ featured.dek }}</p>
+          <div class="news-card__meta">
+            <span>{{ featured.authorName }}</span><span class="sep"></span>
+            <time [attr.datetime]="featured.publishedAt">{{ featured.publishedAt | date:'mediumDate' }}</time>
+            <span class="sep"></span><span>{{ featured.readingMinutes }} min read</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Article grid -->
+      <h2 class="sr-only">{{ activeCategoryObj ? activeCategoryObj.name + ' articles' : 'Latest articles' }}</h2>
+      <div class="news-grid" *ngIf="articles.length">
+        <article class="news-card" *ngFor="let a of articles; trackBy: trackById">
+          <a class="news-card__media" [routerLink]="['/news', a.slug]" tabindex="-1" aria-hidden="true">
+            <img *ngIf="a.heroImageUrl" [src]="a.heroImageUrl" [alt]="a.heroImageAlt || a.title" loading="lazy" />
+          </a>
+          <div class="news-card__body">
+            <span class="news-card__cat" *ngIf="a.categoryName">{{ a.categoryName }}</span>
+            <h3 class="news-card__title"><a [routerLink]="['/news', a.slug]">{{ a.title }}</a></h3>
+            <p class="news-card__dek">{{ a.dek }}</p>
+            <div class="news-card__meta">
+              <time [attr.datetime]="a.publishedAt">{{ a.publishedAt | date:'mediumDate' }}</time>
+              <span class="sep"></span><span>{{ a.readingMinutes }} min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Empty -->
+      <div *ngIf="!articles.length && !featured" class="news-empty">
+        <p>No articles published in this section yet. Please check back soon.</p>
+        <a class="fly-btn fly-btn-outline" routerLink="/news">Browse all news</a>
+      </div>
+
+      <!-- Pagination -->
+      <nav class="news-pager" *ngIf="totalPages > 1" aria-label="News pagination">
+        <button type="button" (click)="goToPage(page - 1)" [disabled]="page === 1" aria-label="Previous page">‹</button>
+        <button type="button" *ngFor="let p of pageList()" (click)="goToPage(p)"
+                [attr.aria-current]="p === page ? 'page' : null"
+                [attr.aria-label]="'Page ' + p">{{ p }}</button>
+        <button type="button" (click)="goToPage(page + 1)" [disabled]="page === totalPages" aria-label="Next page">›</button>
+      </nav>
+    </ng-container>
+
+    <!-- Newsletter -->
+    <section class="news-cta" aria-labelledby="news-cta-h">
+      <h3 id="news-cta-h">Never miss a departure</h3>
+      <p>Get the week's biggest aviation stories — airline launches, fleet moves and airport news — in one tidy briefing.</p>
+      <form *ngIf="!newsletterDone" (submit)="submitNewsletter($event)">
+        <label class="sr-only" for="news-email">Email address</label>
+        <input id="news-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        <button type="submit" class="fly-btn fly-btn-primary">Subscribe</button>
+      </form>
+      <p *ngIf="newsletterDone" role="status" style="color:#8fd0ff;font-weight:700;margin:0">
+        Thanks! You're on the list. ✈
+      </p>
+    </section>
+  </main>
+</div>

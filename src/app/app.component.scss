@@ -1,0 +1,112 @@
+/* Design-preview banner — sticky bar at the very top during the GitHub Pages build */
+.fly-demo-banner {
+  position: sticky; top: 0; z-index: 11500;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 8px 16px; text-align: center;
+  background: linear-gradient(90deg, #ed174c, #ff5274);
+  color: #fff; font-size: 0.84rem; font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.01em; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+.fly-demo-banner b { font-weight: 700; letter-spacing: 0.03em; }
+.fly-demo-dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+  animation: fly-demo-pulse 1.6s ease-in-out infinite;
+}
+@keyframes fly-demo-pulse {
+  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+}
+
+/* ========== Accessibility: skip link + keyboard-only focus indicator ==========
+   WCAG 2.4.1 (Bypass Blocks): the skip link is the FIRST focusable element on every page.
+   Visually hidden until it receives focus, then slides into view. Uses transform (not top)
+   because another stylesheet on this page sets `top: -100px` and beats the cascade. */
+.fly-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 12000;                           /* above header, loader, WhatsApp float, everything */
+  padding: 12px 22px;
+  background: #0a1730;
+  color: #ffffff;
+  font-family: 'Exo', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(calc(-100% - 24px));   /* slid off-screen above the viewport */
+  transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.fly-skip-link:focus,
+.fly-skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #ffd166;
+  outline-offset: 2px;
+}
+
+/* <main> takes focus programmatically when the skip link is activated — no outline needed
+   (the visual context shift is already obvious to the user). */
+main#main-content {
+  outline: none;
+}
+main#main-content:focus { outline: none; }
+
+/* Global keyboard-only focus indicator — keeps mouse clicks clean while restoring a clear
+   focus ring whenever a keyboard user tabs through the page (WCAG 2.4.7 Focus Visible). */
+:focus-visible {
+  outline: 3px solid #0073bd;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Global fullscreen flight loader — rendered at the app root so it covers the whole viewport
+   (a local overlay inside the hero would be trapped by the hero's parallax transform). */
+.fly-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  background: rgba(244, 248, 252, 0.94);
+  backdrop-filter: blur(4px);
+}
+.fly-loading-text {
+  font-family: 'Exo', system-ui, sans-serif;
+  font-weight: 700;
+  color: #0a1730;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* Floating WhatsApp contact (public pages) — brand-green logo glyph on a frosted-glass disc.
+   Smaller footprint than before and a soft backdrop-filter so it reads cleanly over any bg. */
+.fly-wa {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: #25d366;                              /* icon green via currentColor */
+  background: rgba(255, 255, 255, 0.22);       /* glass tint */
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.2s;
+}
+.fly-wa svg { width: 28px; height: 28px; display: block; }
+.fly-wa:hover { transform: translateY(-2px) scale(1.06); background: rgba(255, 255, 255, 0.3); }
+.fly-wa:focus-visible { outline: 3px solid #0073bd; outline-offset: 3px; }
+@media (max-width: 600px) { .fly-wa { width: 48px; height: 48px; left: 14px; bottom: 14px; } .fly-wa svg { width: 26px; height: 26px; } }
+
+/* Scroll read-progress bar removed — was distracting at the top of the viewport. */

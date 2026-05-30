@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Pellentesque Viverra Etiam Viverra Massa Lorem, MI Et Cursus",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "June 10, 2023",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta elit a porttitor mattis...",
+    "image": "assets/article1.png"
+  },
+  {
+    "title": "Fusce Sagittis Etiam Tristique Blandit Urna Et, Lorem Ex",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "July 07, 2023",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta elit a porttitor mattis...",
+    "image": "assets/article2.png"
+  },
+  {
+    "title": "Sed Magna Dolor, Dignissim Id Erat Vitae, Consectetur",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "July 20, 2023",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta elit a porttitor mattis...",
+    "image": "assets/article3.png"
+  },
+  {
+    "title": "Inibi Lacus Camisilla Quis, Quis Efficiitur Dolor Pulvinar Nec",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "July 15, 2023",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta elit a porttitor mattis...",
+    "image": "assets/article4.png"
+  },
+  {
+    "title": "Vivamus Bibendum Nullam Pulvinar Ultricies Quam Vitae",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "August 02, 2023",
+    "description": "Sed at diam sit amet felis malesuada eleifend. Aenean tristique libero sit amet tincidunt ornare...",
+    "image": "assets/article5.png"
+  },
+  {
+    "title": "Maecenas Aliquet Nunc Viverra, Finibus Ligula Ut, Pulvinar Ligula",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "August 10, 2023",
+    "description": "Quisque a dolor non mauris aliquet ultricies. Proin malesuada velit sit amet leo auctor eleifend...",
+    "image": "assets/article6.png"
+  },
+  {
+    "title": "Aliquam Sit Amet Fermentum Massa, Non Accumsan Nunc",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "August 18, 2023",
+    "description": "Phasellus ultricies, elit eget malesuada facilisis, sapien nunc convallis est, non auctor velit magna ut eros...",
+    "image": "assets/article7.png"
+  },
+  {
+    "title": "Morbi Dignissim Dolor Non Sollicitudin Aliquam",
+    "category": "Uncategorized",
+    "author": "Admin",
+    "date": "August 21, 2023",
+    "description": "Pellentesque et magna et tortor scelerisque convallis. Nam eget urna bibendum, elementum ex vel, tempor libero...",
+    "image": "assets/article8.png"
+  }
+]

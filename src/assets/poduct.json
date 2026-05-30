@@ -1,0 +1,71 @@
+{"Product": [
+  {
+      "@type": "ProductID",
+      "productRef":                   {
+        "@type": "ProductAir",
+        "totalDuration": "PT24H35M",
+        "id": "p10",
+        "Quantity": 9,
+        "FlightSegment": [
+            {
+                "@type": "FlightSegment",
+                "sequence": 1,
+                "connectionDuration": "PT11H40M",
+                "boundFlightsInd": true,
+                "Flight": {
+                    "@type": "FlightID",
+                    "FlightRef": "s15"
+                }
+            },
+            {
+                "@type": "FlightSegment",
+                "sequence": 2,
+                "Flight": {
+                    "@type": "FlightID",
+                    "FlightRef": "s16"
+                }
+            }
+        ],
+        "PassengerFlight": [
+            {
+                "@type": "PassengerFlight",
+                "passengerQuantity": 1,
+                "passengerTypeCode": "ADT",
+                "FlightProduct": [
+                    {
+                        "@type": "FlightProduct",
+                        "segmentSequence": [
+                            1
+                        ],
+                        "classOfService": "N",
+                        "cabin": "Economy",
+                        "fareBasisCode": "SNNF00S2",
+                        "fareType": "PublicFare",
+                        "fareTypeCode": "XOX",
+                        "Brand": {
+                            "@type": "BrandID",
+                            "BrandRef": "b17"
+                        }
+                    },
+                    {
+                        "@type": "FlightProduct",
+                        "segmentSequence": [
+                            2
+                        ],
+                        "classOfService": "S",
+                        "cabin": "Economy",
+                        "fareBasisCode": "SNNF00S2",
+                        "fareType": "PublicFare",
+                        "fareTypeCode": "XOX",
+                        "Brand": {
+                            "@type": "BrandID",
+                            "BrandRef": "b17"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+  }
+]
+}

@@ -1,0 +1,82 @@
+<div class="afoot-wrap">
+  <header class="afoot-head">
+    <div>
+      <h2>Footer</h2>
+      <p class="muted">Brand description, newsletter copy, social links and the "Powered by" line.
+        <span *ngIf="hasOverride" class="badge">Customised</span>
+        <span *ngIf="!hasOverride" class="badge default">Built-in default</span>
+      </p>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn ghost" (click)="resetToDefault()" *ngIf="hasOverride">
+        <span class="material-symbols-outlined">restart_alt</span> Reset to default
+      </button>
+      <button type="button" class="btn primary" (click)="save()" [disabled]="saving">
+        <span class="material-symbols-outlined">save</span>
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="afoot-body">
+    <section class="card">
+      <h3>Brand block</h3>
+      <label class="field">
+        <span>Brand description</span>
+        <textarea rows="3" [(ngModel)]="cms.brandText" name="brandText"></textarea>
+      </label>
+    </section>
+
+    <section class="card">
+      <h3>Newsletter signup</h3>
+      <div class="row2">
+        <label class="field">
+          <span>Label</span>
+          <input type="text" [(ngModel)]="cms.newsletterLabel" name="newsletterLabel" />
+        </label>
+        <label class="field">
+          <span>Input placeholder</span>
+          <input type="text" [(ngModel)]="cms.newsletterPlaceholder" name="newsletterPlaceholder" />
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Social links</h3>
+      <p class="hint">Paste full URLs (use # to hide a link).</p>
+      <label class="field">
+        <span>Facebook</span>
+        <input type="url" [(ngModel)]="cms.socials.facebook" name="facebook" placeholder="https://facebook.com/flyair" />
+      </label>
+      <label class="field">
+        <span>Instagram</span>
+        <input type="url" [(ngModel)]="cms.socials.instagram" name="instagram" placeholder="https://instagram.com/flyair" />
+      </label>
+      <label class="field">
+        <span>X (Twitter)</span>
+        <input type="url" [(ngModel)]="cms.socials.x" name="x" placeholder="https://x.com/flyair" />
+      </label>
+    </section>
+
+    <section class="card">
+      <h3>Bottom bar</h3>
+      <label class="field">
+        <span>Copyright line</span>
+        <input type="text" [(ngModel)]="cms.bottomCopy" name="bottomCopy" />
+      </label>
+      <div class="row2">
+        <label class="field">
+          <span>Powered-by label</span>
+          <input type="text" [(ngModel)]="cms.poweredByLabel" name="poweredByLabel" />
+        </label>
+        <label class="field">
+          <span>Powered-by link</span>
+          <input type="url" [(ngModel)]="cms.poweredByLink" name="poweredByLink" />
+        </label>
+      </div>
+    </section>
+
+    <p class="msg ok" *ngIf="message">{{ message }}</p>
+    <p class="msg err" *ngIf="error">{{ error }}</p>
+  </div>
+</div>

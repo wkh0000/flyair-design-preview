@@ -1,0 +1,60 @@
+// _variables.scss
+
+// Primary Colors
+$primary-color: #2e3e56;
+$primary-light: #0d3b5a;
+
+$primary-dark: #2c3e50;
+
+// Secondary Colors
+$secondary-color: #2ecc71;
+$secondary-light: #58d68d;
+$secondary-dark: #1e8449;
+
+// Accent Colors
+$accent-color: #e74c3c;
+$accent-light: #f1948a;
+$accent-dark: #c0392b;
+
+// Neutral Colors
+$text-color: #333333;
+$text-light: #666666;
+$text-dark: #111111;
+$text: #ffffff;
+
+$background-color: #ffffff;
+$background-light: #f8f9fa;
+$background-dark: #ecf0f1;
+
+// Border Colors
+$border-color: #dcdcdc;
+$border-light: #eeeeee;
+$border-dark: #b3b3b3;
+
+// Status Colors
+$success-color: #2ecc71;
+$error-color: #e74c3c;
+$warning-color: #f1c40f;
+$info-color: #3498db;
+
+// Grayscale
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+
+
+// Utility Colors
+$button-light: $primary-light;
+$link-color: $primary-color;
+$link-hover-color: $primary-dark;
+$button-color: $primary-color;
+$scroll-color: $primary-color;
+$scroll-color-hover: $primary-light;
+$button-hover-color: $primary-dark;

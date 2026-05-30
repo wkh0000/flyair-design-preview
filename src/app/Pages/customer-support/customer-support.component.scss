@@ -1,0 +1,373 @@
+/* ============================================================
+   Customer Support Center — multi-step request wizard
+   Scoped styles; relies on global .fly-* utilities + :root vars
+   ============================================================ */
+:host {
+  display: block;
+  background: var(--fly-soft);
+  min-height: 100vh;
+}
+
+/* Step-2 layout — side-by-side name + email, full-width booking ID and details */
+.cs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.cs-col { display: flex; flex-direction: column; }
+.cs-textarea { resize: vertical; min-height: 120px; font-family: inherit; line-height: 1.5; padding-top: 10px; padding-bottom: 10px; }
+@media (max-width: 640px) { .cs-row { grid-template-columns: 1fr; gap: 0; } }
+
+/* ---------- Banner ---------- */
+.cs-banner {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(120deg, #0b8a8f, #0073bd);
+  padding: calc(var(--fly-header-h) + 40px) 0 86px;
+}
+.cs-banner .fly-container {
+  position: relative;
+  z-index: 2;
+}
+.cs-banner h1 {
+  color: #fff;
+  margin: 14px 0 0;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+}
+.cs-banner-sub {
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 300;
+  margin: 14px auto 0;
+  max-width: 540px;
+}
+.cs-banner-ic {
+  font-size: 46px;
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 4px 14px rgba(3, 30, 60, 0.35));
+}
+
+/* faint floating "?" accents */
+.cs-orb {
+  position: absolute;
+  z-index: 1;
+  font-family: var(--fly-display);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.12);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+}
+.cs-orb-1 {
+  font-size: 60px;
+  width: 130px;
+  height: 130px;
+  left: 6%;
+  top: 26%;
+}
+.cs-orb-2 {
+  font-size: 38px;
+  width: 84px;
+  height: 84px;
+  right: 9%;
+  top: 30%;
+}
+.cs-orb-3 {
+  font-size: 26px;
+  width: 58px;
+  height: 58px;
+  right: 22%;
+  bottom: 16%;
+}
+@media (max-width: 760px) {
+  .cs-orb-1,
+  .cs-orb-3 {
+    display: none;
+  }
+}
+
+/* ---------- Stage + card ---------- */
+.cs-stage {
+  padding: 0 24px clamp(56px, 9vw, 104px);
+  display: flex;
+  justify-content: center;
+}
+.cs-card {
+  width: 100%;
+  max-width: 680px;
+  margin-top: -46px;
+  background: #fff;
+  border: 1px solid var(--fly-line);
+  border-radius: var(--fly-radius-lg);
+  box-shadow: var(--fly-shadow-lg);
+  padding: clamp(26px, 4vw, 42px);
+}
+
+/* ---------- Step indicator ---------- */
+.cs-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.cs-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fly-line);
+  border: 2px solid var(--fly-line);
+  flex: 0 0 auto;
+  transition: 0.3s var(--fly-ease);
+}
+.cs-dot.active {
+  background: var(--fly-blue);
+  border-color: var(--fly-blue);
+  box-shadow: var(--fly-ring);
+}
+.cs-dot.done {
+  background: var(--fly-green);
+  border-color: var(--fly-green);
+  box-shadow: none;
+}
+.cs-bar {
+  width: 54px;
+  height: 3px;
+  background: var(--fly-line);
+  border-radius: 2px;
+  transition: 0.3s var(--fly-ease);
+}
+.cs-bar.fill {
+  background: var(--fly-green);
+}
+.cs-step-label {
+  text-align: center;
+  margin: 12px 0 26px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fly-ink3);
+}
+
+/* ---------- Panel ---------- */
+.cs-panel {
+  animation: cs-fade 0.32s var(--fly-ease);
+}
+@keyframes cs-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.cs-title {
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  margin: 0 0 22px;
+}
+.cs-title-center {
+  text-align: center;
+}
+
+/* ---------- Notice banners ---------- */
+.cs-notice {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--fly-radius);
+  margin-bottom: 26px;
+}
+.cs-notice .material-symbols-outlined {
+  flex: 0 0 auto;
+  font-size: 24px;
+  margin-top: 1px;
+}
+.cs-notice-body h4 {
+  font-family: var(--fly-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 6px;
+}
+.cs-notice-body p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--fly-ink2);
+  margin: 0;
+}
+.cs-notice-body p + p {
+  margin-top: 10px;
+}
+.cs-notice-warn {
+  background: var(--fly-red50);
+  border-left: 4px solid var(--fly-red);
+}
+.cs-notice-warn .material-symbols-outlined {
+  color: var(--fly-red600);
+}
+.cs-notice-warn h4 {
+  color: var(--fly-red600);
+}
+.cs-notice-tip {
+  background: var(--fly-blue50);
+  border-left: 4px solid var(--fly-blue);
+}
+.cs-notice-tip .material-symbols-outlined {
+  color: var(--fly-blue);
+}
+
+/* ---------- Field label ---------- */
+.cs-field-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fly-ink);
+  margin: 0 0 14px;
+}
+
+/* ---------- Radio options ---------- */
+.cs-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cs-option {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--fly-line);
+  border-radius: var(--fly-radius);
+  cursor: pointer;
+  transition: 0.2s var(--fly-ease);
+  background: #fff;
+}
+.cs-option:hover {
+  border-color: var(--fly-blue100);
+  background: var(--fly-soft);
+}
+.cs-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.cs-radio {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--fly-ink3);
+  display: grid;
+  place-items: center;
+  transition: 0.2s var(--fly-ease);
+}
+.cs-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--fly-blue);
+  transform: scale(0);
+  transition: 0.2s var(--fly-ease);
+}
+.cs-option-text {
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: var(--fly-ink2);
+}
+.cs-option.selected {
+  border-color: var(--fly-blue);
+  background: var(--fly-blue50);
+}
+.cs-option.selected .cs-radio {
+  border-color: var(--fly-blue);
+}
+.cs-option.selected .cs-radio::after {
+  transform: scale(1);
+}
+.cs-option.selected .cs-option-text {
+  color: var(--fly-blue700);
+  font-weight: 600;
+}
+/* keyboard focus ring */
+.cs-option input:focus-visible + .cs-radio {
+  box-shadow: var(--fly-ring);
+}
+
+/* ---------- Text input ---------- */
+.cs-input {
+  width: 100%;
+  font-family: var(--fly-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fly-ink);
+  background: var(--fly-soft);
+  border: 1.5px solid var(--fly-line);
+  border-radius: var(--fly-radius);
+  padding: 14px 16px;
+  outline: none;
+  transition: 0.2s var(--fly-ease);
+}
+.cs-input::placeholder {
+  color: var(--fly-ink3);
+  font-weight: 400;
+}
+.cs-input:focus {
+  border-color: var(--fly-blue);
+  background: #fff;
+  box-shadow: var(--fly-ring);
+}
+
+/* ---------- Success ---------- */
+.cs-panel-success {
+  text-align: center;
+}
+.cs-check {
+  font-size: 72px;
+  color: var(--fly-green);
+  font-variation-settings: "FILL" 1;
+}
+.cs-success-body {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--fly-ink2);
+  max-width: 460px;
+  margin: 12px auto 0;
+}
+
+/* ---------- Actions ---------- */
+.cs-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--fly-line);
+}
+.cs-actions-center {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cs-actions .material-symbols-outlined {
+  font-size: 20px;
+}
+.cs-actions .fly-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 460px) {
+  .cs-actions {
+    flex-direction: column-reverse;
+  }
+  .cs-actions .fly-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,123 @@
+.promotion-component {
+  min-height: 100vh;
+  padding: 32px;
+  background-color: #f5f5f7; // Standard Apple background
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  .promotion-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* SEARCH: Spotlight Style */
+  .search-field {
+    width: 100%;
+    ::ng-deep .mdc-text-field--outline {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-radius: 14px !important;
+      .mdc-notched-outline > * { border: none !important; }
+    }
+  }
+
+  /* ADD FORM: Floating Modal Tray */
+  .add-form {
+    mat-expansion-panel {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      border-radius: 24px !important;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+
+      mat-expansion-panel-header {
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        height: 72px !important;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        padding: 20px 0;
+
+        mat-form-field {
+          width: 100%;
+          ::ng-deep .mdc-text-field--outline {
+            background-color: white !important;
+            border-radius: 12px !important;
+          }
+        }
+
+        button[type="submit"] {
+          grid-column: 1 / -1;
+          justify-self: flex-end;
+          background-color: #0071e3 !important;
+          border-radius: 12px !important;
+          padding: 10px 40px !important;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  /* DATA TABLE: The Campaign List */
+  .mat-elevation-z8 {
+    background: white !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: scroll;
+
+    table {
+      width: 100%;
+
+      th {
+        background: #fbfbfd;
+        color: #86868b;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 20px;
+        letter-spacing: 0.05em;
+      }
+
+      td {
+        padding: 16px 20px;
+        color: #1d1d1f;
+        font-size: 0.95rem;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.03);
+
+        &.mat-column-name { font-weight: 700; }
+        &.mat-column-percentage { 
+          font-weight: 700; 
+          color: #0071e3; 
+          &::after { content: '%'; }
+        }
+      }
+
+      /* STATUS BADGES */
+      .status-active {
+        background: rgba(52, 199, 89, 0.15);
+        color: #248a3d;
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+
+      .status-inactive {
+        background: rgba(142, 142, 147, 0.15);
+        color: #8e8e93;
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+
+      tr:hover td {
+        background-color: #f5f5f7 !important;
+      }
+    }
+  }
+}

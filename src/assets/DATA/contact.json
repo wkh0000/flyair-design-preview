@@ -1,0 +1,852 @@
+[
+  {
+    "issueCountry": "Afghanistan",
+    "countryAccessCode": "+93",
+    "countryCode": "AF"
+  },
+  {
+    "issueCountry": "Albania",
+    "countryAccessCode": "+355",
+    "countryCode": "AL"
+  },
+  {
+    "issueCountry": "Algeria",
+    "countryAccessCode": "+213",
+    "countryCode": "DZ"
+  },
+  {
+    "issueCountry": "Andorra",
+    "countryAccessCode": "+376",
+    "countryCode": "AD"
+  },
+  {
+    "issueCountry": "Angola",
+    "countryAccessCode": "+244",
+    "countryCode": "AO"
+  },
+  {
+    "issueCountry": "Antigua and Barbuda",
+    "countryAccessCode": "+1-268",
+    "countryCode": "AG"
+  },
+  {
+    "issueCountry": "Argentina",
+    "countryAccessCode": "+54",
+    "countryCode": "AR"
+  },
+  {
+    "issueCountry": "Armenia",
+    "countryAccessCode": "+374",
+    "countryCode": "AM"
+  },
+  {
+    "issueCountry": "Australia",
+    "countryAccessCode": "+61",
+    "countryCode": "AU"
+  },
+  {
+    "issueCountry": "Austria",
+    "countryAccessCode": "+43",
+    "countryCode": "AT"
+  },
+  {
+    "issueCountry": "Azerbaijan",
+    "countryAccessCode": "+994",
+    "countryCode": "AZ"
+  },
+  {
+    "issueCountry": "Bahamas",
+    "countryAccessCode": "+1-242",
+    "countryCode": "BS"
+  },
+  {
+    "issueCountry": "Bahrain",
+    "countryAccessCode": "+973",
+    "countryCode": "BH"
+  },
+  {
+    "issueCountry": "Bangladesh",
+    "countryAccessCode": "+880",
+    "countryCode": "BD"
+  },
+  {
+    "issueCountry": "Barbados",
+    "countryAccessCode": "+1-246",
+    "countryCode": "BB"
+  },
+  {
+    "issueCountry": "Belarus",
+    "countryAccessCode": "+375",
+    "countryCode": "BY"
+  },
+  {
+    "issueCountry": "Belgium",
+    "countryAccessCode": "+32",
+    "countryCode": "BE"
+  },
+  {
+    "issueCountry": "Belize",
+    "countryAccessCode": "+501",
+    "countryCode": "BZ"
+  },
+  {
+    "issueCountry": "Benin",
+    "countryAccessCode": "+229",
+    "countryCode": "BJ"
+  },
+  {
+    "issueCountry": "Bhutan",
+    "countryAccessCode": "+975",
+    "countryCode": "BT"
+  },
+  {
+    "issueCountry": "Bolivia",
+    "countryAccessCode": "+591",
+    "countryCode": "BO"
+  },
+  {
+    "issueCountry": "Bosnia and Herzegovina",
+    "countryAccessCode": "+387",
+    "countryCode": "BA"
+  },
+  {
+    "issueCountry": "Botswana",
+    "countryAccessCode": "+267",
+    "countryCode": "BW"
+  },
+  {
+    "issueCountry": "Brazil",
+    "countryAccessCode": "+55",
+    "countryCode": "BR"
+  },
+  {
+    "issueCountry": "Brunei Darussalam",
+    "countryAccessCode": "+673",
+    "countryCode": "BN"
+  },
+  {
+    "issueCountry": "Bulgaria",
+    "countryAccessCode": "+359",
+    "countryCode": "BG"
+  },
+  {
+    "issueCountry": "Burkina Faso",
+    "countryAccessCode": "+226",
+    "countryCode": "BF"
+  },
+  {
+    "issueCountry": "Burundi",
+    "countryAccessCode": "+257",
+    "countryCode": "BI"
+  },
+  {
+    "issueCountry": "Cabo Verde",
+    "countryAccessCode": "+238",
+    "countryCode": "CV"
+  },
+  {
+    "issueCountry": "Cambodia",
+    "countryAccessCode": "+855",
+    "countryCode": "KH"
+  },
+  {
+    "issueCountry": "Cameroon",
+    "countryAccessCode": "+237",
+    "countryCode": "CM"
+  },
+  {
+    "issueCountry": "Canada",
+    "countryAccessCode": "+1",
+    "countryCode": "CA"
+  },
+  {
+    "issueCountry": "Central African Republic",
+    "countryAccessCode": "+236",
+    "countryCode": "CF"
+  },
+  {
+    "issueCountry": "Chad",
+    "countryAccessCode": "+235",
+    "countryCode": "TD"
+  },
+  {
+    "issueCountry": "Chile",
+    "countryAccessCode": "+56",
+    "countryCode": "CL"
+  },
+  {
+    "issueCountry": "China",
+    "countryAccessCode": "+86",
+    "countryCode": "CN"
+  },
+  {
+    "issueCountry": "Colombia",
+    "countryAccessCode": "+57",
+    "countryCode": "CO"
+  },
+  {
+    "issueCountry": "Comoros",
+    "countryAccessCode": "+269",
+    "countryCode": "KM"
+  },
+  {
+    "issueCountry": "Congo (Congo-Brazzaville)",
+    "countryAccessCode": "+242",
+    "countryCode": "CG"
+  },
+  {
+    "issueCountry": "Congo (Democratic Republic of the)",
+    "countryAccessCode": "+243",
+    "countryCode": "CD"
+  },
+  {
+    "issueCountry": "Costa Rica",
+    "countryAccessCode": "+506",
+    "countryCode": "CR"
+  },
+  {
+    "issueCountry": "Croatia",
+    "countryAccessCode": "+385",
+    "countryCode": "HR"
+  },
+  {
+    "issueCountry": "Cuba",
+    "countryAccessCode": "+53",
+    "countryCode": "CU"
+  },
+  {
+    "issueCountry": "Cyprus",
+    "countryAccessCode": "+357",
+    "countryCode": "CY"
+  },
+  {
+    "issueCountry": "Czech Republic",
+    "countryAccessCode": "+420",
+    "countryCode": "CZ"
+  },
+  {
+    "issueCountry": "Denmark",
+    "countryAccessCode": "+45",
+    "countryCode": "DK"
+  },
+  {
+    "issueCountry": "Djibouti",
+    "countryAccessCode": "+253",
+    "countryCode": "DJ"
+  },
+  {
+    "issueCountry": "Dominica",
+    "countryAccessCode": "+1-767",
+    "countryCode": "DM"
+  },
+  {
+    "issueCountry": "Dominican Republic",
+    "countryAccessCode": "+1-809",
+    "countryCode": "DO"
+  },
+  { "issueCountry": "Ecuador", "countryAccessCode": "+593", "countryCode": "EC" },
+  { "issueCountry": "Egypt", "countryAccessCode": "+20", "countryCode": "EG" },
+  { "issueCountry": "El Salvador", "countryAccessCode": "+503", "countryCode": "SV" },
+  { "issueCountry": "Equatorial Guinea", "countryAccessCode": "+240", "countryCode": "GQ" },
+  { "issueCountry": "Eritrea", "countryAccessCode": "+291", "countryCode": "ER" },
+  { "issueCountry": "Estonia", "countryAccessCode": "+372", "countryCode": "EE" },
+  { "issueCountry": "Eswatini", "countryAccessCode": "+268", "countryCode": "SZ" },
+  { "issueCountry": "Ethiopia", "countryAccessCode": "+251", "countryCode": "ET" },
+  { "issueCountry": "Fiji", "countryAccessCode": "+679", "countryCode": "FJ" },
+  { "issueCountry": "Finland", "countryAccessCode": "+358", "countryCode": "FI" },
+  { "issueCountry": "France", "countryAccessCode": "+33", "countryCode": "FR" },
+  { "issueCountry": "Gabon", "countryAccessCode": "+241", "countryCode": "GA" },
+  { "issueCountry": "Gambia", "countryAccessCode": "+220", "countryCode": "GM" },
+  { "issueCountry": "Georgia", "countryAccessCode": "+995", "countryCode": "GE" },
+  { "issueCountry": "Germany", "countryAccessCode": "+49", "countryCode": "DE" },
+  { "issueCountry": "Ghana", "countryAccessCode": "+233", "countryCode": "GH" },
+  { "issueCountry": "Greece", "countryAccessCode": "+30", "countryCode": "GR" },
+  { "issueCountry": "Grenada", "countryAccessCode": "+1-473", "countryCode": "GD" },
+  { "issueCountry": "Guatemala", "countryAccessCode": "+502", "countryCode": "GT" },
+  { "issueCountry": "Guinea", "countryAccessCode": "+224", "countryCode": "GN" },
+  { "issueCountry": "Guinea-Bissau", "countryAccessCode": "+245", "countryCode": "GW" },
+  { "issueCountry": "Guyana", "countryAccessCode": "+592", "countryCode": "GY" },
+  { "issueCountry": "Haiti", "countryAccessCode": "+509", "countryCode": "HT" },
+  { "issueCountry": "Honduras", "countryAccessCode": "+504", "countryCode": "HN" },
+  { "issueCountry": "Hungary", "countryAccessCode": "+36", "countryCode": "HU" },
+  { "issueCountry": "Iceland", "countryAccessCode": "+354", "countryCode": "IS" },
+  { "issueCountry": "India", "countryAccessCode": "+91", "countryCode": "IN" },
+  { "issueCountry": "Indonesia", "countryAccessCode": "+62", "countryCode": "ID" },
+  { "issueCountry": "Iran", "countryAccessCode": "+98", "countryCode": "IR" },
+  { "issueCountry": "Iraq", "countryAccessCode": "+964", "countryCode": "IQ" },
+  {
+    "issueCountry": "Ireland",
+    "countryAccessCode": "+353",
+    "countryCode": "IE"
+  },
+  {
+    "issueCountry": "Israel",
+    "countryAccessCode": "+972",
+    "countryCode": "IL"
+  },
+  {
+    "issueCountry": "Italy",
+    "countryAccessCode": "+39",
+    "countryCode": "IT"
+  },
+  {
+    "issueCountry": "Jamaica",
+    "countryAccessCode": "+1-876",
+    "countryCode": "JM"
+  },
+  {
+    "issueCountry": "Japan",
+    "countryAccessCode": "+81",
+    "countryCode": "JP"
+  },
+  {
+    "issueCountry": "Jordan",
+    "countryAccessCode": "+962",
+    "countryCode": "JO"
+  },
+  {
+    "issueCountry": "Kazakhstan",
+    "countryAccessCode": "+7",
+    "countryCode": "KZ"
+  },
+  {
+    "issueCountry": "Kenya",
+    "countryAccessCode": "+254",
+    "countryCode": "KE"
+  },
+  {
+    "issueCountry": "Kiribati",
+    "countryAccessCode": "+686",
+    "countryCode": "KI"
+  },
+  {
+    "issueCountry": "Korea (North)",
+    "countryAccessCode": "+850",
+    "countryCode": "KP"
+  },
+  {
+    "issueCountry": "Korea (South)",
+    "countryAccessCode": "+82",
+    "countryCode": "KR"
+  },
+  {
+    "issueCountry": "Kuwait",
+    "countryAccessCode": "+965",
+    "countryCode": "KW"
+  },
+  {
+    "issueCountry": "Kyrgyzstan",
+    "countryAccessCode": "+996",
+    "countryCode": "KG"
+  },
+  {
+    "issueCountry": "Laos",
+    "countryAccessCode": "+856",
+    "countryCode": "LA"
+  },
+  {
+    "issueCountry": "Latvia",
+    "countryAccessCode": "+371",
+    "countryCode": "LV"
+  },
+  {
+    "issueCountry": "Lebanon",
+    "countryAccessCode": "+961",
+    "countryCode": "LB"
+  },
+  {
+    "issueCountry": "Lesotho",
+    "countryAccessCode": "+266",
+    "countryCode": "LS"
+  },
+  {
+    "issueCountry": "Liberia",
+    "countryAccessCode": "+231",
+    "countryCode": "LR"
+  },
+  {
+    "issueCountry": "Libya",
+    "countryAccessCode": "+218",
+    "countryCode": "LY"
+  },
+  {
+    "issueCountry": "Liechtenstein",
+    "countryAccessCode": "+423",
+    "countryCode": "LI"
+  },
+  {
+    "issueCountry": "Lithuania",
+    "countryAccessCode": "+370",
+    "countryCode": "LT"
+  },
+  {
+    "issueCountry": "Luxembourg",
+    "countryAccessCode": "+352",
+    "countryCode": "LU"
+  },
+  {
+    "issueCountry": "Madagascar",
+    "countryAccessCode": "+261",
+    "countryCode": "MG"
+  },
+  {
+    "issueCountry": "Malawi",
+    "countryAccessCode": "+265",
+    "countryCode": "MW"
+  },
+  {
+    "issueCountry": "Malaysia",
+    "countryAccessCode": "+60",
+    "countryCode": "MY"
+  },
+  {
+    "issueCountry": "Maldives",
+    "countryAccessCode": "+960",
+    "countryCode": "MV"
+  },
+  {
+    "issueCountry": "Mali",
+    "countryAccessCode": "+223",
+    "countryCode": "ML"
+  },
+  {
+    "issueCountry": "Malta",
+    "countryAccessCode": "+356",
+    "countryCode": "MT"
+  },
+  {
+    "issueCountry": "Marshall Islands",
+    "countryAccessCode": "+692",
+    "countryCode": "MH"
+  },
+  {
+    "issueCountry": "Mauritania",
+    "countryAccessCode": "+222",
+    "countryCode": "MR"
+  },
+  {
+    "issueCountry": "Mauritius",
+    "countryAccessCode": "+230",
+    "countryCode": "MU"
+  },
+  {
+    "issueCountry": "Mexico",
+    "countryAccessCode": "+52",
+    "countryCode": "MX"
+  },
+  {
+    "issueCountry": "Micronesia",
+    "countryAccessCode": "+691",
+    "countryCode": "FM"
+  },
+  {
+    "issueCountry": "Moldova",
+    "countryAccessCode": "+373",
+    "countryCode": "MD"
+  },
+  {
+    "issueCountry": "Monaco",
+    "countryAccessCode": "+377",
+    "countryCode": "MC"
+  },
+  {
+    "issueCountry": "Mongolia",
+    "countryAccessCode": "+976",
+    "countryCode": "MN"
+  },
+  {
+    "issueCountry": "Montenegro",
+    "countryAccessCode": "+382",
+    "countryCode": "ME"
+  },
+  {
+    "issueCountry": "Morocco",
+    "countryAccessCode": "+212",
+    "countryCode": "MA"
+  },
+  {
+    "issueCountry": "Mozambique",
+    "countryAccessCode": "+258",
+    "countryCode": "MZ"
+  },
+  {
+    "issueCountry": "Myanmar",
+    "countryAccessCode": "+95",
+    "countryCode": "MM"
+  },
+  {
+    "issueCountry": "Namibia",
+    "countryAccessCode": "+264",
+    "countryCode": "NA"
+  },
+  {
+    "issueCountry": "Nauru",
+    "countryAccessCode": "+674",
+    "countryCode": "NR"
+  },
+  {
+    "issueCountry": "Nepal",
+    "countryAccessCode": "+977",
+    "countryCode": "NP"
+  },
+  {
+    "issueCountry": "Netherlands",
+    "countryAccessCode": "+31",
+    "countryCode": "NL"
+  },
+  {
+    "issueCountry": "New Zealand",
+    "countryAccessCode": "+64",
+    "countryCode": "NZ"
+  },
+  {
+    "issueCountry": "Nicaragua",
+    "countryAccessCode": "+505",
+    "countryCode": "NI"
+  },
+  {
+    "issueCountry": "Niger",
+    "countryAccessCode": "+227",
+    "countryCode": "NE"
+  },
+  {
+    "issueCountry": "Nigeria",
+    "countryAccessCode": "+234",
+    "countryCode": "NG"
+  },
+  {
+    "issueCountry": "North Macedonia",
+    "countryAccessCode": "+389",
+    "countryCode": "MK"
+  },
+  {
+    "issueCountry": "Norway",
+    "countryAccessCode": "+47",
+    "countryCode": "NO"
+  },
+  {
+    "issueCountry": "Oman",
+    "countryAccessCode": "+968",
+    "countryCode": "OM"
+  },
+  {
+    "issueCountry": "Pakistan",
+    "countryAccessCode": "+92",
+    "countryCode": "PK"
+  },
+  {
+    "issueCountry": "Palau",
+    "countryAccessCode": "+680",
+    "countryCode": "PW"
+  },
+  {
+    "issueCountry": "Panama",
+    "countryAccessCode": "+507",
+    "countryCode": "PA"
+  },
+  {
+    "issueCountry": "Papua New Guinea",
+    "countryAccessCode": "+675",
+    "countryCode": "PG"
+  },
+  {
+    "issueCountry": "Paraguay",
+    "countryAccessCode": "+595",
+    "countryCode": "PY"
+  },
+  {
+    "issueCountry": "Peru",
+    "countryAccessCode": "+51",
+    "countryCode": "PE"
+  },
+  {
+    "issueCountry": "Philippines",
+    "countryAccessCode": "+63",
+    "countryCode": "PH"
+  },
+  {
+    "issueCountry": "Poland",
+    "countryAccessCode": "+48",
+    "countryCode": "PL"
+  },
+  {
+    "issueCountry": "Portugal",
+    "countryAccessCode": "+351",
+    "countryCode": "PT"
+  },
+  {
+    "issueCountry": "Qatar",
+    "countryAccessCode": "+974",
+    "countryCode": "QA"
+  },
+  {
+    "issueCountry": "Romania",
+    "countryAccessCode": "+40",
+    "countryCode": "RO"
+  },
+  {
+    "issueCountry": "Russia",
+    "countryAccessCode": "+7",
+    "countryCode": "RU"
+  },
+  {
+    "issueCountry": "Rwanda",
+    "countryAccessCode": "+250",
+    "countryCode": "RW"
+  },
+  {
+    "issueCountry": "Saint Kitts and Nevis",
+    "countryAccessCode": "+1-869",
+    "countryCode": "KN"
+  },
+  {
+    "issueCountry": "Saint Lucia",
+    "countryAccessCode": "+1-758",
+    "countryCode": "LC"
+  },
+  {
+    "issueCountry": "Saint Vincent and the Grenadines",
+    "countryAccessCode": "+1-784",
+    "countryCode": "VC"
+  },
+  {
+    "issueCountry": "Samoa",
+    "countryAccessCode": "+685",
+    "countryCode": "WS"
+  },
+  {
+    "issueCountry": "San Marino",
+    "countryAccessCode": "+378",
+    "countryCode": "SM"
+  },
+  {
+    "issueCountry": "Sao Tome and Principe",
+    "countryAccessCode": "+239",
+    "countryCode": "ST"
+  },
+  {
+    "issueCountry": "Saudi Arabia",
+    "countryAccessCode": "+966",
+    "countryCode": "SA"
+  },
+  {
+    "issueCountry": "Senegal",
+    "countryAccessCode": "+221",
+    "countryCode": "SN"
+  },
+  {
+    "issueCountry": "Serbia",
+    "countryAccessCode": "+381",
+    "countryCode": "RS"
+  },
+  {
+    "issueCountry": "Seychelles",
+    "countryAccessCode": "+248",
+    "countryCode": "SC"
+  },
+  {
+    "issueCountry": "Sierra Leone",
+    "countryAccessCode": "+232",
+    "countryCode": "SL"
+  },
+  {
+    "issueCountry": "Singapore",
+    "countryAccessCode": "+65",
+    "countryCode": "SG"
+  },
+  {
+    "issueCountry": "Slovakia",
+    "countryAccessCode": "+421",
+    "countryCode": "SK"
+  },
+  {
+    "issueCountry": "Slovenia",
+    "countryAccessCode": "+386",
+    "countryCode": "SI"
+  },
+  {
+    "issueCountry": "Solomon Islands",
+    "countryAccessCode": "+677",
+    "countryCode": "SB"
+  },
+  {
+    "issueCountry": "Somalia",
+    "countryAccessCode": "+252",
+    "countryCode": "SO"
+  },
+  {
+    "issueCountry": "South Africa",
+    "countryAccessCode": "+27",
+    "countryCode": "ZA"
+  },
+  {
+    "issueCountry": "South Sudan",
+    "countryAccessCode": "+211",
+    "countryCode": "SS"
+  },
+  {
+    "issueCountry": "Spain",
+    "countryAccessCode": "+34",
+    "countryCode": "ES"
+  },
+  {
+    "issueCountry": "Sri Lanka",
+    "countryAccessCode": "+94",
+    "countryCode": "LK"
+  },
+  {
+    "issueCountry": "Sudan",
+    "countryAccessCode": "+249",
+    "countryCode": "SD"
+  },
+  {
+    "issueCountry": "Suriname",
+    "countryAccessCode": "+597",
+    "countryCode": "SR"
+  },
+  {
+    "issueCountry": "Sweden",
+    "countryAccessCode": "+46",
+    "countryCode": "SE"
+  },
+  {
+    "issueCountry": "Switzerland",
+    "countryAccessCode": "+41",
+    "countryCode": "CH"
+  },
+  {
+    "issueCountry": "Syria",
+    "countryAccessCode": "+963",
+    "countryCode": "SY"
+  },
+  {
+    "issueCountry": "Taiwan",
+    "countryAccessCode": "+886",
+    "countryCode": "TW"
+  },
+  {
+    "issueCountry": "Tajikistan",
+    "countryAccessCode": "+992",
+    "countryCode": "TJ"
+  },
+  {
+    "issueCountry": "Tanzania",
+    "countryAccessCode": "+255",
+    "countryCode": "TZ"
+  },
+  {
+    "issueCountry": "Thailand",
+    "countryAccessCode": "+66",
+    "countryCode": "TH"
+  },
+  {
+    "issueCountry": "Timor-Leste",
+    "countryAccessCode": "+670",
+    "countryCode": "TL"
+  },
+  {
+    "issueCountry": "Togo",
+    "countryAccessCode": "+228",
+    "countryCode": "TG"
+  },
+  {
+    "issueCountry": "Tonga",
+    "countryAccessCode": "+676",
+    "countryCode": "TO"
+  },
+  {
+    "issueCountry": "Trinidad and Tobago",
+    "countryAccessCode": "+1-868",
+    "countryCode": "TT"
+  },
+  {
+    "issueCountry": "Tunisia",
+    "countryAccessCode": "+216",
+    "countryCode": "TN"
+  },
+  {
+    "issueCountry": "Turkey",
+    "countryAccessCode": "+90",
+    "countryCode": "TR"
+  },
+  {
+    "issueCountry": "Turkmenistan",
+    "countryAccessCode": "+993",
+    "countryCode": "TM"
+  },
+  {
+    "issueCountry": "Tuvalu",
+    "countryAccessCode": "+688",
+    "countryCode": "TV"
+  },
+  {
+    "issueCountry": "Uganda",
+    "countryAccessCode": "+256",
+    "countryCode": "UG"
+  },
+  {
+    "issueCountry": "Ukraine",
+    "countryAccessCode": "+380",
+    "countryCode": "UA"
+  },
+  {
+    "issueCountry": "United Arab Emirates",
+    "countryAccessCode": "+971",
+    "countryCode": "AE"
+  },
+  {
+    "issueCountry": "United Kingdom",
+    "countryAccessCode": "+44",
+    "countryCode": "GB"
+  },
+  {
+    "issueCountry": "United States",
+    "countryAccessCode": "+1",
+    "countryCode": "US"
+  },
+  {
+    "issueCountry": "Uruguay",
+    "countryAccessCode": "+598",
+    "countryCode": "UY"
+  },
+  {
+    "issueCountry": "Uzbekistan",
+    "countryAccessCode": "+998",
+    "countryCode": "UZ"
+  },
+  {
+    "issueCountry": "Vanuatu",
+    "countryAccessCode": "+678",
+    "countryCode": "VU"
+  },
+  {
+    "issueCountry": "Vatican City",
+    "countryAccessCode": "+379",
+    "countryCode": "VA"
+  },
+  {
+    "issueCountry": "Venezuela",
+    "countryAccessCode": "+58",
+    "countryCode": "VE"
+  },
+  {
+    "issueCountry": "Vietnam",
+    "countryAccessCode": "+84",
+    "countryCode": "VN"
+  },
+  {
+    "issueCountry": "Yemen",
+    "countryAccessCode": "+967",
+    "countryCode": "YE"
+  },
+  {
+    "issueCountry": "Zambia",
+    "countryAccessCode": "+260",
+    "countryCode": "ZM"
+  },
+  {
+    "issueCountry": "Zimbabwe",
+    "countryAccessCode": "+263",
+    "countryCode": "ZW"
+  }
+]

@@ -1,0 +1,195 @@
+<div class="fly">
+
+  <!-- ===== HERO (sky) ===== -->
+  <section class="fly-hero">
+    <app-flyair-sky></app-flyair-sky>
+    <div class="grad"></div>
+    <div class="inner" flyParallax="64">
+      <div class="fly-container">
+        <div class="fly-eyebrow" style="color:#fff;text-shadow:0 1px 2px rgba(2,14,40,.95),0 0 14px rgba(2,14,40,.55)">{{ content.hero.eyebrow }}</div>
+        <h1 style="margin-top:16px">{{ content.hero.titleLine1 }}<br><span class="accent">{{ content.hero.titleAccent }}</span></h1>
+        <p class="fly-lead" style="margin-top:20px">{{ content.hero.lead }}</p>
+        <div style="margin-top:30px;max-width:980px">
+          <app-flight-search customClass="form"></app-flight-search>
+        </div>
+        <div class="fly-flex fly-gap24 fly-wrap" style="margin-top:22px;color:#fff;font-size:.9rem;font-weight:600;text-shadow:0 1px 2px rgba(2,14,40,.9),0 0 12px rgba(2,14,40,.5)">
+          <span *ngFor="let b of content.hero.badges">✓ {{ b }}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="fly-cue" (click)="scrollDown()" aria-label="Explore more">
+      <span>Explore</span>
+      <svg class="fly-cue-ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </section>
+
+  <!-- Everything below the hero rides on a higher stacking layer with a solid background, so
+       it slides UP OVER the sticky hero as the user scrolls (rather than letting the hero
+       show through transparent gaps). -->
+  <div class="fly-stack-over">
+
+  <!-- STATS section removed — placeholder marketing numbers were misleading without a heading
+       and without verified data behind them. Re-introduce later if real numbers are available. -->
+
+  <!-- ===== WHY FLYAIR ===== -->
+  <section class="fly-section">
+    <div class="fly-container">
+      <div class="fly-head center fly-reveal">
+        <div class="fly-eyebrow line" style="justify-content:center">{{ content.why.eyebrow }}</div>
+        <h2 style="margin-top:16px">{{ content.why.title }}</h2>
+        <p class="fly-lead" style="margin-top:14px">{{ content.why.lead }}</p>
+      </div>
+      <div class="fly-grid fly-c3 fly-stagger">
+        <div class="fly-card fly-feature" *ngFor="let f of content.why.items" flyTilt="6">
+          <div class="ic" [ngClass]="fillClass(f.color)"><fly-icon [name]="f.icon" [size]="26" [stroke]="2.2"></fly-icon></div>
+          <h3>{{ f.title }}</h3><p>{{ f.text }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESTINATIONS ===== -->
+  <section class="fly-section" id="destinations" style="background:var(--fly-soft)">
+    <div class="fly-container">
+      <div class="fly-flex fly-between fly-cy fly-wrap fly-reveal" style="margin-bottom:42px;gap:16px">
+        <div><div class="fly-eyebrow line">{{ content.destinations.eyebrow }}</div><h2 style="margin-top:14px">{{ content.destinations.title }}</h2></div>
+        <a class="fly-btn fly-btn-outline" [routerLink]="content.destinations.ctaLink || '/result'">{{ content.destinations.ctaLabel || 'View all' }} →</a>
+      </div>
+      <div class="fly-grid fly-c4 fly-stagger">
+        <a class="fly-dest" *ngFor="let d of content.destinations.items" [routerLink]="d.link || '/result'" flyTilt="5">
+          <img [src]="d.image" [alt]="d.city + (d.country ? ', ' + d.country : '')" loading="lazy">
+          <div class="body">
+            <span class="fly-badge" [ngClass]="badgeClass(d.badgeColor)" *ngIf="d.badge">{{ d.badge }}</span>
+            <div class="city">{{ d.city }}</div>
+            <div class="ctry" *ngIf="d.country">{{ d.country }}</div>
+            <div class="price" *ngIf="d.price">from <b>{{ d.price }}</b></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED DESTINATION — parallax editorial reveal ===== -->
+  <section class="fly-section fly-featured-wrap" *ngIf="content.featured?.image">
+    <div class="fly-container">
+      <div class="fly-featured fly-reveal">
+        <div class="media" flyParallax="44">
+          <img [src]="content.featured.image" [alt]="content.featured.title" loading="lazy">
+        </div>
+        <div class="copy">
+          <div class="fly-eyebrow line">{{ content.featured.eyebrow }}</div>
+          <h2>{{ content.featured.title }}</h2>
+          <p class="fly-lead">{{ content.featured.text }}</p>
+          <a class="fly-btn fly-btn-primary" [routerLink]="content.featured.ctaLink || '/result'">{{ content.featured.ctaLabel || 'Explore' }} →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CMS PACKAGES (dynamic, preserved) ===== -->
+  <section class="fly-section" *ngIf="cms?.length">
+    <div class="fly-container">
+      <div class="fly-head center fly-reveal"><div class="fly-eyebrow line" style="justify-content:center">Curated packages</div>
+        <h2 style="margin-top:14px">Handpicked journeys</h2></div>
+      <div class="fly-grid fly-c4 fly-stagger">
+        <div class="fly-card" style="overflow:hidden" *ngFor="let content of cms" flyTilt="5">
+          <img [src]="content.base64Image" alt="" style="width:100%;height:220px;object-fit:cover">
+          <div style="padding:20px">
+            <div style="font-family:var(--fly-display);font-weight:800;color:var(--fly-red);font-size:1.15rem">{{content.title}}</div>
+            <p class="fly-muted" style="font-size:.92rem;margin:6px 0">{{content.description}}</p>
+            <div style="font-family:var(--fly-display);font-weight:800;margin-bottom:12px">{{content.price}}</div>
+            <button class="fly-btn fly-btn-primary fly-btn-sm fly-btn-block" (click)="openCmsInquiry(content)">Send inquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFERS ===== -->
+  <section class="fly-section" id="offers" style="background:var(--fly-soft)">
+    <div class="fly-container">
+      <div class="fly-head center fly-reveal"><div class="fly-eyebrow line" style="justify-content:center">{{ content.offers.eyebrow }}</div>
+        <h2 style="margin-top:14px">{{ content.offers.title }}</h2></div>
+      <div class="fly-grid fly-c3 fly-stagger">
+        <div class="fly-card fly-offer" *ngFor="let o of content.offers.items" flyTilt="5">
+          <div class="ic" [ngClass]="fillClass(o.color)"><fly-icon [name]="o.icon" [size]="24" [stroke]="2.2"></fly-icon></div>
+          <div><b style="font-family:var(--fly-display)">{{ o.title }}</b><p class="fly-muted" style="font-size:.92rem;margin-top:4px">{{ o.text }}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNERS ===== -->
+  <section class="fly-partners">
+    <div class="fly-container">
+      <div class="lbl fly-reveal">Travel the world with our airline partners</div>
+      <div class="fly-marquee"><div class="fly-track">
+        <div class="fly-lcell" *ngFor="let a of airlinesLoop">
+          <img *ngIf="a.logo" [src]="a.logo" [alt]="a.name" class="lg" loading="lazy" />
+          <span *ngIf="!a.logo" class="txt">{{a.name}}</span>
+        </div>
+      </div></div>
+      <div class="lbl fly-reveal" style="margin-top:54px">A wide range of secure payment options</div>
+      <div class="fly-marquee rev" style="--dur:36s"><div class="fly-track">
+        <div class="fly-lcell pay" *ngFor="let p of paysLoop">
+          <img *ngIf="p.logo" [src]="p.logo" [alt]="p.name" class="lg" loading="lazy" />
+          <span *ngIf="!p.logo" class="txt">{{p.name}}</span>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA — "descent to the horizon" band that flows into the footer ===== -->
+  <section class="fly-cta-band" flyEnter>
+    <div class="sky" aria-hidden="true">
+      <!-- runway background sits inside the band and scrolls with it; no parallax drift of its own -->
+      <img class="bg" src="assets/cta/backgroundonly.jpg" alt="" loading="lazy">
+      <!-- plane sits BEHIND the scrim so it picks up the same dark wash as the runway scene -->
+      <img class="plane" src="assets/cta/planeonly.png" alt="" loading="lazy">
+      <span class="scrim"></span>
+      <span class="topfade"></span>
+    </div>
+    <div class="fly-container">
+      <div class="fly-cta-copy fly-reveal">
+        <div class="fly-eyebrow" style="color:#9fd0ff">{{ content.cta.eyebrow }}</div>
+        <h2>{{ content.cta.title }}</h2>
+        <p>{{ content.cta.lead }}</p>
+        <div class="btns">
+          <a class="fly-btn fly-btn-primary fly-btn-lg" [routerLink]="content.cta.primaryLink || '/result'">{{ content.cta.primaryLabel }}</a>
+          <a class="fly-cta-link" [routerLink]="content.cta.secondaryLink || '/result'">{{ content.cta.secondaryLabel }} →</a>
+        </div>
+      </div>
+    </div>
+    <!-- curved horizon divider that blends into the navy footer (no seam) -->
+    <svg class="fly-cta-divider" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,100 L0,58 Q720,2 1440,58 L1440,100 Z" fill="#0f2342"/>
+    </svg>
+  </section>
+
+  </div><!-- /.fly-stack-over -->
+
+  <!-- ===== CMS inquiry dialog (preserved) ===== -->
+  <div class="inquiry-overlay" *ngIf="showCmsInquiryDialog">
+    <div class="inquiry-modal">
+      <div class="inquiry-header">
+        <h3>Send inquiry</h3>
+        <button class="close-btn" (click)="showCmsInquiryDialog = false">&#x2715;</button>
+      </div>
+      <p class="inquiry-subtitle">Review the details before sending to WhatsApp.</p>
+      <div class="inquiry-details">
+        <div class="detail-row"><span class="label">Package</span><span class="value">{{ selectedCmsContent?.title }}</span></div>
+        <div class="detail-row"><span class="label">Price</span><span class="value fare">{{ selectedCmsContent?.price }}</span></div>
+        <div class="contact-fields">
+          <input type="text" placeholder="Your name" [(ngModel)]="inquiryName" />
+          <input type="tel" placeholder="Your phone" [(ngModel)]="inquiryContact" />
+        </div>
+      </div>
+      <div class="inquiry-actions">
+        <button class="cancel-btn" (click)="showCmsInquiryDialog = false">Cancel</button>
+        <button class="whatsapp-btn" [disabled]="!inquiryName?.trim() || !inquiryContact?.trim()"
+          (click)="sendCmsInquiryToWhatsApp()" style="background-color:rgb(0,171,71);border-radius:25px;">Send</button>
+      </div>
+    </div>
+  </div>
+
+</div>

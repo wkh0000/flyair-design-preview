@@ -1,0 +1,215 @@
+<div class="promotion-component" fxLayout="column">
+  <div class="promotion-content">
+    <div *ngIf="isFormDisabled">
+
+
+      <div class="add-form mb-3">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title> Add Promotion </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="promo_name" type="text">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="promo_type">
+                  <mat-option *ngFor="let type of promotionTypes" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field
+              appearance="outline">
+                <mat-label>
+                  Apply To Destination
+                </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [matAutocomplete]="departureAuto"
+                  (input)="filterOptions($event, 'departure')"
+                  style="font-size: 14px"
+                  [formControlName]="'applies_To_Destination'"
+                />
+                <mat-autocomplete #departureAuto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let option of filteredDepartureOptions"
+                    [value]="option.name + ' - ' + option.code"
+                    (onSelectionChange)="selectOption(option.code, 'departure')"
+                    style="font-size: 14px;"
+                  >
+                    {{ option.name }} - {{ option.code }}
+                  </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+              <mat-form-field
+                appearance="outline">
+                  <mat-label>
+                    Apply To Airline
+                  </mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    [matAutocomplete]="airlineAuto"
+                    (input)="filterOptions($event, 'airline')"
+                    style="font-size: 14px"
+                    [formControlName]="'applies_To_Airline'"
+                  />
+                  <mat-autocomplete #airlineAuto="matAutocomplete">
+                    <mat-option
+                      *ngFor="let option of filteredAirlineOptions"
+                      [value]="option.name + ' - ' + option.code"
+                      (onSelectionChange)="selectOption(option.code, 'airline')"
+                      style="font-size: 14px;"
+                    >
+                      {{ option.name }} - {{ option.code }}
+                    </mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Minimum Value</mat-label>
+                <input matInput formControlName="price_Range_From" type="number">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Maximum Value</mat-label>
+                <input matInput formControlName="price_Range_To" type="number">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startPicker" formControlName="effective_from">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endPicker" formControlName="effective_to">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="amount" type="number">
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+      <div class="search">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Filter</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Search"
+            #input
+          />
+        </mat-form-field>
+      </div>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Promotion</th>
+            <td mat-cell *matCellDef="let row">{{ row.promo_Name }}</td>
+          </ng-container>
+
+           <!-- Apply To Column -->
+        <ng-container matColumnDef="applyToDestination">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Destination</th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.applies_To_Destination }}<br>
+          </td>
+        </ng-container>
+
+                <!-- Apply To Column -->
+                <ng-container matColumnDef="applyToAirline">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Airline</th>
+                  <td mat-cell *matCellDef="let row">
+                   {{ row.applies_To_Airline }}<br>
+                  </td>
+                </ng-container>
+
+
+          <ng-container matColumnDef="minVal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Min</th>
+            <td mat-cell *matCellDef="let row">{{ row.price_Range_From }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="maxVal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Max</th>
+            <td mat-cell *matCellDef="let row">{{ row.price_Range_To }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>StartDate</th>
+            <td mat-cell *matCellDef="let row">{{ row.effective_From }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EndDate</th>
+            <td mat-cell *matCellDef="let row">{{ row.effective_To }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="percentage">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Percentage
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.amount }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let row">{{ row.status === 1 ? 'Active' : 'Inactive' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button
+                mat-icon-button
+                color="warn"
+                aria-label="Delete"
+                (click)="DeletePromotion(row.id)"
+              >
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              No data matching the filter "{{ input.value }}"
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of promotion"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<aside>
+  <div class="toggle">
+    <div class="close" id="close-btn">
+      <span class="material-icons-sharp"> close </span>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <a [class.active]="selectedItem === 0" (click)="selectItem(0)">
+      <span class="material-symbols-outlined"> dashboard </span>
+      <h3>Dashboard</h3>
+    </a>
+
+    <a [class.active]="selectedItem === 1" (click)="selectItem(1)">
+      <span class="material-symbols-outlined"> person </span>
+      <h3>Customer</h3>
+    </a>
+
+    <a [class.active]="selectedItem === 2" (click)="selectItem(2)">
+      <span class="material-symbols-outlined"> receipt_long </span>
+      <h3>Bookings</h3>
+    </a>
+
+    <a [class.active]="selectedItem === 5" (click)="selectItem(5)">
+      <span class="material-symbols-outlined"> storefront </span>
+      <h3>Company Profile</h3>
+    </a>
+
+    <a [class.active]="selectedItem === 11" (click)="selectItem(11)">
+      <span class="material-symbols-outlined">
+        article
+        </span>
+      <h3>Content</h3></a
+    >
+
+    <a [class.active]="selectedItem === 12" (click)="selectItem(12)">
+      <span class="material-symbols-outlined"> newspaper </span>
+      <h3>Newsroom</h3></a
+    >
+
+    <a [class.active]="selectedItem === 13" (click)="selectItem(13)">
+      <span class="material-symbols-outlined"> web </span>
+      <h3>Front Page</h3></a
+    >
+
+    <a [class.active]="selectedItem === 14" (click)="selectItem(14)">
+      <span class="material-symbols-outlined"> description </span>
+      <h3>Pages</h3></a
+    >
+
+    <a [class.active]="selectedItem === 15" (click)="selectItem(15)">
+      <span class="material-symbols-outlined"> forum </span>
+      <h3>Messages</h3></a
+    >
+
+    <a [class.active]="selectedItem === 18" (click)="selectItem(18)">
+      <span class="material-symbols-outlined"> support_agent </span>
+      <h3>Support Inbox</h3></a
+    >
+
+    <a [class.active]="selectedItem === 16" (click)="selectItem(16)">
+      <span class="material-symbols-outlined"> mark_email_read </span>
+      <h3>Subscribers</h3></a
+    >
+
+    <a [class.active]="selectedItem === 17" (click)="selectItem(17)">
+      <span class="material-symbols-outlined"> bottom_panel_open </span>
+      <h3>Footer</h3></a
+    >
+
+    <a (click)="toggleDropdown()">
+      <span class="material-symbols-outlined"> account_tree </span>
+      <h3>Master Data</h3>
+    </a>
+    <div class="dropdown-content" *ngIf="isDropdownOpen">
+      <a [class.active]="selectedItem === 6" (click)="selectItem(6)">
+        <span class="material-symbols-outlined"> sell </span>
+        <h3>Mark Up</h3></a
+      >
+      <a [class.active]="selectedItem === 7" (click)="selectItem(7)">
+        <span class="material-symbols-outlined"> account_balance_wallet </span>
+        <h3>Promotions</h3></a
+      >
+      <a [class.active]="selectedItem === 8" (click)="selectItem(8)">
+        <span class="material-symbols-outlined"> outdoor_garden </span>
+        <h3>Limitations</h3></a
+      >
+      <a [class.active]="selectedItem === 9" (click)="selectItem(9)">
+        <span class="material-symbols-outlined"> toc </span>
+        <h3>NDC|GDS</h3></a
+      >
+      <a [class.active]="selectedItem === 10" (click)="selectItem(10)">
+        <span class="material-symbols-outlined">settings</span>
+        <h3>HX</h3></a
+      >
+
+    </div>
+    <a (click)="logout()" style="cursor: pointer;">
+      <span class="material-symbols-outlined"> logout </span>
+      <h3>Log Out</h3>
+    </a>
+  </div>
+</aside>
