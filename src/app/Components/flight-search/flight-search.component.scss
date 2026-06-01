@@ -1,5 +1,38 @@
 @import "../../../variables";
 
+/* Trip-type tab icons — both One Way and Return use the CSS-mask technique
+   so they share the same visual weight + colour (dark navy on the white tab
+   pill). Different mask sources give different art:
+     • One Way → ico-plane.svg            (single plane silhouette)
+     • Return  → icons/flights-nav.png    (two-plane formation, same as Flights nav)
+   Filter on <img> didn't work — some global rule was clobbering it. */
+/* Trip-type tab icons — both One Way and Return are CSS-mask spans so they
+   share the same dark navy colour. One Way is a single plane (lighter visual
+   weight) so it's intentionally a touch smaller than the two-plane Return. */
+.fly-trip-ic {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #0a1730;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center;  mask-position: center;
+  -webkit-mask-size: contain;     mask-size: contain;
+}
+.fly-trip-ic-oneway {
+  width: 22px; height: 20px;
+  -webkit-mask-image: url('../../../assets/ico-plane.svg');
+  mask-image: url('../../../assets/ico-plane.svg');
+}
+.fly-trip-ic-return {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #0a1730;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center;  mask-position: center;
+  -webkit-mask-size: contain;     mask-size: contain;
+  width: 26px; height: 22px;
+  -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
+  mask-image: url('../../../assets/icons/flights-nav.png');
+}
 
 .nav-tabs {
   border: none !important;
@@ -199,10 +232,10 @@
 .nav-tabs .nav-item:first-child .nav-link,
 .nav-tabs .nav-item:nth-child(2) .nav-link { border-radius: 12px !important; }
 .nav-tabs .nav-link {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   background: rgba(255, 255, 255, 0.7) !important;
-  color: #5a6b80 !important; font-weight: 700; font-size: 0.9rem; padding: 10px 20px;
+  color: #5a6b80 !important; font-weight: 700; font-size: 0.95rem; padding: 11px 22px;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   box-shadow: 0 6px 18px rgba(12, 35, 75, 0.1);
   transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);

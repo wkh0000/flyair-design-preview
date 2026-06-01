@@ -73,44 +73,43 @@
 .fly-fill-green{background:linear-gradient(135deg,#95d24f,var(--fly-green600))}
 
 /* ---- header ---- */
-.fly-header{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--fly-header-h);display:flex;align-items:center;transition:.3s var(--fly-ease)}
-.fly-header .fly-container{display:flex;align-items:center;justify-content:space-between;gap:24px}
-/* Glass header on scroll — strong frosted look (no fill, no shadow, no hard border).
-   The mask-image keeps the glass at FULL strength across the whole area the nav content
-   sits in, then fades only the bottom strip to nothing so the header dissolves softly
-   into the page below (no hard line, no fade over the icons/text). */
-.fly-header.scrolled{
-  background:rgba(255,255,255,.06);                 /* faint tint so the glass reads on dark + light backgrounds */
-  backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
-  box-shadow:none;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.55) 93%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.55) 93%,transparent 100%);
+/* Always-visible frosted-white header — client feedback said the previous
+   fully-transparent state over the hero made the nav hard to read. The same
+   look applies before AND after scroll (the .scrolled toggle below is now
+   a no-op for visual purposes; we keep the class for any future hook). */
+.fly-header{
+  position:fixed;top:0;left:0;right:0;z-index:60;height:var(--fly-header-h);
+  display:flex;align-items:center;transition:.3s var(--fly-ease);
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px) saturate(170%);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
+  box-shadow:0 1px 0 rgba(12,35,75,.06);
 }
+.fly-header .fly-container{display:flex;align-items:center;justify-content:space-between;gap:24px}
+/* Scrolled state was a different "glass on dark" look before. Now that the
+   base header is always frosted-white, .scrolled is intentionally a no-op
+   visually — kept as a class hook in case we ever need a small variation. */
+.fly-header.scrolled{ /* same as base */ }
 .fly-nav{display:flex;align-items:center;gap:30px}
-/* Nav-link colour matches the Sign-in link (.fly-link) at every state so the right side
-   of the header reads as one consistent text block — was using --fly-ink2 (secondary)
-   which made "Flights / Newsroom" appear faded next to "Sign in". */
+/* Nav-link colour matches the Sign-in link (.fly-link). The header is now
+   always frosted-white, so nav text always uses --fly-ink. */
 .fly-nav a{font-family:var(--fly-body);font-weight:500;font-size:.96rem;color:var(--fly-ink);position:relative;transition:.2s;text-decoration:none;cursor:pointer}
 .fly-nav a:hover,.fly-nav a.active{color:var(--fly-red)}
 .fly-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--fly-red);border-radius:2px}
-.fly-header.on-dark:not(.scrolled) .fly-nav a{color:#fff}
-.fly-header.on-dark:not(.scrolled) .fly-nav a:hover{color:#fff;opacity:.85}
-.fly-header.on-dark.scrolled .fly-nav a{color:var(--fly-ink)}
 .fly-actions{display:flex;align-items:center;gap:14px}
 .fly-link{font-family:var(--fly-body);font-weight:600;font-size:.95rem;color:var(--fly-ink);text-decoration:none;cursor:pointer}
-.fly-header.on-dark:not(.scrolled) .fly-link{color:#fff}
 .fly-burger{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;color:var(--fly-ink);background:none;border:none}
-.fly-header.on-dark:not(.scrolled) .fly-burger{color:#fff}
+/* on-dark overrides removed — header is now always frosted-white, so the
+   default dark colours read correctly in every state. */
 @media(max-width:920px){.fly-nav,.fly-actions .fly-link{display:none}.fly-burger{display:flex}}
 
-/* ---- logo ---- */
+/* ---- logo ----
+   Header is always frosted-white now, so the colour logo (.light variant)
+   always shows. The .dark variant (white tagline, intended for dark hero)
+   is permanently hidden. */
 .fly-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
 .fly-logo-img{height:50px;width:auto;display:block}
-/* the original colour logo on light/scrolled header; swap to the white-tagline variant over the dark hero */
 .fly-logo-img.dark{display:none}
-.fly-header.on-dark:not(.scrolled) .fly-logo-img.light{display:none}
-.fly-header.on-dark:not(.scrolled) .fly-logo-img.dark{display:block}
 .fly-footer .fly-logo-img{height:46px}
 
 /* ---- search widget ---- */
@@ -216,6 +215,12 @@
 .fly-foot-accred .seal-txt i{font-style:normal;font-size:.62rem;color:#6b7686;text-transform:uppercase;letter-spacing:.05em;margin-top:1px}
 .fly-foot-accred .acc-iata-logo{padding:6px 11px}
 .fly-foot-accred .acc-iata-logo img{height:34px;width:auto;display:block;object-fit:contain}
+/* IATA seal variant that carries a caption — makes clear that the IATA accreditation
+   belongs to the parent operator (Travellers Marketplace), not the FlyAir brand directly. */
+.fly-foot-accred .acc-iata-parent{padding:6px 14px 6px 11px;gap:10px}
+.fly-foot-accred .acc-iata-parent img{height:30px}
+.fly-foot-accred .acc-iata-parent .seal-txt b{font-size:.82rem}
+.fly-foot-accred .acc-iata-parent .seal-txt i{font-size:.58rem}
 .fly-foot-accred .pay-chip{display:inline-flex;align-items:center;justify-content:center;height:34px;min-width:50px;padding:5px 9px;background:#fff;border-radius:7px;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .fly-foot-accred .pay-chip img{height:20px;width:auto;max-width:46px;object-fit:contain;display:block}
 @media(max-width:640px){.fly-foot-accred{justify-content:center}}

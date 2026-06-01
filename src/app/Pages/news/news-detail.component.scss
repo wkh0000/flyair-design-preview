@@ -1,1 +1,7 @@
 :host { display: block; }
+
+/* Give the related-articles strip room to breathe so it doesn't slam straight
+   into the navy footer. ::ng-deep is needed because the rule lives in the
+   component's encapsulated stylesheet but targets elements the global news
+   layout owns. */
+::ng-deep .article-related { padding-bottom: clamp(48px, 6vw, 96px); }
