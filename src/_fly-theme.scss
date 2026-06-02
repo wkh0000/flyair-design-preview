@@ -80,13 +80,19 @@
 .fly-header{
   position:fixed;top:0;left:0;right:0;z-index:60;height:var(--fly-header-h);
   display:flex;align-items:center;transition:.3s var(--fly-ease);
+  /* The solid-white zone has to extend with the viewport because the
+     fly-container is centered: as the viewport grows wider, the logo's
+     x-position grows too. max(absolute, calc(50vw - offset)) gives us a
+     minimum baseline on smaller screens AND continuous scaling on wide ones.
+     Tuned so the logo always sits in the fully-opaque zone with a ~30px
+     buffer before the fade starts. */
   background:linear-gradient(
     to right,
-    rgba(255,255,255,1)    0px,
-    rgba(255,255,255,1)    300px,
-    rgba(255,255,255,0.92) 380px,
-    rgba(255,255,255,0.75) 460px,
-    rgba(255,255,255,0.55) 560px
+    rgba(255,255,255,1)    0,
+    rgba(255,255,255,1)    max(300px, calc(50vw - 280px)),
+    rgba(255,255,255,0.92) max(380px, calc(50vw - 200px)),
+    rgba(255,255,255,0.75) max(460px, calc(50vw - 120px)),
+    rgba(255,255,255,0.55) max(560px, calc(50vw - 20px))
   );
   -webkit-backdrop-filter:blur(14px) saturate(160%);
   backdrop-filter:blur(14px) saturate(160%);
