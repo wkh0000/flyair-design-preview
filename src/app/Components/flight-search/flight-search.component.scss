@@ -17,19 +17,16 @@
   -webkit-mask-position: center;  mask-position: center;
   -webkit-mask-size: contain;     mask-size: contain;
 }
+/* Both source PNGs are roughly square (199×200 and 396×420). Return keeps a
+   slightly bigger box so the two-plane formation reads at the same optical
+   weight as the dense single-plane One Way. */
 .fly-trip-ic-oneway {
-  width: 22px; height: 20px;
-  -webkit-mask-image: url('../../../assets/ico-plane.svg');
-  mask-image: url('../../../assets/ico-plane.svg');
+  width: 18px; height: 18px;
+  -webkit-mask-image: url('../../../assets/icons/flights-nav-single.png');
+  mask-image: url('../../../assets/icons/flights-nav-single.png');
 }
 .fly-trip-ic-return {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #0a1730;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: center;  mask-position: center;
-  -webkit-mask-size: contain;     mask-size: contain;
-  width: 26px; height: 22px;
+  width: 26px; height: 26px;
   -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
   mask-image: url('../../../assets/icons/flights-nav.png');
 }
@@ -233,9 +230,10 @@
 .nav-tabs .nav-item:nth-child(2) .nav-link { border-radius: 12px !important; }
 .nav-tabs .nav-link {
   display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 16px;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   background: rgba(255, 255, 255, 0.7) !important;
-  color: #5a6b80 !important; font-weight: 700; font-size: 0.95rem; padding: 11px 22px;
+  color: #5a6b80 !important; font-weight: 700; font-size: 0.95rem;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   box-shadow: 0 6px 18px rgba(12, 35, 75, 0.1);
   transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
