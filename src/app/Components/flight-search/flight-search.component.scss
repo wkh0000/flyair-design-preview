@@ -20,13 +20,16 @@
 /* Both source PNGs are roughly square (199×200 and 396×420). Return keeps a
    slightly bigger box so the two-plane formation reads at the same optical
    weight as the dense single-plane One Way. */
+/* Per-icon sizing — One Way (single plane) reads heavier at the same size,
+   so it's intentionally smaller. Return (two-plane formation) stays at 26px.
+   Both stay within native pixel density (no upscaling → no blur). */
+.fly-trip-ic-oneway { width: 18px; height: 18px; }
+.fly-trip-ic-return { width: 26px; height: 26px; }
 .fly-trip-ic-oneway {
-  width: 18px; height: 18px;
   -webkit-mask-image: url('../../../assets/icons/flights-nav-single.png');
   mask-image: url('../../../assets/icons/flights-nav-single.png');
 }
 .fly-trip-ic-return {
-  width: 26px; height: 26px;
   -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
   mask-image: url('../../../assets/icons/flights-nav.png');
 }
@@ -229,8 +232,11 @@
 .nav-tabs .nav-item:first-child .nav-link,
 .nav-tabs .nav-item:nth-child(2) .nav-link { border-radius: 12px !important; }
 .nav-tabs .nav-link {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   padding: 11px 16px;
+  /* min-width keeps both pills the same width even when the labels differ
+     in length ("One Way" vs "Return"). */
+  min-width: 140px;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   background: rgba(255, 255, 255, 0.7) !important;
   color: #5a6b80 !important; font-weight: 700; font-size: 0.95rem;

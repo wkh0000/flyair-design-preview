@@ -73,17 +73,49 @@
 .fly-fill-green{background:linear-gradient(135deg,#95d24f,var(--fly-green600))}
 
 /* ---- header ---- */
-/* Always-visible frosted-white header — client feedback said the previous
-   fully-transparent state over the hero made the nav hard to read. The same
-   look applies before AND after scroll (the .scrolled toggle below is now
-   a no-op for visual purposes; we keep the class for any future hook). */
+/* Two-zone header: opaque white on the left (logo zone) horizontally fading
+   into a translucent glass strip on the right (nav + actions). The whole
+   header has a uniform backdrop-blur — the gradient just controls how much
+   the blurred backdrop bleeds through at each x-position. */
 .fly-header{
   position:fixed;top:0;left:0;right:0;z-index:60;height:var(--fly-header-h);
   display:flex;align-items:center;transition:.3s var(--fly-ease);
-  background:rgba(255,255,255,.78);
-  backdrop-filter:blur(18px) saturate(170%);
-  -webkit-backdrop-filter:blur(18px) saturate(170%);
-  box-shadow:0 1px 0 rgba(12,35,75,.06);
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,1)    0px,
+    rgba(255,255,255,1)    300px,
+    rgba(255,255,255,0.92) 380px,
+    rgba(255,255,255,0.75) 460px,
+    rgba(255,255,255,0.55) 560px
+  );
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,0.35);
+  box-shadow:0 6px 18px rgba(12,35,75,0.08);
+}
+/* On narrower viewports the fade compresses — the solid-white zone shrinks so
+   the burger menu still gets the glass treatment instead of sitting on white. */
+@media(max-width:920px){
+  .fly-header{
+    background:linear-gradient(
+      to right,
+      rgba(255,255,255,1)    0px,
+      rgba(255,255,255,1)    220px,
+      rgba(255,255,255,0.85) 300px,
+      rgba(255,255,255,0.55) 400px
+    );
+  }
+}
+@media(max-width:560px){
+  .fly-header{
+    background:linear-gradient(
+      to right,
+      rgba(255,255,255,1)    0%,
+      rgba(255,255,255,1)    55%,
+      rgba(255,255,255,0.7)  85%,
+      rgba(255,255,255,0.55) 100%
+    );
+  }
 }
 .fly-header .fly-container{display:flex;align-items:center;justify-content:space-between;gap:24px}
 /* Scrolled state was a different "glass on dark" look before. Now that the
@@ -107,8 +139,8 @@
    Header is always frosted-white now, so the colour logo (.light variant)
    always shows. The .dark variant (white tagline, intended for dark hero)
    is permanently hidden. */
-.fly-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.fly-logo-img{height:50px;width:auto;display:block}
+.fly-logo{display:inline-flex;align-items:center;gap:11px;text-decoration:none}
+.fly-logo-img{height:60px;width:auto;display:block}
 .fly-logo-img.dark{display:none}
 .fly-footer .fly-logo-img{height:46px}
 
@@ -143,6 +175,9 @@
 .fly-hero .grad{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,20,44,.5) 0%,rgba(6,20,44,.12) 22%,rgba(6,20,44,0) 45%,rgba(255,255,255,0) 80%,#fff 100%)}
 .fly-hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 220px rgba(4,16,38,.28)}
 .fly-hero .inner{position:relative;z-index:4;width:100%;padding-top:var(--fly-header-h);transform:translate3d(0,var(--fly-par,0px),0);will-change:transform}
+/* On mobile the header is shorter but the eyebrow ("HUNDREDS OF AIRLINES · ONE SEARCH")
+   feels cramped against the top — add ~40px of breathing room. */
+@media(max-width:768px){.fly-hero .inner{padding-top:calc(var(--fly-header-h) + 40px)}}
 .fly-hero h1{color:#fff;letter-spacing:-.02em;font-size:clamp(2.2rem,4.6vw,4rem);line-height:1.02;text-shadow:0 2px 10px rgba(2,14,38,.45),0 12px 50px rgba(0,30,70,.5)}
 .fly-hero h1 .accent{display:inline-block;margin-top:.02em;font-size:1.5em;line-height:.92;font-weight:800;background:none;-webkit-text-fill-color:#ed174c;color:#ed174c;text-shadow:0 3px 20px rgba(2,12,30,.5)}
 .fly-hero .fly-lead{color:#fff;font-weight:500;max-width:540px;text-shadow:0 1px 2px rgba(2,12,35,.92),0 1px 14px rgba(2,12,35,.55)}
