@@ -107,9 +107,9 @@ export class LegalComponent implements OnInit {
     /* ---------- Our Products ---------- */
     'flight-tickets': {
       title: 'Flight Tickets', eyebrow: 'Our Products',
-      intro: 'Book domestic and international flights from hundreds of airlines at the best available fares.',
+      intro: 'Book domestic and international flights from every airline at the best available fares.',
       sections: [
-        { h: 'Hundreds of airlines, one search', p: 'Compare full-service and low-cost carriers side by side — SriLankan, Emirates, Qatar Airways, Singapore Airlines, Cathay Pacific and many more — and pick the fare that suits you.' },
+        { h: 'Every airline, one search', p: 'Compare full-service and low-cost carriers side by side — SriLankan, Emirates, Qatar Airways, Singapore Airlines, Cathay Pacific and many more — and pick the fare that suits you.' },
         { h: 'One-way & return', p: 'Search one-way or return journeys, filter by stops, airlines and layover points, and choose your cabin from Economy to Business.' },
         { h: 'Transparent pricing', p: 'The price you see includes taxes and fees. No hidden charges, with optional extras shown clearly before you pay.' },
         { h: 'Instant e-tickets', p: 'Receive your e-ticket and full itinerary by email the moment your booking is confirmed — ready for check-in.' },

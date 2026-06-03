@@ -28,9 +28,9 @@ export interface HomeContent {
 /** Baked-in default so the home + admin render fully before/without the API. */
 export const DEFAULT_HOME: HomeContent = {
   hero: {
-    eyebrow: 'Hundreds of airlines · one search',
+    eyebrow: 'Every airline · one search',
     titleLine1: 'Your journey,', titleAccent: 'Fly your way',
-    lead: 'Hundreds of destinations. The best fares. One beautifully simple search — and the whole sky opens up.',
+    lead: 'Anywhere in the world. The best fares. One beautifully simple search — and the whole sky opens up.',
     badges: ['No hidden fees', 'Free 24h cancellation', 'Secure payments'],
   },
   stats: [

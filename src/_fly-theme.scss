@@ -181,7 +181,7 @@
 .fly-hero .grad{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,20,44,.5) 0%,rgba(6,20,44,.12) 22%,rgba(6,20,44,0) 45%,rgba(255,255,255,0) 80%,#fff 100%)}
 .fly-hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 220px rgba(4,16,38,.28)}
 .fly-hero .inner{position:relative;z-index:4;width:100%;padding-top:var(--fly-header-h);transform:translate3d(0,var(--fly-par,0px),0);will-change:transform}
-/* On mobile the header is shorter but the eyebrow ("HUNDREDS OF AIRLINES · ONE SEARCH")
+/* On mobile the header is shorter but the eyebrow ("EVERY AIRLINE · ONE SEARCH")
    feels cramped against the bottom of the white header band — give it generous
    breathing room so the band edge isn't kissing the eyebrow text. */
 @media(max-width:768px){.fly-hero .inner{padding-top:calc(var(--fly-header-h) + 80px)}}

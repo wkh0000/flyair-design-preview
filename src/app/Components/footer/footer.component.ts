@@ -16,7 +16,7 @@ export interface FooterContent {
 }
 
 export const FOOTER_DEFAULT: FooterContent = {
-  brandText: 'Hundreds of airlines, one search. Fly your way — with the best fares, no hidden fees, and support that never sleeps.',
+  brandText: 'Every airline, one search. Fly your way — with the best fares, no hidden fees, and support that never sleeps.',
   newsletterLabel: 'Get fare drops & deals',
   newsletterPlaceholder: 'Your email',
   socials: { facebook: '#', instagram: '#', x: '#' },
