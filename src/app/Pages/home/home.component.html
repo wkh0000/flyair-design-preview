@@ -6,9 +6,9 @@
     <div class="grad"></div>
     <div class="inner" flyParallax="64">
       <div class="fly-container">
-        <div class="fly-eyebrow" style="color:#fff;text-shadow:0 1px 2px rgba(2,14,40,.95),0 0 14px rgba(2,14,40,.55)">{{ content.hero.eyebrow }}</div>
-        <h1 style="margin-top:16px">{{ content.hero.titleLine1 }}<br><span class="accent">{{ content.hero.titleAccent }}</span></h1>
-        <p class="fly-lead" style="margin-top:20px">{{ content.hero.lead }}</p>
+        <div *ngIf="content.hero.eyebrow" class="fly-eyebrow" style="color:#fff;text-shadow:0 1px 2px rgba(2,14,40,.95),0 0 14px rgba(2,14,40,.55)">{{ content.hero.eyebrow }}</div>
+        <h1 style="margin-top:0;white-space:pre-line"><span class="title-pre">{{ content.hero.titleLine1 }}</span><br><span class="accent">{{ content.hero.titleAccent }}</span></h1>
+        <p *ngIf="content.hero.lead" class="fly-lead" style="margin-top:20px">{{ content.hero.lead }}</p>
         <div style="margin-top:30px;max-width:980px">
           <app-flight-search customClass="form"></app-flight-search>
         </div>

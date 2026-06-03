@@ -26,7 +26,7 @@
 .fly{font-family:var(--fly-body);color:var(--fly-ink);line-height:1.55;-webkit-font-smoothing:antialiased}
 .fly h1,.fly h2,.fly h3,.fly h4,.fly-display{font-family:var(--fly-display);font-weight:800;line-height:1.04;letter-spacing:-.015em;color:var(--fly-ink)}
 .fly h1{font-size:clamp(2.6rem,6vw,5rem)} .fly h2{font-size:clamp(2rem,4vw,3.2rem)} .fly h3{font-size:clamp(1.25rem,2.2vw,1.85rem)}
-.fly-eyebrow{font-family:var(--fly-display);font-weight:700;font-style:italic;letter-spacing:.2em;text-transform:uppercase;font-size:.76rem;color:var(--fly-blue);display:inline-flex;align-items:center;gap:10px}
+.fly-eyebrow{font-family:var(--fly-display);font-weight:700;font-style:italic;letter-spacing:.2em;text-transform:uppercase;font-size:1rem;color:var(--fly-blue);display:inline-flex;align-items:center;gap:10px}
 .fly-eyebrow.line::before{content:"";width:26px;height:2px;background:var(--fly-red);border-radius:2px}
 .fly-lead{font-size:1.15rem;color:var(--fly-ink2);font-weight:300}
 .fly-muted{color:var(--fly-ink3)}
@@ -186,7 +186,12 @@
    breathing room so the band edge isn't kissing the eyebrow text. */
 @media(max-width:768px){.fly-hero .inner{padding-top:calc(var(--fly-header-h) + 80px)}}
 .fly-hero h1{color:#fff;letter-spacing:-.02em;font-size:clamp(2.2rem,4.6vw,4rem);line-height:1.02;text-shadow:0 2px 10px rgba(2,14,38,.45),0 12px 50px rgba(0,30,70,.5)}
-.fly-hero h1 .accent{display:inline-block;margin-top:.02em;font-size:1.5em;line-height:.92;font-weight:800;background:none;-webkit-text-fill-color:#ed174c;color:#ed174c;text-shadow:0 3px 20px rgba(2,12,30,.5)}
+/* Pre-accent title line ("One simple search") sits between the small eyebrow
+   and the huge red accent, so it gets a deliberate mid-tier size — smaller
+   than the H1 base, larger than body copy. ~60% of base keeps the hierarchy
+   readable as: eyebrow → title-pre → accent. */
+.fly-hero h1 .title-pre{display:inline-block;font-size:.85em;line-height:1.05;font-weight:700;margin-top:15px;margin-bottom:10px}
+.fly-hero h1 .accent{display:inline-block;margin-top:.1em;font-size:1.5em;line-height:.92;font-weight:800;background:none;-webkit-text-fill-color:#ed174c;color:#ed174c;text-shadow:0 3px 20px rgba(2,12,30,.5);margin-bottom:10px}
 .fly-hero .fly-lead{color:#fff;font-weight:500;max-width:540px;text-shadow:0 1px 2px rgba(2,12,35,.92),0 1px 14px rgba(2,12,35,.55)}
 
 /* cards: destination / feature / offer / stats / mesh / partners */
