@@ -8,6 +8,15 @@
 .subhero h1{ color:#fff; margin-top:12px; font-family:var(--fly-display); font-weight:800; }
 .subhero .fly-lead{ color: rgba(255,255,255,.82); max-width:620px; margin-top:14px; }
 
+/* Sub-hero side-image layout: copy left, illustration right; stacks on narrow viewports. */
+.subhero .subhero-grid { display:grid; grid-template-columns: minmax(0,1fr) 340px; gap:32px; align-items:center; position:relative; z-index:1; }
+.subhero .subhero-copy { min-width:0; }
+.subhero .subhero-img { width:100%; max-width:340px; aspect-ratio: 8 / 3; height:auto; justify-self:end; border-radius:18px; box-shadow: 0 24px 60px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08); }
+@media (max-width: 860px) {
+  .subhero .subhero-grid { grid-template-columns: 1fr; }
+  .subhero .subhero-img { max-width:300px; justify-self:center; margin-top:8px; }
+}
+
 /* ---- Intro line ---- */
 .intro{
   text-align:center; color: var(--fly-ink2); font-size:1.12rem; font-weight:300;

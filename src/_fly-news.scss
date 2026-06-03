@@ -36,12 +36,22 @@
 
   /* --- Masthead / sub-hero --- */
   .news-hero {
-    background: var(--fly-navy-grad);
+    /* Photo backdrop: airport ops centre + global route map. A dark navy
+       overlay on top keeps the heading legible. The navy grad sits underneath
+       as a safe fallback in case the image fails to load. Padding tuned so
+       the photo gets vertical room to breathe and the masthead reads as a
+       proper editorial banner — not a thin strip. */
+    background:
+      linear-gradient(180deg, rgba(7,21,46,.72) 0%, rgba(7,21,46,.50) 55%, rgba(7,21,46,.78) 100%),
+      url('/assets/pages/newsroom.webp') center/cover no-repeat,
+      var(--fly-navy-grad);
     color: #fff;
-    /* offset the fixed header, then a small gap — tight but never overlapping */
-    padding: calc(var(--fly-header-h) + 1.1rem) 0 clamp(1.6rem, 3vw, 2.4rem);
+    /* generous editorial banner — fits the route-map photo without crowding it */
+    padding: calc(var(--fly-header-h) + clamp(60px, 8vw, 110px)) 0 clamp(70px, 9vw, 130px);
+    min-height: clamp(360px, 42vw, 520px);
     position: relative;
     overflow: hidden;
+    display: flex; align-items: center;
   }
   .news-hero::after {
     content: "";

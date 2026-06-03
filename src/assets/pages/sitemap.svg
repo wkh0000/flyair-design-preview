@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="SITEMAP">
+  <defs>
+    <linearGradient id="bg-sitemap" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1730"/>
+      <stop offset=".55" stop-color="#0b2f63"/>
+      <stop offset="1" stop-color="#1f6fb0"/>
+    </linearGradient>
+    <radialGradient id="glow-sitemap" cx=".82" cy=".25" r=".55">
+      <stop offset="0" stop-color="#1f6fb0" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#1f6fb0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="600" fill="url(#bg-sitemap)"/>
+  <rect width="1600" height="600" fill="url(#glow-sitemap)"/>
+  <g opacity=".07" stroke="#fff" fill="none" stroke-width="1">
+    <path d="M0 100 H1600 M0 200 H1600 M0 300 H1600 M0 400 H1600 M0 500 H1600"/>
+    <path d="M200 0 V600 M400 0 V600 M600 0 V600 M800 0 V600 M1000 0 V600 M1200 0 V600 M1400 0 V600"/>
+  </g>
+  <g fill="#fff" opacity=".5">
+    <circle cx="180" cy="120" r="2"/><circle cx="1480" cy="180" r="2"/>
+    <circle cx="320" cy="460" r="2"/><circle cx="1260" cy="480" r="3"/>
+    <circle cx="900" cy="80" r="2"/><circle cx="540" cy="540" r="2"/>
+    <circle cx="1380" cy="540" r="2"/><circle cx="60" cy="320" r="2"/>
+  </g>
+  <g transform="translate(1100, 110)">
+    <rect x="160" y="30" width="60" height="50" rx="8" fill="#fff"/><path d="M190 80 V120 M60 120 H320 M60 120 V160 M190 120 V160 M320 120 V160" stroke="#fff" stroke-width="5" fill="none"/><rect x="30" y="160" width="60" height="50" rx="8" fill="#fff"/><rect x="160" y="160" width="60" height="50" rx="8" fill="#fff"/><rect x="290" y="160" width="60" height="50" rx="8" fill="#fff"/><path d="M60 210 V250 M30 250 H90 M30 250 V290 M90 250 V290" stroke="#fff" stroke-width="5" fill="none"/><rect x="20" y="290" width="50" height="45" rx="6" fill="#fff" opacity=".8"/><rect x="80" y="290" width="50" height="45" rx="6" fill="#fff" opacity=".8"/>
+  </g>
+  <text x="80" y="540" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#fff" opacity=".82" letter-spacing="3">SITEMAP</text>
+  <rect x="80" y="556" width="50" height="3" fill="#ed174c"/>
+</svg>

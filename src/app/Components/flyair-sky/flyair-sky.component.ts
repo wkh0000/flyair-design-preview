@@ -28,15 +28,43 @@ export class FlyairSkyComponent implements OnDestroy {
   }
 
   private async init(): Promise<void> {
+    // ── PERFORMANCE MODE ─────────────────────────────────────────────────
+    // Small-touch devices (phones) skip the WebGL clouds entirely — the
+    // parent .fly-hero CSS gradient becomes the static backdrop, GPU stays
+    // cool, scroll stays smooth. This is the single biggest win for the
+    // class of devices that were complaining (sticky animation on phones,
+    // hot fans on old MacBooks).
+    if (typeof matchMedia !== 'undefined' && matchMedia('(max-width: 600px) and (hover: none)').matches) return;
+    // Auto-degrade on low-power signals — any single hint kicks the device
+    // into the static-gradient path. Same render path as phones, no WebGL.
+    //   • Save-Data: user has explicitly asked for minimal payload (mobile
+    //     data, Data Saver mode in Chrome/Edge, low-bandwidth indicators)
+    //   • deviceMemory < 4GB: low-end Android phones, old laptops
+    //   • hardwareConcurrency ≤ 4: budget CPUs that would burn a core just
+    //     keeping the cloud loop going
+    // Battery API is dead in modern browsers (Chrome removed it, Firefox/
+    // Safari never shipped it), so we don't bother with it.
+    const nav = navigator as any;
+    const lowPower =
+      nav.connection?.saveData === true ||
+      (typeof nav.deviceMemory === 'number' && nav.deviceMemory < 4) ||
+      (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4);
+    if (lowPower) return;
+    // On desktops, drop MSAA (clouds are blurry textures — antialias buys
+    // ~nothing visually, costs 25-40% GPU on iGPU) and cap pixel ratio at
+    // 1.5 (full retina rasterisation is overkill for a soft sky).
     const THREE: any = await import('three');
     const canvas = this.canvasRef.nativeElement;
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.02;
 
     const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Clean up any stale night-mode body class from previous experiments —
+    // ensures CSS night-overrides never apply when this component mounts.
+    document.body.classList.remove('fly-night');
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0xcfe6fb, 0.00023);
     const camera = new THREE.PerspectiveCamera(54, 2, 1, 30000);
@@ -47,7 +75,7 @@ export class FlyairSkyComponent implements OnDestroy {
       renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
     };
 
-    // sky dome
+    // sky dome — two day palettes the shader breathes between for a slow shift.
     const A = { top: new THREE.Color('#073a73'), mid: new THREE.Color('#1685cf'), bot: new THREE.Color('#dfeffb') };
     const B = { top: new THREE.Color('#0b2f63'), mid: new THREE.Color('#3f7fc0'), bot: new THREE.Color('#f4dcc0') };
     const skyMat = new THREE.ShaderMaterial({
@@ -85,11 +113,14 @@ export class FlyairSkyComponent implements OnDestroy {
       const z = initial ? -Math.random() * FAR : -(FAR - Math.random() * 1400);
       sp.position.set((Math.random() - .5) * 5400, 40 + (Math.random() - .5) * 2600, z);
       const sc = 900 + Math.random() * 1700; sp.scale.set(sc * 1.65, sc, 1);
-      sp.userData['base'] = .55 + Math.random() * .33;   // peak opacity
+      sp.userData['base'] = .72 + Math.random() * .28;   // peak opacity — solid sunlit white
       sp.userData['spd'] = (REDUCED ? 60 : 260) * (.85 + Math.random() * .3);
     };
     const build = (tex: any[]) => {
-      const N = REDUCED ? 50 : 160;
+      // 160 → 60 clouds: each sprite is huge, so fewer alpha-blended quads is
+      // the biggest fill-rate saving on integrated GPUs. The field still feels
+      // dense at 60 because clouds overlap heavily and each covers a wide area.
+      const N = REDUCED ? 40 : 60;
       for (let i = 0; i < N; i++) {
         const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex[i % tex.length], transparent: true, depthWrite: false, opacity: .5, fog: true }));
         resetCloud(sp, true);
@@ -113,17 +144,36 @@ export class FlyairSkyComponent implements OnDestroy {
 
     let t0 = performance.now(), tEl = 0, visible = true; const _a = new THREE.Color();
     const lerpC = (o: any, a: any, b: any, t: number) => o.copy(a).lerp(b, t);
+    // 24 fps cap. The cloud "breathing" is slow enough that 24 fps reads as
+    // identical to 60/120 but cuts rasterisation work to ~40% of native rate.
+    // We still requestAnimationFrame every frame so visibility/throttling
+    // stays correct — we just skip rendering on frames that arrive too soon.
+    const FRAME_MS = 1000 / 24;
+    let lastDraw = 0;
     const tick = (now: number) => {
       if (!visible) { this.raf = 0; return; }                  // paused while the hero is off-screen
-      this.raf = requestAnimationFrame(tick); const dt = Math.min((now - t0) / 1000, .05); t0 = now; tEl += dt;
+      this.raf = requestAnimationFrame(tick);
+      if (now - lastDraw < FRAME_MS) return;                   // skip — keeps under 30 fps
+      lastDraw = now;
+      const dt = Math.min((now - t0) / 1000, .05); t0 = now; tEl += dt;
       const camZ = camera.position.z;
       for (const c of clouds) {
         c.position.z += c.userData['spd'] * dt;                           // stream toward the camera
         const d = camZ - c.position.z;                                    // distance still ahead of us
         if (d <= 180) { resetCloud(c, false); continue; }                 // recycle while invisible → no pop
-        // smooth fade so clouds emerge from the haze and dissolve before reaching us (no visible spawn/recycle)
-        let f = (d - 220) / 720; f = f < 0 ? 0 : f > 1 ? 1 : f;
-        c.material.opacity = c.userData['base'] * f * f * (3 - 2 * f);
+        // TWO-SIDED FADE so spawns are never visible:
+        //   • Far fade (8500→6500): clouds emerge from the haze gradually.
+        //     Without this, recycled clouds spawn at d≈8000-9400 already
+        //     fully opaque — fog tints them but they still read as a "patch
+        //     popping in." Now they start at opacity 0 and ramp up while
+        //     perspective naturally scales them up from a small dot.
+        //   • Near fade (940→220): clouds dissolve before reaching the camera.
+        let f: number;
+        if (d > 6500)      f = (8500 - d) / 2000;        // fade IN from haze
+        else if (d > 940)  f = 1;                        // fully visible band
+        else               f = (d - 220) / 720;          // fade OUT before camera
+        if (f < 0) f = 0; else if (f > 1) f = 1;
+        c.material.opacity = c.userData['base'] * f * f * (3 - 2 * f);   // smoothstep ease
       }
       const k = (Math.sin(tEl * .05) * .5 + .5) * .55;
       lerpC(_a, A.top, B.top, k); skyMat.uniforms.top.value.copy(_a);

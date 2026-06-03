@@ -2,7 +2,7 @@
 export const environment = {
   production: false,
   agency_pcc: '79G2',
-  apiUrl: 'http://localhost:5000/api/',
+  apiUrl: '/api/',
   siteUrl: 'http://localhost:4200',
 
   address: 'Colombo 03, Sri Lanka',

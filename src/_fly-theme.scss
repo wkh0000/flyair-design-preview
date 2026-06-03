@@ -171,7 +171,31 @@
    alone is position:fixed so the sky stays anchored to the viewport while the hero content
    scrolls up over it. The .fly-stack-over wrapper below the hero has a solid background so
    it covers the fixed cloud once the user has scrolled past the hero area. */
-.fly-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#0a2a52,#1f6fb0 60%,#bfe0f5)}
+/* Hero background: lightened sky gradient PLUS seven white radial puffs that
+   simulate dense cloud cover. The puffs are visible whether the WebGL canvas
+   is on top (animated clouds drift through the transparent parts of the alpha
+   canvas) or skipped on low-power devices (this layer becomes the entire
+   backdrop). Zero per-frame cost — pure CSS paint. */
+.fly-hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+  background:
+    /* Soft white veil sitting BEHIND the WebGL canvas — gently lifts the
+       whole sky toward white, reducing the deep-blue feel between the
+       animated cloud sprites. Since the canvas has alpha:true and renders
+       on top with z-index 0, the veil shows through every transparent
+       pixel of the canvas. Pure CSS, zero per-frame cost. */
+    linear-gradient(rgba(255,255,255,.22), rgba(255,255,255,.22)),
+    radial-gradient(ellipse 70% 38% at 70% 38%, rgba(255,255,255,.82), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 52% 32% at 22% 48%, rgba(255,255,255,.72), rgba(255,255,255,0) 65%),
+    radial-gradient(ellipse 60% 32% at 50% 72%, rgba(255,255,255,.68), rgba(255,255,255,0) 68%),
+    radial-gradient(ellipse 40% 22% at 88% 66%, rgba(255,255,255,.62), rgba(255,255,255,0) 65%),
+    radial-gradient(ellipse 36% 20% at 12% 78%, rgba(255,255,255,.58), rgba(255,255,255,0) 65%),
+    radial-gradient(ellipse 32% 18% at 92% 22%, rgba(255,255,255,.55), rgba(255,255,255,0) 65%),
+    radial-gradient(ellipse 30% 16% at 8%  28%, rgba(255,255,255,.5),  rgba(255,255,255,0) 65%),
+    /* Lightened base: medium-blue top (was deep navy #0a2a52), softer mid,
+       near-white bottom — less "ocean-blue", more "high-altitude sky". */
+    linear-gradient(180deg,#1f4f8a 0%,#5fa3d5 45%,#dbeaf5 85%,#f4f9fd 100%);
+}
 .fly-stack-over{position:relative;z-index:1;background:#fff}
 /* The cloud canvas is rendered inside <app-flyair-sky>. Pin it to the viewport so it stays
    anchored as the user scrolls; the hero's own background gradient continues scrolling

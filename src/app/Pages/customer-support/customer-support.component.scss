@@ -44,6 +44,27 @@
   filter: drop-shadow(0 4px 14px rgba(3, 30, 60, 0.35));
 }
 
+/* Banner with side illustration — copy left, headset SVG right. The cs-banner
+   was originally center-aligned; on wider screens we shift to a left/right
+   grid so the illustration has room. Stacks back to centered on narrow viewports. */
+.cs-banner-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px;
+  align-items: center;
+}
+.cs-banner-grid .cs-banner-copy { text-align: left; min-width: 0; }
+.cs-banner-grid .cs-banner-copy .cs-banner-sub { margin-left: 0; }
+.cs-banner-grid .cs-banner-img {
+  width: 100%; max-width: 340px; aspect-ratio: 8 / 3; height: auto; justify-self: end;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08);
+}
+@media (max-width: 860px) {
+  .cs-banner-grid { grid-template-columns: 1fr; text-align: center; }
+  .cs-banner-grid .cs-banner-copy { text-align: center; }
+  .cs-banner-grid .cs-banner-copy .cs-banner-sub { margin-left: auto; }
+  .cs-banner-grid .cs-banner-img { max-width: 280px; justify-self: center; margin-top: 8px; }
+}
+
 /* faint floating "?" accents */
 .cs-orb {
   position: absolute;
