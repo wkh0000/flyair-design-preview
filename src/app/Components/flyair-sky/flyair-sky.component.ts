@@ -37,18 +37,20 @@ export class FlyairSkyComponent implements OnDestroy {
     if (typeof matchMedia !== 'undefined' && matchMedia('(max-width: 600px) and (hover: none)').matches) return;
     // Auto-degrade on low-power signals — any single hint kicks the device
     // into the static-gradient path. Same render path as phones, no WebGL.
+    // Kept intentionally CONSERVATIVE so normal 4-core laptops still get the
+    // cinematic clouds (the prior `cores <= 4` rule was demoting most of
+    // them; with the rest of perf mode applied — 60 sprites, 24fps, no
+    // MSAA — a 4-core machine handles it fine).
     //   • Save-Data: user has explicitly asked for minimal payload (mobile
     //     data, Data Saver mode in Chrome/Edge, low-bandwidth indicators)
-    //   • deviceMemory < 4GB: low-end Android phones, old laptops
-    //   • hardwareConcurrency ≤ 4: budget CPUs that would burn a core just
-    //     keeping the cloud loop going
-    // Battery API is dead in modern browsers (Chrome removed it, Firefox/
-    // Safari never shipped it), so we don't bother with it.
+    //   • deviceMemory < 2GB: only the genuinely tiny devices (low-end
+    //     Chromebooks, ancient tablets, 2GB Android sticks)
+    // hardwareConcurrency check removed — too noisy. Battery API is dead in
+    // modern browsers (Chrome removed it, Firefox/Safari never shipped it).
     const nav = navigator as any;
     const lowPower =
       nav.connection?.saveData === true ||
-      (typeof nav.deviceMemory === 'number' && nav.deviceMemory < 4) ||
-      (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4);
+      (typeof nav.deviceMemory === 'number' && nav.deviceMemory < 2);
     if (lowPower) return;
     // On desktops, drop MSAA (clouds are blurry textures — antialias buys
     // ~nothing visually, costs 25-40% GPU on iGPU) and cap pixel ratio at
