@@ -126,14 +126,10 @@ export class FlightSearchComponent implements OnInit {
     // Card-click prefill: when home navigation passes ?origin=&dest=&date=&pax=
     // we populate the one-way form so the user sees a ready-to-go search.
     this.route.queryParams.subscribe(qp => {
-      if (!qp || (!qp['origin'] && !qp['dest'] && !qp['date'])) return;
-      const patch: any = {};
-      if (qp['origin']) patch.onewaydeparture = qp['origin'];
-      if (qp['dest'])   patch.onewaydestination = qp['dest'];
-      if (qp['date'])   patch.onewaydepartureDate = new Date(qp['date']);
-      this.oneWayForm.patchValue(patch);
-      const pax = parseInt(qp['pax'] || '0', 10);
-      if (pax > 0) (this.oneWayForm.get('passengers') as any)?.patchValue({ adult: pax });
+      if (qp && (qp['origin'] || qp['dest'] || qp['date'])) {
+        this.pendingPrefill = qp;
+        this.applyPrefill();   // applies immediately if airports already loaded
+      }
     });
     //test end
     this.http
@@ -143,6 +139,7 @@ export class FlightSearchComponent implements OnInit {
       .subscribe((data) => {
         this.options = data;
         this.filteredOptions = [...this.options];
+        this.applyPrefill();   // resolve any pending prefill now that the list exists
       });
 
     this.oneWayForm.valueChanges.subscribe((values) => {
@@ -236,6 +233,45 @@ export class FlightSearchComponent implements OnInit {
       ),
       selectedClass: [this.selectedClass],
     });
+  }
+
+  /** Pending ?origin/dest/date/pax prefill, applied once the airport list loads. */
+  private pendingPrefill: any = null;
+  /** Default origin when a promotion / destination card doesn't carry one — the
+   *  agency's home airport, so the prefilled search is valid and runnable. */
+  private readonly DEFAULT_ORIGIN = 'CMB';
+
+  /** Resolve an IATA code ("DXB") or city name ("Dubai") to the canonical
+   *  "Name - CODE" option string the autocomplete + submit logic expect. */
+  private resolveAirport(val: string): string | null {
+    const v = (val || '').trim().toLowerCase();
+    if (!v || !this.options?.length) return null;
+    let opt = this.options.find((o: any) => (o.code || '').toLowerCase() === v);
+    if (!opt) opt = this.options.find((o: any) => (o.name || '').toLowerCase().includes(v));
+    return opt ? `${opt.name} - ${opt.code}` : null;
+  }
+
+  /** Apply the pending prefill. Date + pax patch right away; origin/dest are
+   *  resolved against the airport list so they become real selections (not loose
+   *  text) — otherwise the field shows a bare code and submit can't extract a
+   *  valid airport code, leaving the form invalid. */
+  private applyPrefill(): void {
+    const qp = this.pendingPrefill;
+    if (!qp || !this.oneWayForm) return;
+    const patch: any = {};
+    if (qp['date']) patch.onewaydepartureDate = new Date(qp['date']);
+    if (qp['origin']) { const r = this.resolveAirport(qp['origin']); if (r) patch.onewaydeparture = r; }
+    if (qp['dest'])   { const r = this.resolveAirport(qp['dest']);   if (r) patch.onewaydestination = r; }
+    // Default origin to the home airport when none was provided, so the search
+    // is immediately valid and the customer can run it in one click.
+    if (!patch.onewaydeparture && !this.oneWayForm.get('onewaydeparture')?.value && (qp['dest'] || qp['origin'])) {
+      const home = this.resolveAirport(this.DEFAULT_ORIGIN);
+      if (home) patch.onewaydeparture = home;
+    }
+    this.oneWayForm.patchValue(patch);
+    const pax = parseInt(qp['pax'] || '0', 10);
+    if (pax > 0) (this.oneWayForm.get('passengers') as any)?.patchValue({ adult: pax });
+    if (this.options?.length) this.pendingPrefill = null;   // resolved once airports exist
   }
 
   passengerValidator(): ValidatorFn {

@@ -145,7 +145,7 @@
           <div class="fly-eyebrow line">{{ content.featured.eyebrow }}</div>
           <h2>{{ content.featured.title }}</h2>
           <p class="fly-lead">{{ content.featured.text }}</p>
-          <a class="fly-btn fly-btn-primary" [routerLink]="content.featured.ctaLink || '/result'">{{ content.featured.ctaLabel || 'Explore' }} →</a>
+          <button type="button" class="fly-btn fly-btn-primary" (click)="openSearchFor({ destination: featuredCity })">{{ content.featured.ctaLabel || 'Explore' }} →</button>
         </div>
       </div>
     </div>

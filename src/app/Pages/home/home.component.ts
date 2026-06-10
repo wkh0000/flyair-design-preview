@@ -204,7 +204,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     return d.toISOString().slice(0, 10);
   }
 
-  /** Click handler for both Destination cards AND Promotion cards.
+  /** Destination for the featured-block CTA — an explicit code/city if the CMS
+   *  provides one, else the title before a comma ("Tokyo, reimagined" → "Tokyo").
+   *  Feeds openSearchFor so "Explore" prefills the search instead of opening a
+   *  blank results page. */
+  get featuredCity(): string {
+    const f: any = this.content?.featured || {};
+    return (f.destinationCode || f.city || (f.title || '').split(',')[0] || '').toString().trim();
+  }
+
+  /** Click handler for Destination cards, Promotion cards AND the featured block.
    *  Navigates to home with prefill query params; the flight-search component
    *  reads them and populates the form so the user can review before searching. */
   openSearchFor(target: { origin?: string | null, destination?: string | null, airline?: string | null, advanceDays?: number, travellers?: number }): void {
