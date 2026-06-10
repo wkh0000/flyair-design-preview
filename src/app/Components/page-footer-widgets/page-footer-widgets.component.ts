@@ -40,8 +40,9 @@ export class PageFooterWidgetsComponent implements OnInit, OnChanges, AfterViewI
   @Input() newsTag?: string | null = null;
   /** Max promotion cards to render. Sensible default. */
   @Input() promoLimit = 8;
-  /** Max news cards to render. */
-  @Input() newsLimit = 4;
+  /** Max news cards to fetch. Higher than the visible row so the related-news
+   *  carousel has cards to scroll through. */
+  @Input() newsLimit = 12;
   /** Toggle whole sections off when a host page already owns them. */
   @Input() showPromos = true;
   @Input() showNews = true;
@@ -76,6 +77,7 @@ export class PageFooterWidgetsComponent implements OnInit, OnChanges, AfterViewI
   get paysLoop() { return [...this.pays, ...this.pays]; }
 
   @ViewChild('promoTrack') promoTrack?: ElementRef<HTMLDivElement>;
+  @ViewChild('newsTrack') newsTrack?: ElementRef<HTMLDivElement>;
 
   constructor(
     private http: HttpClient,
@@ -135,12 +137,18 @@ export class PageFooterWidgetsComponent implements OnInit, OnChanges, AfterViewI
 
   /** True when we have enough promos to render as a snap-carousel. */
   get isPromoCarousel(): boolean { return this.promotions.length > 4; }
+  /** Same threshold for the related-news row. */
+  get isNewsCarousel(): boolean { return this.news.length > 4; }
 
-  /** Programmatic horizontal scroll buttons for the carousel. */
-  scrollPromos(dir: 1 | -1): void {
-    const el = this.promoTrack?.nativeElement;
+  /** Programmatic horizontal scroll for the promotions carousel. */
+  scrollPromos(dir: 1 | -1): void { this.scrollTrack(this.promoTrack, dir); }
+  /** Programmatic horizontal scroll for the related-news carousel. */
+  scrollNews(dir: 1 | -1): void { this.scrollTrack(this.newsTrack, dir); }
+
+  /** Shared snap-scroll helper for both carousels. */
+  private scrollTrack(ref: ElementRef<HTMLDivElement> | undefined, dir: 1 | -1): void {
+    const el = ref?.nativeElement;
     if (!el) return;
-    const dx = el.clientWidth * 0.85 * dir;
-    el.scrollBy({ left: dx, behavior: 'smooth' });
+    el.scrollBy({ left: el.clientWidth * 0.85 * dir, behavior: 'smooth' });
   }
 }

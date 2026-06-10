@@ -36,9 +36,15 @@
           <div class="fly-eyebrow line">{{ destinationCode || newsTag ? 'Related news' : 'From the Newsroom' }}</div>
           <h2>What we're reading right now</h2>
         </div>
-        <a class="fly-btn fly-btn-outline" routerLink="/news">Browse all →</a>
+        <div class="pfw-head-actions">
+          <div class="pfw-nav" *ngIf="isNewsCarousel">
+            <button type="button" class="pfw-nav-btn" (click)="scrollNews(-1)" aria-label="Scroll news left">←</button>
+            <button type="button" class="pfw-nav-btn" (click)="scrollNews(1)" aria-label="Scroll news right">→</button>
+          </div>
+          <a class="fly-btn fly-btn-outline" routerLink="/news">Browse all →</a>
+        </div>
       </div>
-      <div class="pfw-news-grid">
+      <div #newsTrack class="pfw-news-track" [class.is-carousel]="isNewsCarousel">
         <a class="pfw-news-card" *ngFor="let n of news"
            [routerLink]="['/news', n.slug]">
           <img *ngIf="n.heroImageUrl" [src]="n.heroImageUrl" [alt]="n.heroImageAlt || n.title" loading="lazy" />
