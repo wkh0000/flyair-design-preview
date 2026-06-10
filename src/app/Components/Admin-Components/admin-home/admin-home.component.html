@@ -1,15 +1,32 @@
 <div class="admin-dashboard">
+  <!-- Real KPI totals straight from the database. -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">{{ totals.bookings }}</div>
+      <div class="kpi-label">Total bookings</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">{{ totals.customers }}</div>
+      <div class="kpi-label">Customers</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">{{ totals.subscribers }}</div>
+      <div class="kpi-label">Subscribers</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">{{ totals.promotions }}</div>
+      <div class="kpi-label">Promotions</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">{{ totals.news }}</div>
+      <div class="kpi-label">News articles</div>
+    </div>
+  </div>
+
+  <!-- Real monthly bookings (actual data only). -->
   <div class="row">
     <div class="col chart-container">
-      <h3>Frequent Searched Flights</h3>
-      <canvas id="frequentFlightsChart"></canvas>
-    </div>
-    <div class="col chart-container">
-      <h3>Site Activity</h3>
-      <canvas id="siteActivityChart"></canvas>
-    </div>
-    <div class="col chart-container">
-      <h3>Booking Activity</h3>
+      <h3>Booking Activity <span class="chart-sub">· last 6 months</span></h3>
       <canvas id="bookingActivityChart"></canvas>
     </div>
   </div>

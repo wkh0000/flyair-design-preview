@@ -19,6 +19,10 @@ export class AdminHomeComponent implements OnInit {
   // Keep track of chart instances so we can destroy them before redrawing
   private charts: { [key: string]: Chart } = {};
 
+  /** Real KPI totals from the backend (default 0 so the cards render before
+   *  data arrives / when the demo's static API returns nothing). */
+  totals = { bookings: 0, customers: 0, subscribers: 0, promotions: 0, news: 0 };
+
   // Inject HttpClient in the constructor
   constructor(private http: HttpClient) {}
 
@@ -33,18 +37,12 @@ export class AdminHomeComponent implements OnInit {
 
     this.http.get<any>(apiUrl).subscribe({
       next: (data) => {
-        // Expected data format from your API:
-        // { 
-        //   labels: ['Jan', 'Feb', 'Mar'], 
-        //   frequentFlights: [30, 45, 25], 
-        //   siteActivity: [60, 20, 40], 
-        //   bookings: [15, 55, 30] 
-        // }
-
-        // ✅ Render charts ONLY after the data arrives!
-        this.renderChart('frequentFlightsChart', data.frequentFlights, 'Frequent Flights', data.labels);
-        this.renderChart('siteActivityChart', data.siteActivity, 'Site Activity', data.labels);
-        this.renderChart('bookingActivityChart', data.bookings, 'Booking Activity', data.labels);
+        // Real data only: KPI totals + the monthly bookings chart.
+        // { labels: [...], bookings: [...], totals: { bookings, customers, subscribers, promotions, news } }
+        if (data?.totals) this.totals = { ...this.totals, ...data.totals };
+        if (Array.isArray(data?.bookings)) {
+          this.renderChart('bookingActivityChart', data.bookings, 'Bookings', data.labels || []);
+        }
       },
       error: (error) => {
         console.error('Failed to load dashboard data:', error);
