@@ -335,6 +335,10 @@
 .fly-cue .fly-cue-ic{animation:fly-cue-bob 2s ease-in-out infinite;filter:drop-shadow(0 2px 5px rgba(2,16,42,.6))}
 @keyframes fly-cue-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 @media(prefers-reduced-motion:reduce){.fly-cue .fly-cue-ic{animation:none}}
+/* On phones the hero search form fills the viewport, so the absolutely-pinned
+   "Explore" scroll cue overlaps the Search button. Hide it ≤860px — scrolling
+   is obvious on mobile and the cue is purely decorative. */
+@media(max-width:860px){.fly-cue{display:none}}
 /* fail-open: visible by default; the directive adds .armed only when it can animate */
 .fly-reveal{transition:opacity .7s var(--fly-ease),transform .7s var(--fly-ease)}
 .fly-reveal.armed{opacity:0;transform:translateY(48px) scale(.94)}

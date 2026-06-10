@@ -369,32 +369,30 @@
   display: grid; gap: 22px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-@media (max-width: 920px) { .fly-promos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .fly-promos-grid { grid-template-columns: 1fr; } }
+@media (max-width: 920px) { .fly-promos-grid:not(.is-carousel) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .fly-promos-grid:not(.is-carousel) { grid-template-columns: 1fr; } }
 
-/* >4 promos: transform-slide carousel.
-   - viewport clips horizontally; vertical padding leaves room for the hover
-     lift + shadow so they aren't cropped.
-   - track is a flex row translated by the component; the transform transition
-     is what produces the smooth card-by-card glide (auto + manual). */
-.promo-viewport {
-  overflow: hidden;
-  /* Padding gives the card drop-shadow + hover-lift room INSIDE the clipping
-     box. Crucially NO negative bottom margin — a negative one pulls the next
-     section up over this padding and visually cuts the card shadow off. */
-  padding: 18px 14px 38px;
-  margin: -18px -14px 0;
+/* >4 promos: native horizontal-scroll carousel — SWIPABLE on touch, draggable
+   on trackpad, arrow + auto-advance driven by scrollLeft. Scroll-snap aligns
+   each card; the scrollbar is hidden (arrows + swipe do the navigating); the
+   vertical padding (not clipped by overflow) gives the hover-lift + shadow
+   room so they aren't cut at the row edges. */
+.fly-promos-grid.is-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 16px 4px 34px; gap: 18px;
+  -webkit-overflow-scrolling: touch;   /* momentum swipe on iOS */
 }
-.promo-track {
-  display: flex; gap: 18px;
-  transition: transform .65s cubic-bezier(.22,1,.36,1);
-  will-change: transform;
-}
-.promo-track .fly-promo {
+.fly-promos-grid.is-carousel::-webkit-scrollbar { display: none; }
+.fly-promos-grid.is-carousel .fly-promo {
   flex: 0 0 calc(25% - 13.5px);   /* 4 across with 18px gaps */
+  scroll-snap-align: start;
 }
-@media (max-width: 920px) { .promo-track .fly-promo { flex-basis: calc(50% - 9px); } }
-@media (max-width: 560px) { .promo-track .fly-promo { flex-basis: 84%; } }
+@media (max-width: 920px) { .fly-promos-grid.is-carousel .fly-promo { flex-basis: calc(50% - 9px); } }
+@media (max-width: 560px) { .fly-promos-grid.is-carousel .fly-promo { flex-basis: 84%; } }
 .promo-nav { display: flex; gap: 8px; }
 .promo-nav-btn {
   width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--fly-line, #d7e0ea);

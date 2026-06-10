@@ -16,6 +16,8 @@
 
 .login-form {
   width: 420px;
+  max-width: calc(100vw - 32px);   /* never overflow a narrow phone */
+  box-sizing: border-box;
   background: #ffffff;
   padding: 40px 35px;
   border-radius: 12px;

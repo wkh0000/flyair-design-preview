@@ -48,37 +48,14 @@
           <button type="button" class="promo-nav-btn" (click)="scrollPromos(1)" aria-label="Scroll right">→</button>
         </div>
       </div>
-      <!-- Carousel (>4 promos): a fixed-width viewport that clips, with a flex
-           track that slides via a GPU transform transition. -->
-      <div *ngIf="isPromoCarousel" class="promo-viewport"
+      <!-- ≤4 promos: static grid. >4: a native horizontal scroll carousel
+           (swipable on touch, drag/scroll on desktop) with snap points, hidden
+           scrollbar, nav arrows, and a 5s auto-advance that pauses on hover. -->
+      <div #promoTrack class="fly-promos-grid" [class.is-carousel]="isPromoCarousel"
            (mouseenter)="pausePromoAuto()" (mouseleave)="resumePromoAuto()">
-        <div #promoTrack class="promo-track"
-             [style.transform]="'translateX(' + (-promoIndex * cardStep) + 'px)'"
-             [style.transition]="trackTransition ? null : 'none'"
-             (transitionend)="onTrackSettled($event)">
-          <a class="fly-promo" *ngFor="let p of loopedPromos; let i = index"
-             [routerLink]="['/promotions', p.slug]"
-             [attr.aria-hidden]="i >= promoCards.length ? 'true' : null"
-             [attr.tabindex]="i >= promoCards.length ? -1 : null"
-             [attr.aria-label]="(p.title || p.promotion_Name) + ' offer'">
-            <span class="fly-promo-media">
-              <img [src]="p.image_Url" [alt]="p.title || p.promotion_Name" loading="eager">
-              <span class="fly-promo-shine" aria-hidden="true"></span>
-            </span>
-            <div class="body">
-              <span class="fly-badge fly-badge-red">{{ promoBadge(p) }}</span>
-              <div class="city">{{ p.title || p.promotion_Name }}</div>
-              <div class="ctry" *ngIf="p.subtitle">{{ p.subtitle }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Static grid (≤4 promos): everything fits, no movement needed. -->
-      <div *ngIf="!isPromoCarousel" class="fly-promos-grid">
         <a class="fly-promo" *ngFor="let p of promoCards"
            [routerLink]="['/promotions', p.slug]"
-           flyTilt="5"
+           [flyTilt]="isPromoCarousel ? 0 : 5"
            [attr.aria-label]="(p.title || p.promotion_Name) + ' offer'">
           <span class="fly-promo-media">
             <img [src]="p.image_Url" [alt]="p.title || p.promotion_Name" loading="eager">

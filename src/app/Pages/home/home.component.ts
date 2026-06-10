@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FlightSearchComponent } from '../../Components/flight-search/flight-search.component';
 import { FlyairSkyComponent } from '../../Components/flyair-sky/flyair-sky.component';
@@ -25,69 +25,44 @@ export class HomeComponent implements OnInit, OnDestroy {
   promoCards: any[] = [];
   @ViewChild('promoTrack') promoTrack?: ElementRef<HTMLDivElement>;
 
-  /** The carousel kicks in (auto-advance + infinite loop) only when there are
-   *  enough cards to overflow the row. Below this, a static grid is enough. */
+  /** The carousel kicks in (auto-advance) only when there are enough cards to
+   *  overflow the row. Below this, a static grid is enough. */
   get isPromoCarousel(): boolean { return this.promoCards.length > 4; }
 
-  /** Originals followed by a full duplicate "clone" set. The track slides
-   *  through the originals; when it lands on the identical clones we snap the
-   *  index back to the originals with the transition disabled — invisible,
-   *  giving a seamless INFINITE loop. Grid mode (≤4) renders originals only. */
-  get loopedPromos(): any[] {
-    return this.isPromoCarousel ? [...this.promoCards, ...this.promoCards] : this.promoCards;
-  }
-
-  // ---- Transform-based carousel state ----
-  /** Logical card position (0 .. promoCards.length). The track is translated
-   *  by -promoIndex * cardStep. */
-  promoIndex = 0;
-  /** Measured px per card (card width + flex gap) — kept in sync with the
-   *  rendered layout so the slide lands exactly one card over at any width. */
-  cardStep = 300;
-  /** Toggles the CSS transform transition off for the one-frame seamless
-   *  wrap reset, then back on. */
-  trackTransition = true;
   private promoTimer: any = null;
+  private promoAnimating = false;
 
-  @HostListener('window:resize')
-  onWindowResize(): void { this.measureCardStep(); }
-
-  /** Measure one card's width + the flex gap. Called after the promos render
-   *  and on resize so the translate math always matches the live layout. */
-  measureCardStep(): void {
-    const track = this.promoTrack?.nativeElement;
-    const card = track?.querySelector('.fly-promo') as HTMLElement | null;
-    if (!track || !card) return;
-    const gap = parseFloat(getComputedStyle(track).columnGap || '18') || 18;
-    const w = card.getBoundingClientRect().width;
-    if (w > 10) this.cardStep = w + gap;
+  /** Animate scrollLeft to a target over ~520ms. setInterval (not the native
+   *  smooth-scroll, which is disabled under reduce-motion) so it always runs;
+   *  native touch-swipe still works because the track is a real scroll
+   *  container. */
+  private tweenScroll(el: HTMLElement, target: number): void {
+    const start = el.scrollLeft;
+    const dist = target - start;
+    if (Math.abs(dist) < 1) return;
+    const dur = 520, t0 = performance.now();
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+    this.promoAnimating = true;
+    const timer = window.setInterval(() => {
+      const t = Math.min(1, (performance.now() - t0) / dur);
+      el.scrollLeft = start + dist * ease(t);
+      if (t >= 1) { clearInterval(timer); this.promoAnimating = false; }
+    }, 16);
   }
 
-  /** Advance one card. The slide itself is a GPU-composited CSS transform
-   *  transition (see .promo-track in SCSS) — smooth, consistent, and it runs
-   *  even under reduce-motion (unlike native smooth-scroll). */
+  /** Advance one card. Loops to the start when it reaches the end (and to the
+   *  end when stepping back from the start). */
   advancePromo(dir: 1 | -1 = 1): void {
-    if (!this.isPromoCarousel) return;
-    if (this.cardStep < 10) this.measureCardStep();
-    this.trackTransition = true;
-    this.promoIndex += dir;
-  }
-
-  /** Fires when a slide finishes. If we've crossed onto the cloned tail (or
-   *  before the head), snap back by one full set with the transition off —
-   *  the clones are pixel-identical so the reset is invisible. */
-  onTrackSettled(ev: TransitionEvent): void {
-    if (ev.propertyName !== 'transform') return;
-    const len = this.promoCards.length;
-    if (this.promoIndex >= len) this.wrapTo(this.promoIndex - len);
-    else if (this.promoIndex < 0) this.wrapTo(this.promoIndex + len);
-  }
-  private wrapTo(idx: number): void {
-    this.trackTransition = false;          // jump without animating
-    this.promoIndex = idx;
-    // Re-enable the transition once the jumped position has painted. setTimeout
-    // (not rAF) so it still fires in a backgrounded tab.
-    setTimeout(() => { this.trackTransition = true; }, 40);
+    const el = this.promoTrack?.nativeElement;
+    if (!el || this.promoAnimating) return;
+    const card = el.querySelector('.fly-promo') as HTMLElement | null;
+    const gap = parseFloat(getComputedStyle(el).columnGap || '18') || 18;
+    const step = card ? card.getBoundingClientRect().width + gap : 300;
+    const maxLeft = el.scrollWidth - el.clientWidth;
+    let target = el.scrollLeft + step * dir;
+    if (dir === 1 && el.scrollLeft >= maxLeft - 4) target = 0;            // wrap to start
+    else if (dir === -1 && el.scrollLeft <= 4) target = maxLeft;          // wrap to end
+    this.tweenScroll(el, Math.max(0, Math.min(maxLeft, target)));
   }
 
   /** Manual nav arrows — advance + restart the 5s countdown so a manual nudge
@@ -106,7 +81,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private stopPromoAuto(): void {
     if (this.promoTimer) { clearInterval(this.promoTimer); this.promoTimer = null; }
   }
-  /** Pause while the pointer is over the row, resume on leave. */
+  /** Pause while the pointer is over the row (or touching it), resume after. */
   pausePromoAuto(): void { this.stopPromoAuto(); }
   resumePromoAuto(): void { this.restartPromoAuto(); }
   /** Fallback defaults if the admin hasn't set content.searchDefaults yet. */
@@ -177,9 +152,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         // slug have no detail page to link to, so they'd render a broken
         // "no longer available" card if we let them through.
         this.promoCards = (data || []).filter(p => !!p.image_Url && !!p.slug);
-        // Once cards exist + the view has painted: measure card width, then
-        // kick off the auto-advance.
-        setTimeout(() => { this.measureCardStep(); this.restartPromoAuto(); }, 350);
+        // Once cards exist + the view has painted, kick off the auto-advance.
+        setTimeout(() => this.restartPromoAuto(), 350);
       },
       error: () => { /* silently degrade — section just won't render */ },
     });
