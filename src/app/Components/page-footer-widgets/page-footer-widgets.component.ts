@@ -122,7 +122,12 @@ export class PageFooterWidgetsComponent implements OnInit, OnChanges, AfterViewI
     const opts: any = { page: 1, pageSize: this.newsLimit };
     if (tag) opts.tag = tag;
     this.newsSvc.list(opts).subscribe({
-      next: (r: any) => { this.news = (r && r.items) ? r.items : (Array.isArray(r) ? r : []); },
+      next: (r: any) => {
+        const items = (r && r.items) ? r.items : (Array.isArray(r) ? r : []);
+        // Cap client-side too: the static demo snapshot ignores pageSize and
+        // returns the full list, which would make an over-long carousel.
+        this.news = items.slice(0, this.newsLimit);
+      },
       error: () => { this.news = []; },
     });
   }
