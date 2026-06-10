@@ -379,8 +379,11 @@
      is what produces the smooth card-by-card glide (auto + manual). */
 .promo-viewport {
   overflow: hidden;
-  padding: 14px 2px 34px;
-  margin: -14px -2px -20px;   /* cancel the padding visually so layout spacing is unchanged */
+  /* Padding gives the card drop-shadow + hover-lift room INSIDE the clipping
+     box. Crucially NO negative bottom margin — a negative one pulls the next
+     section up over this padding and visually cuts the card shadow off. */
+  padding: 18px 14px 38px;
+  margin: -18px -14px 0;
 }
 .promo-track {
   display: flex; gap: 18px;

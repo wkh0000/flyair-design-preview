@@ -22,10 +22,14 @@
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  padding: 4px 4px 16px; gap: 18px;
+  /* Hide the scrollbar + give the card drop-shadow / hover-lift room in the
+     padding (overflow clips at the padding edge, so the shadow shows). */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 16px 10px 34px; gap: 18px;
   -webkit-overflow-scrolling: touch;
 }
+.pfw-promos-track.is-carousel::-webkit-scrollbar { display: none; }
 .pfw-promos-track.is-carousel .pfw-promo {
   flex: 0 0 calc(25% - 14px);
   scroll-snap-align: start;
