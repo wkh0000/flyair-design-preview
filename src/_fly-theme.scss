@@ -351,3 +351,28 @@
 /* small helpers */
 .fly-flex{display:flex}.fly-between{justify-content:space-between}.fly-cy{align-items:center}.fly-wrap{flex-wrap:wrap}
 .fly-gap16{gap:16px}.fly-gap24{gap:24px}.fly-center{text-align:center}.fly-rel{position:relative}
+
+/* ===== WCAG 2.4.7 Focus Visible — global keyboard-focus indicator.
+   :focus-visible only triggers on keyboard navigation, so mouse/touch users
+   never see it; keyboard users always get a clear, high-contrast ring. ===== */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+.fly-btn:focus-visible,
+.fly-dest:focus-visible,
+.fly-promo:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--fly-blue, #0073bd);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+/* On the dark hero/navy surfaces, use a light ring for contrast. */
+.fly-hero a:focus-visible,
+.fly-hero button:focus-visible,
+.subhero a:focus-visible,
+.fly-cta-band a:focus-visible,
+.fly-cta-band button:focus-visible {
+  outline-color: #ffffff;
+}

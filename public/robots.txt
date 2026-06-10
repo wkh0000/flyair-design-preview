@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin-login
+Disallow: /admin-dashboard
+Disallow: /result
+
+Sitemap: https://wkh0000.github.io/flyair-design-preview/sitemap.xml

@@ -442,8 +442,8 @@
                 From - To
               </mat-label>
               <mat-date-range-input [rangePicker]="pickerReturn" [min]="minDate" >
-                <input matStartDate readonly formControlName="returndepartureDate" (click)="pickerReturn.open()">
-                <input matEndDate readonly formControlName="returnreturnDate" (click)="pickerReturn.open()"
+                <input matStartDate readonly formControlName="returndepartureDate" (click)="pickerReturn.open()" aria-label="Departure date">
+                <input matEndDate readonly formControlName="returnreturnDate" (click)="pickerReturn.open()" aria-label="Return date"
                 >
               </mat-date-range-input>
               <mat-datepicker-toggle matIconSuffix [for]="pickerReturn"></mat-datepicker-toggle>

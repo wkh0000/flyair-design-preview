@@ -119,7 +119,7 @@ export class NewsListComponent implements OnInit, OnDestroy {
         : 'aviation news, airline news, airport news, aircraft news, flight news, aviation industry, FlyAir Newsroom',
       url,
       type: 'website',
-      image: this.featured?.heroImageUrl || 'assets/flyair-logo.png',
+      image: this.featured?.heroImageUrl || 'assets/og-default.jpg',
     });
 
     const itemList = {

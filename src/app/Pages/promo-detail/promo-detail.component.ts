@@ -66,7 +66,7 @@ export class PromoDetailComponent implements OnInit {
     this.seo.apply({
       title: title,
       description: description,
-      image: this.promo.image_Url || 'assets/flyair-logo.png',
+      image: this.promo.image_Url || 'assets/og-default.jpg',
       imageAlt: title,
       url: `/promotions/${this.promo.slug}`,
       type: 'article',

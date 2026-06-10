@@ -66,7 +66,9 @@ export class SeoService {
 
   apply(cfg: SeoConfig): void {
     const url = this.absolute(cfg.url);
-    const image = cfg.image ? this.absolute(cfg.image) : this.absolute('assets/flyair-logo.png');
+    // Default social card is a 1200×630 branded image (the logo is tiny + wrong
+    // ratio for social previews).
+    const image = cfg.image ? this.absolute(cfg.image) : this.absolute('assets/og-default.jpg');
     const type = cfg.type || 'website';
     const fullTitle = cfg.title.includes('FlyAir') ? cfg.title : `${cfg.title} | ${this.siteName}`;
 

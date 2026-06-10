@@ -9,6 +9,7 @@ import { UtilityServiceService } from '../../Services/Admin-Services/UtilityServ
 import { SCROLL_FX } from '../../Misc/scroll-fx.directive';
 import { FlyIconComponent } from '../../Components/fly-icon/fly-icon.component';
 import { HomeService, HomeContent, DEFAULT_HOME } from '../../Services/Home/home.service';
+import { SeoService } from '../../Services/Seo/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -149,10 +150,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     private adminService: UtilityServiceService,
     private home: HomeService,
     private router: Router,
+    private seo: SeoService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+    // SEO + social card + JSON-LD. Runs on server AND browser so the
+    // prerendered HTML carries correct tags for crawlers + share scrapers.
+    this.applyHomeSeo();
+
     // Editable home content (runs on server + browser; falls back to DEFAULT_HOME on error).
     this.home.get().subscribe({
       next: (c) => { if (c && (c as any).hero) this.content = { ...DEFAULT_HOME, ...(c as HomeContent) }; },
@@ -180,6 +186,40 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void { this.stopPromoAuto(); }
+
+  /** Home page SEO: title/description/OG/Twitter/canonical + Organization,
+   *  WebSite (with site search action) JSON-LD for rich results. */
+  private applyHomeSeo(): void {
+    this.seo.apply({
+      title: 'FlyAir — Fly your way | Compare & book flights',
+      description: 'Compare and book flights across hundreds of airlines with transparent pricing, free 24-hour cancellation and round-the-clock support. Fly your way with FlyAir.',
+      keywords: 'flight booking, cheap flights, compare airlines, airline tickets, FlyAir',
+      url: '/',
+      image: 'assets/og-default.jpg',
+      imageAlt: 'FlyAir — compare and book flights across hundreds of airlines',
+      type: 'website',
+    });
+    const base = this.seo.absolute('/');
+    this.seo.setJsonLd('ld-organization', {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'FlyAir',
+      url: base,
+      logo: this.seo.absolute('assets/flyair-logo.png'),
+      sameAs: [] as string[],
+    });
+    this.seo.setJsonLd('ld-website', {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'FlyAir',
+      url: base,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${base}?dest={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
+    });
+  }
 
   /** Build a customer-facing badge for the offer card (e.g. "10% off" / "Save $50"). */
   promoBadge(p: any): string {

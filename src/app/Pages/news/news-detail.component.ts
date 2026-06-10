@@ -98,7 +98,7 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
 
   private applySeo(a: ArticleFull): void {
     const url = `news/${a.slug}`;
-    const image = a.ogImageUrl || a.heroImageUrl || 'assets/flyair-logo.png';
+    const image = a.ogImageUrl || a.heroImageUrl || 'assets/og-default.jpg';
     const keywords = a.metaKeywords || a.tags || undefined;
 
     this.seo.apply({

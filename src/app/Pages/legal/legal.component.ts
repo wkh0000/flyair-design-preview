@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PageService } from '../../Services/Page/page.service';
+import { SeoService } from '../../Services/Seo/seo.service';
 import { PageFooterWidgetsComponent } from '../../Components/page-footer-widgets/page-footer-widgets.component';
 
 export interface Section { h: string; p: string; }
@@ -317,18 +318,33 @@ export class LegalComponent implements OnInit {
     },
   };
 
-  constructor(private route: ActivatedRoute, private pages: PageService) {}
+  constructor(private route: ActivatedRoute, private pages: PageService, private seo: SeoService) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((d) => {
       this.page = d['page'] || 'privacy';
       // Built-in default first (instant render / SSR), then overlay any admin override.
       this.doc = LegalComponent.DEFAULTS[this.page] || LegalComponent.DEFAULTS['privacy'];
+      this.applySeo();
       if (typeof window !== 'undefined') window.scrollTo(0, 0);
       this.pages.get(this.page).subscribe({
-        next: (o) => { if (o && o.title && Array.isArray(o.sections)) this.doc = o as InfoDoc; },
+        next: (o) => { if (o && o.title && Array.isArray(o.sections)) { this.doc = o as InfoDoc; this.applySeo(); } },
         error: () => { /* keep default */ },
       });
+    });
+  }
+
+  /** Per-page SEO/OG from the doc — title + intro as description, canonical
+   *  at /{page}. Uses the default 1200×630 social card. */
+  private applySeo(): void {
+    if (!this.doc) return;
+    this.seo.apply({
+      title: this.doc.title,
+      description: (this.doc.intro || '').slice(0, 300),
+      url: `/${this.page}`,
+      image: 'assets/og-default.jpg',
+      imageAlt: this.doc.heroImageAlt || this.doc.title,
+      type: 'website',
     });
   }
 }
