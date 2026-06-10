@@ -27,6 +27,7 @@ import { LoaderComponent } from '../loader/loader.component';
 import { FilterService } from '../../Services/Filter/filter.service';
 import { ChangeDetectorRef, NgZone } from '@angular/core';
 import { OptionPanelComponent } from '../option-panel/option-panel.component';
+
 @Component({
   selector: 'app-result-content',
   standalone: true,
@@ -66,7 +67,7 @@ export class ResultContentComponent implements OnInit {
   mergedFlights: any[] = [];
   sequenceOneOfferings: any;
   sequenceTwoOfferings: any;
-  selectedDepartureCode:any;
+  selectedDepartureCode: any;
   identifier: any;
   selectedDeparture: { id: any; productId: any } | null = null;
   selectedReturn: { id: any; productId: any } | null = null;
@@ -79,6 +80,7 @@ export class ResultContentComponent implements OnInit {
   private readonly filterService = inject(FilterService);
   IsDepartureSelected: Boolean = false
 
+
   constructor(
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef,
@@ -86,7 +88,7 @@ export class ResultContentComponent implements OnInit {
     private http: HttpClient,
     private airprice: PriceService,
     private zone: NgZone
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.searchResults != null) {
@@ -106,8 +108,12 @@ export class ResultContentComponent implements OnInit {
       ];
 
       this.extractFilterOptions();
+
     }
   }
+
+
+ 
 
   extractFilterOptions() {
     this.allFlights = [
@@ -170,7 +176,7 @@ export class ResultContentComponent implements OnInit {
             });
 
             if (option.flightRefsDetails.length > 0) {
-              const layoverCount = option.flightRefsDetails.length-1;
+              const layoverCount = option.flightRefsDetails.length - 1;
               layoverCounts.add(layoverCount);
 
               for (let i = 0; i < option.flightRefsDetails.length - 1; i++) {
@@ -207,7 +213,7 @@ export class ResultContentComponent implements OnInit {
   hasResults(): boolean {
     return (
       (this.sequenceOneOfferings && this.sequenceOneOfferings.length > 0)
-      ||(this.sequenceTwoOfferings && this.sequenceTwoOfferings.length > 0)
+      || (this.sequenceTwoOfferings && this.sequenceTwoOfferings.length > 0)
     );
   }
 

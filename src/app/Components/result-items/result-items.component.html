@@ -13,401 +13,323 @@
     trackBy: trackByFlight
   ">
   <div *ngFor="let offering of CatalogProductOffering.productBrandOptions; let j = index">
-    <div class="card">
-      <ul class="nav nav-tabs" id="productTabs-{{ i }}-{{ j }}" role="tablist"
-        style="border-bottom: 2px solid #ddd !important;">
-        <li class="nav-item" *ngFor="
+    <ng-container *ngIf="isFlightAllowed(
+      offering.flightRefsDetails[0].carrier,
+      CatalogProductOffering.arrival,
+      offering.flightRefsDetails[0].departure.date
+    )">
+      <div class="card">
+        <ul class="nav nav-tabs" id="productTabs-{{ i }}-{{ j }}" role="tablist"
+          style="border-bottom: 2px solid #ddd !important;">
+          <li class="nav-item" *ngFor="
             let productdetail of offering.productBrandOffering;
             let a = index
           " role="presentation">
-          <button class="nav-link" [class.active]="a === 0" id="tab-{{ i }}-{{ j }}-{{ a }}-tab" data-bs-toggle="tab"
-            [attr.data-bs-target]="'#tab-{{i}}-{{j}}-{{a}}'" type="button" role="tab"
-            [attr.aria-controls]="'tab-{{i}}-{{j}}-{{a}}'"
-            [attr.aria-selected]="a === (activeTabs[i][j]) ? 'true' : 'false'" (click)="setActiveTab(i, j, a)">
-            {{ productdetail.brandDetail?.[0]?.name || "Basic" }}
-          </button>
-        </li>
-      </ul>
+            <button class="nav-link" [class.active]="a === 0" id="tab-{{ i }}-{{ j }}-{{ a }}-tab" data-bs-toggle="tab"
+              [attr.data-bs-target]="'#tab-{{i}}-{{j}}-{{a}}'" type="button" role="tab"
+              [attr.aria-controls]="'tab-{{i}}-{{j}}-{{a}}'"
+              [attr.aria-selected]="a === (activeTabs[i][j]) ? 'true' : 'false'" (click)="setActiveTab(i, j, a)">
+              {{ productdetail.brandDetail?.[0]?.name || "Basic" }}
+            </button>
+          </li>
+        </ul>
 
-      <!-- Tab Content for ProductBrandOffering -->
-      <div class="tab-content" id="productTabsContent-{{ i }}-{{ j }}">
-        <div class="tab-pane fade" *ngFor="let productdetail of offering.productBrandOffering; let a = index"
-          [class.show]="a === (activeTabs[i]?.[j] ?? 0)" [class.active]="a === (activeTabs[i]?.[j] ?? 0)"
-          id="tab-{{ i }}-{{ j }}-{{ a }}" role="tabpanel">
-          <div class="flight-card">
-            <div class="body-container">
-              <div class="row">
-                <div class="col-lg-9 left-panel">
-                  <div class="dept-info">
-                    <div class="left-panel">
-                      <div class="airline-logo-container" style="margin-right: 20px">
-                        <img [src]="
+        <!-- Tab Content for ProductBrandOffering -->
+        <div class="tab-content" id="productTabsContent-{{ i }}-{{ j }}">
+          <div class="tab-pane fade" *ngFor="let productdetail of offering.productBrandOffering; let a = index"
+            [class.show]="a === (activeTabs[i]?.[j] ?? 0)" [class.active]="a === (activeTabs[i]?.[j] ?? 0)"
+            id="tab-{{ i }}-{{ j }}-{{ a }}" role="tabpanel">
+            <div class="flight-card">
+              <div class="body-container">
+                <div class="row">
+                  <div class="col-lg-9 left-panel">
+                    <div class="dept-info">
+                      <div class="left-panel">
+                        <div class="airline-logo-container" style="margin-right: 20px">
+                          <img [src]="
                             getAirlineLogoUrl(
                               offering.flightRefsDetails[0].carrier,
                               offering.flightRefsDetails[0].operatingCarrierName
                             )
                           " alt="Airline Logo" class="airline-logo" />
-                      </div>
-                      <div class="origin-container">
-                        <div class="origin-top">
-                          <span class="material-symbols-outlined">
-                            flight_takeoff
-                          </span>
-                          {{ CatalogProductOffering.departure }}
                         </div>
-                        <div class="origin-bottom">
-                          <span>
-                            {{
-                            offering.flightRefsDetails[0].departure.date
-                            | date : "yyyy-MM-dd"
-                            }}
-                          </span>
-                          <span>
-                            {{
-                            offering.flightRefsDetails[0].departure.time
-                            | slice : 0 : 5
-                            }}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div class="journey-container">
-                        <svg width="180" height="80" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M 0 40 Q 100 10 190 40" stroke="black" stroke-dasharray="5,3" fill="none" />
-                        </svg>
-                        <span class="journey-duration">{{
-                          getFormattedDuration(CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[
-                          activeTabs[i][j]
-                          ]?.productDetail?.[0]?.totalDuration || '')
-                          }}</span>
-                      </div>
-
-                      <div class="destination-container">
-                        <div class="destination-top">
-                          <span class="material-symbols-outlined">
-                            flight_land
-                          </span>
-                          {{ CatalogProductOffering.arrival }}
-                        </div>
-                        <div class="destination-bottom">
-                          <span>{{
-                            offering.flightRefsDetails[
-                            offering.flightRefsDetails.length - 1
-                            ].arrival.date | date : "yyyy-MM-dd"
-                            }}</span>
-                          <span>{{
-                            offering.flightRefsDetails[
-                            offering.flightRefsDetails.length - 1
-                            ].arrival.time | slice : 0 : 5
-                            }}</span>
-                        </div>
-                      </div>
-                      <div class="right-panel">
-                        <div class="info-container">
-                          <div class="passenger">
-                            {{
-                            extractPassengerCount(CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[
-                            activeTabs[i][j]
-                            ]?.productDetail?.[0]?.passengerFlight) }}
+                        <div class="origin-container">
+                          <div class="origin-top">
                             <span class="material-symbols-outlined">
-                              person
+                              flight_takeoff
+                            </span>
+                            {{ CatalogProductOffering.departure }}
+                          </div>
+                          <div class="origin-bottom">
+                            <span>
+                              {{
+                              offering.flightRefsDetails[0].departure.date
+                              | date : "yyyy-MM-dd"
+                              }}
+                            </span>
+                            <span>
+                              {{
+                              offering.flightRefsDetails[0].departure.time
+                              | slice : 0 : 5
+                              }}
                             </span>
                           </div>
-                          <div class="baggage">
-                            <div style="display: flex; align-items: center" *ngIf="
+                        </div>
+
+                        <div class="journey-container">
+                          <svg width="180" height="80" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 0 40 Q 100 10 190 40" stroke="black" stroke-dasharray="5,3" fill="none" />
+                          </svg>
+                          <span class="journey-duration">{{
+                            getFormattedDuration(CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[
+                            activeTabs[i][j]
+                            ]?.productDetail?.[0]?.totalDuration || '')
+                            }}</span>
+                        </div>
+
+                        <div class="destination-container">
+                          <div class="destination-top">
+                            <span class="material-symbols-outlined">
+                              flight_land
+                            </span>
+                            {{ CatalogProductOffering.arrival }}
+                          </div>
+                          <div class="destination-bottom">
+                            <span>{{
+                              offering.flightRefsDetails[
+                              offering.flightRefsDetails.length - 1
+                              ].arrival.date | date : "yyyy-MM-dd"
+                              }}</span>
+                            <span>{{
+                              offering.flightRefsDetails[
+                              offering.flightRefsDetails.length - 1
+                              ].arrival.time | slice : 0 : 5
+                              }}</span>
+                          </div>
+                        </div>
+                        <div class="right-panel">
+                          <div class="info-container">
+                            <div class="passenger">
+                              {{
+                              extractPassengerCount(CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[
+                              activeTabs[i][j]
+                              ]?.productDetail?.[0]?.passengerFlight) }}
+                              <span class="material-symbols-outlined">
+                                person
+                              </span>
+                            </div>
+                            <div class="baggage">
+                              <div style="display: flex; align-items: center" *ngIf="
                               CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[
                                 activeTabs?.[i]?.[j] ?? 0
                               ]?.termsAndConditionDetail?.[0]?.baggageAllowance?.[0]?.baggageItem?.[0]?.measurement?.[0]?.value as baggageValue;
                               else noValue
                             ">
-                              <span class="material-symbols-outlined">work</span>
+                                <span class="material-symbols-outlined">work</span>
 
-                              {{ baggageValue }}kg
+                                {{ baggageValue }}kg
+                              </div>
+
+                              <ng-template #noValue></ng-template>
                             </div>
-
-                            <ng-template #noValue></ng-template>
-                          </div>
-                          <div class="arrow-panel" (click)="togglePanel(i, j)">
-                            <span class="material-symbols-outlined" [ngClass]="{
+                            <div class="arrow-panel" (click)="togglePanel(i, j)">
+                              <span class="material-symbols-outlined" [ngClass]="{
                                 'arrow-drop-up':
                                   panelState[i] && panelState[i][j],
                                 'arrow-drop-down': !(
                                   panelState[i] && panelState[i][j]
                                 )
                               }">
-                              arrow_drop_down
-                            </span>
+                                arrow_drop_down
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-3 right-panel">
-                  <span class="text">
-                    {{
-                    CatalogProductOffering.productBrandOptions[j].productBrandOffering[
-                    activeTabs[i][j]
-                    ]?.bestCombinablePrice?.priceBreakdown[0]?.amount?.currencyCode?.value
-                    }}
-                  </span>
-                  <span class="price mb-2">
-                    <ng-container *ngIf="profitType === 'Percentage'; else fixedRate">
+                  <div class="col-lg-3 right-panel">
+                    <span class="text">
                       {{
-                      (CatalogProductOffering.productBrandOptions[j].productBrandOffering[
-                      activeTabs[i][j]
-                      ]?.bestCombinablePrice?.totalPrice * 1.1 ) |
-                      number: '1.2-2'
+                      CatalogProductOffering.productBrandOptions[j]
+                      .productBrandOffering[activeTabs[i][j]]
+                      ?.bestCombinablePrice?.priceBreakdown[0]?.amount?.currencyCode?.value
                       }}
-                    </ng-container>
-                    <!-- <ng-template #fixedRate>
+                    </span>
+                    <span class="price mb-2">
                       {{
-                      (
-                      CatalogProductOffering.productBrandOptions[j].productBrandOffering[
-                      activeTabs[i][j]
-                      ]?.bestCombinablePrice?.totalPrice +
-                      Rate
-                      ) |
-                      number: '1.2-2'
+                      calculatePrice(
+                      CatalogProductOffering.productBrandOptions[j]
+                      .productBrandOffering[activeTabs[i][j]]
+                      ?.bestCombinablePrice?.totalPrice,
+                      offering.flightRefsDetails[0].carrier,
+                      CatalogProductOffering.arrival,
+                      offering.flightRefsDetails[0].departure.date
+                      ) | number: '1.2-2'
                       }}
-                    </ng-template> -->
-
-                    <ng-template #fixedRate>
-                      {{
-                      (
-                      CatalogProductOffering.productBrandOptions[j].productBrandOffering[
-                      activeTabs[i][j]
-                      ]?.bestCombinablePrice?.totalPrice - 1000
-                      ) |
-                      number: '1.2-2'
-                      }}
-                    </ng-template>
-                  </span>
-                  +1000 LKR
-                  <button mat-raised-button color="primary"
-                    (click)="chooseflight(
+                    </span>
+                    <button mat-raised-button color="primary"
+                      (click)="chooseflight(
                       CatalogProductOffering?.id,
                       CatalogProductOffering?.productBrandOptions?.[j]?.productBrandOffering?.[activeTabs[i][j]]?.product?.[0]?.productRef)">
-                    CHOOSE FLIGHT
-                  </button>
+                      CHOOSE FLIGHT
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <mat-accordion class="tariff-conditions-container">
-              <mat-expansion-panel *ngIf="panelState[i]?.[j]" style="display: block" [expanded]="panelState[i][j]"
-                style="margin-bottom: 12px; background-color: transparent" class="reducespace">
-                <ul class="nav nav-tabs" id="productTabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" [class.active]="activeTab === 'Flight-Info'" id="flight-info-tab"
-                      data-bs-toggle="tab" data-bs-target="#flight-info" type="button" role="tab"
-                      aria-controls="flight-info" (click)="activeTab = 'Flight-Info'">
-                      Flight Info
-                    </button>
-                  </li>
-                  <li class="nav-item" role="presentation"
-                    *ngIf="CatalogProductOffering.productBrandOptions[j]?.productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail?.length > 0">
-                    <button class="nav-link" [class.active]="activeTab === 'Itinerary'" id="itinerary-tab"
-                      data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab"
-                      aria-controls="itinerary" (click)="activeTab = 'Itinerary'">
-                      Brand Info
-                    </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" [class.active]="activeTab === 'PriceBreakdown'" id="PriceBreakdown"
-                      data-bs-toggle="tab" data-bs-target="#PriceBreakdown" type="button" role="tab"
-                      aria-controls="PriceBreakdown" (click)="activeTab = 'PriceBreakdown'">
-                      Pricing
-                    </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" [class.active]="activeTab === 'Baggage'" id="baggage-tab"
-                      data-bs-toggle="tab" data-bs-target="#baggage" type="button" role="tab" aria-controls="baggage"
-                      (click)="activeTab = 'Baggage'">
-                      Baggage
-                    </button>
-                  </li>
-                </ul>
+              <mat-accordion class="tariff-conditions-container">
+                <mat-expansion-panel *ngIf="panelState[i]?.[j]" style="display: block" [expanded]="panelState[i][j]"
+                  style="margin-bottom: 12px; background-color: transparent" class="reducespace">
+                  <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [class.active]="activeTab === 'Flight-Info'" id="flight-info-tab"
+                        data-bs-toggle="tab" data-bs-target="#flight-info" type="button" role="tab"
+                        aria-controls="flight-info" (click)="activeTab = 'Flight-Info'">
+                        Flight Info
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation"
+                      *ngIf="CatalogProductOffering.productBrandOptions[j]?.productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail?.length > 0">
+                      <button class="nav-link" [class.active]="activeTab === 'Itinerary'" id="itinerary-tab"
+                        data-bs-toggle="tab" data-bs-target="#itinerary" type="button" role="tab"
+                        aria-controls="itinerary" (click)="activeTab = 'Itinerary'">
+                        Brand Info
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [class.active]="activeTab === 'PriceBreakdown'" id="PriceBreakdown"
+                        data-bs-toggle="tab" data-bs-target="#PriceBreakdown" type="button" role="tab"
+                        aria-controls="PriceBreakdown" (click)="activeTab = 'PriceBreakdown'">
+                        Pricing
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" [class.active]="activeTab === 'Baggage'" id="baggage-tab"
+                        data-bs-toggle="tab" data-bs-target="#baggage" type="button" role="tab" aria-controls="baggage"
+                        (click)="activeTab = 'Baggage'">
+                        Baggage
+                      </button>
+                    </li>
+                  </ul>
 
-                <div id="Flight-Info" class="tabcontent-info" *ngIf="activeTab === 'Flight-Info'">
-                  <!-- Main Flight Table -->
-                  <table class="table table-bordered">
-                    <thead class="thead-light" style="font-size: 11px">
-                      <tr>
-                        <th>Segment</th>
-                        <th>Departure</th>
-                        <th>Time</th>
-                        <th>Arrival</th>
-                        <th>Time</th>
-                        <th>Flight Duration</th>
-                        <th>Carrier</th>
-                        <th>Flight Number</th>
-                        <th>Aircraft</th>
-                        <th>Operating Carrier</th>
-                      </tr>
-                    </thead>
-                    <tbody style="font-size: 11px">
-                      <tr *ngFor="
+                  <div id="Flight-Info" class="tabcontent-info" *ngIf="activeTab === 'Flight-Info'">
+                    <!-- Main Flight Table -->
+                    <table class="table table-bordered">
+                      <thead class="thead-light" style="font-size: 11px">
+                        <tr>
+                          <th>Segment</th>
+                          <th>Departure</th>
+                          <th>Time</th>
+                          <th>Arrival</th>
+                          <th>Time</th>
+                          <th>Flight Duration</th>
+                          <th>Carrier</th>
+                          <th>Flight Number</th>
+                          <th>Aircraft</th>
+                          <th>Operating Carrier</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size: 11px">
+                        <tr *ngFor="
                           let segment of offering.flightRefsDetails;
                           let o = index
                         ">
-                        <td>{{ o + 1 }}</td>
-                        <td>
-                          {{ getAirportInfo(segment.departure?.location) }}
-                        </td>
-                        <td>
-                          {{ segment.departure?.date | date : "yyyy-MM-dd" }} |
-                          {{ segment.departure?.time | slice : 0 : 5 }}
-                        </td>
-                        <td>{{ getAirportInfo(segment.arrival?.location) }}</td>
-                        <td>
-                          {{ segment.arrival?.date | date : "yyyy-MM-dd" }} |
-                          {{ segment.arrival?.time | slice : 0 : 5 }}
-                        </td>
-                        <td>
-                          {{ getFormattedDuration(segment.duration || "N/A") }}
-                        </td>
-                        <td>{{ segment.carrier }}</td>
-                        <td>{{ segment.number }}</td>
-                        <td>{{ getAircraftInfo(segment.equipment) }}</td>
-                        <td>{{ segment.operatingCarrierName || "N/A" }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                          <td>{{ o + 1 }}</td>
+                          <td>
+                            {{ getAirportInfo(segment.departure?.location) }}
+                          </td>
+                          <td>
+                            {{ segment.departure?.date | date : "yyyy-MM-dd" }} |
+                            {{ segment.departure?.time | slice : 0 : 5 }}
+                          </td>
+                          <td>{{ getAirportInfo(segment.arrival?.location) }}</td>
+                          <td>
+                            {{ segment.arrival?.date | date : "yyyy-MM-dd" }} |
+                            {{ segment.arrival?.time | slice : 0 : 5 }}
+                          </td>
+                          <td>
+                            {{ getFormattedDuration(segment.duration || "N/A") }}
+                          </td>
+                          <td>{{ segment.carrier }}</td>
+                          <td>{{ segment.number }}</td>
+                          <td>{{ getAircraftInfo(segment.equipment) }}</td>
+                          <td>{{ segment.operatingCarrierName || "N/A" }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                  <!-- Connecting Airports Section (for each segment with intermediateStop) -->
-                  <div *ngFor="let segment of offering.flightRefsDetails">
-                    <div *ngIf="hasIntermediateStop(segment)">
-                      <div class="tariff-header">
-                        <h2 style="font-size: 16px">Connecting Airports</h2>
-                      </div>
-                      <table class="table table-bordered">
-                        <thead class="thead-light" style="font-size: 11px">
-                          <tr>
-                            <th>Stop</th>
-                            <th>Arrival Flight Duration</th>
-                            <th>Departure Flight Duration</th>
-                            <th>Stop Duration</th>
-                            <th>Arrival Date-Time</th>
-                            <th>Departure Date-Time</th>
-                          </tr>
-                        </thead>
-                        <tbody style="font-size: 11px">
-                          <!-- Display connecting stops for segments with intermediateStop -->
-                          <tr *ngIf="segment.intermediateStop">
-                            <td>
-                              {{
-                              getAirportInfo(
-                              segment.intermediateStop[0].value
-                              )
-                              }}
-                            </td>
-                            <td>
-                              {{
-                              getFormattedDuration(
-                              segment.intermediateStop[0]
-                              .arrivalFlightDuration || "N/A"
-                              )
-                              }}
-                            </td>
-                            <td>
-                              {{
-                              getFormattedDuration(
-                              segment.intermediateStop[0]
-                              .departureFlightDuration || "N/A"
-                              )
-                              }}
-                            </td>
-                            <td>
-                              {{
-                              getFormattedDuration(
-                              segment.intermediateStop[0].duration || "N/A"
-                              )
-                              }}
-                            </td>
-                            <td>
-                              {{
-                              segment.intermediateStop[0].arrivalDate
-                              | date : "yyyy-MM-dd"
-                              }}
-                              |
-                              {{
-                              segment.intermediateStop[0].arrivalTime
-                              | slice : 0 : 5
-                              }}
-                            </td>
-                            <td>
-                              {{
-                              segment.intermediateStop[0].departureDate
-                              | date : "yyyy-MM-dd"
-                              }}
-                              |
-                              {{
-                              segment.intermediateStop[0].departureTime
-                              | slice : 0 : 5
-                              }}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                <div id="Itinerary" class="tabcontent-info" *ngIf="activeTab === 'Itinerary'">
-                  <div class="tariff-details"
-                    *ngIf="CatalogProductOffering.productBrandOptions[j].productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail">
-                    <div class="brand-card"
-                      *ngFor="let info of CatalogProductOffering.productBrandOptions[j].productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail">
-                      <div class="outer" style="
-                          display: flex;
-                          flex-direction: row;
-                          justify-content: space-between;
-                          width: 100%;
-                        ">
-                        <!-- Table for Service Details -->
-                        <table class="table table-bordered" style="font-size: 12px; width: 100%">
-                          <thead class="thead-light">
+                    <!-- Connecting Airports Section (for each segment with intermediateStop) -->
+                    <div *ngFor="let segment of offering.flightRefsDetails">
+                      <div *ngIf="hasIntermediateStop(segment)">
+                        <div class="tariff-header">
+                          <h2 style="font-size: 16px">Connecting Airports</h2>
+                        </div>
+                        <table class="table table-bordered">
+                          <thead class="thead-light" style="font-size: 11px">
                             <tr>
-                              <th style="width: 20%">Name</th>
-                              <th style="width: 20%">Code</th>
-                              <th style="width: 10%">Tier</th>
-                              <th style="width: 30%">Included</th>
-                              <th style="width: 30%">Chargeable</th>
-                              <th style="width: 30%">Not Offered</th>
+                              <th>Stop</th>
+                              <th>Arrival Flight Duration</th>
+                              <th>Departure Flight Duration</th>
+                              <th>Stop Duration</th>
+                              <th>Arrival Date-Time</th>
+                              <th>Departure Date-Time</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <td>{{ info.name }}</td>
-                              <td>{{ info.code }}</td>
-                              <td>{{ info.tier }}</td>
+                          <tbody style="font-size: 11px">
+                            <!-- Display connecting stops for segments with intermediateStop -->
+                            <tr *ngIf="segment.intermediateStop">
                               <td>
-                                <!-- Display Included Services -->
-                                <ng-container *ngFor="let item of info.brandAttribute">
-                                  <div *ngIf="item.inclusion === 'Included'">
-                                    <i class="fas fa-check-circle icon-included"></i>
-                                    {{ item.classification }}
-                                  </div>
-                                </ng-container>
+                                {{
+                                getAirportInfo(
+                                segment.intermediateStop[0].value
+                                )
+                                }}
                               </td>
                               <td>
-                                <!-- Display Chargeable Services -->
-                                <ng-container *ngFor="let item of info.brandAttribute">
-                                  <div *ngIf="item.inclusion === 'Chargeable'">
-                                    <i class="fas fa-dollar-sign icon-chargeable"></i>
-                                    {{ item.classification }}
-                                  </div>
-                                </ng-container>
+                                {{
+                                getFormattedDuration(
+                                segment.intermediateStop[0]
+                                .arrivalFlightDuration || "N/A"
+                                )
+                                }}
                               </td>
                               <td>
-                                <!-- Display Not Offered Services -->
-                                <ng-container *ngFor="let item of info.brandAttribute">
-                                  <div *ngIf="item.inclusion === 'Not Offered'">
-                                    <i class="fas fa-times-circle icon-not-offered"></i>
-                                    {{ item.classification }}
-                                  </div>
-                                </ng-container>
+                                {{
+                                getFormattedDuration(
+                                segment.intermediateStop[0]
+                                .departureFlightDuration || "N/A"
+                                )
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                getFormattedDuration(
+                                segment.intermediateStop[0].duration || "N/A"
+                                )
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                segment.intermediateStop[0].arrivalDate
+                                | date : "yyyy-MM-dd"
+                                }}
+                                |
+                                {{
+                                segment.intermediateStop[0].arrivalTime
+                                | slice : 0 : 5
+                                }}
+                              </td>
+                              <td>
+                                {{
+                                segment.intermediateStop[0].departureDate
+                                | date : "yyyy-MM-dd"
+                                }}
+                                |
+                                {{
+                                segment.intermediateStop[0].departureTime
+                                | slice : 0 : 5
+                                }}
                               </td>
                             </tr>
                           </tbody>
@@ -415,80 +337,143 @@
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div id="PriceBreakdown" class="tabcontent-info" *ngIf="activeTab === 'PriceBreakdown'">
-                  <table class="table table-bordered">
-                    <thead class="thead-light" style="font-size: 11px">
-                      <tr>
-                        <th>#</th>
-                        <th>Passenger Type</th>
-                        <th>Quantity</th>
-                        <th>Currency</th>
-                        <th>Total</th>
-                      </tr>
-                    </thead>
-                    <tbody style="font-size: 11px">
-                      <tr *ngFor="let item of CatalogProductOffering.productBrandOptions[j].productBrandOffering[
+                  <div id="Itinerary" class="tabcontent-info" *ngIf="activeTab === 'Itinerary'">
+                    <div class="tariff-details"
+                      *ngIf="CatalogProductOffering.productBrandOptions[j].productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail">
+                      <div class="brand-card"
+                        *ngFor="let info of CatalogProductOffering.productBrandOptions[j].productBrandOffering[activeTabs[i]?.[j] ?? 0]?.brandDetail">
+                        <div class="outer" style="
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: space-between;
+                          width: 100%;
+                        ">
+                          <!-- Table for Service Details -->
+                          <table class="table table-bordered" style="font-size: 12px; width: 100%">
+                            <thead class="thead-light">
+                              <tr>
+                                <th style="width: 20%">Name</th>
+                                <th style="width: 20%">Code</th>
+                                <th style="width: 10%">Tier</th>
+                                <th style="width: 30%">Included</th>
+                                <th style="width: 30%">Chargeable</th>
+                                <th style="width: 30%">Not Offered</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{ info.name }}</td>
+                                <td>{{ info.code }}</td>
+                                <td>{{ info.tier }}</td>
+                                <td>
+                                  <!-- Display Included Services -->
+                                  <ng-container *ngFor="let item of info.brandAttribute">
+                                    <div *ngIf="item.inclusion === 'Included'">
+                                      <i class="fas fa-check-circle icon-included"></i>
+                                      {{ item.classification }}
+                                    </div>
+                                  </ng-container>
+                                </td>
+                                <td>
+                                  <!-- Display Chargeable Services -->
+                                  <ng-container *ngFor="let item of info.brandAttribute">
+                                    <div *ngIf="item.inclusion === 'Chargeable'">
+                                      <i class="fas fa-dollar-sign icon-chargeable"></i>
+                                      {{ item.classification }}
+                                    </div>
+                                  </ng-container>
+                                </td>
+                                <td>
+                                  <!-- Display Not Offered Services -->
+                                  <ng-container *ngFor="let item of info.brandAttribute">
+                                    <div *ngIf="item.inclusion === 'Not Offered'">
+                                      <i class="fas fa-times-circle icon-not-offered"></i>
+                                      {{ item.classification }}
+                                    </div>
+                                  </ng-container>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="PriceBreakdown" class="tabcontent-info" *ngIf="activeTab === 'PriceBreakdown'">
+                    <table class="table table-bordered">
+                      <thead class="thead-light" style="font-size: 11px">
+                        <tr>
+                          <th>#</th>
+                          <th>Passenger Type</th>
+                          <th>Quantity</th>
+                          <th>Currency</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size: 11px">
+                        <tr *ngFor="let item of CatalogProductOffering.productBrandOptions[j].productBrandOffering[
                   activeTabs[i]?.[j] ?? 0
                 ]?.bestCombinablePrice?.priceBreakdown; let i = index">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ item.requestedPassengerType}}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item?.amount?.currencyCode?.value }}</td>
-                        <td>{{ item?.amount?.total}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                          <td>{{ i + 1 }}</td>
+                          <td>{{ item.requestedPassengerType}}</td>
+                          <td>{{ item.quantity }}</td>
+                          <td>{{ item?.amount?.currencyCode?.value }}</td>
+                          <td>{{ item?.amount?.total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-                <div id="Baggage" class="tabcontent-info" *ngIf="activeTab === 'Baggage'">
-                  <table class="table table-bordered">
-                    <thead class="thead-light" style="font-size: 11px">
-                      <tr>
-                        <th>#</th>
-                        <th>Passenger Type</th>
-                        <th>Baggage Type</th>
-                        <th>Validating Airline</th>
-                        <th>Weight (kg)</th>
-                        <th>Notes</th>
-                        <th>Segment Sequences</th>
-                        <th>Details Link</th>
-                      </tr>
-                    </thead>
-                    <tbody style="font-size: 11px">
-                      <tr *ngFor="let item of CatalogProductOffering.productBrandOptions[j].productBrandOffering[
+                  <div id="Baggage" class="tabcontent-info" *ngIf="activeTab === 'Baggage'">
+                    <table class="table table-bordered">
+                      <thead class="thead-light" style="font-size: 11px">
+                        <tr>
+                          <th>#</th>
+                          <th>Passenger Type</th>
+                          <th>Baggage Type</th>
+                          <th>Validating Airline</th>
+                          <th>Weight (kg)</th>
+                          <th>Notes</th>
+                          <th>Segment Sequences</th>
+                          <th>Details Link</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size: 11px">
+                        <tr *ngFor="let item of CatalogProductOffering.productBrandOptions[j].productBrandOffering[
                   activeTabs[i]?.[j] ?? 0
                 ]?.termsAndConditionDetail?.[0]?.baggageAllowance; let i = index">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ item.passengerTypeCodes.join(', ') }}</td>
-                        <td>{{ item.baggageType }}</td>
-                        <td>{{ item.validatingAirlineCode }}</td>
-                        <td>
-                          <!-- Display Weight if available, otherwise show N/A -->
-                          <ng-container
-                            *ngIf="item.baggageItem && item.baggageItem[0]?.measurement; else noMeasurement">
-                            {{ item.baggageItem[0].measurement[0]?.value || 'N/A' }}
-                          </ng-container>
-                          <ng-template #noMeasurement>
-                            -
-                          </ng-template>
-                        </td>
-                        <td>{{ item.baggageItem[0]?.text || 'No additional info' }}</td>
-                        <td>{{ item.segmentSequenceList.join(', ') }}</td>
-                        <td>
-                          <a *ngIf="item.url" [href]="item.url" target="_blank">Details</a>
-                          <span *ngIf="!item.url">N/A</span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
+                          <td>{{ i + 1 }}</td>
+                          <td>{{ item.passengerTypeCodes.join(', ') }}</td>
+                          <td>{{ item.baggageType }}</td>
+                          <td>{{ item.validatingAirlineCode }}</td>
+                          <td>
+                            <!-- Display Weight if available, otherwise show N/A -->
+                            <ng-container
+                              *ngIf="item.baggageItem && item.baggageItem[0]?.measurement; else noMeasurement">
+                              {{ item.baggageItem[0].measurement[0]?.value || 'N/A' }}
+                            </ng-container>
+                            <ng-template #noMeasurement>
+                              -
+                            </ng-template>
+                          </td>
+                          <td>{{ item.baggageItem[0]?.text || 'No additional info' }}</td>
+                          <td>{{ item.segmentSequenceList.join(', ') }}</td>
+                          <td>
+                            <a *ngIf="item.url" [href]="item.url" target="_blank">Details</a>
+                            <span *ngIf="!item.url">N/A</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>

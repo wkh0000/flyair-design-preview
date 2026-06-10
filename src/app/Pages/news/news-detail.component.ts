@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { NewsService, ArticleFull, ArticleCard } from '../../Services/News/news.service';
 import { SeoService } from '../../Services/Seo/seo.service';
 import { ShareBarComponent } from '../../Components/share-bar/share-bar.component';
+import { PageFooterWidgetsComponent } from '../../Components/page-footer-widgets/page-footer-widgets.component';
 
 @Component({
   selector: 'app-news-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, ShareBarComponent],
+  imports: [CommonModule, RouterModule, ShareBarComponent, PageFooterWidgetsComponent],
   templateUrl: './news-detail.component.html',
   styleUrls: ['./news-detail.component.scss'],
 })
@@ -19,6 +20,15 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
   loading = true;
   notFound = false;
   shareUrl = '';
+
+  /** First tag on the article (used to filter related promotions + news in
+   *  the shared footer widget). Empty when the article has no tags. */
+  get primaryTag(): string | null {
+    const tags = this.article?.tags;
+    if (!tags) return null;
+    const first = (tags.split(',')[0] || '').trim();
+    return first || null;
+  }
 
   private subs = new Subscription();
 

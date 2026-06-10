@@ -78,21 +78,21 @@ export class AdminMarkupComponent implements AfterViewInit {
     this.filterForm = this.fb.group({
       airline: [''],
       destination: [''],
-      minAmount: [''],
-      maxAmount: [''],
+      minAmount: [null],
+      maxAmount: [null],
       applyFrom: [''],
       applyTo: ['']
     });
     this.dataForm = this.fb.group({
       markup_Name: ['', Validators.required],
       markup_Type: ['', Validators.required],
-      value: ['', Validators.required],
-      applies_To_Destination: [''],   // optional
-      applies_To_Airline: [''],       // optional
-      effective_From: [''],           // optional
-      effective_To: [''],             // optional
-      price_Range_From: [''],         // optional
-      price_Range_To: ['']            // optional
+      value: ['', [Validators.required, Validators.min(0)]],
+      applies_To_Destination: [''],  
+      applies_To_Airline: [''],   
+      effective_From: [''],          
+      effective_To: [''],             
+      price_Range_From: [''],         
+      price_Range_To: ['']            
     });
   }
 
@@ -146,11 +146,55 @@ export class AdminMarkupComponent implements AfterViewInit {
     this.filterForm.reset();
     this.dataSource.filter = '';
   }
+
+  // Fix the selectOption to save just the CODE:
+  selectOption(code: string, type: string): void {
+    if (type === 'departure') {
+      this.selectedDepartureCode = code;
+      this.dataForm.patchValue({ applies_To_Destination: code }); // saves "MAA" not full name
+    } else if (type === 'airline') {
+      this.selectedAirlineCode = code;
+      this.dataForm.patchValue({ applies_To_Airline: code }); // saves "UL" not full name
+    }
+  }
+  private formatDate(date: Date): string {
+    const istDate = new Date(date.getTime() + (5 * 3600 + 30 * 60) * 1000);
+    const dateString = istDate.toISOString().slice(0, 10);
+    return dateString;
+  }
+  /** When set, onSubmit() calls updateMarkup(id) instead of addMarkups(). */
+  editingId: number | null = null;
+
+  /** Pop the existing row's values into the form for editing. */
+  startEdit(row: any): void {
+    this.editingId = row.id;
+    this.dataForm.patchValue({
+      markup_Name: row.markup_Name ?? '',
+      markup_Type: row.markup_Type ?? '',
+      value: row.value ?? '',
+      applies_To_Destination: row.applies_To_Destination ?? '',
+      applies_To_Airline: row.applies_To_Airline ?? '',
+      price_Range_From: row.price_Range_From ?? '',
+      price_Range_To: row.price_Range_To ?? '',
+      effective_From: row.effective_From ? new Date(row.effective_From) : '',
+      effective_To:   row.effective_To   ? new Date(row.effective_To)   : '',
+    });
+    // Scroll back to the form so the admin sees it without hunting.
+    setTimeout(() => document.querySelector('app-admin-markup form')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);
+  }
+
+  /** Exit edit mode without saving. */
+  cancelEdit(): void {
+    this.editingId = null;
+    this.dataForm.reset();
+  }
+
+  // Fix onSubmit to format dates properly before sending — also branches
+  // on editingId so the same form handles both Add and Update.
   onSubmit(): void {
     if (this.dataForm.valid) {
       const formValue = { ...this.dataForm.value };
 
-      // Convert empty strings to null for optional fields
       const optionalFields = [
         'applies_To_Destination',
         'applies_To_Airline',
@@ -166,15 +210,30 @@ export class AdminMarkupComponent implements AfterViewInit {
         }
       });
 
-      this.utilityService.addMarkups(formValue).subscribe({
-        next: (response) => {
-          alert('Booking Markup added successfully.');
+      // Format dates to ISO string (strips time zone issues)
+      if (formValue['effective_From'] instanceof Date) {
+        formValue['effective_From'] = formValue['effective_From'].toISOString();
+      }
+      if (formValue['effective_To'] instanceof Date) {
+        formValue['effective_To'] = formValue['effective_To'].toISOString();
+      }
+
+      // Branch: update if editing an existing row, add otherwise.
+      const isEdit = this.editingId !== null;
+      const obs = isEdit
+        ? this.utilityService.updateMarkup(this.editingId as number, formValue)
+        : this.utilityService.addMarkups(formValue);
+
+      obs.subscribe({
+        next: () => {
+          alert(isEdit ? 'Booking Markup updated successfully.' : 'Booking Markup added successfully.');
           this.dataForm.reset();
+          this.editingId = null;
           this.fetchMarkups();
         },
         error: (err: any) => {
-          console.error('Error adding booking Markup:', err);
-          alert('Failed to add booking Markup.');
+          console.error('Error saving booking Markup:', err);
+          alert(isEdit ? 'Failed to update Markup.' : 'Failed to add booking Markup.');
         }
       });
     } else {
@@ -213,16 +272,6 @@ export class AdminMarkupComponent implements AfterViewInit {
             option.code.toLowerCase().includes(input.value.toLowerCase())
         );
       }
-    }
-  }
-
-  selectOption(option: any, type: string): void {
-    if (type === 'departure') {
-      this.selectedDeparture = option.name;
-      this.selectedDepartureCode = option.code;
-    } else if (type === 'airline') {
-      this.selectedAirline = option.name;
-      this.selectedAirlineCode = option.code;
     }
   }
 }

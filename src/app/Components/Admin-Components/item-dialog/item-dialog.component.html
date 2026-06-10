@@ -1,6 +1,6 @@
 <div class="dialog-container">
   <h2 mat-dialog-title>Select Content Type NDC/GDS</h2>
-  <p>Current - {{option[0]?.contentType}}</p>
+  <p>Current - {{ option?.[0]?.contentType }}</p>
 
   <mat-dialog-content>
     <mat-radio-group [(ngModel)]="selectedOption">

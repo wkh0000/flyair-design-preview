@@ -26,7 +26,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { UtilityService } from '../../Services/Utility/utility.service';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FlightService } from '../../Services/Flight/flight.service';
 import { HttpClient } from '@angular/common/http';
 import { LoaderComponent } from '../loader/loader.component';
@@ -111,6 +111,7 @@ export class FlightSearchComponent implements OnInit {
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private shared: SharedDataService,
     private elementRef: ElementRef,
@@ -122,6 +123,18 @@ export class FlightSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForms();
+    // Card-click prefill: when home navigation passes ?origin=&dest=&date=&pax=
+    // we populate the one-way form so the user sees a ready-to-go search.
+    this.route.queryParams.subscribe(qp => {
+      if (!qp || (!qp['origin'] && !qp['dest'] && !qp['date'])) return;
+      const patch: any = {};
+      if (qp['origin']) patch.onewaydeparture = qp['origin'];
+      if (qp['dest'])   patch.onewaydestination = qp['dest'];
+      if (qp['date'])   patch.onewaydepartureDate = new Date(qp['date']);
+      this.oneWayForm.patchValue(patch);
+      const pax = parseInt(qp['pax'] || '0', 10);
+      if (pax > 0) (this.oneWayForm.get('passengers') as any)?.patchValue({ adult: pax });
+    });
     //test end
     this.http
       .get<{ name: string; code: string }[]>(
@@ -275,7 +288,6 @@ export class FlightSearchComponent implements OnInit {
     };
 
     this.shared.setPassengerData(formattedData.passengers);
-
     this.flightService.bookOneWayFlight(formattedData).subscribe(
       (results) => {
         this.loading = false;
@@ -352,7 +364,6 @@ export class FlightSearchComponent implements OnInit {
       };
       const departure = this.returnForm.get('returndeparture')?.value;
       const destination = this.returnForm.get('returndestination')?.value;
-
       if (departure && destination && departure === destination) {
         console.warn('Departure and Destination are the same.');
         this.returnForm

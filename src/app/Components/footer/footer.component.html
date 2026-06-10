@@ -9,6 +9,15 @@
         </a>
         <p>{{ cms.brandText }}</p>
 
+        <!-- Company contact (from the admin Company Profile). IATA is never
+             shown publicly per policy. -->
+        <address class="fly-foot-contact" *ngIf="companyAddress || company.phone || company.email">
+          <span class="fly-foot-coname" *ngIf="company.companyName">{{ company.companyName }}</span>
+          <span *ngIf="companyAddress">{{ companyAddress }}</span>
+          <a *ngIf="company.phone" [href]="'tel:' + company.phone">{{ company.phone }}</a>
+          <a *ngIf="company.email" [href]="'mailto:' + company.email">{{ company.email }}</a>
+        </address>
+
         <!-- Newsletter -->
         <form class="fly-foot-news" (ngSubmit)="subscribe()">
           <span class="news-label">{{ cms.newsletterLabel }}</span>

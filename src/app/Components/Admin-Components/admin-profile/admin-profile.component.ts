@@ -25,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';  // ✅ If sorting is en
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { environment } from '../../../../environments/environment';
+import { PageService } from '../../../Services/Page/page.service';
 
 
 @Component({
@@ -43,13 +44,14 @@ export class AdminProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private pages: PageService
   ) {
     this.form = this.fb.group({
       company_id: [''],
       companyName: ['', Validators.required],
-      regNo: ['', Validators.required],
-      iata: ['', Validators.required],
+      regNo: [''],   // optional — may be blank for the consumer brand entity
+      iata: [''],    // optional + never surfaced publicly
       address: ['', Validators.required],
       city: ['', Validators.required],
       district: ['', Validators.required],
@@ -76,15 +78,25 @@ export class AdminProfileComponent implements OnInit {
       }
     ];
 
-    this.populateFormWithData();  // ✅ Ensure this is called
+    this.populateFormWithData();  // baseline from environment.company
+
+    // Overlay the saved admin override (persisted via the Pages CMS store)
+    // so edits survive reloads. Falls back to the environment baseline.
+    this.pages.get('company-profile').subscribe({
+      next: (o: any) => {
+        if (o && (o.companyName || o.email || o.regNo)) {
+          this.companyData = [{ ...this.companyData[0], ...o }];
+          this.form.patchValue(this.companyData[0]);
+        }
+      },
+      error: () => { /* keep environment baseline */ },
+    });
 
     if (this.isFormDisabled) {
       this.form.disable();
     } else {
       this.form.enable();
     }
-
-    this.form.patchValue(this.companyData);
   }
 
   toggleFormEditable() {
@@ -96,9 +108,34 @@ export class AdminProfileComponent implements OnInit {
     }
   }
 
+  /** Enter edit mode. */
+  startEdit(): void {
+    this.isFormDisabled = false;
+    this.form.enable();
+  }
+
+  /** Persist the company profile via the Pages CMS store so edits survive
+   *  reloads and feed the public footer. (Previously onSubmit discarded the
+   *  value and only toggled edit mode — the editor did nothing.) */
   onSubmit() {
-    this.toggleFormEditable();
-    const formData = this.form.value;
+    if (this.form.invalid) {
+      this.snackBar.open('Please fill in all required fields.', 'Close', { duration: 3000 });
+      return;
+    }
+    this.showLoader = true;
+    this.pages.save('company-profile', this.form.value).subscribe({
+      next: () => {
+        this.showLoader = false;
+        this.companyData = [{ ...this.form.value }];
+        this.isFormDisabled = true;
+        this.form.disable();
+        this.snackBar.open('Company profile saved.', 'Close', { duration: 3000 });
+      },
+      error: () => {
+        this.showLoader = false;
+        this.snackBar.open('Could not save company profile. Please try again.', 'Close', { duration: 4000 });
+      },
+    });
   }
 
   populateFormWithData() {

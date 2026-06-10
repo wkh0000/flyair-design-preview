@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SubscriberService } from '../../Services/Subscriber/subscriber.service';
 import { PageService } from '../../Services/Page/page.service';
+import { environment } from '../../../environments/environment';
 
 export interface FooterContent {
   brandText: string;
@@ -36,6 +37,24 @@ export class FooterComponent implements OnInit {
   /** Footer content — DB override layered over the baked-in default. */
   cms: FooterContent = { ...FOOTER_DEFAULT };
 
+  /** Company contact details, surfaced in the brand column. Baseline comes
+   *  from build-time environment.company; the admin Company Profile editor
+   *  overlays a saved override. IATA is intentionally NOT exposed publicly. */
+  company = {
+    companyName: environment.company?.companyName || 'FlyAir',
+    address: environment.company?.address || '',
+    city: environment.company?.city || '',
+    district: environment.company?.district || '',
+    country: environment.company?.country || '',
+    email: environment.company?.email || '',
+    phone: environment.company?.phone || '',
+  };
+  /** One-line address assembled from the parts that are set. */
+  get companyAddress(): string {
+    return [this.company.address, this.company.city, this.company.district, this.company.country]
+      .map(s => (s || '').trim()).filter(Boolean).join(', ');
+  }
+
   /** Newsletter form state. */
   email = '';
   subState: 'idle' | 'sending' | 'ok' | 'error' = 'idle';
@@ -51,6 +70,23 @@ export class FooterComponent implements OnInit {
         }
       },
       error: () => { /* keep default */ },
+    });
+    // Company contact override (admin Company Profile). IATA never surfaced.
+    this.pages.get('company-profile').subscribe({
+      next: (o: any) => {
+        if (o && (o.companyName || o.email || o.address)) {
+          this.company = {
+            companyName: o.companyName || this.company.companyName,
+            address: o.address ?? this.company.address,
+            city: o.city ?? this.company.city,
+            district: o.district ?? this.company.district,
+            country: o.country ?? this.company.country,
+            email: o.email || this.company.email,
+            phone: o.phone || this.company.phone,
+          };
+        }
+      },
+      error: () => { /* keep baseline */ },
     });
   }
 

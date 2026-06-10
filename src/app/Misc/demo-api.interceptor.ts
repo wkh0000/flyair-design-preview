@@ -37,6 +37,22 @@ export class DemoApiInterceptor implements HttpInterceptor {
     const u = req.url.split('?')[0];
     const path = this.normalize(u);                                 // e.g. "Pages/terms"
 
+    // ------- Promotions ARE snapshotted for the demo (home offers carousel,
+    // footer widgets, and the /promotions/:slug detail pages). Handle these
+    // before the generic AdminUtility silence below. -------
+    if (/^AdminUtility\/promotions/i.test(path)) {
+      if (req.method !== 'GET') {
+        return throwError(() => new HttpErrorResponse({ status: 0, statusText: 'demo-mode (write suppressed)', url: req.url }));
+      }
+      const m = path.match(/by-slug\/([\w-]+)/i);
+      const target = m
+        ? `assets/static-api/promotions/${m[1]}.json`           // single promo detail
+        : 'assets/static-api/promotions.json';                  // full list
+      return next.handle(req.clone({ url: this.absUrl(target) })).pipe(
+        catchError(() => of(new HttpResponse({ status: 200, body: (m ? {} : []) as any })))
+      );
+    }
+
     // ------- Legacy/admin endpoints we don't snapshot: silence them (GET *and* POST) -------
     // Done BEFORE the method check so admin/auth writes don't bubble up as
     // demo-mode errors. The frontend simply gets an empty success.

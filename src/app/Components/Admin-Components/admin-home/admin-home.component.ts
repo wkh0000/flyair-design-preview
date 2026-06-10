@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chart } from 'chart.js/auto';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; // ✅ Import HttpClient
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-admin-home',
@@ -26,8 +27,9 @@ export class AdminHomeComponent implements OnInit {
   }
 
   fetchDashboardData(): void {
-    // Replace this URL with your actual C# API endpoint
-    const apiUrl = 'http://localhost:5000/api/AdminUtility/dashboard-stats';
+    // Use the configured API base (relative /api/ → dev-server proxy → backend)
+    // instead of a hardcoded port, which was dead and broke the dashboard charts.
+    const apiUrl = `${environment.apiUrl}AdminUtility/dashboard-stats`;
 
     this.http.get<any>(apiUrl).subscribe({
       next: (data) => {

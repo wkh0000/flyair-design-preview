@@ -5,11 +5,12 @@ import { combineLatest, Subscription } from 'rxjs';
 import { NewsService, ArticleCard, NewsCategory, PagedArticles } from '../../Services/News/news.service';
 import { SeoService } from '../../Services/Seo/seo.service';
 import { environment } from '../../../environments/environment';
+import { PageFooterWidgetsComponent } from '../../Components/page-footer-widgets/page-footer-widgets.component';
 
 @Component({
   selector: 'app-news-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageFooterWidgetsComponent],
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss'],
 })

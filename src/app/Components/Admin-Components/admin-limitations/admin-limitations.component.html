@@ -82,7 +82,7 @@
               <!-- Effective From (Date Picker) -->
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Effective From</mat-label>
-                <input matInput [matDatepicker]="picker1" formControlName="effective_from" required>
+                <input matInput [matDatepicker]="picker1" formControlName="effective_from">
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
@@ -107,8 +107,15 @@
                 <input matInput type="number" formControlName="price_Range_To">
               </mat-form-field>
 
-              <!-- Submit Button -->
-              <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">Submit</button>
+              <!-- Submit Button — branches between add/update based on editingId. -->
+              <div style="display:flex;gap:10px">
+                <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">
+                  {{ editingId !== null ? 'Update limit' : 'Add limit' }}
+                </button>
+                <button *ngIf="editingId !== null" mat-stroked-button type="button" (click)="cancelEdit()">
+                  Cancel edit
+                </button>
+              </div>
             </form>
 
           </mat-expansion-panel>
@@ -193,7 +200,10 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button color="warn" aria-label="Delete" (click)="DeleteLimit(row.id)">
+              <button mat-icon-button color="primary" aria-label="Edit" (click)="startEdit(row)" title="Edit">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+              <button mat-icon-button color="warn" aria-label="Delete" (click)="DeleteLimit(row.id)" title="Delete">
                 <span class="material-symbols-outlined"> delete </span>
               </button>
             </td>

@@ -27,6 +27,7 @@ import { LoaderComponent } from '../loader/loader.component';
 import { FilterService } from '../../Services/Filter/filter.service';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { UtilityServiceService } from '../../Services/Admin-Services/UtilityService/utility-service.service';
 
 interface FlightDetail {
   carrier: string;
@@ -123,7 +124,9 @@ export class ResultItemsComponent implements OnChanges {
   }[] = [];
   options: { name: string; code: string }[] = [];
   combinationCodeHistory: string[] = [];
-
+  markups: any[] = [];
+  promotions: any[] = [];
+  limitations: any[] = [];
   constructor(
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef,
@@ -131,7 +134,8 @@ export class ResultItemsComponent implements OnChanges {
     private router: Router,
     private ngZone: NgZone,
     private filterService: FilterService,
-    private http: HttpClient
+    private http: HttpClient,
+    private utilityService: UtilityServiceService
   ) { }
 
   ngOnInit(): void {
@@ -176,8 +180,185 @@ export class ResultItemsComponent implements OnChanges {
         this.options = data;
       });
     this.cdr.detectChanges();
+    this.loadMarkups();
+    this.loadPromotions();
+    this.loadLimitations();
   }
+  
+loadLimitations(): void {
+  this.utilityService.fetchLimits().subscribe({
+    next: (data) => {
+      this.limitations = data;
+      console.log('Limitations loaded:', this.limitations);
+    },
+    error: (err) => console.error('Failed to load limitations', err)
+  });
+}
+  loadMarkups(): void {
+    this.utilityService.fetchMarkups().subscribe({
+      next: (data) => {
+        this.markups = data;
+        console.log("Fetched markups in ResultItemsComponent:", data);
+      },
+      error: (err) => console.error('Failed to load markups', err)
+    });
+  }
+  loadPromotions(): void {
+    this.utilityService.fetchPromotions().subscribe({
+      next: (data) => {
+        this.promotions = data;
+        console.log("Fetched promotions in ResultItemsComponent:", data);
+      },
+      error: (err) => console.error('Failed to load promotions', err)
+    });
+  }
+isFlightAllowed(
+  airlineCode: string,
+  destinationCode: string,
+  flightDepartureDate?: string
+): boolean {
+  if (!this.limitations || this.limitations.length === 0) return true;
 
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const checkDateStr = flightDepartureDate
+    ? flightDepartureDate.slice(0, 10)
+    : todayStr;
+
+  // Find all limitations that match this flight
+  const matchingLimitations = this.limitations.filter(limit => {
+
+    const airlineMatch =
+      !limit.applies_To_Airline ||
+      limit.applies_To_Airline.trim() === airlineCode.trim() ||
+      limit.applies_To_Airline.endsWith(`- ${airlineCode}`) ||
+      limit.applies_To_Airline.includes(airlineCode);
+
+    const destinationMatch =
+      !limit.applies_To_Destination ||
+      limit.applies_To_Destination.trim() === destinationCode.trim() ||
+      limit.applies_To_Destination.endsWith(`- ${destinationCode}`) ||
+      limit.applies_To_Destination.includes(destinationCode);
+
+    // Date range check
+    let dateMatch = true;
+    if (limit.effective_From || limit.effective_To) {
+      const fromStr = limit.effective_From
+        ? limit.effective_From.slice(0, 10)
+        : null;
+      const toStr = limit.effective_To
+        ? limit.effective_To.slice(0, 10)
+        : null;
+      dateMatch =
+        (!fromStr || checkDateStr >= fromStr) &&
+        (!toStr || checkDateStr <= toStr);
+    }
+
+    return airlineMatch && destinationMatch && dateMatch;
+  });
+
+  // No limitations match this flight — allow it
+  if (matchingLimitations.length === 0) return true;
+
+  // If ANY matching limitation is 'Restricted' — block the flight
+  const hasRestriction = matchingLimitations.some(
+    limit => limit.restriction_Type === 'Restricted'
+  );
+  if (hasRestriction) return false;
+
+  // If limitations exist and all are 'Allowed' — allow it
+  return true;
+}
+  private getApplicableRules(
+    rules: any[],
+    basePrice: number,
+    airlineCode: string,
+    destinationCode: string,
+    flightDepartureDate?: string
+  ): any[] {
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const checkDateStr = flightDepartureDate
+      ? flightDepartureDate.slice(0, 10)
+      : todayStr;
+
+    return rules.filter(rule => {
+      const airlineMatch =
+        !rule.applies_To_Airline ||
+        rule.applies_To_Airline.trim() === airlineCode.trim() ||
+        rule.applies_To_Airline.endsWith(`- ${airlineCode}`) ||
+        rule.applies_To_Airline.includes(airlineCode);
+
+      const destinationMatch =
+        !rule.applies_To_Destination ||
+        rule.applies_To_Destination.trim() === destinationCode.trim() ||
+        rule.applies_To_Destination.endsWith(`- ${destinationCode}`) ||
+        rule.applies_To_Destination.includes(destinationCode);
+
+      let dateMatch = true;
+      if (rule.effective_From || rule.effective_To) {
+        const fromStr = rule.effective_From
+          ? rule.effective_From.slice(0, 10)
+          : null;
+        const toStr = rule.effective_To
+          ? rule.effective_To.slice(0, 10)
+          : null;
+        dateMatch =
+          (!fromStr || checkDateStr >= fromStr) &&
+          (!toStr || checkDateStr <= toStr);
+      }
+
+      let priceMatch = true;
+      if (rule.price_Range_From !== null || rule.price_Range_To !== null) {
+        const priceFrom = rule.price_Range_From ?? 0;
+        const priceTo = rule.price_Range_To ?? Infinity;
+        priceMatch = basePrice >= priceFrom && basePrice <= priceTo;
+      }
+
+      return airlineMatch && destinationMatch && dateMatch && priceMatch;
+    });
+  }
+  calculatePrice(
+    basePrice: number,
+    airlineCode: string,
+    destinationCode: string,
+    flightDepartureDate?: string
+  ): number {
+    if (!basePrice) return 0;
+    let finalPrice = basePrice;
+
+    // Step 1 — Apply promotions first (discounts)
+    const applicablePromotions = this.getApplicableRules(
+      this.promotions, basePrice, airlineCode, destinationCode, flightDepartureDate
+    );
+
+    applicablePromotions.forEach(promo => {
+      if (promo.promotion_Type === 'Percentage') {
+        console.log(`Applying ${promo.amount}% promotion: -${finalPrice * (promo.amount / 100)}`);
+        finalPrice -= finalPrice * (promo.amount / 100);
+      } else if (promo.promotion_Type === 'Fixed') {
+        finalPrice -= promo.amount;
+      }
+      // Guard: price should never go below 0
+      if (finalPrice < 0) finalPrice = 0;
+    });
+
+    // Step 2 — Apply markups on top (additions)
+    const applicableMarkups = this.getApplicableRules(
+      this.markups, basePrice, airlineCode, destinationCode, flightDepartureDate
+    );
+
+    applicableMarkups.forEach(markup => {
+      if (markup.markup_Type === 'Percentage') {
+        finalPrice += finalPrice * (markup.value / 100);
+        console.log(`Applying ${markup.value}% markup: +${finalPrice * (markup.value / 100)}`);
+      } else if (markup.markup_Type === 'Fixed') {
+        finalPrice += markup.value;
+      }
+    });
+
+    return finalPrice;
+  }
   ngOnDestroy() {
     if (this.filterSubscription) {
       this.filterSubscription.unsubscribe();
@@ -319,12 +500,12 @@ export class ResultItemsComponent implements OnChanges {
   }
 
   setActiveTab(cardIndex: number, groupIndex: number, tabIndex: number): void {
-  if (!this.activeTabs[cardIndex]) {
-    this.activeTabs[cardIndex] = [];
+    if (!this.activeTabs[cardIndex]) {
+      this.activeTabs[cardIndex] = [];
+    }
+    this.activeTabs[cardIndex][groupIndex] = tabIndex;
+    this.cdr.detectChanges(); // ✅ Trigger change detection
   }
-  this.activeTabs[cardIndex][groupIndex] = tabIndex;
-  this.cdr.detectChanges(); // ✅ Trigger change detection
-}
 
   chooseflight(id: any, productId: any): void {
     this.flightSelected.emit({ id, productId });

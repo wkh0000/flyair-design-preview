@@ -31,6 +31,69 @@
   <!-- STATS section removed — placeholder marketing numbers were misleading without a heading
        and without verified data behind them. Re-introduce later if real numbers are available. -->
 
+  <!-- ===== SPECIAL OFFERS — sits directly under the hero. Admin-curated
+       promotions with marketing imagery. ≤4 promos render as a static grid;
+       >4 promos become an INFINITE auto-advancing carousel (one card every
+       5s, seamless loop via a duplicated card set, no scrollbar, pauses on
+       hover). ===== -->
+  <section class="fly-section fly-promos-section" *ngIf="promoCards.length" id="special-offers">
+    <div class="fly-container">
+      <div class="fly-flex fly-between fly-cy fly-wrap fly-reveal" style="margin-bottom:42px;gap:16px">
+        <div>
+          <div class="fly-eyebrow line">Special offers</div>
+          <h2 style="margin-top:14px">Deals worth the detour</h2>
+        </div>
+        <div class="promo-nav" *ngIf="isPromoCarousel">
+          <button type="button" class="promo-nav-btn" (click)="scrollPromos(-1)" aria-label="Scroll left">←</button>
+          <button type="button" class="promo-nav-btn" (click)="scrollPromos(1)" aria-label="Scroll right">→</button>
+        </div>
+      </div>
+      <!-- Carousel (>4 promos): a fixed-width viewport that clips, with a flex
+           track that slides via a GPU transform transition. -->
+      <div *ngIf="isPromoCarousel" class="promo-viewport"
+           (mouseenter)="pausePromoAuto()" (mouseleave)="resumePromoAuto()">
+        <div #promoTrack class="promo-track"
+             [style.transform]="'translateX(' + (-promoIndex * cardStep) + 'px)'"
+             [style.transition]="trackTransition ? null : 'none'"
+             (transitionend)="onTrackSettled($event)">
+          <a class="fly-promo" *ngFor="let p of loopedPromos; let i = index"
+             [routerLink]="['/promotions', p.slug]"
+             [attr.aria-hidden]="i >= promoCards.length ? 'true' : null"
+             [attr.tabindex]="i >= promoCards.length ? -1 : null"
+             [attr.aria-label]="(p.title || p.promotion_Name) + ' offer'">
+            <span class="fly-promo-media">
+              <img [src]="p.image_Url" [alt]="p.title || p.promotion_Name" loading="eager">
+              <span class="fly-promo-shine" aria-hidden="true"></span>
+            </span>
+            <div class="body">
+              <span class="fly-badge fly-badge-red">{{ promoBadge(p) }}</span>
+              <div class="city">{{ p.title || p.promotion_Name }}</div>
+              <div class="ctry" *ngIf="p.subtitle">{{ p.subtitle }}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Static grid (≤4 promos): everything fits, no movement needed. -->
+      <div *ngIf="!isPromoCarousel" class="fly-promos-grid">
+        <a class="fly-promo" *ngFor="let p of promoCards"
+           [routerLink]="['/promotions', p.slug]"
+           flyTilt="5"
+           [attr.aria-label]="(p.title || p.promotion_Name) + ' offer'">
+          <span class="fly-promo-media">
+            <img [src]="p.image_Url" [alt]="p.title || p.promotion_Name" loading="eager">
+            <span class="fly-promo-shine" aria-hidden="true"></span>
+          </span>
+          <div class="body">
+            <span class="fly-badge fly-badge-red">{{ promoBadge(p) }}</span>
+            <div class="city">{{ p.title || p.promotion_Name }}</div>
+            <div class="ctry" *ngIf="p.subtitle">{{ p.subtitle }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== WHY FLYAIR ===== -->
   <section class="fly-section">
     <div class="fly-container">
@@ -56,7 +119,9 @@
         <a class="fly-btn fly-btn-outline" [routerLink]="content.destinations.ctaLink || '/result'">{{ content.destinations.ctaLabel || 'View all' }} →</a>
       </div>
       <div class="fly-grid fly-c4 fly-stagger">
-        <a class="fly-dest" *ngFor="let d of content.destinations.items" [routerLink]="d.link || '/result'" flyTilt="5">
+        <button type="button" class="fly-dest" *ngFor="let d of content.destinations.items"
+                (click)="openSearchFor({ destination: d.destinationCode || d.code || d.city, origin: d.originCode, airline: d.airlineCode })"
+                flyTilt="5">
           <img [src]="d.image" [alt]="d.city + (d.country ? ', ' + d.country : '')" loading="lazy">
           <div class="body">
             <span class="fly-badge" [ngClass]="badgeClass(d.badgeColor)" *ngIf="d.badge">{{ d.badge }}</span>
@@ -64,7 +129,7 @@
             <div class="ctry" *ngIf="d.country">{{ d.country }}</div>
             <div class="price" *ngIf="d.price">from <b>{{ d.price }}</b></div>
           </div>
-        </a>
+        </button>
       </div>
     </div>
   </section>

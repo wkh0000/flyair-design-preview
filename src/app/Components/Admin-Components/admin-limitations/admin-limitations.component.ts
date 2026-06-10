@@ -24,8 +24,8 @@ import { MatTableModule } from '@angular/material/table';  // ✅ Import this
 import { MatPaginatorModule } from '@angular/material/paginator';  // ✅ If using pagination
 import { MatSortModule } from '@angular/material/sort';  // ✅ If sorting is enabled
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilityServiceService } from '../../../Services/Admin-Services/UtilityService/utility-service.service';
 import { HttpClient } from '@angular/common/http';
@@ -37,20 +37,20 @@ export interface Limitation {
   limit_type: string;
   applies_To_Airline: string;
   applies_To_Destination: string;
-  from: string;
-  to: string;
-  price_Range_From: number;
-  price_Range_To: number;
+  from?: string;
+  to?: string;
+  price_Range_From?: number;
+  price_Range_To?: number;
 }
 
 @Component({
   selector: 'app-admin-limitations',
   standalone: true,
-  imports: [MatFormFieldModule, MatAutocompleteModule, ReactiveFormsModule, MatSelectModule, MatAccordion, MatExpansionModule,MatIconModule,MatButtonModule,MatDatepickerModule,MatInputModule,MatCheckboxModule,MatTableModule,MatPaginatorModule,MatSortModule,CommonModule],
+  imports: [MatFormFieldModule, MatAutocompleteModule, ReactiveFormsModule, MatSelectModule, MatAccordion, MatExpansionModule, MatIconModule, MatButtonModule, MatDatepickerModule, MatInputModule, MatCheckboxModule, MatTableModule, MatPaginatorModule, MatSortModule, CommonModule],
   templateUrl: './admin-limitations.component.html',
   styleUrl: './admin-limitations.component.scss'
 })
-export class AdminLimitationsComponent implements OnInit{
+export class AdminLimitationsComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'limit_type',
@@ -62,7 +62,7 @@ export class AdminLimitationsComponent implements OnInit{
     'min-value',
     'max-value',
     'actions'
-  ];  dataSource = new MatTableDataSource<Limitation>([]);
+  ]; dataSource = new MatTableDataSource<Limitation>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -85,42 +85,42 @@ export class AdminLimitationsComponent implements OnInit{
     this.filterForm = this.fb.group({
       applies_To_Airline: [''],
       applies_To_Destination: [''],
-      price_Range_From: [null],
-      price_Range_To: [null]
+      price_Range_From: [''],
+      price_Range_To: ['']
     });
     this.dataForm = this.fb.group({
       limit_type: ['', Validators.required],
       restriction_Type: ['', Validators.required],
-      applies_To_Airline: [''],
-      applies_To_Destination: [''],
-      effective_from: ['', Validators.required],
-      effective_to: ['', Validators.required],
-      price_Range_From: [null],
-      price_Range_To: [null]
+      applies_To_Airline: ['', Validators.required],
+      applies_To_Destination: ['', Validators.required],
+      effective_from: [''],
+      effective_to: [''],
+      price_Range_From: [''],
+      price_Range_To: ['']
     });
   }
 
   ngOnInit(): void {
     this.fetchLimits();
     this.http
-    .get<{ name: string; code: string }[]>(
-      '../../../assets/DATA/airports.json'
-    )
-    .subscribe((data) => {
-      this.options = data;
-      this.filteredOptions = [...this.options];
-    });
+      .get<{ name: string; code: string }[]>(
+        '../../../assets/DATA/airports.json'
+      )
+      .subscribe((data) => {
+        this.options = data;
+        this.filteredOptions = [...this.options];
+      });
     this.http
-    .get<{ name: string; code: string }[]>(
-      '../../../assets/DATA/airline.json'
-    )
-    .subscribe((data) => {
-      this.flightoptions = data;
-      this.filteredflights = [...this.flightoptions];
-    });
+      .get<{ name: string; code: string }[]>(
+        '../../../assets/DATA/airline.json'
+      )
+      .subscribe((data) => {
+        this.flightoptions = data;
+        this.filteredflights = [...this.flightoptions];
+      });
   }
 
-  fetchLimits(){
+  fetchLimits() {
     this.UtilityService.fetchLimits().subscribe({
       next: (data) => {
         this.dataSource.data = data;
@@ -149,9 +149,9 @@ export class AdminLimitationsComponent implements OnInit{
         (!filters.applies_To_Destination ||
           data.applies_To_Destination?.toLowerCase().includes(filters.applies_To_Destination.toLowerCase())) &&
 
-        (!filters.price_Range_From || (data.price_Range_From !== null && +data.price_Range_From >= +filters.price_Range_From)) &&
+        (!filters.price_Range_From || (data.price_Range_From !== null && data.price_Range_From !== undefined && +data.price_Range_From >= +filters.price_Range_From)) &&
 
-        (!filters.price_Range_To || (data.price_Range_To !== null && +data.price_Range_To <= +filters.price_Range_To))
+        (!filters.price_Range_To || (data.price_Range_To !== null && data.price_Range_To !== undefined && +data.price_Range_To <= +filters.price_Range_To))
       );
     };
 
@@ -163,23 +163,80 @@ export class AdminLimitationsComponent implements OnInit{
   }
 
 
+  /** Active edit target. When non-null, onSubmit calls updateBookingLimit
+   *  instead of addBookingLimit. */
+  editingId: number | null = null;
+
+  /** Populate the form with an existing row's values to begin editing. */
+  startEdit(row: any): void {
+    this.editingId = row.id;
+    // The BACKEND field name is `Limit_Type` (Pascal_Snake_Case in C#) but the
+    // FORM control is `limit_type` (lowercase). System.Text.Json camelCases on
+    // wire so `row.limit_Type` is what arrives. Handle both gracefully.
+    this.dataForm.patchValue({
+      limit_type: row.limit_Type ?? row.limit_type ?? '',
+      restriction_Type: row.restriction_Type ?? '',
+      applies_To_Airline: row.applies_To_Airline ?? '',
+      applies_To_Destination: row.applies_To_Destination ?? '',
+      effective_from: row.effective_From ? new Date(row.effective_From) : '',
+      effective_to:   row.effective_To   ? new Date(row.effective_To)   : '',
+      price_Range_From: row.price_Range_From ?? '',
+      price_Range_To:   row.price_Range_To   ?? '',
+    });
+    setTimeout(() => document.querySelector('app-admin-limitations form')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);
+  }
+
+  /** Exit edit mode without saving changes. */
+  cancelEdit(): void {
+    this.editingId = null;
+    this.dataForm.reset();
+  }
+
   onSubmit(): void {
     if (this.dataForm.valid) {
-      this.UtilityService.addBookingLimit(this.dataForm.value).subscribe({
-        next: (response) => {
-          alert('Booking limit added successfully.');
+      const formValue = { ...this.dataForm.value };
+
+      const optionalFields = [
+        'effective_from',
+        'effective_to',
+        'price_Range_From',
+        'price_Range_To'
+      ];
+
+      optionalFields.forEach(field => {
+        if (formValue[field] === '' || formValue[field] === undefined) {
+          formValue[field] = null;
+        }
+      });
+
+      if (formValue['effective_from'] instanceof Date) {
+        formValue['effective_from'] = formValue['effective_from'].toISOString();
+      }
+      if (formValue['effective_to'] instanceof Date) {
+        formValue['effective_to'] = formValue['effective_to'].toISOString();
+      }
+
+      const isEdit = this.editingId !== null;
+      const obs = isEdit
+        ? this.UtilityService.updateBookingLimit(this.editingId as number, formValue)
+        : this.UtilityService.addBookingLimit(formValue);
+
+      obs.subscribe({
+        next: () => {
+          alert(isEdit ? 'Booking limit updated successfully.' : 'Booking limit added successfully.');
           this.dataForm.reset();
+          this.editingId = null;
+          this.fetchLimits(); // refresh table
         },
         error: (err: any) => {
-          console.error('Error adding booking limit:', err);
-          alert('Failed to add booking limit.');
+          console.error('Error saving booking limit:', err);
+          alert(isEdit ? 'Failed to update booking limit.' : 'Failed to add booking limit.');
         }
       });
     } else {
       alert('Please fill in all required fields.');
     }
   }
-
   resetFilters() {
     this.filterForm.reset();
     this.dataSource.filter = '';
@@ -192,7 +249,7 @@ export class AdminLimitationsComponent implements OnInit{
           alert("Limit deleted successfully.");
           this.fetchLimits(); // Refresh the list after deletion
         },
-        error: (err:any) => {
+        error: (err: any) => {
           console.error("Error deleting limit:", err);
           alert("Failed to delete limit.");
         }
@@ -219,13 +276,13 @@ export class AdminLimitationsComponent implements OnInit{
     }
   }
 
-  selectOption(option: any, type: string): void {
+  selectOption(code: string, type: string): void {
     if (type === 'departure') {
-      this.selectedDeparture = option.name;
-      this.selectedDepartureCode = option.code;
+      this.selectedDepartureCode = code;
+      this.dataForm.patchValue({ applies_To_Destination: code });
     } else if (type === 'airline') {
-      this.selectedAirline = option.name;
-      this.selectedAirlineCode = option.code;
+      this.selectedAirlineCode = code;
+      this.dataForm.patchValue({ applies_To_Airline: code });
     }
   }
 }

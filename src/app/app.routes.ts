@@ -15,6 +15,7 @@ import { InstalmentsComponent } from './Pages/instalments/instalments.component'
 import { CustomerSupportComponent } from './Pages/customer-support/customer-support.component';
 import { NewsListComponent } from './Pages/news/news-list.component';
 import { NewsDetailComponent } from './Pages/news/news-detail.component';
+import { PromoDetailComponent } from './Pages/promo-detail/promo-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -24,6 +25,8 @@ export const routes: Routes = [
   { path: 'news', component: NewsListComponent },
   { path: 'news/category/:slug', component: NewsListComponent },
   { path: 'news/:slug', component: NewsDetailComponent },
+  // Public promotion detail page — Open Graph tags drive the FB share preview.
+  { path: 'promotions/:slug', component: PromoDetailComponent },
   { path: 'result', component: ResultPageComponent },
   { path: 'prebooking', component: PreBookingComponent},
   { path: 'privacy', component: LegalComponent, data: { page: 'privacy' } },

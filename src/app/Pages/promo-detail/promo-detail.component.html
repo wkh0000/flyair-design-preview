@@ -1,0 +1,85 @@
+<div class="fly" *ngIf="!loading; else loadingTpl">
+
+  <ng-container *ngIf="!notFound && promo; else notFoundTpl">
+    <!-- ===== Subhero (matches the legal-shell visual format) ===== -->
+    <section class="subhero">
+      <div class="orb"></div>
+      <div class="fly-container">
+        <div class="fly-eyebrow" style="color:#9fd0ff">SPECIAL OFFER</div>
+        <h1>{{ promo.title || promo.promotion_Name }}</h1>
+        <p class="fly-lead" *ngIf="promo.subtitle">{{ promo.subtitle }}</p>
+        <div class="badges">
+          <span class="badge red" *ngIf="discountLine()">{{ discountLine() }}</span>
+          <span class="badge" *ngIf="promo.applies_To_Airline">{{ promo.applies_To_Airline }}</span>
+          <span class="badge" *ngIf="promo.applies_To_Destination">{{ promo.applies_To_Destination }}</span>
+        </div>
+        <div class="cta-row">
+          <button type="button" class="fly-btn fly-btn-primary" (click)="findFlights()">
+            Find flights →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <figure class="hero-image" *ngIf="heroImage">
+      <div class="hero-image-frame">
+        <img [src]="heroImage" [alt]="promo.title || promo.promotion_Name" loading="eager" />
+      </div>
+    </figure>
+
+    <section class="fly-section">
+      <div class="fly-container body">
+        <article class="promo-body" [innerHTML]="bodyHtml" *ngIf="bodyHtml; else noBody"></article>
+        <ng-template #noBody>
+          <p class="promo-body-empty">
+            More details on this offer are coming soon. Click <strong>Find flights</strong> above to start searching.
+          </p>
+        </ng-template>
+
+        <!-- Inline date + scope summary for the article-style page -->
+        <div class="promo-meta">
+          <div *ngIf="promo.effective_From || promo.effective_To">
+            <strong>Valid:</strong>
+            <ng-container *ngIf="promo.effective_From">from {{ promo.effective_From | date:'mediumDate' }}</ng-container>
+            <ng-container *ngIf="promo.effective_To"> &nbsp;to {{ promo.effective_To | date:'mediumDate' }}</ng-container>
+          </div>
+          <div *ngIf="promo.price_Range_From || promo.price_Range_To">
+            <strong>Fare range:</strong>
+            <ng-container *ngIf="promo.price_Range_From">from ${{ promo.price_Range_From }}</ng-container>
+            <ng-container *ngIf="promo.price_Range_To"> &nbsp;up to ${{ promo.price_Range_To }}</ng-container>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:32px">
+          <button type="button" class="fly-btn fly-btn-primary" (click)="findFlights()">
+            Find flights →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer widgets: related promotions + news + partners ===== -->
+    <app-page-footer-widgets
+      [destinationCode]="destinationCode"
+      [excludePromoId]="promo.id">
+    </app-page-footer-widgets>
+  </ng-container>
+
+  <ng-template #notFoundTpl>
+    <section class="subhero" style="min-height:40vh">
+      <div class="fly-container">
+        <div class="fly-eyebrow" style="color:#9fd0ff">SORRY</div>
+        <h1>This offer is no longer available</h1>
+        <p class="fly-lead">It may have expired or been removed. <a routerLink="/">Browse our current deals →</a></p>
+      </div>
+    </section>
+  </ng-template>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="fly">
+    <section class="subhero" style="min-height:30vh">
+      <div class="fly-container"><h1 style="opacity:.6">Loading offer…</h1></div>
+    </section>
+  </div>
+</ng-template>

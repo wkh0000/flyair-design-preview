@@ -318,3 +318,85 @@
 .fly-cta-link:hover { color: #fff; }
 .fly-cta-divider { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 90px; z-index: 1; display: block; }
 @media (max-width: 700px) { .fly-cta-band { padding-bottom: 72px; } .fly-cta-copy { max-width: 100%; } }
+/* Promo + dest cards: <button> reset so they match the original <a> look. */
+.fly-promos-section { padding: clamp(48px, 6vw, 90px) 0; background: linear-gradient(180deg, #fff 0%, #f4f9fd 100%); }
+.fly-dest, .fly-promo {
+  appearance: none; border: 0; padding: 0; background: transparent; cursor: pointer;
+  font: inherit; color: inherit; text-align: left; width: 100%;
+}
+.fly-promo {
+  position: relative; display: block; border-radius: 18px; overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(12,35,75,0.10);
+  /* Premium spring-ish ease on lift + shadow. */
+  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+/* Media wrapper clips the zoom + houses the sheen sweep. */
+.fly-promo-media { position: relative; display: block; overflow: hidden; }
+.fly-promo-media img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+/* Diagonal light sweep that glides across the image on hover. */
+.fly-promo-shine {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.38) 48%, transparent 64%);
+  transform: translateX(-120%);
+  transition: transform .75s cubic-bezier(.22,1,.36,1);
+}
+.fly-promo .body { padding: 18px 18px 20px; position: relative; }
+.fly-promo .city { font-weight: 800; font-size: 1.1rem; margin-top: 4px; color: var(--fly-ink); transition: color .3s ease; }
+.fly-promo .ctry { font-size: .85rem; opacity: .68; margin-top: 4px; line-height: 1.4; }
+.fly-promo .fly-badge { font-size: .72rem; font-weight: 800; letter-spacing: .04em; padding: 6px 10px; border-radius: 999px; transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.fly-promo .fly-badge-red { background: var(--fly-red, #ed174c); color: #fff; box-shadow: 0 6px 16px rgba(237,23,76,.32); }
+.fly-promo:focus-visible { outline: 3px solid var(--fly-blue, #0073bd); outline-offset: 3px; }
+
+/* ---- Premium hover state ---- */
+.fly-promo:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 28px 56px rgba(12,35,75,0.22);
+}
+.fly-promo:hover .fly-promo-media img { transform: scale(1.08); }
+.fly-promo:hover .fly-promo-shine { transform: translateX(120%); }
+.fly-promo:hover .city { color: var(--fly-blue, #0073bd); }
+.fly-promo:hover .fly-badge-red { transform: translateY(-1px) scale(1.04); }
+
+/* ≤4 promos: simple responsive grid, no movement. */
+.fly-promos-grid {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 920px) { .fly-promos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .fly-promos-grid { grid-template-columns: 1fr; } }
+
+/* >4 promos: transform-slide carousel.
+   - viewport clips horizontally; vertical padding leaves room for the hover
+     lift + shadow so they aren't cropped.
+   - track is a flex row translated by the component; the transform transition
+     is what produces the smooth card-by-card glide (auto + manual). */
+.promo-viewport {
+  overflow: hidden;
+  padding: 14px 2px 34px;
+  margin: -14px -2px -20px;   /* cancel the padding visually so layout spacing is unchanged */
+}
+.promo-track {
+  display: flex; gap: 18px;
+  transition: transform .65s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+.promo-track .fly-promo {
+  flex: 0 0 calc(25% - 13.5px);   /* 4 across with 18px gaps */
+}
+@media (max-width: 920px) { .promo-track .fly-promo { flex-basis: calc(50% - 9px); } }
+@media (max-width: 560px) { .promo-track .fly-promo { flex-basis: 84%; } }
+.promo-nav { display: flex; gap: 8px; }
+.promo-nav-btn {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--fly-line, #d7e0ea);
+  background: #fff; font-size: 1.15rem; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: .2s;
+}
+.promo-nav-btn:hover { border-color: var(--fly-blue, #0073bd); color: var(--fly-blue, #0073bd); transform: translateY(-1px); }

@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FlightSearchComponent } from '../../Components/flight-search/flight-search.component';
 import { FlyairSkyComponent } from '../../Components/flyair-sky/flyair-sky.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/Auth/auth.service';
 import { UtilityServiceService } from '../../Services/Admin-Services/UtilityService/utility-service.service';
@@ -17,9 +17,108 @@ import { HomeService, HomeContent, DEFAULT_HOME } from '../../Services/Home/home
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   cms: any[] = [];
   content: HomeContent = DEFAULT_HOME;
+  /** Promotions with an uploaded image render as "Special offers" cards. */
+  promoCards: any[] = [];
+  @ViewChild('promoTrack') promoTrack?: ElementRef<HTMLDivElement>;
+
+  /** The carousel kicks in (auto-advance + infinite loop) only when there are
+   *  enough cards to overflow the row. Below this, a static grid is enough. */
+  get isPromoCarousel(): boolean { return this.promoCards.length > 4; }
+
+  /** Originals followed by a full duplicate "clone" set. The track slides
+   *  through the originals; when it lands on the identical clones we snap the
+   *  index back to the originals with the transition disabled — invisible,
+   *  giving a seamless INFINITE loop. Grid mode (≤4) renders originals only. */
+  get loopedPromos(): any[] {
+    return this.isPromoCarousel ? [...this.promoCards, ...this.promoCards] : this.promoCards;
+  }
+
+  // ---- Transform-based carousel state ----
+  /** Logical card position (0 .. promoCards.length). The track is translated
+   *  by -promoIndex * cardStep. */
+  promoIndex = 0;
+  /** Measured px per card (card width + flex gap) — kept in sync with the
+   *  rendered layout so the slide lands exactly one card over at any width. */
+  cardStep = 300;
+  /** Toggles the CSS transform transition off for the one-frame seamless
+   *  wrap reset, then back on. */
+  trackTransition = true;
+  private promoTimer: any = null;
+
+  @HostListener('window:resize')
+  onWindowResize(): void { this.measureCardStep(); }
+
+  /** Measure one card's width + the flex gap. Called after the promos render
+   *  and on resize so the translate math always matches the live layout. */
+  measureCardStep(): void {
+    const track = this.promoTrack?.nativeElement;
+    const card = track?.querySelector('.fly-promo') as HTMLElement | null;
+    if (!track || !card) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap || '18') || 18;
+    const w = card.getBoundingClientRect().width;
+    if (w > 10) this.cardStep = w + gap;
+  }
+
+  /** Advance one card. The slide itself is a GPU-composited CSS transform
+   *  transition (see .promo-track in SCSS) — smooth, consistent, and it runs
+   *  even under reduce-motion (unlike native smooth-scroll). */
+  advancePromo(dir: 1 | -1 = 1): void {
+    if (!this.isPromoCarousel) return;
+    if (this.cardStep < 10) this.measureCardStep();
+    this.trackTransition = true;
+    this.promoIndex += dir;
+  }
+
+  /** Fires when a slide finishes. If we've crossed onto the cloned tail (or
+   *  before the head), snap back by one full set with the transition off —
+   *  the clones are pixel-identical so the reset is invisible. */
+  onTrackSettled(ev: TransitionEvent): void {
+    if (ev.propertyName !== 'transform') return;
+    const len = this.promoCards.length;
+    if (this.promoIndex >= len) this.wrapTo(this.promoIndex - len);
+    else if (this.promoIndex < 0) this.wrapTo(this.promoIndex + len);
+  }
+  private wrapTo(idx: number): void {
+    this.trackTransition = false;          // jump without animating
+    this.promoIndex = idx;
+    // Re-enable the transition once the jumped position has painted. setTimeout
+    // (not rAF) so it still fires in a backgrounded tab.
+    setTimeout(() => { this.trackTransition = true; }, 40);
+  }
+
+  /** Manual nav arrows — advance + restart the 5s countdown so a manual nudge
+   *  isn't immediately overridden by the auto-tick. */
+  scrollPromos(dir: 1 | -1): void {
+    this.advancePromo(dir);
+    this.restartPromoAuto();
+  }
+
+  private restartPromoAuto(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.stopPromoAuto();
+    if (!this.isPromoCarousel) return;
+    this.promoTimer = window.setInterval(() => this.advancePromo(1), 5000);
+  }
+  private stopPromoAuto(): void {
+    if (this.promoTimer) { clearInterval(this.promoTimer); this.promoTimer = null; }
+  }
+  /** Pause while the pointer is over the row, resume on leave. */
+  pausePromoAuto(): void { this.stopPromoAuto(); }
+  resumePromoAuto(): void { this.restartPromoAuto(); }
+  /** Fallback defaults if the admin hasn't set content.searchDefaults yet. */
+  private readonly DEFAULT_SEARCH = { advanceDays: 7, travellers: 1 };
+  /** Live, admin-configurable defaults — reads `content.searchDefaults` set in
+   *  the Front Page editor; falls back to DEFAULT_SEARCH if the field is
+   *  missing or contains a bad value. */
+  get searchDefaults() {
+    const sd: any = (this.content as any)?.searchDefaults || {};
+    const advanceDays = Number.isFinite(+sd.advanceDays) && +sd.advanceDays > 0 ? +sd.advanceDays : this.DEFAULT_SEARCH.advanceDays;
+    const travellers  = Number.isFinite(+sd.travellers)  && +sd.travellers  > 0 ? +sd.travellers  : this.DEFAULT_SEARCH.travellers;
+    return { advanceDays, travellers };
+  }
 
   // partner marquees (duplicated for a seamless loop). logo:'' falls back to the styled name.
   airlines = [
@@ -49,6 +148,7 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private adminService: UtilityServiceService,
     private home: HomeService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -62,6 +162,66 @@ export class HomeComponent implements OnInit {
     if (!isPlatformBrowser(this.platformId)) return;
     this.authService.requestAccessToken().subscribe({ next: () => {}, error: (err) => console.error('Error fetching access token:', err) });
     this.adminService.fetchCMS().subscribe({ next: (data) => (this.cms = data), error: (err) => console.error('Error fetching CMS:', err) });
+    // Load Special Offers — only promotions that carry a marketing image
+    // make it onto the home page. Promotions without an image stay backend-
+    // only and silently apply in the pricing engine.
+    this.adminService.fetchPromotions().subscribe({
+      next: (data: any[]) => {
+        // Render only complete cards: image + slug. Promotions without a
+        // slug have no detail page to link to, so they'd render a broken
+        // "no longer available" card if we let them through.
+        this.promoCards = (data || []).filter(p => !!p.image_Url && !!p.slug);
+        // Once cards exist + the view has painted: measure card width, then
+        // kick off the auto-advance.
+        setTimeout(() => { this.measureCardStep(); this.restartPromoAuto(); }, 350);
+      },
+      error: () => { /* silently degrade — section just won't render */ },
+    });
+  }
+
+  ngOnDestroy(): void { this.stopPromoAuto(); }
+
+  /** Build a customer-facing badge for the offer card (e.g. "10% off" / "Save $50"). */
+  promoBadge(p: any): string {
+    if (!p) return '';
+    if (p.promotion_Type === 'Percentage') return `${p.amount}% off`;
+    if (p.promotion_Type === 'Fixed')      return `Save $${p.amount}`;
+    return '';
+  }
+
+  /** Extract a short airport-code-or-empty from a CMS string like
+   *  "Chennai Intl Arpt, Chennai, India - MAA" → "MAA". */
+  private toCode(v?: string | null): string {
+    if (!v) return '';
+    const m = v.match(/-\s*([A-Z0-9]{2,4})\s*$/);
+    return m ? m[1] : v.trim();
+  }
+
+  /** YYYY-MM-DD that is `advanceDays` ahead of today. */
+  private futureDate(advanceDays: number): string {
+    const d = new Date();
+    d.setDate(d.getDate() + advanceDays);
+    return d.toISOString().slice(0, 10);
+  }
+
+  /** Click handler for both Destination cards AND Promotion cards.
+   *  Navigates to home with prefill query params; the flight-search component
+   *  reads them and populates the form so the user can review before searching. */
+  openSearchFor(target: { origin?: string | null, destination?: string | null, airline?: string | null, advanceDays?: number, travellers?: number }): void {
+    const params: any = {
+      origin: this.toCode(target.origin) || undefined,
+      dest:   this.toCode(target.destination) || undefined,
+      date:   this.futureDate(target.advanceDays ?? this.searchDefaults.advanceDays),
+      pax:    target.travellers ?? this.searchDefaults.travellers,
+    };
+    if (target.airline) params.airline = this.toCode(target.airline);
+    this.router.navigate(['/'], { queryParams: params });
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        const search = document.querySelector('app-flight-search') as HTMLElement | null;
+        if (search) window.scrollTo({ top: search.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+      }, 60);
+    }
   }
 
   /** Smooth-scroll from the hero down to the first content section. */

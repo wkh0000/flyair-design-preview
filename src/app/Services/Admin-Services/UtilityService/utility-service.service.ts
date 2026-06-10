@@ -22,6 +22,9 @@ export class UtilityServiceService {
   addBookingLimit(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}AdminUtility/limits`, data);
   }
+  updateBookingLimit(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}AdminUtility/limits/${id}`, data);
+  }
 
   fetchPromotions(): Observable<any> {
     const url = `${this.apiUrl}AdminUtility/promotions`;
@@ -33,6 +36,9 @@ export class UtilityServiceService {
   addPromotion(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}AdminUtility/promotions`, data);
   }
+  updatePromotion(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}AdminUtility/promotions/${id}`, data);
+  }
   fetchMarkups(): Observable<any> {
     const url = `${this.apiUrl}AdminUtility/markup`;
     return this.http.get(url);
@@ -42,6 +48,9 @@ export class UtilityServiceService {
   }
   addMarkups(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}AdminUtility/markup`, data);
+  }
+  updateMarkup(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}AdminUtility/markup/${id}`, data);
   }
   fetchCustomer(): Observable<any> {
     const url = `${this.apiUrl}AdminUtility/customer`;

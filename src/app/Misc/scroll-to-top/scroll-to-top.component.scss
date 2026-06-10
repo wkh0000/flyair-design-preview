@@ -2,8 +2,10 @@
 
 .scroll-top-btn {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  /* Stacked clearly above the WhatsApp button (52×52 at right:18 / bottom:18).
+     18 + 52 + 18 gap = 88 minimum; using 100 gives a comfortable separation. */
+  bottom: 100px;
+  right: 22px;
 
   width: 48px;
   height: 48px;
@@ -66,11 +68,12 @@
   }
 }
 
-/* Mobile positioning */
+/* Mobile positioning — still stacked above the WhatsApp button
+   (mobile WA is 48×48 at right:14 / bottom:14 → top edge at ~62 + 10 gap). */
 @media (max-width: 768px) {
   .scroll-top-btn {
-    bottom: 20px;
-    right: 20px;
+    bottom: 72px;
+    right: 18px;
     width: 44px;
     height: 44px;
   }

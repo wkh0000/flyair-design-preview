@@ -27,6 +27,30 @@
     <button class="fp-btn ghost sm" (click)="addBadge()">+ Add badge</button>
   </section>
 
+  <!-- SEARCH DEFAULTS — applied when a destination/promotion card is clicked
+       on the home page. The flight search form gets prefilled with a date
+       N days ahead and the configured number of travellers. -->
+  <section class="fp-card" *ngIf="content.searchDefaults">
+    <h2>Card-click search defaults</h2>
+    <p class="fp-help" style="margin:-6px 0 14px;font-size:.9rem;opacity:.7">
+      When a visitor clicks one of the Destination or Special Offer cards, the
+      flight search form is prefilled with these values so they can review
+      before searching.
+    </p>
+    <div class="fp-grid">
+      <label class="fp-field">
+        <span>Departure date — days from today</span>
+        <input type="number" min="1" max="365" step="1"
+               [(ngModel)]="content.searchDefaults.advanceDays" name="sdAdv">
+      </label>
+      <label class="fp-field">
+        <span>Travellers (adults)</span>
+        <input type="number" min="1" max="9" step="1"
+               [(ngModel)]="content.searchDefaults.travellers" name="sdTrav">
+      </label>
+    </div>
+  </section>
+
   <!-- STATS -->
   <section class="fp-card">
     <h2>Stats band</h2>

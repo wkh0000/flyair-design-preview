@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PageService } from '../../Services/Page/page.service';
+import { PageFooterWidgetsComponent } from '../../Components/page-footer-widgets/page-footer-widgets.component';
 
 export interface Section { h: string; p: string; }
 export interface Author { name: string; role: string; }
@@ -22,7 +23,7 @@ export interface InfoDoc {
 @Component({
   selector: 'app-legal',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageFooterWidgetsComponent],
   templateUrl: './legal.component.html',
   styleUrl: './legal.component.scss',
 })

@@ -89,8 +89,13 @@
                 <input matInput type="number" formControlName="price_Range_To">
               </mat-form-field>
 
-              <div fxLayout="row" fxLayoutAlign="start center">
-                <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">Submit</button>
+              <div fxLayout="row" fxLayoutAlign="start center" style="gap:10px">
+                <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">
+                  {{ editingId !== null ? 'Update markup' : 'Add markup' }}
+                </button>
+                <button *ngIf="editingId !== null" mat-stroked-button type="button" (click)="cancelEdit()">
+                  Cancel edit
+                </button>
               </div>
             </div>
           </form>
@@ -127,7 +132,14 @@
         <!-- Value Column -->
         <ng-container matColumnDef="value">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Value</th>
-          <td mat-cell *matCellDef="let row">{{ row.value | currency }}</td>
+          <td mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.markup_Type === 'Percentage'; else fixedVal">
+              {{ row.value }}%
+            </ng-container>
+            <ng-template #fixedVal>
+              {{ row.value | currency }}
+            </ng-template>
+          </td>
         </ng-container>
 
         <!-- Apply To Column -->
@@ -176,7 +188,10 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button color="warn" aria-label="Delete" (click)="DeleteLimit(row.id)">
+            <button mat-icon-button color="primary" aria-label="Edit" (click)="startEdit(row)" title="Edit">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button mat-icon-button color="warn" aria-label="Delete" (click)="DeleteLimit(row.id)" title="Delete">
               <span class="material-symbols-outlined"> delete </span>
             </button>
           </td>

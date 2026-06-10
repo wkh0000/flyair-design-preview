@@ -6,8 +6,29 @@ import { environment } from '../../../environments/environment';
 /** Editable front-page content shape (mirrors the admin editor + backend JSON document). */
 export interface HomeStat { icon?: string; value: string; label: string; }
 export interface HomeFeature { icon: string; color: string; title: string; text: string; }
-export interface HomeDestination { image: string; city: string; country?: string; badge?: string; badgeColor?: string; price?: string; link?: string; }
+export interface HomeDestination {
+  image: string; city: string; country?: string;
+  badge?: string; badgeColor?: string; price?: string; link?: string;
+  // Optional admin-configurable prefill targets for the on-click flight search:
+  //   - originCode: IATA code we depart from when admin wants to override the
+  //     consumer-side default (otherwise the home page picks its own default)
+  //   - destinationCode: IATA code we land at (falls back to `code` then `city`)
+  //   - airlineCode: optionally narrow the search to one carrier
+  //   - code: legacy alias some content has used for destination code
+  originCode?: string;
+  destinationCode?: string;
+  airlineCode?: string;
+  code?: string;
+}
 export interface HomeOffer { icon: string; color: string; title: string; text: string; }
+
+/** Global defaults that the home page uses when a destination/promotion card
+ *  is clicked and we navigate to the search form. Optional in the API contract
+ *  so older content payloads (without the field) continue to work. */
+export interface HomeSearchDefaults {
+  advanceDays: number;   // how many days from today to prefill as the departure date
+  travellers: number;    // how many adult passengers to prefill
+}
 
 export interface HomeContent {
   hero: {
@@ -23,6 +44,7 @@ export interface HomeContent {
     eyebrow: string; title: string; lead: string;
     primaryLabel: string; primaryLink: string; secondaryLabel: string; secondaryLink: string;
   };
+  searchDefaults?: HomeSearchDefaults;
 }
 
 /** Baked-in default so the home + admin render fully before/without the API. */
@@ -63,6 +85,7 @@ export const DEFAULT_HOME: HomeContent = {
     lead: 'Search smarter, book in seconds, and travel with the calm of knowing every detail is handled.',
     primaryLabel: 'Get in touch', primaryLink: '/contact', secondaryLabel: 'Log in', secondaryLink: '/admin-login',
   },
+  searchDefaults: { advanceDays: 7, travellers: 1 },
 };
 
 @Injectable({ providedIn: 'root' })

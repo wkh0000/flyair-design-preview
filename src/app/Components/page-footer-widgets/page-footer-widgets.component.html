@@ -1,0 +1,74 @@
+<div class="pfw">
+  <!-- ===== Promotions ===== -->
+  <section class="pfw-promos" *ngIf="showPromos && promotions.length">
+    <div class="fly-container">
+      <div class="pfw-head">
+        <div>
+          <div class="fly-eyebrow line">Special offers</div>
+          <h2>Deals worth the detour</h2>
+        </div>
+        <div class="pfw-nav" *ngIf="isPromoCarousel">
+          <button type="button" class="pfw-nav-btn" (click)="scrollPromos(-1)" aria-label="Scroll left">←</button>
+          <button type="button" class="pfw-nav-btn" (click)="scrollPromos(1)" aria-label="Scroll right">→</button>
+        </div>
+      </div>
+
+      <div #promoTrack class="pfw-promos-track" [class.is-carousel]="isPromoCarousel">
+        <a class="pfw-promo" *ngFor="let p of promotions"
+           [routerLink]="['/promotions', p.slug]"
+           [attr.aria-label]="(p.title || p.promotion_Name) + ' offer'">
+          <img [src]="p.image_Url" [alt]="p.title || p.promotion_Name" loading="lazy" />
+          <div class="body">
+            <span class="badge">{{ promoBadge(p) }}</span>
+            <div class="ttl">{{ p.title || p.promotion_Name }}</div>
+            <div class="sub" *ngIf="p.subtitle">{{ p.subtitle }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Related / recent news ===== -->
+  <section class="pfw-news" *ngIf="showNews && news.length">
+    <div class="fly-container">
+      <div class="pfw-head">
+        <div>
+          <div class="fly-eyebrow line">{{ destinationCode || newsTag ? 'Related news' : 'From the Newsroom' }}</div>
+          <h2>What we're reading right now</h2>
+        </div>
+        <a class="fly-btn fly-btn-outline" routerLink="/news">Browse all →</a>
+      </div>
+      <div class="pfw-news-grid">
+        <a class="pfw-news-card" *ngFor="let n of news"
+           [routerLink]="['/news', n.slug]">
+          <img *ngIf="n.heroImageUrl" [src]="n.heroImageUrl" [alt]="n.heroImageAlt || n.title" loading="lazy" />
+          <div class="body">
+            <span class="cat" *ngIf="n.categoryName">{{ n.categoryName }}</span>
+            <h3>{{ n.title }}</h3>
+            <p *ngIf="n.dek">{{ n.dek }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Partner marquees ===== -->
+  <section class="pfw-partners fly-partners" *ngIf="showPartners">
+    <div class="fly-container">
+      <div class="lbl">Travel the world with our airline partners</div>
+      <div class="fly-marquee"><div class="fly-track">
+        <div class="fly-lcell" *ngFor="let a of airlinesLoop">
+          <img *ngIf="a.logo" [src]="a.logo" [alt]="a.name" class="lg" loading="lazy" />
+          <span *ngIf="!a.logo" class="txt">{{a.name}}</span>
+        </div>
+      </div></div>
+      <div class="lbl" style="margin-top:54px">A wide range of secure payment options</div>
+      <div class="fly-marquee rev" style="--dur:36s"><div class="fly-track">
+        <div class="fly-lcell pay" *ngFor="let p of paysLoop">
+          <img *ngIf="p.logo" [src]="p.logo" [alt]="p.name" class="lg" loading="lazy" />
+          <span *ngIf="!p.logo" class="txt">{{p.name}}</span>
+        </div>
+      </div></div>
+    </div>
+  </section>
+</div>

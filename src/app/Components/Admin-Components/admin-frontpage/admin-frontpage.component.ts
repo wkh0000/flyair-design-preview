@@ -54,6 +54,13 @@ export class AdminFrontpageComponent implements OnInit {
     c.offers = c.offers || ({ eyebrow: '', title: '', items: [] } as any);
     c.offers.items = c.offers.items || [];
     c.cta = c.cta || ({ eyebrow: '', title: '', lead: '', primaryLabel: '', primaryLink: '', secondaryLabel: '', secondaryLink: '' } as any);
+    // Global defaults used when destination/promotion cards on the home page
+    // are clicked. Coerce missing/empty to sensible falls (7-day advance, 1 traveller).
+    const sd: any = c.searchDefaults || {};
+    c.searchDefaults = {
+      advanceDays: Number.isFinite(+sd.advanceDays) && +sd.advanceDays > 0 ? +sd.advanceDays : 7,
+      travellers:  Number.isFinite(+sd.travellers)  && +sd.travellers  > 0 ? +sd.travellers  : 1,
+    };
     return c;
   }
 

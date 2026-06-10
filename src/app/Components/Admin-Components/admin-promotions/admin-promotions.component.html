@@ -13,90 +13,16 @@
             <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
               <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Name</mat-label>
-                <input matInput formControlName="promo_name" type="text">
+                <input matInput formControlName="promotion_Name" type="text">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                 <mat-label>Type</mat-label>
-                <mat-select formControlName="promo_type">
+                <mat-select formControlName="promotion_Type">
                   <mat-option *ngFor="let type of promotionTypes" [value]="type">
                     {{ type }}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
-
-              <mat-form-field
-              appearance="outline">
-                <mat-label>
-                  Apply To Destination
-                </mat-label>
-                <input
-                  type="text"
-                  matInput
-                  [matAutocomplete]="departureAuto"
-                  (input)="filterOptions($event, 'departure')"
-                  style="font-size: 14px"
-                  [formControlName]="'applies_To_Destination'"
-                />
-                <mat-autocomplete #departureAuto="matAutocomplete">
-                  <mat-option
-                    *ngFor="let option of filteredDepartureOptions"
-                    [value]="option.name + ' - ' + option.code"
-                    (onSelectionChange)="selectOption(option.code, 'departure')"
-                    style="font-size: 14px;"
-                  >
-                    {{ option.name }} - {{ option.code }}
-                  </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-
-              <mat-form-field
-                appearance="outline">
-                  <mat-label>
-                    Apply To Airline
-                  </mat-label>
-                  <input
-                    type="text"
-                    matInput
-                    [matAutocomplete]="airlineAuto"
-                    (input)="filterOptions($event, 'airline')"
-                    style="font-size: 14px"
-                    [formControlName]="'applies_To_Airline'"
-                  />
-                  <mat-autocomplete #airlineAuto="matAutocomplete">
-                    <mat-option
-                      *ngFor="let option of filteredAirlineOptions"
-                      [value]="option.name + ' - ' + option.code"
-                      (onSelectionChange)="selectOption(option.code, 'airline')"
-                      style="font-size: 14px;"
-                    >
-                      {{ option.name }} - {{ option.code }}
-                    </mat-option>
-                  </mat-autocomplete>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Minimum Value</mat-label>
-                <input matInput formControlName="price_Range_From" type="number">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Maximum Value</mat-label>
-                <input matInput formControlName="price_Range_To" type="number">
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Start Date</mat-label>
-                <input matInput [matDatepicker]="startPicker" formControlName="effective_from">
-                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                <mat-datepicker #startPicker></mat-datepicker>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline" class="full-width">
-                <mat-label>End Date</mat-label>
-                <input matInput [matDatepicker]="endPicker" formControlName="effective_to">
-                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-                <mat-datepicker #endPicker></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="full-width">
@@ -104,7 +30,148 @@
                 <input matInput formControlName="amount" type="number">
               </mat-form-field>
 
-              <button mat-raised-button color="primary" type="submit">Submit</button>
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  Apply To Destination
+                </mat-label>
+                <input type="text" matInput [matAutocomplete]="departureAuto"
+                  (input)="filterOptions($event, 'departure')" style="font-size: 14px"
+                  [formControlName]="'applies_To_Destination'" />
+                <mat-autocomplete #departureAuto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredDepartureOptions"
+                    [value]="option.name + ' - ' + option.code"
+                    (onSelectionChange)="selectOption(option.code, 'departure')" style="font-size: 14px;">
+                    {{ option.name }} - {{ option.code }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  Apply To Airline
+                </mat-label>
+                <input type="text" matInput [matAutocomplete]="airlineAuto" (input)="filterOptions($event, 'airline')"
+                  style="font-size: 14px" [formControlName]="'applies_To_Airline'" />
+                <mat-autocomplete #airlineAuto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredAirlineOptions" [value]="option.name + ' - ' + option.code"
+                    (onSelectionChange)="selectOption(option.code, 'airline')" style="font-size: 14px;">
+                    {{ option.name }} - {{ option.code }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Price Range From(optional)</mat-label>
+                <input matInput type="number" formControlName="price_Range_From">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Price Range To(optional)</mat-label>
+                <input matInput type="number" formControlName="price_Range_To">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apply From(optional)</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="effective_From">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apply To(optional)</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="effective_To">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+
+
+              <!-- Marketing card fields (optional). Only promotions with an
+                   uploaded image render as a card on the consumer home page. -->
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Card Title (customer-facing)</mat-label>
+                <input matInput formControlName="title" type="text" placeholder="e.g. Monsoon Dubai Sale"
+                       (input)="onTitleChange()">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Card Subtitle / Blurb</mat-label>
+                <input matInput formControlName="subtitle" type="text" placeholder="e.g. 8% off all UAE flights this season">
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>URL slug</mat-label>
+                <input matInput formControlName="slug" type="text" placeholder="auto-fills from title">
+                <mat-hint>Detail page will live at /promotions/{{ dataForm.value.slug || '...' }}</mat-hint>
+              </mat-form-field>
+
+              <!-- Rich-text editor for the long-form promotion page. Uses a
+                   simple contenteditable so we don't pull a 200KB WYSIWYG dep.
+                   Toolbar buttons map to document.execCommand. -->
+              <div class="promo-detail-editor-block">
+                <label class="promo-detail-editor-label">Detail page content (rich)</label>
+                <div class="promo-detail-editor-toolbar" role="toolbar" aria-label="Formatting">
+                  <button type="button" (click)="execEditor('bold')"   title="Bold"><b>B</b></button>
+                  <button type="button" (click)="execEditor('italic')" title="Italic"><i>I</i></button>
+                  <button type="button" (click)="execEditor('underline')" title="Underline"><u>U</u></button>
+                  <span class="sep"></span>
+                  <button type="button" (click)="execEditor('formatBlock','h2')"  title="Heading">H2</button>
+                  <button type="button" (click)="execEditor('formatBlock','h3')"  title="Sub-heading">H3</button>
+                  <button type="button" (click)="execEditor('formatBlock','p')"   title="Paragraph">¶</button>
+                  <span class="sep"></span>
+                  <button type="button" (click)="execEditor('insertUnorderedList')" title="Bulleted list">• List</button>
+                  <button type="button" (click)="execEditor('insertOrderedList')"   title="Numbered list">1. List</button>
+                  <span class="sep"></span>
+                  <button type="button" (click)="insertLink()" title="Insert link">🔗</button>
+                  <button type="button" (click)="execEditor('removeFormat')" title="Clear formatting">Clear</button>
+                </div>
+                <div class="promo-detail-editor"
+                     contenteditable="true"
+                     [innerHTML]="dataForm.value.detail_Content || ''"
+                     (input)="onEditorInput($event)"
+                     data-placeholder="Write the long-form story that customers see on the detail page…"
+                     ></div>
+                <p class="promo-detail-editor-hint">Tip: keep it skimmable — short paragraphs, a sub-heading or two, and a quick bulleted list of what's included.</p>
+              </div>
+              <!-- Two image fields:
+                   1. Card image — appears in the front-page grid + widgets.
+                      ~800×600 (4:3) renders cleanly without scaling artefacts.
+                   2. Detail page banner — wide hero on the /promotions/:slug
+                      page. ~1920×640 (3:1) fills the editorial layout.
+                   Both are optional. When the detail banner is missing, the
+                   detail page falls back to the card image. -->
+              <div class="promo-image-upload">
+                <label class="promo-image-upload__label">
+                  Card image (front-page grid · recommended 800×600, 4:3)
+                </label>
+                <input type="file" accept="image/*" (change)="onImageSelected($event)" [disabled]="uploading" />
+                <span *ngIf="uploading" class="promo-image-upload__status">Uploading…</span>
+                <div *ngIf="imagePreview || dataForm.value.image_Url" class="promo-image-upload__preview">
+                  <img [src]="imagePreview || dataForm.value.image_Url" alt="Card preview" />
+                  <button type="button" mat-stroked-button color="warn" (click)="removeImage()">Remove image</button>
+                </div>
+              </div>
+
+              <div class="promo-image-upload">
+                <label class="promo-image-upload__label">
+                  Detail page banner (wide hero · recommended 1920×640, 3:1)
+                </label>
+                <input type="file" accept="image/*" (change)="onDetailImageSelected($event)" [disabled]="uploadingDetail" />
+                <span *ngIf="uploadingDetail" class="promo-image-upload__status">Uploading…</span>
+                <div *ngIf="detailImagePreview || dataForm.value.detail_Image_Url" class="promo-image-upload__preview promo-image-upload__preview--wide">
+                  <img [src]="detailImagePreview || dataForm.value.detail_Image_Url" alt="Detail banner preview" />
+                  <button type="button" mat-stroked-button color="warn" (click)="removeDetailImage()">Remove banner</button>
+                </div>
+                <p class="promo-image-upload__hint">
+                  Tip: crop to 3:1 before uploading (1920×640 or 1600×533). If left empty, the card image above is used on the detail page too.
+                </p>
+              </div>
+
+              <div style="display:flex;gap:10px;margin-top:10px">
+                <button mat-raised-button color="primary" type="submit">
+                  {{ editingId !== null ? 'Update promotion' : 'Add promotion' }}
+                </button>
+                <button *ngIf="editingId !== null" mat-stroked-button type="button" (click)="cancelEdit()">
+                  Cancel edit
+                </button>
+              </div>
             </form>
           </mat-expansion-panel>
         </mat-accordion>
@@ -113,12 +180,7 @@
       <div class="search">
         <mat-form-field appearance="outline" class="search-field">
           <mat-label>Filter</mat-label>
-          <input
-            matInput
-            (keyup)="applyFilter($event)"
-            placeholder="Search"
-            #input
-          />
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
         </mat-form-field>
       </div>
       <div class="mat-elevation-z8">
@@ -128,26 +190,39 @@
             <td mat-cell *matCellDef="let row">{{ row.id }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Promotion</th>
-            <td mat-cell *matCellDef="let row">{{ row.promo_Name }}</td>
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let row">
+              <img *ngIf="row.image_Url" [src]="row.image_Url"
+                   alt="{{ row.title || row.promotion_Name }}"
+                   style="width:64px;height:48px;object-fit:cover;border-radius:6px" />
+              <span *ngIf="!row.image_Url" style="opacity:.4;font-size:.85em">—</span>
+            </td>
           </ng-container>
 
-           <!-- Apply To Column -->
-        <ng-container matColumnDef="applyToDestination">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Destination</th>
-          <td mat-cell *matCellDef="let row">
-            {{ row.applies_To_Destination }}<br>
-          </td>
-        </ng-container>
+          <ng-container matColumnDef="promotion_Name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Promotion</th>
+            <td mat-cell *matCellDef="let row">
+              <strong>{{ row.title || row.promotion_Name }}</strong>
+              <small *ngIf="row.title" style="display:block;opacity:.6">{{ row.promotion_Name }}</small>
+            </td>
+          </ng-container>
 
-                <!-- Apply To Column -->
-                <ng-container matColumnDef="applyToAirline">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Airline</th>
-                  <td mat-cell *matCellDef="let row">
-                   {{ row.applies_To_Airline }}<br>
-                  </td>
-                </ng-container>
+          <!-- Apply To Column -->
+          <ng-container matColumnDef="applies_To_Destination">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Destination</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.applies_To_Destination }}<br>
+            </td>
+          </ng-container>
+
+          <!-- Apply To Column -->
+          <ng-container matColumnDef="applies_To_Airline">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Airline</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.applies_To_Airline }}<br>
+            </td>
+          </ng-container>
 
 
           <ng-container matColumnDef="minVal">
@@ -169,30 +244,30 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>EndDate</th>
             <td mat-cell *matCellDef="let row">{{ row.effective_To }}</td>
           </ng-container>
+        <ng-container matColumnDef="promotion_Type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let row">{{ row.promotion_Type }}</td>
+        </ng-container>
 
-          <ng-container matColumnDef="percentage">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              Percentage
-            </th>
-            <td mat-cell *matCellDef="let row">
-              {{ row.amount }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-            <td mat-cell *matCellDef="let row">{{ row.status === 1 ? 'Active' : 'Inactive' }}</td>
-          </ng-container>
+                  <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row">
+            <ng-container *ngIf="row.promotion_Type === 'Percentage'; else fixedVal">
+              {{ row.amount }}%
+            </ng-container>
+            <ng-template #fixedVal>
+              {{ row.amount | currency }}
+            </ng-template>
+          </td>
+        </ng-container>f
 
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let row">
-              <button
-                mat-icon-button
-                color="warn"
-                aria-label="Delete"
-                (click)="DeletePromotion(row.id)"
-              >
+              <button mat-icon-button color="primary" aria-label="Edit" (click)="startEdit(row)" title="Edit">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+              <button mat-icon-button color="warn" aria-label="Delete" (click)="DeletePromotion(row.id)" title="Delete">
                 <span class="material-symbols-outlined"> delete </span>
               </button>
             </td>
@@ -208,7 +283,8 @@
           </tr>
         </table>
 
-        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of promotion"></mat-paginator>
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of promotion"></mat-paginator>
       </div>
     </div>
   </div>

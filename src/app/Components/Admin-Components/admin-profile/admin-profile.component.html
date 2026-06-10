@@ -125,6 +125,15 @@
           </div>
         </div>
       </div>
+
+      <!-- Edit / Save controls. The form is read-only until "Edit" is clicked;
+           "Save" persists via the Pages CMS store and feeds the public footer. -->
+      <div class="profile-actions" style="display:flex;gap:12px;margin-top:18px">
+        <button mat-raised-button color="primary" type="button" *ngIf="isFormDisabled" (click)="startEdit()">Edit</button>
+        <button mat-raised-button color="primary" type="submit" *ngIf="!isFormDisabled" [disabled]="showLoader">
+          {{ showLoader ? 'Saving…' : 'Save profile' }}
+        </button>
+      </div>
     </form>
   </div>
 </div>

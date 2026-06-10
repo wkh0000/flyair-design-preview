@@ -99,5 +99,15 @@
         </div>
       </section>
     </main>
+
+    <!-- Promotions filtered by article tag (when the article is about a specific
+         destination, surfaces relevant offers) + partner marquees. Skip the
+         "news" slice since the article page already has a related-news strip
+         elsewhere in the layout. -->
+    <app-page-footer-widgets
+      [destinationCode]="primaryTag"
+      [newsTag]="primaryTag"
+      [showNews]="false">
+    </app-page-footer-widgets>
   </ng-container>
 </div>
