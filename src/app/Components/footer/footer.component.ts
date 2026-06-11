@@ -60,6 +60,11 @@ export class FooterComponent implements OnInit {
   subState: 'idle' | 'sending' | 'ok' | 'error' = 'idle';
   subMessage = '';
 
+  /** A social link is "real" only if a URL is set and it isn't the "#" placeholder. */
+  isRealLink(url?: string): boolean {
+    return !!url && url.trim() !== '' && url.trim() !== '#';
+  }
+
   constructor(private subs: SubscriberService, private pages: PageService) {}
 
   ngOnInit(): void {

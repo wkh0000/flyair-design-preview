@@ -31,10 +31,11 @@
           <p class="news-msg err" *ngIf="subState==='error'" role="alert">{{ subMessage }}</p>
         </form>
 
-        <div class="socials">
-          <a [href]="cms.socials.facebook || '#'" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3.2V11H9v3h2v7h3v-7h2.4l.6-3H14V9.4c0-.3.2-.4.5-.4z"/></svg></a>
-          <a [href]="cms.socials.instagram || '#'" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a [href]="cms.socials.x || '#'" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6 6-6z"/></svg></a>
+        <!-- Only render a social icon when a real URL is configured — no dead "#" links. -->
+        <div class="socials" *ngIf="isRealLink(cms.socials.facebook) || isRealLink(cms.socials.instagram) || isRealLink(cms.socials.x)">
+          <a *ngIf="isRealLink(cms.socials.facebook)" [href]="cms.socials.facebook" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3.2V11H9v3h2v7h3v-7h2.4l.6-3H14V9.4c0-.3.2-.4.5-.4z"/></svg></a>
+          <a *ngIf="isRealLink(cms.socials.instagram)" [href]="cms.socials.instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a *ngIf="isRealLink(cms.socials.x)" [href]="cms.socials.x" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6 6-6z"/></svg></a>
         </div>
       </div>
 
