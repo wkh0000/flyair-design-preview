@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NewsService } from '../../Services/News/news.service';
 import { UtilityServiceService } from '../../Services/Admin-Services/UtilityService/utility-service.service';
+import { FlyDragScrollDirective } from '../../Misc/drag-scroll.directive';
 
 /**
  * Reusable "page footer widgets" block.
@@ -27,7 +28,7 @@ import { UtilityServiceService } from '../../Services/Admin-Services/UtilityServ
 @Component({
   selector: 'app-page-footer-widgets',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FlyDragScrollDirective],
   templateUrl: './page-footer-widgets.component.html',
   styleUrl: './page-footer-widgets.component.scss',
 })

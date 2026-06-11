@@ -52,6 +52,7 @@
            (swipable on touch, drag/scroll on desktop) with snap points, hidden
            scrollbar, nav arrows, and a 5s auto-advance that pauses on hover. -->
       <div #promoTrack class="fly-promos-grid" [class.is-carousel]="isPromoCarousel"
+           flyDragScroll
            (mouseenter)="pausePromoAuto()" (mouseleave)="resumePromoAuto()">
         <a class="fly-promo" *ngFor="let p of promoCards"
            [routerLink]="['/promotions', p.slug]"
@@ -165,14 +166,14 @@
   <section class="fly-partners">
     <div class="fly-container">
       <div class="lbl fly-reveal">Travel the world with our airline partners</div>
-      <div class="fly-marquee"><div class="fly-track">
+      <div class="fly-marquee" flyDragScroll [autoScroll]="0.5"><div class="fly-track">
         <div class="fly-lcell" *ngFor="let a of airlinesLoop">
           <img *ngIf="a.logo" [src]="a.logo" [alt]="a.name" class="lg" loading="lazy" />
           <span *ngIf="!a.logo" class="txt">{{a.name}}</span>
         </div>
       </div></div>
       <div class="lbl fly-reveal" style="margin-top:54px">A wide range of secure payment options</div>
-      <div class="fly-marquee rev" style="--dur:36s"><div class="fly-track">
+      <div class="fly-marquee rev" style="--dur:36s" flyDragScroll [autoScroll]="-0.5"><div class="fly-track">
         <div class="fly-lcell pay" *ngFor="let p of paysLoop">
           <img *ngIf="p.logo" [src]="p.logo" [alt]="p.name" class="lg" loading="lazy" />
           <span *ngIf="!p.logo" class="txt">{{p.name}}</span>

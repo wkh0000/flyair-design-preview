@@ -10,11 +10,12 @@ import { SCROLL_FX } from '../../Misc/scroll-fx.directive';
 import { FlyIconComponent } from '../../Components/fly-icon/fly-icon.component';
 import { HomeService, HomeContent, DEFAULT_HOME } from '../../Services/Home/home.service';
 import { SeoService } from '../../Services/Seo/seo.service';
+import { FlyDragScrollDirective } from '../../Misc/drag-scroll.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, FlightSearchComponent, FlyairSkyComponent, FlyIconComponent, ...SCROLL_FX],
+  imports: [CommonModule, FormsModule, RouterModule, FlightSearchComponent, FlyairSkyComponent, FlyIconComponent, FlyDragScrollDirective, ...SCROLL_FX],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
