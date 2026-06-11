@@ -96,15 +96,21 @@ export class FlyDragScrollDirective implements AfterViewInit, OnDestroy {
     );
 
     // ---- Continuous auto-scroll (marquee), seamless loop at half-width ----
+    // Track position in a float accumulator rather than reading scrollLeft back
+    // each tick: the browser rounds scrollLeft to device pixels on read, which
+    // (asymmetrically) cancels a sub-pixel step in one direction and freezes a
+    // reverse marquee. The accumulator advances reliably both ways; modulo
+    // half-width gives the seamless loop (content is duplicated).
     if (this.autoScroll) {
+      let pos = el.scrollLeft;
       this.timer = window.setInterval(() => {
         if (this.paused || this.down) return;
         const half = el.scrollWidth / 2;
         if (half < 10) return;
-        let next = el.scrollLeft + this.autoScroll;
-        if (next >= half) next -= half;
-        else if (next < 0) next += half;
-        el.scrollLeft = next;
+        // Re-sync if the user dragged / swiped since the last tick.
+        if (Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft;
+        pos = (pos + this.autoScroll + half) % half;
+        el.scrollLeft = pos;
       }, 16);
     }
   }
