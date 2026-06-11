@@ -36,6 +36,7 @@ import { UtilityServiceService } from '../../Services/Admin-Services/UtilityServ
 import { LoaderService } from '../../Services/Loader/loader.service';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { OptionPanelComponent } from '../option-panel/option-panel.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 
@@ -105,6 +106,9 @@ export class FlightSearchComponent implements OnInit {
   showDropdown: boolean = false;
   hxValue: number | undefined;
   minDate: Date;
+  /** Drives [touchUi] on the datepickers — fullscreen calendar on phones, inline
+   *  popup on desktop. Set from BreakpointObserver. */
+  isHandset = false;
   constructor(
     private flightService: FlightService,
     private utilityService: UtilityService,
@@ -116,13 +120,16 @@ export class FlightSearchComponent implements OnInit {
     private shared: SharedDataService,
     private elementRef: ElementRef,
     private adminutilityService: UtilityServiceService,
-    private loaderSvc: LoaderService
+    private loaderSvc: LoaderService,
+    private breakpoints: BreakpointObserver
   ) {
     this.minDate = new Date();
   }
 
   ngOnInit(): void {
     this.initializeForms();
+    // Fullscreen calendar only on phones; inline popup on tablet/desktop.
+    this.breakpoints.observe([Breakpoints.Handset]).subscribe(r => this.isHandset = r.matches);
     // Card-click prefill: when home navigation passes ?origin=&dest=&date=&pax=
     // we populate the one-way form so the user sees a ready-to-go search.
     this.route.queryParams.subscribe(qp => {

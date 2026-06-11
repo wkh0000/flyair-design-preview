@@ -404,3 +404,15 @@
 
 /* Hero search-widget wrapper (anchor target for header "Book now"). */
 .hero-search-wrap { margin-top: 30px; max-width: 980px; scroll-margin-top: 90px; }
+
+/* Hero trust chips — translucent dark pill for legibility over the bright sky. */
+.hero-chips { margin-top: 22px; gap: 12px; }
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #fff; font-size: .9rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 999px;
+  background: rgba(6, 20, 44, .42);
+  border: 1px solid rgba(255, 255, 255, .18);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(2, 14, 40, .8);
+}

@@ -36,7 +36,7 @@ export class LegalComponent implements OnInit {
   static readonly DEFAULTS: Record<string, InfoDoc> = {
     /* ---------- Legal trio ---------- */
     privacy: {
-      title: 'Privacy Policy', eyebrow: 'Legal', updated: '22 May 2026', legalLinks: true,
+      title: 'Privacy Policy', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
       heroImage: 'assets/pages/privacy.svg',
       heroImageAlt: 'Privacy shield with a verification tick on a navy gradient',
       intro: 'FlyAir respects your privacy. This policy explains what we collect when you search and book, how we use it, and the choices you have.',
@@ -50,7 +50,7 @@ export class LegalComponent implements OnInit {
       ],
     },
     terms: {
-      title: 'Terms & Conditions', eyebrow: 'Legal', updated: '22 May 2026', legalLinks: true,
+      title: 'Terms & Conditions', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
       heroImage: 'assets/pages/terms.svg',
       heroImageAlt: 'Signed terms document with a verification badge on a deep navy backdrop',
       intro: 'These terms govern your use of the FlyAir booking platform. By searching or booking, you agree to them.',
@@ -64,7 +64,7 @@ export class LegalComponent implements OnInit {
       ],
     },
     cookies: {
-      title: 'Cookie Policy', eyebrow: 'Legal', updated: '22 May 2026', legalLinks: true,
+      title: 'Cookie Policy', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
       heroImage: 'assets/pages/cookies.svg',
       heroImageAlt: 'Cookie biscuit icon on a warm-brown gradient over deep navy',
       intro: 'We use cookies and similar technologies to make FlyAir work, to remember your preferences, and to understand how the site is used.',
@@ -345,6 +345,24 @@ export class LegalComponent implements OnInit {
       image: 'assets/og-default.jpg',
       imageAlt: this.doc.heroImageAlt || this.doc.title,
       type: 'website',
+    });
+    this.applyFaqJsonLd();
+  }
+
+  /** FAQPage structured data on /faq (each section = question + answer). */
+  private applyFaqJsonLd(): void {
+    if (this.page !== 'faq' || !this.doc?.sections?.length) {
+      this.seo.setJsonLd('faq-jsonld', {});
+      return;
+    }
+    this.seo.setJsonLd('faq-jsonld', {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: this.doc.sections.map(s => ({
+        '@type': 'Question',
+        name: s.h,
+        acceptedAnswer: { '@type': 'Answer', text: s.p },
+      })),
     });
   }
 }

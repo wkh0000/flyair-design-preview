@@ -32,3 +32,26 @@
 .links a{ padding:.55rem 1.2rem; border:1px solid var(--fly-line); border-radius: var(--fly-pill);
   color: var(--fly-ink2); font-weight:600; font-size:.9rem; text-decoration:none; transition:.2s; }
 .links a.active, .links a:hover{ background: var(--fly-blue50); color: var(--fly-blue); border-color: var(--fly-blue); }
+
+/* On-this-page TOC (P1.13). Collapsible block; sections get scroll offset. */
+.fly-toc {
+  margin: 0 0 28px; padding: 14px 18px;
+  background: var(--fly-soft, #f4f9fd); border: 1px solid var(--fly-line, #e2e8f0);
+  border-radius: 14px;
+}
+.fly-toc > summary {
+  cursor: pointer; font-weight: 700; color: var(--fly-ink, #0b1730);
+  font-family: var(--fly-display); list-style: none;
+}
+.fly-toc > summary::-webkit-details-marker { display: none; }
+.fly-toc > summary::after { content: " ›"; transition: transform .2s; display: inline-block; }
+.fly-toc[open] > summary::after { transform: rotate(90deg); }
+.fly-toc ol { margin: 12px 0 2px; padding-left: 20px; display: grid; gap: 6px; }
+.fly-toc a { color: var(--fly-blue, #0073bd); text-decoration: none; }
+.fly-toc a:hover { text-decoration: underline; }
+.body .sec { scroll-margin-top: 96px; }
+@media (min-width: 1024px) {
+  /* On wide screens, float the TOC into the left gutter, sticky. */
+  .body { position: relative; }
+  .fly-toc { position: sticky; top: 96px; }
+}

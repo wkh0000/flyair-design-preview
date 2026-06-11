@@ -325,3 +325,32 @@ form.form button[type="submit"] { min-width: 150px; }
 .mat-mdc-autocomplete-panel .mat-mdc-option.mat-mdc-option-active .mdc-list-item__primary-text {
   color: #0073bd;
 }
+
+/* P1.9 — finish unifying the search widget with the fly design system.
+   (Tabs already use the fly pill styling above; this themes the submit button,
+   the validation helper, and the Material field focus colour.) */
+.fly-search-btn {
+  height: 56px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fly-search-help {
+  margin: 12px 2px 0;
+  font-size: .86rem;
+  font-weight: 500;
+  color: var(--fly-ink2, #5b6b82);
+}
+/* Material outlined fields → fly focus colour + corner radius (component uses
+   ViewEncapsulation.None, so scope to .container to avoid leaking site-wide). */
+.container .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.container .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.container .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--fly-blue, #0073bd) !important;
+  border-width: 2px;
+}
+.container .mat-mdc-form-field.mat-focused .mat-mdc-floating-label,
+.container .mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: var(--fly-blue, #0073bd) !important;
+}

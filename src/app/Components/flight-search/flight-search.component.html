@@ -153,7 +153,7 @@
                 matSuffix
                 [for]="pickerOneWay"
               ></mat-datepicker-toggle>
-              <mat-datepicker touchUi [dateClass]="dateClass" #pickerOneWay>
+              <mat-datepicker [touchUi]="isHandset" [dateClass]="dateClass" #pickerOneWay>
               </mat-datepicker>
             </mat-form-field>
           </div>
@@ -323,16 +323,18 @@
           </div> -->
           <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
             <button
-            color="primary"
             type="submit"
-            class="btn btn-primary btn-block w-100"
+            class="fly-btn fly-btn-primary fly-search-btn w-100"
             [disabled]="oneWayForm.invalid"
-            style="border-radius: 8px !important"
           >
-            Search
+            Search →
           </button>
           </div>
         </div>
+        <!-- Persistent, screen-reader-announced helper for the disabled-until-valid Search. -->
+        <p class="fly-search-help" aria-live="polite" *ngIf="oneWayForm.invalid">
+          Select origin, destination and a date to search.
+        </p>
         <div
           class="row align-items-center mt-3 w-100"
           style="justify-content: center"
@@ -447,7 +449,7 @@
                 >
               </mat-date-range-input>
               <mat-datepicker-toggle matIconSuffix [for]="pickerReturn"></mat-datepicker-toggle>
-              <mat-date-range-picker touchUi [dateClass]="dateClass" #pickerReturn >
+              <mat-date-range-picker [touchUi]="isHandset" [dateClass]="dateClass" #pickerReturn >
               </mat-date-range-picker>
             </mat-form-field>
           </div>
@@ -610,16 +612,18 @@
           </div>
           <div class="col-12 col-lg-2 mt-2 mt-lg-0 align-style">
             <button
-            color="primary"
             type="submit"
-            class="btn btn-primary btn-block w-100"
+            class="fly-btn fly-btn-primary fly-search-btn w-100"
             [disabled]="returnForm.invalid"
-            style="border-radius: 8px !important"
           >
-            Search
+            Search →
           </button>
           </div>
         </div>
+        <!-- Persistent, screen-reader-announced helper for the disabled-until-valid Search. -->
+        <p class="fly-search-help" aria-live="polite" *ngIf="returnForm.invalid">
+          Select origin, destination and travel dates to search.
+        </p>
 
         <div
           class="row align-items-center mt-3 w-100"
