@@ -78,8 +78,16 @@
                 }
               ],
               "budgets": [
-                { "type": "initial", "maximumWarning": "3MB", "maximumError": "3MB" },
-                { "type": "anyComponentStyle", "maximumWarning": "20kB", "maximumError": "30kB" }
+                {
+                  "type": "initial",
+                  "maximumWarning": "3MB",
+                  "maximumError": "3MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kB",
+                  "maximumError": "30kB"
+                }
               ],
               "outputHashing": "all",
               "prerender": false,
@@ -99,6 +107,9 @@
             },
             "development": {
               "buildTarget": "WhiteLabelITQ:build:development"
+            },
+            "demo": {
+              "buildTarget": "WhiteLabelITQ:build:demo"
             }
           },
           "defaultConfiguration": "development"

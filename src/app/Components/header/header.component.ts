@@ -47,7 +47,8 @@ export class HeaderComponent implements OnInit {
 
   private scrollToSearch(): void {
     if (typeof document === 'undefined') return;
-    const el = document.getElementById('search');
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+    // scrollIntoView finds the correct scroll container automatically and
+    // honours the #search wrapper's scroll-margin-top (header offset).
+    document.getElementById('search')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
