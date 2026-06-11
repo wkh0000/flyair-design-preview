@@ -66,11 +66,17 @@ export class FlyDragScrollDirective implements AfterViewInit, OnDestroy {
         setTimeout(() => el.removeEventListener('click', swallow, true), 60);
       }
     };
+    // Carousel cards are <a> links — a mouse-down-drag on a link starts the
+    // browser's native link/image drag (ghost), which hijacks the pointer
+    // stream and breaks scroll-dragging. Cancel it so our drag wins.
+    const noNativeDrag = (e: DragEvent) => e.preventDefault();
     el.addEventListener('pointerdown', onDown);
+    el.addEventListener('dragstart', noNativeDrag);
     window.addEventListener('pointermove', onMove, { passive: false });
     window.addEventListener('pointerup', onUp);
     this.cleanups.push(
       () => el.removeEventListener('pointerdown', onDown),
+      () => el.removeEventListener('dragstart', noNativeDrag),
       () => window.removeEventListener('pointermove', onMove),
       () => window.removeEventListener('pointerup', onUp),
     );

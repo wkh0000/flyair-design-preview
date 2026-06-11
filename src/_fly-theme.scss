@@ -267,7 +267,7 @@
    container (drag/swipe) and JS drives the continuous auto-scroll instead. */
 .fly-draggable{cursor:grab}
 .fly-draggable.is-grabbing{cursor:grabbing;user-select:none}
-.fly-draggable img{-webkit-user-drag:none;user-drag:none}
+.fly-draggable img,.fly-draggable a{-webkit-user-drag:none;user-drag:none}
 .fly-marquee.fly-draggable{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .fly-marquee.fly-draggable::-webkit-scrollbar{display:none}
 .fly-marquee.fly-draggable .fly-track{animation:none}
