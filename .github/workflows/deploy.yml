@@ -50,6 +50,14 @@ jobs:
           # Suppress Jekyll processing on GitHub Pages.
           touch _site/.nojekyll
 
+      - name: Generate per-URL share pages (OG tags for FB / WhatsApp / X)
+        # Scrapers don't run JS, so bake correct Open Graph tags into a static
+        # <route>/index.html for every promotion + article. Real users still
+        # boot the SPA from the same file.
+        run: node scripts/gen-share-pages.js
+        env:
+          SITE_DIR: _site
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
