@@ -99,19 +99,27 @@ export class PageFooterWidgetsComponent implements OnInit, OnChanges, AfterViewI
     if (!isPlatformBrowser(this.platformId)) return;
     this.adminSvc.fetchPromotions().subscribe({
       next: (data: any[]) => {
-        const dest = (this.destinationCode || '').trim().toUpperCase();
-        this.promotions = (data || [])
-          // Same filter as home: image + slug both required. Without a slug
-          // the card would link to /promotions/null and show the
-          // "no longer available" page.
+        // Eligible = has image + slug (else it links to /promotions/null) and
+        // isn't the promo we're already viewing.
+        const all = (data || [])
           .filter(p => !!p.image_Url && !!p.slug)
-          .filter(p => !this.excludePromoId || p.id !== this.excludePromoId)
-          .filter(p => {
-            if (!dest) return true;
-            const target = (p.applies_To_Destination || '').toUpperCase();
-            return !target || target.includes(dest);
-          })
-          .slice(0, this.promoLimit);
+          .filter(p => !this.excludePromoId || p.id !== this.excludePromoId);
+        const dest = (this.destinationCode || '').trim().toUpperCase();
+        let matched = !dest ? all : all.filter(p => {
+          const target = (p.applies_To_Destination || '').toUpperCase();
+          return !target || target.includes(dest);
+        });
+        // Backfill: a destination filter can leave a single orphan card. Top up
+        // with the latest other active promos so the grid always looks full.
+        if (matched.length < 3) {
+          const seen = new Set(matched.map(p => p.id));
+          for (const p of all) {
+            if (matched.length >= 3) break;
+            if (!seen.has(p.id)) { matched.push(p); seen.add(p.id); }
+          }
+        }
+        // Still under 2 → hide the section entirely (no lone card).
+        this.promotions = matched.length >= 2 ? matched.slice(0, this.promoLimit) : [];
       },
       error: () => { this.promotions = []; },
     });

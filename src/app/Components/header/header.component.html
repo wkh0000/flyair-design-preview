@@ -23,8 +23,9 @@
 
     <!-- Actions -->
     <div class="fly-actions">
-      <a class="fly-link" routerLink="/admin-login">Sign in</a>
-      <a class="fly-btn fly-btn-primary fly-btn-sm" routerLink="/">Book now</a>
+      <!-- "Book now" jumps to the flight-search widget: smooth-scroll on the
+           home page, navigate-then-scroll from any other route. -->
+      <button type="button" class="fly-btn fly-btn-primary fly-btn-sm" (click)="bookNow()">Book now</button>
     </div>
   </div>
 </header>

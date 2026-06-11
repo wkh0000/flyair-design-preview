@@ -73,7 +73,7 @@ export const DEFAULT_HOME: HomeContent = {
   destinations: { eyebrow: 'Popular right now', title: 'Where to next?', ctaLabel: 'View all destinations', ctaLink: '/result', items: [] },
   featured: { eyebrow: 'Featured destination', title: '', text: '', image: '', ctaLabel: 'Explore', ctaLink: '/result' },
   offers: {
-    eyebrow: 'Special offers', title: 'Deals worth the detour',
+    eyebrow: 'Member perks', title: 'More reasons to book with FlyAir',
     items: [
       { icon: 'percent-tag', color: 'red', title: '15% off your first booking', text: 'Use code FLYNEW15 at checkout on any flight.' },
       { icon: 'star', color: 'blue', title: 'Double reward miles', text: 'Earn 2× miles on every long-haul flight this month.' },

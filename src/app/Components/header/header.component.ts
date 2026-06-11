@@ -34,4 +34,20 @@ export class HeaderComponent implements OnInit {
   onScroll(): void {
     this.scrolled = typeof window !== 'undefined' && window.scrollY > 40;
   }
+
+  /** "Book now" → the flight-search widget. Smooth-scroll if already on home,
+   *  otherwise navigate home first then scroll to the #search anchor. */
+  bookNow(): void {
+    if (this.isHome(this.router.url)) {
+      this.scrollToSearch();
+    } else {
+      this.router.navigate(['/']).then(() => setTimeout(() => this.scrollToSearch(), 350));
+    }
+  }
+
+  private scrollToSearch(): void {
+    if (typeof document === 'undefined') return;
+    const el = document.getElementById('search');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+  }
 }

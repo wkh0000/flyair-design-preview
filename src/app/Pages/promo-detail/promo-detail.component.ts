@@ -81,6 +81,25 @@ export class PromoDetailComponent implements OnInit {
     return '';
   }
 
+  /** Strip a trailing " - IATA" code from a scope string ("…, Dubai - DXB" → "…, Dubai"). */
+  private cleanScope(v?: string | null): string {
+    return (v || '').replace(/\s*-\s*[A-Z0-9]{2,4}\s*$/, '').trim();
+  }
+
+  /** Real fare conditions built from the promo data — shown when the offer has
+   *  no rich detail content (replaces the old "coming soon" placeholder). */
+  get conditionsText(): string {
+    const p = this.promo;
+    if (!p) return '';
+    const disc = this.discountLine();
+    let head: string;
+    if (disc && p.applies_To_Airline)      head = `${disc} on ${this.cleanScope(p.applies_To_Airline)} flights.`;
+    else if (disc && p.applies_To_Destination) head = `${disc} on flights to ${this.cleanScope(p.applies_To_Destination)}.`;
+    else if (disc)                          head = `${disc} on eligible fares.`;
+    else                                    head = 'A limited-time fare offer.';
+    return `${head} Subject to seat availability and fare conditions at the time of booking; taxes and surcharges may apply. Use the search above for live fares.`;
+  }
+
   /** YYYY-MM-DD that is N days from today, CLAMPED to the promo's effective
    *  range when one is set. Ensures the prefilled search lands on a date the
    *  customer can actually book under this promotion. */

@@ -401,3 +401,6 @@
   transition: .2s;
 }
 .promo-nav-btn:hover { border-color: var(--fly-blue, #0073bd); color: var(--fly-blue, #0073bd); transform: translateY(-1px); }
+
+/* Hero search-widget wrapper (anchor target for header "Book now"). */
+.hero-search-wrap { margin-top: 30px; max-width: 980px; scroll-margin-top: 90px; }

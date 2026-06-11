@@ -31,9 +31,7 @@
       <div class="fly-container body">
         <article class="promo-body" [innerHTML]="bodyHtml" *ngIf="bodyHtml; else noBody"></article>
         <ng-template #noBody>
-          <p class="promo-body-empty">
-            More details on this offer are coming soon. Click <strong>Find flights</strong> above to start searching.
-          </p>
+          <p class="promo-body-empty">{{ conditionsText }}</p>
         </ng-template>
 
         <!-- Inline date + scope summary for the article-style page -->
@@ -41,12 +39,12 @@
           <div *ngIf="promo.effective_From || promo.effective_To">
             <strong>Valid:</strong>
             <ng-container *ngIf="promo.effective_From">from {{ promo.effective_From | date:'mediumDate' }}</ng-container>
-            <ng-container *ngIf="promo.effective_To"> &nbsp;to {{ promo.effective_To | date:'mediumDate' }}</ng-container>
+            <ng-container *ngIf="promo.effective_To"> to {{ promo.effective_To | date:'mediumDate' }}</ng-container>
           </div>
           <div *ngIf="promo.price_Range_From || promo.price_Range_To">
             <strong>Fare range:</strong>
-            <ng-container *ngIf="promo.price_Range_From">from ${{ promo.price_Range_From }}</ng-container>
-            <ng-container *ngIf="promo.price_Range_To"> &nbsp;up to ${{ promo.price_Range_To }}</ng-container>
+            <span *ngIf="promo.price_Range_From">from USD&nbsp;{{ promo.price_Range_From | number }}</span>
+            <span *ngIf="promo.price_Range_To">&nbsp;up to USD&nbsp;{{ promo.price_Range_To | number }}</span>
           </div>
         </div>
 
