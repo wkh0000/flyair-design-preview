@@ -4,7 +4,7 @@
   "slug": "sustainable-aviation-fuel-supply-challenges-asia-2025",
   "dek": "Asian carriers from Singapore Airlines to Japan's majors have pledged to use more sustainable aviation fuel, but limited supply, high costs and feedstock constraints make scaling it across the region difficult.",
   "body": "<p>Sustainable aviation fuel, or SAF, has become the centrepiece of the airline industry's plan to cut carbon emissions on the path toward mid-century net-zero goals. Across Asia, carriers including Singapore Airlines, Japan's ANA and JAL, Korean Air and Cathay Pacific have committed to blending more SAF into their operations. Yet turning those pledges into routine use at scale remains one of the hardest challenges in aviation sustainability, constrained by supply, price and policy.</p><h2>What SAF is and why it matters</h2><p>SAF is produced from feedstocks such as used cooking oil, agricultural residues and other waste materials, and can cut lifecycle carbon emissions substantially compared with conventional jet fuel. Crucially, it is a drop-in fuel: it works in existing engines and airport infrastructure when blended with kerosene, which is why airlines see it as the most immediate lever for decarbonisation.</p><p>Singapore has positioned itself as a regional leader, with policy moves aimed at requiring a share of SAF in fuel uplifted at Changi over time, signalling how governments may help build demand.</p><h2>The barriers to scale</h2><p>Despite the enthusiasm, SAF still accounts for only a tiny fraction of global jet fuel use, and several obstacles stand in the way of rapid growth.</p><ul><li>Limited production capacity relative to total fuel demand</li><li>Prices that remain well above conventional jet fuel</li><li>Competition for feedstocks with road transport and other sectors</li><li>The need for long-term policy support and offtake agreements</li></ul><p>For Asian carriers, the regional picture is mixed: refining investment is growing, but production hubs and mandates are still emerging. Bridging the gap between ambitious targets and real-world supply will likely require sustained investment, supportive regulation and patience, making SAF a long-term project rather than a quick fix.</p>",
-  "heroImageUrl": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=70",
+  "heroImageUrl": "assets/img/stock/photo-1509391366360-2e959784a276.jpg",
   "heroImageAlt": "A fuel bowser refuelling a parked jet with sustainable aviation fuel branding at an airport stand",
   "heroImageCredit": "Photo: Unsplash",
   "categoryId": 6,
@@ -26,6 +26,6 @@
   "metaTitle": "Scaling Sustainable Aviation Fuel in Asia: The Hurdles",
   "metaDescription": "Asian airlines have pledged more sustainable aviation fuel, but limited supply, high cost and feedstock competition make scaling SAF across the region a long-term challenge.",
   "metaKeywords": "sustainable aviation fuel,SAF Asia,airline decarbonisation,Singapore Airlines SAF,jet fuel emissions,Changi SAF",
-  "ogImageUrl": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=70",
+  "ogImageUrl": "assets/img/stock/photo-1509391366360-2e959784a276.jpg",
   "canonicalUrl": ""
 }

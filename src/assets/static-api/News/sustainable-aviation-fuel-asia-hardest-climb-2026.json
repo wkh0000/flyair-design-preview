@@ -4,7 +4,7 @@
   "slug": "sustainable-aviation-fuel-asia-hardest-climb-2026",
   "dek": "Asian carriers from Singapore Airlines to ANA have set ambitious SAF goals, but supply, cost and feedstock constraints make sustainable aviation fuel the sector's toughest challenge.",
   "body": "<p>Sustainable aviation fuel, or SAF, has become the centrepiece of the airline industry's decarbonisation plans, and Asian carriers are among its most visible advocates. Singapore Airlines, ANA, Japan Airlines and Cathay Pacific have all signalled commitments to blending greater volumes of SAF into their operations over the coming years. Yet the gap between ambition and availability remains wide, and 2026 has done little to close it.</p><h2>The supply bottleneck</h2><p>SAF can cut lifecycle carbon emissions substantially compared with conventional jet fuel, but it is produced in small quantities relative to global demand and typically costs considerably more. Most current production relies on feedstocks such as used cooking oil and other waste fats, which are themselves limited. Scaling up requires new pathways, including fuels synthesised from captured carbon and renewable hydrogen, that are still largely pre-commercial.</p><h2>Policy as the lever</h2><p>Governments are increasingly using mandates and incentives to force the issue. Singapore has signalled a SAF uplift requirement for departing flights, funded in part through a levy, while other jurisdictions are weighing blending targets. These measures create demand certainty that producers say they need before committing to large-scale plants.</p><ul><li>SAF remains a small fraction of total jet fuel use globally.</li><li>Feedstock limits constrain how fast waste-based SAF can grow.</li><li>Mandates and offtake agreements are emerging as the key catalysts.</li></ul><p>For Asia's carriers, the calculus is unavoidable. Long-haul flying is hard to electrify, so liquid low-carbon fuels are likely to do much of the heavy lifting for decades. The challenge is less about willingness than about building an industry that does not yet exist at the scale required.</p>",
-  "heroImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70",
+  "heroImageUrl": "assets/img/stock/photo-1473341304170-971dccb5ac1e.jpg",
   "heroImageAlt": "A fuel bowser servicing a parked widebody jet beside the aircraft's wing engine",
   "heroImageCredit": "Photo: Unsplash",
   "categoryId": 6,
@@ -26,6 +26,6 @@
   "metaTitle": "Why Sustainable Aviation Fuel Is Still Asia's Hardest Climb",
   "metaDescription": "Asian airlines back sustainable aviation fuel, but supply, cost and feedstock limits make SAF the industry's toughest decarbonisation challenge in 2026.",
   "metaKeywords": "sustainable aviation fuel,SAF Asia,Singapore Airlines SAF,aviation decarbonisation,SAF mandate,jet fuel emissions",
-  "ogImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=70",
+  "ogImageUrl": "assets/img/stock/photo-1473341304170-971dccb5ac1e.jpg",
   "canonicalUrl": ""
 }

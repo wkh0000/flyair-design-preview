@@ -4,7 +4,7 @@
   "slug": "narrowbody-production-ramp-up-record-backlog-2025",
   "dek": "Airbus and Boeing are straining to lift A320neo and 737 MAX output against a multi-year order backlog, and the supply-chain bottlenecks holding them back are felt acutely by Asia's growth carriers waiting on deliveries.",
   "body": "<p>The defining constraint in commercial aviation in 2025 is not demand but supply. Airbus and Boeing hold a combined order backlog stretching years into the future, dominated by the A320neo family and the 737 MAX, yet both manufacturers have struggled to lift production to the rates they have targeted. For Asian carriers that placed some of the largest narrow-body orders on record, the pace of the ramp-up directly shapes how fast networks can grow.</p><h2>Where the bottlenecks sit</h2><p>The chokepoints are spread across a deep supply chain rather than concentrated at final assembly. Engines have been a recurring constraint, with limited availability of new powerplants and the lingering effects of the Pratt & Whitney GTF inspection campaign that grounded numbers of A320neo-family jets. Shortages of skilled labour, structural parts, castings and seats have compounded the problem.</p><p>Boeing has additionally operated under heightened regulatory scrutiny of its 737 production following quality lapses, which capped its monthly output as it worked to stabilise manufacturing. Airbus, while generally ahead, has repeatedly described its own ramp as gated by suppliers rather than by its assembly lines.</p><h2>What it means for Asian operators</h2><p>For carriers such as IndiGo, Akasa Air, VietJet and AirAsia, delayed deliveries can mean deferred route launches, extended leases on older jets and tighter capacity than business plans assumed.</p><ul><li>A320neo and 737 MAX dominate the global backlog</li><li>Engines, parts and labour gate the production rate</li><li>Delivery delays ripple into Asian carriers' growth plans</li></ul><p>The order books suggest robust long-term confidence in air travel, particularly in Asia. The near-term reality is a delicate balancing act, with both manufacturers trying to raise rates without repeating the quality problems that have already proved costly. How smoothly that ramp proceeds will be one of the most important storylines in aviation through the rest of the decade.</p>",
-  "heroImageUrl": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1200&q=70",
+  "heroImageUrl": "assets/img/stock/photo-1540962351504-03099e0a754b.jpg",
   "heroImageAlt": "A jet engine being fitted to a narrow-body aircraft on an assembly line, symbolising production ramp-up constraints",
   "heroImageCredit": "Photo: Unsplash",
   "categoryId": 3,
@@ -26,6 +26,6 @@
   "metaTitle": "The Narrow-Body Ramp-Up Behind a Record Order Backlog",
   "metaDescription": "Airbus and Boeing strain to lift A320neo and 737 MAX output against a record backlog in 2025, as engine and supply-chain bottlenecks delay Asian carrier deliveries.",
   "metaKeywords": "narrow-body production ramp,A320neo backlog,737 MAX deliveries,aircraft supply chain,Pratt Whitney GTF,Airbus Boeing 2025",
-  "ogImageUrl": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1200&q=70",
+  "ogImageUrl": "assets/img/stock/photo-1540962351504-03099e0a754b.jpg",
   "canonicalUrl": ""
 }
