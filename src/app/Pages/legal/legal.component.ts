@@ -51,8 +51,8 @@ export class LegalComponent implements OnInit {
     /* ---------- Legal trio ---------- */
     privacy: {
       title: 'Privacy Policy', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
-      heroImage: 'assets/pages/privacy.svg',
-      heroImageAlt: 'Privacy shield with a verification tick on a navy gradient',
+      heroImage: 'assets/img/pages/privacy.jpg',
+      heroImageAlt: 'A person signing a printed document at a desk with a pen',
       intro: 'FlyAir respects your privacy. This policy explains what we collect when you search and book, how we use it, and the choices you have.',
       sections: [
         { h: 'Information we collect', p: 'Booking details (travellers, routes, dates), contact information (name, email, phone), and payment data processed securely by our payment partners. We also collect basic device and usage data to improve the service.' },
@@ -65,8 +65,8 @@ export class LegalComponent implements OnInit {
     },
     terms: {
       title: 'Terms & Conditions', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
-      heroImage: 'assets/pages/terms.svg',
-      heroImageAlt: 'Signed terms document with a verification badge on a deep navy backdrop',
+      heroImage: 'assets/img/pages/terms.jpg',
+      heroImageAlt: 'A person signing a printed agreement with a pen at a desk',
       intro: 'These terms govern your use of the FlyAir booking platform. By searching or booking, you agree to them.',
       sections: [
         { h: 'Bookings & payments', p: 'A booking is confirmed only once payment is authorised and an e-ticket reference is issued. Prices are shown in the displayed currency and include applicable taxes and fees.' },
@@ -79,8 +79,8 @@ export class LegalComponent implements OnInit {
     },
     cookies: {
       title: 'Cookie Policy', eyebrow: 'Legal', updated: '2026-05-30', legalLinks: true,
-      heroImage: 'assets/pages/cookies.svg',
-      heroImageAlt: 'Cookie biscuit icon on a warm-brown gradient over deep navy',
+      heroImage: 'assets/img/pages/cookies.jpg',
+      heroImageAlt: 'A folded travel map with a camera, notebook and backpack laid on top',
       intro: 'We use cookies and similar technologies to make FlyAir work, to remember your preferences, and to understand how the site is used.',
       sections: [
         { h: 'What cookies are', p: 'Small text files stored on your device that help a website remember information between visits.' },
@@ -95,8 +95,8 @@ export class LegalComponent implements OnInit {
     /* ---------- Company ---------- */
     about: {
       title: 'About Us', eyebrow: 'Company',
-      heroImage: 'assets/pages/about.svg',
-      heroImageAlt: 'Paper aeroplane circling a globe of meridian lines on a navy gradient',
+      heroImage: 'assets/img/pages/about.jpg',
+      heroImageAlt: 'A modern blue glass office tower against a clear sky',
       intro: 'FlyAir offers the lowest air fares, hotel bookings and overseas holiday packages — a seamless way to plan and book your next journey.',
       sections: [
         { h: 'Who we are', p: 'FlyAir is a modern online travel company helping travellers across Sri Lanka and beyond book affordable air tickets, hotel accommodation and exciting holiday packages. We bring hundreds of airlines into one simple search so you always find the right fare.' },
@@ -117,8 +117,8 @@ export class LegalComponent implements OnInit {
     },
     faq: {
       title: 'Frequently Asked Questions', eyebrow: 'Help',
-      heroImage: 'assets/pages/faq.svg',
-      heroImageAlt: 'Large question-mark disc set against a FlyAir blue gradient',
+      heroImage: 'assets/img/pages/faq.jpg',
+      heroImageAlt: 'Close-up of a support headset microphone at a help centre',
       intro: 'Quick answers to the questions we hear most often.',
       sections: [
         { h: 'How do I book a flight?', p: 'Search your route and date on the home page, pick a fare, enter passenger details, and pay. You’ll receive an e-ticket confirmation by email instantly.' },
@@ -166,8 +166,8 @@ export class LegalComponent implements OnInit {
     },
     cards: {
       title: 'Credit / Debit Cards', eyebrow: 'Payments Information',
-      heroImage: 'assets/pages/cards.svg',
-      heroImageAlt: 'Stylised pair of credit cards with brand-colour dots on a red-tinted gradient',
+      heroImage: 'assets/img/pages/cards.jpg',
+      heroImageAlt: 'A traveller holding a credit card beside a laptop while paying online',
       intro: 'We accept all major local and international credit and debit cards through a secure payment gateway.',
       sections: [
         { h: 'Accepted cards', p: 'Visa, Mastercard and American Express issued by Sampath, Standard Chartered, Nations Trust, HNB, Commercial Bank, HSBC, Seylan, Bank of Ceylon, NDB, DFCC, Union Bank, People’s Bank and all other banks.' },
@@ -200,8 +200,8 @@ export class LegalComponent implements OnInit {
     },
     airlines: {
       title: 'Our Airlines', eyebrow: 'Network',
-      heroImage: 'assets/pages/airlines.svg',
-      heroImageAlt: 'Three abstract aircraft tail-fin silhouettes in white on a teal-navy gradient',
+      heroImage: 'assets/img/pages/airlines.jpg',
+      heroImageAlt: 'A wide-body airliner at the gate seen through an airport terminal window',
       intro: 'FlyAir partners with hundreds of full-service and low-cost carriers worldwide.',
       sections: [
         { h: 'Featured partners', p: 'SriLankan Airlines, Emirates, Qatar Airways, Singapore Airlines, Cathay Pacific, Malaysia Airlines, Thai Airways, FitsAir and many more.' },
@@ -223,8 +223,8 @@ export class LegalComponent implements OnInit {
     },
     sitemap: {
       title: 'Sitemap', eyebrow: 'Other Information',
-      heroImage: 'assets/pages/sitemap.svg',
-      heroImageAlt: 'Hierarchical node-and-line site structure diagram on a navy gradient',
+      heroImage: 'assets/img/pages/sitemap.jpg',
+      heroImageAlt: 'A travel flat-lay: a printed map dotted with pins, a passport and camera',
       intro: 'A quick index of the main pages across FlyAir.',
       sections: [
         { h: 'Book & manage', p: 'Home / Flight search, Search results, Booking, Manage booking, Sign in.' },
@@ -263,8 +263,8 @@ export class LegalComponent implements OnInit {
     },
     'flight-status': {
       title: 'Flight Status', eyebrow: 'Book & Manage',
-      heroImage: 'assets/pages/flight-status.svg',
-      heroImageAlt: 'Airport departure-board panel showing Colombo flights with on-time, boarding and delayed states',
+      heroImage: 'assets/img/pages/flight-status.jpg',
+      heroImageAlt: 'An airport split-flap board listing departing flights, airlines and times',
       intro: 'Check whether your flight is on time before you head to the airport.',
       sections: [
         { h: 'How to check', p: 'Look up your flight by airline + flight number, or by route and date. We surface the latest scheduled, estimated and actual times directly from the airline.' },
@@ -277,8 +277,8 @@ export class LegalComponent implements OnInit {
     /* ---------- Help & Support ---------- */
     refunds: {
       title: 'Refunds & Changes', eyebrow: 'Help & Support',
-      heroImage: 'assets/pages/refunds.svg',
-      heroImageAlt: 'Circular return arrow encircling a dollar-sign on a fresh-green navy gradient',
+      heroImage: 'assets/img/pages/refunds.jpg',
+      heroImageAlt: 'An open travel notebook and pencil on a vintage world map with a camera',
       intro: 'Plans change. Here’s how date changes, cancellations and refunds work on FlyAir.',
       sections: [
         { h: '24-hour free cancellation', p: 'Eligible fares can be cancelled free of charge within 24 hours of booking for a full refund — look for the “Free 24h cancellation” badge on the fare.' },
@@ -319,8 +319,8 @@ export class LegalComponent implements OnInit {
     /* ---------- Payments ---------- */
     fees: {
       title: 'Fees & Charges', eyebrow: 'Payments',
-      heroImage: 'assets/pages/fees.svg',
-      heroImageAlt: 'Itemised receipt with a red Total banner on a warm-amber gradient',
+      heroImage: 'assets/img/pages/fees.jpg',
+      heroImageAlt: 'A customer tapping a credit card on a contactless payment terminal',
       intro: 'Transparent pricing with no surprises. Here’s a clear breakdown of any fees that may apply.',
       sections: [
         { h: 'Fare price', p: 'The price you see for each fare already includes the base fare plus all applicable taxes and mandatory carrier charges — there are no hidden booking fees.' },
