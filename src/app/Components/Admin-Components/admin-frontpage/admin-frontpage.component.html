@@ -176,6 +176,38 @@
     <button class="fp-btn ghost sm" (click)="addOffer()">+ Add offer</button>
   </section>
 
+  <!-- REVIEWS -->
+  <section class="fp-card" *ngIf="content.reviews">
+    <h2>Customer reviews</h2>
+    <p class="fp-help" style="margin:-6px 0 14px;font-size:.9rem;opacity:.7">
+      The “What our travellers say” carousel on the home page. The average star
+      rating shown is calculated automatically from the cards below.
+    </p>
+    <div class="fp-grid">
+      <label class="fp-field"><span>Eyebrow</span><input [(ngModel)]="content.reviews.eyebrow" name="rve"></label>
+      <label class="fp-field"><span>Title</span><input [(ngModel)]="content.reviews.title" name="rvt"></label>
+      <label class="fp-field fp-col2"><span>Lead</span><textarea rows="2" [(ngModel)]="content.reviews.lead" name="rvl"></textarea></label>
+    </div>
+    <div class="fp-sub">Review cards</div>
+    <div class="fp-item col" *ngFor="let r of content.reviews.items; let i = index; trackBy: trackByIndex">
+      <div class="fp-item">
+        <input class="fp-grow" [(ngModel)]="r.name" [name]="'rvn'+i" placeholder="Name e.g. Nimal Perera">
+        <input class="fp-grow" [(ngModel)]="r.location" [name]="'rvloc'+i" placeholder="Location e.g. Colombo, Sri Lanka">
+        <select [(ngModel)]="r.rating" [name]="'rvr'+i" title="Star rating">
+          <option [ngValue]="5">★★★★★ (5)</option>
+          <option [ngValue]="4">★★★★ (4)</option>
+          <option [ngValue]="3">★★★ (3)</option>
+          <option [ngValue]="2">★★ (2)</option>
+          <option [ngValue]="1">★ (1)</option>
+        </select>
+        <input [(ngModel)]="r.route" [name]="'rvrt'+i" placeholder="Route e.g. CMB → DXB">
+        <button class="fp-btn ghost sm" (click)="removeReview(i)">Remove</button>
+      </div>
+      <textarea rows="2" [(ngModel)]="r.quote" [name]="'rvq'+i" placeholder="Quote / testimonial"></textarea>
+    </div>
+    <button class="fp-btn ghost sm" (click)="addReview()">+ Add review</button>
+  </section>
+
   <!-- CTA -->
   <section class="fp-card">
     <h2>Closing call-to-action</h2>

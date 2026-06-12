@@ -53,6 +53,8 @@ export class AdminFrontpageComponent implements OnInit {
     c.featured = c.featured || ({ eyebrow: '', title: '', text: '', image: '', ctaLabel: '', ctaLink: '' } as any);
     c.offers = c.offers || ({ eyebrow: '', title: '', items: [] } as any);
     c.offers.items = c.offers.items || [];
+    c.reviews = c.reviews || ({ eyebrow: '', title: '', lead: '', items: [] } as any);
+    c.reviews!.items = c.reviews!.items || [];
     c.cta = c.cta || ({ eyebrow: '', title: '', lead: '', primaryLabel: '', primaryLink: '', secondaryLabel: '', secondaryLink: '' } as any);
     // Global defaults used when destination/promotion cards on the home page
     // are clicked. Coerce missing/empty to sensible falls (7-day advance, 1 traveller).
@@ -73,6 +75,8 @@ export class AdminFrontpageComponent implements OnInit {
   removeDest(i: number) { this.content.destinations.items.splice(i, 1); }
   addOffer() { this.content.offers.items.push({ icon: 'percent-tag', color: 'red', title: '', text: '' }); }
   removeOffer(i: number) { this.content.offers.items.splice(i, 1); }
+  addReview() { this.content.reviews?.items.push({ name: '', location: '', rating: 5, quote: '', route: '' }); }
+  removeReview(i: number) { this.content.reviews?.items.splice(i, 1); }
   addBadge() { this.content.hero.badges.push(''); }
   removeBadge(i: number) { this.content.hero.badges.splice(i, 1); }
   trackByIndex(i: number) { return i; }
