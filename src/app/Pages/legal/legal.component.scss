@@ -16,9 +16,50 @@
 .hero-image img{ width:100%; height:auto; aspect-ratio: 8 / 3; max-height:360px; object-fit:cover; border-radius: 16px; box-shadow: 0 18px 40px rgba(12,35,75,.12); margin-top: -42px; position: relative; z-index: 1; }
 
 .body{ max-width:820px; }
-.sec{ margin-bottom:28px; }
-.sec h3{ font-size:1.2rem; margin-bottom:8px; font-family: var(--fly-display); }
-.sec p{ color: var(--fly-ink2); white-space: pre-line; }
+
+/* ---- Collapsible accordion of sections (replaces the old jump-TOC) ---- */
+.fly-acc{ display:grid; gap:14px; }
+.fly-acc-bar{ display:flex; justify-content:flex-end; margin-bottom:2px; }
+.fly-acc-toggle-all{
+  appearance:none; background:none; border:0; cursor:pointer;
+  color: var(--fly-blue,#0073bd); font-weight:700; font-size:.85rem;
+  padding:6px 10px; border-radius:8px; font-family: var(--fly-display);
+}
+.fly-acc-toggle-all:hover{ background: var(--fly-blue50,#eaf4fc); }
+
+.fly-acc-item{
+  border:1px solid var(--fly-line,#e2e8f0); border-radius:16px; background:#fff;
+  overflow:hidden; transition: box-shadow .2s, border-color .2s;
+}
+.fly-acc-item.open{ border-color: var(--fly-blue,#0073bd); box-shadow: 0 10px 30px rgba(12,35,75,.08); }
+
+.fly-acc-h{ margin:0; font-size:inherit; }
+.fly-acc-btn{
+  width:100%; display:flex; align-items:center; gap:14px; text-align:left;
+  appearance:none; background:none; border:0; cursor:pointer;
+  padding:18px 20px; color: var(--fly-ink,#0a1730);
+  font-family: var(--fly-display); font-size:1.05rem; font-weight:700; line-height:1.35;
+}
+.fly-acc-btn:focus-visible{ outline:2px solid var(--fly-blue,#0073bd); outline-offset:-2px; border-radius:16px; }
+.fly-acc-num{
+  flex:0 0 auto; width:30px; height:30px; border-radius:9px; display:grid; place-items:center;
+  font-size:.9rem; background: var(--fly-blue50,#eaf4fc); color: var(--fly-blue,#0073bd);
+  transition: background .2s, color .2s;
+}
+.fly-acc-item.open .fly-acc-num{ background: var(--fly-navy-grad,#0073bd); color:#fff; }
+.fly-acc-title{ flex:1 1 auto; }
+.fly-acc-chev{ flex:0 0 auto; color: var(--fly-ink-soft,#6b7686); transition: transform .28s ease, color .2s; }
+.fly-acc-item.open .fly-acc-chev{ transform: rotate(180deg); color: var(--fly-blue,#0073bd); }
+
+/* grid-template-rows 0fr→1fr animates the panel to its natural height */
+.fly-acc-panel{ display:grid; grid-template-rows:0fr; transition: grid-template-rows .28s ease; }
+.fly-acc-item.open .fly-acc-panel{ grid-template-rows:1fr; }
+.fly-acc-panel-inner{ overflow:hidden; }
+.fly-acc-panel-inner p{ margin:0 20px 16px; color: var(--fly-ink2); white-space: pre-line; line-height:1.65; }
+.fly-acc-panel-inner p:first-child{ padding-top:2px; }
+@media (prefers-reduced-motion: reduce){
+  .fly-acc-panel{ transition:none; } .fly-acc-chev{ transition:none; }
+}
 
 /* Byline block — author + editor attribution */
 .byline{ margin: 0 0 36px; padding: 18px 22px; background: var(--fly-soft, #f4f8fc); border-radius: 12px; border-left: 3px solid var(--fly-blue, #0073bd); }
@@ -32,26 +73,3 @@
 .links a{ padding:.55rem 1.2rem; border:1px solid var(--fly-line); border-radius: var(--fly-pill);
   color: var(--fly-ink2); font-weight:600; font-size:.9rem; text-decoration:none; transition:.2s; }
 .links a.active, .links a:hover{ background: var(--fly-blue50); color: var(--fly-blue); border-color: var(--fly-blue); }
-
-/* On-this-page TOC (P1.13). Collapsible block; sections get scroll offset. */
-.fly-toc {
-  margin: 0 0 28px; padding: 14px 18px;
-  background: var(--fly-soft, #f4f9fd); border: 1px solid var(--fly-line, #e2e8f0);
-  border-radius: 14px;
-}
-.fly-toc > summary {
-  cursor: pointer; font-weight: 700; color: var(--fly-ink, #0b1730);
-  font-family: var(--fly-display); list-style: none;
-}
-.fly-toc > summary::-webkit-details-marker { display: none; }
-.fly-toc > summary::after { content: " ›"; transition: transform .2s; display: inline-block; }
-.fly-toc[open] > summary::after { transform: rotate(90deg); }
-.fly-toc ol { margin: 12px 0 2px; padding-left: 20px; display: grid; gap: 6px; }
-.fly-toc a { color: var(--fly-blue, #0073bd); text-decoration: none; }
-.fly-toc a:hover { text-decoration: underline; }
-.body .sec { scroll-margin-top: 96px; }
-@media (min-width: 1024px) {
-  /* On wide screens, float the TOC into the left gutter, sticky. */
-  .body { position: relative; }
-  .fly-toc { position: sticky; top: 96px; }
-}

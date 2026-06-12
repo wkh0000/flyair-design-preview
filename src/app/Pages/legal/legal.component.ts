@@ -32,6 +32,20 @@ export class LegalComponent implements OnInit {
   page = 'privacy';
   doc!: InfoDoc;
 
+  /** Indices of expanded accordion sections. The first section opens by default
+   *  as an affordance; navigating to another page resets this. */
+  openSet = new Set<number>([0]);
+
+  isOpen(i: number): boolean { return this.openSet.has(i); }
+  toggle(i: number): void { this.openSet.has(i) ? this.openSet.delete(i) : this.openSet.add(i); }
+  get allOpen(): boolean { return !!this.doc?.sections?.length && this.openSet.size === this.doc.sections.length; }
+  toggleAll(): void {
+    if (this.allOpen) this.openSet.clear();
+    else this.doc.sections.forEach((_, i) => this.openSet.add(i));
+  }
+  /** Split a section body into display paragraphs on blank lines. */
+  paragraphs(p: string): string[] { return (p || '').split(/\n{2,}/).map(s => s.trim()).filter(Boolean); }
+
   /** Built-in defaults — also consumed by the admin Pages editor as the starting content. */
   static readonly DEFAULTS: Record<string, InfoDoc> = {
     /* ---------- Legal trio ---------- */
@@ -325,6 +339,7 @@ export class LegalComponent implements OnInit {
       this.page = d['page'] || 'privacy';
       // Built-in default first (instant render / SSR), then overlay any admin override.
       this.doc = LegalComponent.DEFAULTS[this.page] || LegalComponent.DEFAULTS['privacy'];
+      this.openSet = new Set<number>([0]);   // reset accordion on each page
       this.applySeo();
       if (typeof window !== 'undefined') window.scrollTo(0, 0);
       this.pages.get(this.page).subscribe({

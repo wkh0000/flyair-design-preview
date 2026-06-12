@@ -15,19 +15,33 @@
 
   <section class="fly-section">
     <div class="fly-container body">
-      <!-- Anchor table of contents — collapsible "On this page" for longer docs. -->
-      <details class="fly-toc" *ngIf="doc.sections && doc.sections.length > 3">
-        <summary>On this page</summary>
-        <ol>
-          <li *ngFor="let s of doc.sections; let i = index">
-            <a [href]="'#sec-' + i">{{ s.h }}</a>
-          </li>
-        </ol>
-      </details>
+      <!-- Collapsible accordion of sections. Replaces the old anchor "On this
+           page" TOC, whose fragment links (#sec-N) resolved against <base href>
+           and bounced to the home route on the deployed build. -->
+      <div class="fly-acc" *ngIf="doc.sections?.length">
+        <div class="fly-acc-bar" *ngIf="doc.sections.length > 1">
+          <button type="button" class="fly-acc-toggle-all" (click)="toggleAll()" [attr.aria-pressed]="allOpen">
+            {{ allOpen ? 'Collapse all' : 'Expand all' }}
+          </button>
+        </div>
 
-      <div class="sec" *ngFor="let s of doc.sections; let i = index" [id]="'sec-' + i">
-        <h3>{{ i + 1 }}. {{ s.h }}</h3>
-        <p>{{ s.p }}</p>
+        <div class="fly-acc-item" *ngFor="let s of doc.sections; let i = index" [class.open]="isOpen(i)">
+          <h3 class="fly-acc-h">
+            <button type="button" class="fly-acc-btn" (click)="toggle(i)"
+                    [attr.aria-expanded]="isOpen(i)" [attr.aria-controls]="'acc-panel-' + i" [id]="'acc-btn-' + i">
+              <span class="fly-acc-num" aria-hidden="true">{{ i + 1 }}</span>
+              <span class="fly-acc-title">{{ s.h }}</span>
+              <svg class="fly-acc-chev" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </h3>
+          <div class="fly-acc-panel" [id]="'acc-panel-' + i" role="region" [attr.aria-labelledby]="'acc-btn-' + i">
+            <div class="fly-acc-panel-inner" [attr.inert]="isOpen(i) ? null : ''">
+              <p *ngFor="let para of paragraphs(s.p)">{{ para }}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="links" *ngIf="doc.legalLinks">
