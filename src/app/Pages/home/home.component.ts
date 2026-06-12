@@ -268,6 +268,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     return color === 'red' ? 'fly-badge-red' : color === 'green' ? 'fly-badge-green' : 'fly-badge-blue';
   }
 
+  // ----- Customer reviews -----
+  /** Reviews block (falls back to baked defaults if the CMS payload omits it). */
+  get reviews(): any { return (this.content as any)?.reviews || (DEFAULT_HOME as any).reviews; }
+  /** Average star rating across the shown reviews, e.g. "4.7". */
+  get reviewAvg(): string {
+    const items = this.reviews?.items || [];
+    if (!items.length) return '0';
+    return (items.reduce((s: number, r: any) => s + (+r.rating || 0), 0) / items.length).toFixed(1);
+  }
+  /** Five booleans — true = a filled star (rounded to the nearest whole). */
+  reviewStars(rating: number): boolean[] { return [1, 2, 3, 4, 5].map(n => n <= Math.round(rating || 0)); }
+  /** Up to two initials for the avatar disc. */
+  reviewInitials(name: string): string {
+    return (name || '').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  }
+  /** Cycle avatar tints so adjacent cards differ. */
+  reviewTone(i: number): string { return ['blue', 'red', 'green', 'navy'][i % 4]; }
+
   // ----- CMS package inquiry -> WhatsApp (preserved) -----
   showCmsInquiryDialog = false;
   selectedCmsContent: any = null;

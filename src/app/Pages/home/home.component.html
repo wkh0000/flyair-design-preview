@@ -162,6 +162,44 @@
     </div>
   </section>
 
+  <!-- ===== REVIEWS / TESTIMONIALS — swipable + drag carousel of traveller
+       quotes, with an aggregate rating computed from the shown reviews. ===== -->
+  <section class="fly-section fly-reviews" id="reviews" *ngIf="reviews?.items?.length">
+    <div class="fly-container">
+      <div class="fly-flex fly-between fly-cy fly-wrap fly-reveal" style="margin-bottom:34px;gap:20px">
+        <div>
+          <div class="fly-eyebrow line">{{ reviews.eyebrow }}</div>
+          <h2 style="margin-top:14px">{{ reviews.title }}</h2>
+          <p class="fly-lead" *ngIf="reviews.lead" style="margin-top:12px;max-width:560px">{{ reviews.lead }}</p>
+        </div>
+        <div class="fly-rev-score" role="img" [attr.aria-label]="reviewAvg + ' out of 5 average, from ' + reviews.items.length + ' traveller reviews'">
+          <div class="num">{{ reviewAvg }}</div>
+          <div class="stars" aria-hidden="true">
+            <svg *ngFor="let f of reviewStars(+reviewAvg)" class="star" [class.on]="f" viewBox="0 0 24 24" width="18" height="18"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="cap">{{ reviews.items.length }} traveller reviews</div>
+        </div>
+      </div>
+
+      <div class="fly-rev-track" flyDragScroll>
+        <figure class="fly-rev-card" *ngFor="let r of reviews.items; let i = index">
+          <div class="stars" [attr.aria-label]="r.rating + ' out of 5 stars'">
+            <svg *ngFor="let f of reviewStars(r.rating)" class="star" [class.on]="f" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote class="quote">“{{ r.quote }}”</blockquote>
+          <figcaption class="who">
+            <span class="avatar" [ngClass]="'tone-' + reviewTone(i)" aria-hidden="true">{{ reviewInitials(r.name) }}</span>
+            <span class="meta">
+              <span class="name">{{ r.name }}</span>
+              <span class="loc" *ngIf="r.location">{{ r.location }}</span>
+            </span>
+            <span class="route" *ngIf="r.route">{{ r.route }}</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PARTNERS ===== -->
   <section class="fly-partners">
     <div class="fly-container">

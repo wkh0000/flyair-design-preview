@@ -21,6 +21,10 @@ export interface HomeDestination {
   code?: string;
 }
 export interface HomeOffer { icon: string; color: string; title: string; text: string; }
+export interface HomeReview {
+  name: string; location?: string; rating: number; quote: string;
+  route?: string;        // e.g. "CMB → DXB" — shown as a small route chip
+}
 
 /** Global defaults that the home page uses when a destination/promotion card
  *  is clicked and we navigate to the search form. Optional in the API contract
@@ -40,6 +44,7 @@ export interface HomeContent {
   destinations: { eyebrow: string; title: string; ctaLabel?: string; ctaLink?: string; items: HomeDestination[]; };
   featured: { eyebrow: string; title: string; text: string; image: string; ctaLabel: string; ctaLink: string; };
   offers: { eyebrow: string; title: string; items: HomeOffer[]; };
+  reviews?: { eyebrow: string; title: string; lead?: string; items: HomeReview[]; };
   cta: {
     eyebrow: string; title: string; lead: string;
     primaryLabel: string; primaryLink: string; secondaryLabel: string; secondaryLink: string;
@@ -78,6 +83,24 @@ export const DEFAULT_HOME: HomeContent = {
       { icon: 'percent-tag', color: 'red', title: '15% off your first booking', text: 'Use code FLYNEW15 at checkout on any flight.' },
       { icon: 'star', color: 'blue', title: 'Double reward miles', text: 'Earn 2× miles on every long-haul flight this month.' },
       { icon: 'seat', color: 'green', title: 'Free seat selection', text: 'Complimentary seat choice on Economy Plus and above.' },
+    ],
+  },
+  reviews: {
+    eyebrow: 'Loved by travellers', title: 'What our travellers say',
+    lead: 'Real journeys booked with FlyAir — from quick city hops to long-haul family holidays.',
+    items: [
+      { name: 'Nimal Perera', location: 'Colombo, Sri Lanka', rating: 5, route: 'CMB → DXB',
+        quote: 'Booked a last-minute Colombo–Dubai return and the fare was the best I found anywhere. My e-ticket landed in my inbox before I’d even closed the laptop.' },
+      { name: 'Aisha Rahman', location: 'Dubai, UAE', rating: 5, route: 'DXB → CMB',
+        quote: 'The free 24-hour cancellation saved me when a meeting moved. I changed my dates with zero fuss and not a single hidden charge.' },
+      { name: 'Rohan Fernando', location: 'Kandy, Sri Lanka', rating: 4, route: 'CMB → SIN',
+        quote: 'Comparing every airline in one search is exactly what I needed. Clean, fast, and the price I saw was the price I paid.' },
+      { name: 'Priya Nair', location: 'Chennai, India', rating: 5, route: 'MAA → CMB',
+        quote: 'Support actually answered at 2am when my connection changed. They rebooked me before I even reached the airport.' },
+      { name: 'James Whitfield', location: 'London, UK', rating: 5, route: 'LHR → CMB',
+        quote: 'I travel for work constantly and FlyAir has become my default. Transparent fares, instant tickets, no surprises at checkout.' },
+      { name: 'Dilani Jayawardena', location: 'Colombo, Sri Lanka', rating: 4, route: 'CMB → SIN',
+        quote: 'Paid in instalments with my Sampath card for a family trip to Singapore. It made a big booking feel completely manageable.' },
     ],
   },
   cta: {
