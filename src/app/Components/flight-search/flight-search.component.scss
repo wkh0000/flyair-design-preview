@@ -33,6 +33,44 @@
   -webkit-mask-image: url('../../../assets/icons/flights-nav.png');
   mask-image: url('../../../assets/icons/flights-nav.png');
 }
+/* Multi-city: a three-stop route glyph (inline SVG mask, same ink colour). */
+.fly-trip-ic-multi { width: 22px; height: 22px; }
+.fly-trip-ic-multi {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.5 12h17' stroke='black' stroke-width='2.2' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='3.5' cy='12' r='2.6'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3Ccircle cx='20.5' cy='12' r='2.6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.5 12h17' stroke='black' stroke-width='2.2' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='3.5' cy='12' r='2.6'/%3E%3Ccircle cx='12' cy='12' r='2.6'/%3E%3Ccircle cx='20.5' cy='12' r='2.6'/%3E%3C/svg%3E");
+}
+
+/* ---- Multi-city legs ---- */
+.mc-leg { position: relative; padding-left: 34px; }
+.mc-leg-no {
+  position: absolute; left: 0; top: 16px; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: .8rem; font-weight: 800;
+  background: var(--fly-blue50, #eaf4fc); color: var(--fly-blue, #0073bd);
+}
+.mc-remove-wrap { display: flex; align-items: center; justify-content: center; }
+.mc-remove {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--fly-line, #d7e0ea);
+  background: #fff; color: #8a94a6; cursor: pointer; font-size: 1rem; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center; transition: .18s;
+}
+.mc-remove:hover:not([disabled]) { border-color: #e23744; color: #e23744; background: #fff5f5; }
+.mc-remove[disabled] { opacity: .4; cursor: not-allowed; }
+
+.mc-actions-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 4px 0 14px; padding-left: 34px; }
+.mc-add {
+  appearance: none; border: 1px dashed var(--fly-blue, #0073bd); background: var(--fly-blue50, #eaf4fc);
+  color: var(--fly-blue, #0073bd); font-weight: 700; font-size: .9rem; border-radius: 10px;
+  padding: 9px 16px; cursor: pointer; transition: .18s;
+}
+.mc-add:hover:not([disabled]) { background: #dcecfa; }
+.mc-add[disabled] { opacity: .45; cursor: not-allowed; }
+.mc-legcount { font-size: .82rem; color: var(--fly-ink-soft, #6b7686); }
+
+@media (max-width: 991px) {
+  .mc-leg { padding-left: 0; }
+  .mc-leg-no { display: none; }
+  .mc-actions-row { padding-left: 0; }
+}
 
 .nav-tabs {
   border: none !important;

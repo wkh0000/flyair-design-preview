@@ -31,6 +31,21 @@
         Return
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="multi-city-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#multi-city"
+        type="button"
+        role="tab"
+        aria-controls="multi-city"
+        aria-selected="false"
+      >
+        <span class="fly-trip-ic fly-trip-ic-multi" aria-hidden="true"></span>
+        Multi-city
+      </button>
+    </li>
   </ul>
 
   <div class="tab-content" id="myTabContent">
@@ -630,6 +645,190 @@
           style="justify-content: center"
         >
         </div>
+      </form>
+    </div>
+
+    <!-- Multi-city Form -->
+    <div
+      class="tab-pane fade"
+      id="multi-city"
+      role="tabpanel"
+      aria-labelledby="multi-city-tab"
+    >
+      <form
+        [ngClass]="customClass"
+        [formGroup]="multiCityForm"
+        (ngSubmit)="onSubmitMultiCity()"
+        style="padding: 30px"
+      >
+        <!-- Shared autocomplete panels reused by every leg (only one input is
+             focused at a time, so the shared filtered list is unambiguous). -->
+        <mat-autocomplete #mcDepAuto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredDepartureOptions"
+            [value]="option.name + ' - ' + option.code"
+            style="font-size: 14px"
+          >{{ option.name }} - {{ option.code }}</mat-option>
+        </mat-autocomplete>
+        <mat-autocomplete #mcDstAuto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredDestinationOptions"
+            [value]="option.name + ' - ' + option.code"
+            style="font-size: 14px"
+          >{{ option.name }} - {{ option.code }}</mat-option>
+        </mat-autocomplete>
+
+        <div formArrayName="legs">
+          <div
+            class="row mb-1 mc-leg align-items-center"
+            *ngFor="let leg of legs.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="mc-leg-no" aria-hidden="true">{{ i + 1 }}</div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <mat-form-field appearance="outline" floatLabel="always" style="width: 100%" hideRequiredMarker="true">
+                <mat-label style="display: flex; flex-direction: row; align-items: center">
+                  <span class="material-symbols-outlined mr-2">flight_takeoff</span>Origin
+                </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [matAutocomplete]="mcDepAuto"
+                  #mcDepTrig="matAutocompleteTrigger"
+                  (focus)="onFocus('departure'); mcDepTrig.openPanel()"
+                  (input)="filterOptions($event, 'departure')"
+                  style="font-size: 14px"
+                  formControlName="departure"
+                  [attr.aria-label]="'Flight ' + (i + 1) + ' origin'"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <mat-form-field appearance="outline" floatLabel="always" style="width: 100%" hideRequiredMarker="true">
+                <mat-label style="display: flex; flex-direction: row; align-items: center">
+                  <span class="material-symbols-outlined mr-2">flight_land</span>Destination
+                </mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [matAutocomplete]="mcDstAuto"
+                  #mcDstTrig="matAutocompleteTrigger"
+                  (focus)="onFocus('destination'); mcDstTrig.openPanel()"
+                  (input)="filterOptions($event, 'destination')"
+                  style="font-size: 14px"
+                  formControlName="destination"
+                  [attr.aria-label]="'Flight ' + (i + 1) + ' destination'"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-10 col-md-9 col-lg-3">
+              <mat-form-field
+                appearance="outline" class="w-100" floatLabel="always" hideRequiredMarker="true"
+                matTooltip="Highlighted dates require immediate ticketing" matTooltipHideDelay="100"
+              >
+                <mat-label style="display: flex; flex-direction: row; align-items: center">
+                  <span class="material-symbols-outlined mr-2">calendar_month</span>Departure
+                </mat-label>
+                <input
+                  matInput readonly
+                  [matDatepicker]="mcPicker"
+                  formControlName="departureDate"
+                  [min]="minDate"
+                  (click)="mcPicker.open()"
+                  [attr.aria-label]="'Flight ' + (i + 1) + ' departure date'"
+                />
+                <mat-datepicker-toggle matSuffix [for]="mcPicker"></mat-datepicker-toggle>
+                <mat-datepicker [touchUi]="isHandset" [dateClass]="dateClass" #mcPicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-2 col-md-3 col-lg-1 mc-remove-wrap">
+              <button
+                type="button" class="mc-remove"
+                (click)="removeLeg(i)"
+                [disabled]="legs.length <= minLegs"
+                [attr.aria-label]="'Remove flight ' + (i + 1)"
+                title="Remove this flight"
+              >✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mc-actions-row">
+          <button type="button" class="mc-add" (click)="addLeg()" [disabled]="legs.length >= maxLegs">
+            <span aria-hidden="true">+</span> Add another flight
+          </button>
+          <span class="mc-legcount">{{ legs.length }} of {{ maxLegs }} flights</span>
+        </div>
+
+        <div *ngIf="warningMessage" class="warning">
+          <mat-error style="font-size: 12px; margin: 6px 0">{{ warningMessage }}</mat-error>
+        </div>
+
+        <div class="row mb-2 align-items-center">
+          <div class="col-12 col-md-6 col-lg-4">
+            <!-- Traveller Container (bound to multiCityForm) -->
+            <div class="traveller-container">
+              <div class="traveller-header">
+                <button class="traveller-button w-100 text-start" (click)="toggleDropdown()" type="button">
+                  {{ totalTravellers }} Traveller(s), {{ selectedClass }}
+                </button>
+              </div>
+              <div class="traveller-dropdown" *ngIf="isDropdownOpen">
+                <div class="traveller-options" style="display: flex; flex-direction: row">
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Adults</span>
+                    <div class="traveller-count">
+                      <button class="btn btn-outline-secondary btn-sm" (click)="decrement('adult', multiCityForm)" type="button">−</button>
+                      <span>{{ multiCityForm.get(["passengers", "adult"])?.value }}</span>
+                      <button class="btn btn-outline-secondary btn-sm" (click)="increment('adult', multiCityForm)" [disabled]="multiCityForm.get(['passengers', 'adult'])?.value >= maxAdults" type="button">+</button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column"><span>Child</span><span style="font-size: 10px"> (2 > and <12)</span></div>
+                    <div class="traveller-count">
+                      <button class="btn btn-outline-secondary btn-sm" (click)="decrement('child', multiCityForm)" type="button">−</button>
+                      <span>{{ multiCityForm.get(["passengers", "child"])?.value }}</span>
+                      <button class="btn btn-outline-secondary btn-sm" (click)="increment('child', multiCityForm)" [disabled]="multiCityForm.get(['passengers', 'child'])?.value >= maxChildren" type="button">+</button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <div style="display: flex; flex-direction: column"><span>Infant</span><span style="font-size: 10px"> (Below 2 YRS)</span></div>
+                    <div class="traveller-count">
+                      <button class="btn btn-outline-secondary btn-sm" (click)="decrement('infant', multiCityForm)" type="button">−</button>
+                      <span>{{ multiCityForm.get(["passengers", "infant"])?.value }}</span>
+                      <button class="btn btn-outline-secondary btn-sm" (click)="increment('infant', multiCityForm)" [disabled]="multiCityForm.get(['passengers', 'infant'])?.value >= maxInfants" type="button">+</button>
+                    </div>
+                  </div>
+                  <div class="traveller-row d-flex justify-content-between">
+                    <span>Student</span>
+                    <div class="traveller-count">
+                      <button class="btn btn-outline-secondary btn-sm" (click)="decrement('student', multiCityForm)" type="button">−</button>
+                      <span>{{ multiCityForm.get(["passengers", "student"])?.value }}</span>
+                      <button class="btn btn-outline-secondary btn-sm" (click)="increment('student', multiCityForm)" [disabled]="multiCityForm.get(['passengers', 'student'])?.value >= maxStudents" type="button">+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="class-options">
+                  <button class="class-button btn btn-outline-primary btn-sm" *ngFor="let cabinClass of cabinClasses"
+                    [class.active]="multiCityForm.get('selectedClass')?.value === cabinClass"
+                    (click)="selectClass(cabinClass, multiCityForm)" type="button">{{ cabinClass }}</button>
+                </div>
+                <div class="done-button-container mt-2">
+                  <button class="btn btn-primary w-100" (click)="toggleDropdown()" type="button">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 mt-2 mt-lg-0 align-style">
+            <button type="submit" class="fly-btn fly-btn-primary fly-search-btn w-100" [disabled]="multiCityForm.invalid">
+              Search →
+            </button>
+          </div>
+        </div>
+        <!-- Persistent, screen-reader-announced helper for the disabled-until-valid Search. -->
+        <p class="fly-search-help" aria-live="polite" *ngIf="multiCityForm.invalid">
+          Add two or more flights, each with an origin, destination and date.
+        </p>
       </form>
     </div>
   </div>

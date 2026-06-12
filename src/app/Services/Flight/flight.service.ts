@@ -33,6 +33,24 @@ interface ReturnFlightRequest {
   selectedClass: string;
 }
 
+interface MultiCityLeg {
+  departure: string;
+  destination: string;
+  departureDate: string;
+}
+
+interface MultiCityFlightRequest {
+  legs: MultiCityLeg[];
+  passengers: {
+    adult: number;
+    child: number;
+    infant: number;
+    student?: number;
+  };
+  selectedClass: string;
+  tripType?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -69,6 +87,16 @@ export class FlightService {
     });
 
     const url = `${this.apiUrl}FlightSearch/return`; // API endpoint for return flight booking
+    return this.http.post(url, request, { headers });
+  }
+
+  // Method to search a multi-city itinerary (2+ legs).
+  bookMultiCityFlight(request: MultiCityFlightRequest): Observable<any> {
+    const token = this.get('accessToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token.token}`,
+    });
+    const url = `${this.apiUrl}FlightSearch/multi-city`;
     return this.http.post(url, request, { headers });
   }
 

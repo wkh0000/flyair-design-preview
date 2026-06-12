@@ -16,6 +16,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {
   AbstractControl,
+  FormArray,
   FormBuilder,
   FormGroup,
   FormsModule,
@@ -68,6 +69,9 @@ export class FlightSearchComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   oneWayForm!: FormGroup;
   returnForm!: FormGroup;
+  multiCityForm!: FormGroup;
+  readonly maxLegs = 6;
+  readonly minLegs = 2;
   passengers = {
     adult: 1,
     child: 0,
@@ -240,6 +244,77 @@ export class FlightSearchComponent implements OnInit {
       ),
       selectedClass: [this.selectedClass],
     });
+
+    // Multi-city starts with two empty legs; the user adds up to maxLegs.
+    this.multiCityForm = this.fb.group({
+      legs: this.fb.array([this.newLeg(), this.newLeg()]),
+      passengers: this.fb.group(
+        { adult: [1], child: [0], infant: [0], student: [0] },
+        { validators: this.passengerValidator() }
+      ),
+      selectedClass: [this.selectedClass],
+    });
+  }
+
+  /** A single multi-city leg (origin / destination / date — all required). */
+  private newLeg(): FormGroup {
+    return this.fb.group({
+      departure: ['', Validators.required],
+      destination: ['', Validators.required],
+      departureDate: ['', Validators.required],
+    });
+  }
+  /** Typed accessor for the legs FormArray (used by the template). */
+  get legs(): FormArray { return this.multiCityForm.get('legs') as FormArray; }
+  legGroup(i: number): FormGroup { return this.legs.at(i) as FormGroup; }
+  addLeg(): void { if (this.legs.length < this.maxLegs) this.legs.push(this.newLeg()); }
+  removeLeg(i: number): void { if (this.legs.length > this.minLegs) this.legs.removeAt(i); }
+
+  onSubmitMultiCity(): void {
+    if (this.multiCityForm.invalid) {
+      this.multiCityForm.markAllAsTouched();
+      this.warningMessage = 'Add at least two flights, each with an origin, destination and date.';
+      setTimeout(() => (this.warningMessage = null), 4000);
+      return;
+    }
+    // Extract codes + guard each leg against same origin/destination.
+    const legs = this.legs.value.map((l: any) => ({
+      departure: (l.departure || '').split('-').pop().trim(),
+      destination: (l.destination || '').split('-').pop().trim(),
+      departureDate: this.formatDate(new Date(l.departureDate)),
+    }));
+    if (legs.some((l: any) => l.departure && l.destination && l.departure === l.destination)) {
+      this.warningMessage = 'Each flight must have a different origin and destination.';
+      setTimeout(() => (this.warningMessage = null), 4000);
+      return;
+    }
+    this.loading = true;
+    const formattedData = {
+      legs,
+      passengers: {
+        adult: this.multiCityForm.get(['passengers', 'adult'])?.value || 0,
+        child: this.multiCityForm.get(['passengers', 'child'])?.value || 0,
+        infant: this.multiCityForm.get(['passengers', 'infant'])?.value || 0,
+        student: this.multiCityForm.get(['passengers', 'student'])?.value || 0,
+      },
+      selectedClass: this.multiCityForm.get('selectedClass')?.value,
+      tripType: 'multicity',
+    };
+    this.shared.setPassengerData(formattedData.passengers);
+    this.flightService.bookMultiCityFlight(formattedData).subscribe(
+      (results) => {
+        this.loading = false;
+        this.flightService.setFlightData({ results, formattedData });
+        if (this.router.url !== '/result') {
+          this.router.navigate(['/result'], { state: { data: results, formattedData }, replaceUrl: true });
+        }
+      },
+      (error) => {
+        this.loading = false;
+        alert(error.error?.message || 'An error occurred while searching for flights. Please try again.');
+        console.error('Error searching multi-city flights:', error);
+      }
+    );
   }
 
   /** Pending ?origin/dest/date/pax prefill, applied once the airport list loads. */
